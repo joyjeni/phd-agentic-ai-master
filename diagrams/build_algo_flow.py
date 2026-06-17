@@ -163,11 +163,11 @@ t(ax,1.0,18.92,'Novel: First CoT quality-weighted routing affinity',sz=7.5,c=GOL
 
 # OctoRoute sub-box
 glow_box(ax,9.9,18.6,9.4,2.55,GOLD,fc='#1a1505',lw=1.8,r=0.2)
-t(ax,14.6,20.82,'OctoRoute  \u2014  Octopus-Inspired Distributed Routing',sz=9,c=GOLD,w='bold')
+t(ax,14.6,20.82,'OctoRoute  \u2014  Distributed Parallel-Dispatch Routing',sz=9,c=GOLD,w='bold')
 t(ax,10.1,20.42,'<octo_k>  functional token dispatch',sz=9,c=MONO,ha='left',mono=True,w='bold')
 t(ax,10.1,20.05,'Layer 1: brain \u2192 functional token \u2192 arm',sz=8,c=WHITE,ha='left')
 t(ax,10.1,19.68,'Layer 2: arm W_local routing (per-domain)',sz=8,c=DIM,ha='left')
-t(ax,10.1,19.3,'Chromatophore 1-bit confidence signals',sz=7.5,c=DIM,ha='left')
+t(ax,10.1,19.3,'Confidence-signal 1-bit confidence signals',sz=7.5,c=DIM,ha='left')
 t(ax,10.1,18.92,'Novel: -22% latency via direct functional-token dispatch',sz=7.5,c=GOLD,ha='left',w='bold')
 
 # results pills
@@ -235,7 +235,7 @@ glow_box(ax,0.4,Y4,19.2,5.15,C4,fc='#0d0518')
 
 t(ax,1.0,11.95,'OBJECTIVE 4',sz=8,c=C4,w='bold',ha='left')
 t(ax,1.0,11.52,'FCNP  Context Pruning',sz=13,c=WHITE,w='bold',ha='left')
-t(ax,1.0,11.1,'Flow-Based Context Network Pruning  (Kirchhoff / Physarum analog)',sz=9,c=DIM,ha='left')
+t(ax,1.0,11.1,'Flow-Based Context Network Pruning  (Kirchhoff / FlowNetwork analog)',sz=9,c=DIM,ha='left')
 
 t(ax,1.1,10.62,'L(D) \u00b7 p  =  I        (Kirchhoff potential field)',
   sz=9,c=MONO,ha='left',mono=True,w='bold')
@@ -258,7 +258,7 @@ pill(ax,16.0,11.4,'F1@K p<0.05  all baselines',C4,w=4.2)
 pill(ax,16.0,10.85,'>= 99% citation accuracy',C4,w=4.2)
 
 t(ax,12.8,10.62,
-  'Novel: First Kirchhoff/physarum context compression',sz=8.5,c=WHITE,ha='left',w='bold')
+  'Novel: First Kirchhoff flow-reinforcement context compression',sz=8.5,c=WHITE,ha='left',w='bold')
 t(ax,12.8,10.2,
   'Global flow-coupled optimisation vs per-item ranking',sz=8,c=DIM,ha='left')
 t(ax,12.8,9.78,

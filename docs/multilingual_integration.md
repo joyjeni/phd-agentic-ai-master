@@ -231,7 +231,7 @@ message_envelope = {
 
 **Current state**: Operates on dense embeddings (`google/embeddinggemma-300m`). Entirely language-agnostic.
 
-**Changes required**: **None.** The Kirchhoff/physarum flow operates on embedding similarity matrices, which are computed from English text (post-translation). No modification needed.
+**Changes required**: **None.** The Kirchhoff/iterative flow-reinforcement operates on embedding similarity matrices, which are computed from English text (post-translation). No modification needed.
 
 ---
 

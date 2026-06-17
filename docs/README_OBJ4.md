@@ -1,6 +1,6 @@
 # FCNP — Flow-Coupled Network Pruning
 
-> **PhD Objective 4** | Kirchhoff/Physarum-Analog Context Compression for LLM Agents
+> **PhD Objective 4** | Kirchhoff flow-reinforcement-Analog Context Compression for LLM Agents
 
 [![GitHub](https://img.shields.io/badge/GitHub-Public-black)](https://github.com/joyjeni/fcnp-context-pruning)
 [![Vercel](https://img.shields.io/badge/Vercel-Dashboard-brightgreen)](https://fcnp-context-pruning.vercel.app)
@@ -16,7 +16,7 @@
 FCNP (**Flow-Coupled Network Pruning**) is a context compression algorithm for LLM agents inspired by two physical systems:
 
 1. **Kirchhoff's circuit laws** — global current conservation constrains which nodes (context chunks) carry significant flow.
-2. **Physarum polycephalum (slime mould)** — a biological network that self-organises to find shortest paths by reinforcing high-flow tubes and pruning low-flow ones.
+2. **iterative flow network solver (flow-network)** — a biological network that self-organises to find shortest paths by reinforcing high-flow tubes and pruning low-flow ones.
 
 FCNP models the context window as a conductance network: each chunk of retrieved context is a node; query-chunk relevance defines conductance; Kirchhoff flow equations determine which chunks are "on the critical path" to answering the query. Low-flow chunks are pruned.
 
@@ -51,9 +51,9 @@ where:
 
 Solving for $\mathbf{p}$ yields pressure differences across edges; flow on each edge is $f_{ij} = D_{ij} \cdot (p_i - p_j)$. Chunks on high-flow edges are retained; low-flow chunks are pruned.
 
-### Conductance Update (Physarum Dynamics)
+### Conductance Update (FlowNetwork Dynamics)
 
-Conductances are updated iteratively to reinforce high-flow paths (physarum-inspired adaptive network):
+Conductances are updated iteratively to reinforce high-flow paths (flow-reinforcement adaptive network):
 
 $$D_{ij}(t+1) = (1 - \mu) \cdot D_{ij}(t) + \alpha \cdot |Q_{ij}|^\gamma$$
 
@@ -142,7 +142,7 @@ Output: pruned context C' ⊆ C, |C'| << |C|
 ```
 fcnp-context-pruning/
 ├── src/
-│   ├── fcnp.py              # Core algorithm: Kirchhoff solve + physarum update
+│   ├── fcnp.py              # Core algorithm: Kirchhoff solve + conductance reinforcement update
 │   ├── conductance.py       # Build D matrix from embeddings
 │   ├── laplacian.py         # L(D) construction and sparse solve
 │   ├── embedding.py         # google/embeddinggemma-300m wrapper
@@ -205,7 +205,7 @@ def get_params(octo_arm: str) -> dict:
 
 ## Multilingual Support
 
-FCNP is **language-agnostic** — it operates entirely on dense embeddings (`google/embeddinggemma-300m`) computed from English text (post-translation). The conductance matrix, Kirchhoff flow solve, and physarum update contain no language-specific logic.
+FCNP is **language-agnostic** — it operates entirely on dense embeddings (`google/embeddinggemma-300m`) computed from English text (post-translation). The conductance matrix, Kirchhoff flow solve, and conductance reinforcement update contain no language-specific logic.
 
 No changes are required for multilingual support. The translation layer in Obj1/SessionRerank+ handles language detection and translation before context reaches FCNP.
 

@@ -52,7 +52,7 @@ The four research objectives form a complete end-to-end pipeline:
 | Step | Objective | Role in Pipeline |
 |------|-----------|-----------------|
 | **1** | SessionRerank+ | Translates, embeds, and retrieves the best government APIs for the query |
-| **2** | APRR + CROW + OctoRoute | Routes the query through specialist agents via reasoning-gated, bio-inspired dispatch |
+| **2** | APRR + CROW + OctoRoute | Routes the query through specialist agents via reasoning-gated, functionally-decomposed dispatch |
 | **3** | MNCD Mesh Agents | Validates answers through a fault-tolerant 5-agent consensus mesh |
 | **4** | FCNP Context Pruning | Compresses raw API data (50+ records) to a token-budget-fit, citation-accurate response |
 
@@ -133,7 +133,7 @@ Farmer Query (Tamil / Kannada / Malayalam / Hindi / Marathi / English)
                         ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │  OBJECTIVE 4: FCNP Context Pruning                              │
-│  Kirchhoff potential field (slime-mold analog) →                │
+│  Kirchhoff potential field (flow-network analog) →                │
 │  10:1 compression → Citation-preserved top-K entries            │
 └───────────────────────┬─────────────────────────────────────────┘
                         │
@@ -276,7 +276,7 @@ This prevents low-quality routing decisions on ambiguous queries — a critical 
 
 ### Sub-Component 3: OctoRoute — Bio-Inspired Functional Token Dispatch
 
-**OctoRoute** implements an octopus-arm-inspired dispatch model. Each specialist agent is a functional "arm" with **arm-local weight W**. Routing is expressed as **functional tokens** (e.g., `<octo_1>` for MarketAgent, `<octo_2>` for SchemeAgent) injected into the LLM's generation context. The LLM learns to produce these tokens naturally, making dispatch a generative act rather than a separate classifier.
+**OctoRoute** implements an functionally-decomposed dispatch model. Each specialist agent is a functional "arm" with **arm-local weight W**. Routing is expressed as **functional tokens** (e.g., `<octo_1>` for MarketAgent, `<octo_2>` for SchemeAgent) injected into the LLM's generation context. The LLM learns to produce these tokens naturally, making dispatch a generative act rather than a separate classifier.
 
 ```
 CROW output  →  OctoRoute tokenizer  →  <octo_N> token generation
@@ -290,7 +290,7 @@ CROW output  →  OctoRoute tokenizer  →  <octo_N> token generation
 | Latency Reduction | **-22%** vs APRR alone |
 | Dispatch Mechanism | Functional token generation |
 | Parallelism | Arm-local; arms activate independently |
-| Novel element | First bio-inspired arm-local dispatch in LLM agent routing |
+| Novel element | First functionally-decomposed arm-local dispatch in LLM agent routing |
 
 ### Live Deployment
 > 🔴 **LIVE NOW:** [APRR Multi-Agent Routing Dashboard on Vercel](https://aprr-multi-agent-routing.vercel.app)
@@ -298,7 +298,7 @@ CROW output  →  OctoRoute tokenizer  →  <octo_N> token generation
 > Interactive visualisation of routing decisions, CROW CoT traces, and OctoRoute arm activations across live queries.
 
 ### Novel Contribution
-**First REINFORCE-equivalent decay-regularised routing policy** combined with **CoT quality-weighted update** (CROW) and **bio-inspired arm-local dispatch** (OctoRoute) in a single unified multi-agent routing framework.
+**First REINFORCE-equivalent decay-regularised routing policy** combined with **CoT quality-weighted update** (CROW) and **functionally-decomposed arm-local dispatch** (OctoRoute) in a single unified multi-agent routing framework.
 
 ---
 
@@ -368,7 +368,7 @@ FCNP models the context window as an **electrical potential field**, where:
 - Each context entry (e.g., one mandi price record) is a **node** with a relevance charge
 - The query is the **source electrode** (high potential)
 - The LLM token budget is the **sink electrode** (low potential)
-- Information flows along **minimum-resistance paths** — analogous to slime-mold (Physarum polycephalum) finding shortest paths through mazes
+- Information flows along **minimum-resistance paths** — analogous to flow-network (iterative flow network solver) finding shortest paths through mazes
 
 Entries with low resistance (high relevance + low redundancy) are retained. High-resistance entries (off-topic or redundant) are pruned. Kirchhoff's current laws enforce that the **total retained information** respects the token budget constraint.
 
@@ -395,7 +395,7 @@ API Response (50+ records)
 | Source Attribution | Every retained record traceable to data.gov.in record ID |
 
 ### Novel Contribution
-**First application of Kirchhoff potential field theory (slime-mold analog) to LLM context compression.** FCNP brings a formal physics-grounded optimality guarantee — the minimum-energy flow path — to what has previously been a heuristic or learned pruning problem.
+**First application of Kirchhoff potential field theory (flow-network analog) to LLM context compression.** FCNP brings a formal physics-grounded optimality guarantee — the minimum-energy flow path — to what has previously been a heuristic or learned pruning problem.
 
 ---
 
@@ -590,9 +590,9 @@ Source: data.gov.in Daily Mandi Commodity Prices."
 | 1 | SessionRerank+ | Co-activation cache for API transitions | First session-aware API-transition reinforcement in multi-turn agentic tool retrieval |
 | 2a | APRR | REINFORCE-equivalent decay-regularised routing policy | First decay-regularised REINFORCE policy for LLM agent routing |
 | 2b | CROW | CoT quality-weighted routing update (ΔW) | First CoT-gated deliberation gate with quality-weighted routing update |
-| 2c | OctoRoute | Functional token dispatch with arm-local weights | First bio-inspired octopus-arm functional token dispatch in LLM routing |
+| 2c | OctoRoute | Functional token dispatch with arm-local weights | First functionally-decomposed dispatch-arm functional token dispatch in LLM routing |
 | 3 | MNCD Mesh | pub/sub + gossip + replication(R=3) + distress in one LLM stack | First unified distributed systems mesh with all four reliability primitives for LLM agents |
-| 4 | FCNP | Kirchhoff potential field (slime-mold analog) for context pruning | First physics-grounded, flow-network context compression for LLM token budgets |
+| 4 | FCNP | Kirchhoff potential field (flow-network analog) for context pruning | First physics-grounded, flow-network context compression for LLM token budgets |
 
 ---
 
@@ -642,7 +642,7 @@ This research is being prepared for submission to the following venues:
 - AI4Bharat IndicTrans2: Gala et al. (2023). *IndicTrans2: Towards High-Quality and Accessible Machine Translation Models for all 22 Scheduled Indian Languages*. TMLR 2023.
 - MuRIL: Khanuja et al. (2021). *MuRIL: Multilingual Representations for Indian Languages*. arXiv:2103.10730.
 - ToolBench: Qin et al. (2023). *ToolLLM: Facilitating Large Language Models to Master 16000+ Real-world APIs*. ICLR 2024.
-- Physarum slime-mold: Tero et al. (2010). *Rules for Biologically Inspired Adaptive Network Design*. Science 327(5964).
+- iterative flow-reinforcement-network: Tero et al. (2010). *Rules for Adaptive Network Design via Flow Reinforcement*. Science 327(5964).
 - Gemma: Google DeepMind (2024). *Gemma: Open Models Based on Gemini Research and Technology*.
 
 ---

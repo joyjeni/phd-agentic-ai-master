@@ -19,7 +19,7 @@ APRR (**Adaptive Probabilistic Routing & Reinforcement**) is a multi-agent routi
 **Novel Contribution**: APRR is the first system combining:
 1. **REINFORCE-equivalent online routing** — W updated at every episode, no offline batch.
 2. **CoT quality-weighted W update** — the weight increment is scaled by the quality of the chain-of-thought reasoning trace.
-3. **Bio-inspired arm dispatch** (OctoRoute) — octopus-inspired functional token routing for parallel agent arms.
+3. **Functional-token parallel dispatch** (OctoRoute) — dispatch-router-inspired functional token routing for parallel agent arms.
 
 ### Sub-Components
 
@@ -79,7 +79,7 @@ CROW gates deliberation: if query complexity $c(q) > \theta$, CROW generates a f
 
 ### OctoRoute: Functional Token Dispatch
 
-OctoRoute introduces `<octo_k>` functional tokens (inspired by octopus arm autonomy). Each token maps to a specific agent arm, enabling **parallel dispatch** of query sub-tasks.
+OctoRoute introduces `<octo_k>` functional tokens (inspired by local arm autonomy via domain-specialist weight matrices). Each token maps to a specific agent arm, enabling **parallel dispatch** of query sub-tasks.
 
 - Reduces end-to-end latency by **−22%** vs sequential routing.
 - Arm label `<octo_k>` gates domain-specific pruning in Obj4/FCNP.
