@@ -137,12 +137,12 @@ ax.plot([12.5,12.5],[Y1+0.15,Y1+3.7],color=C1+'44',lw=1,zorder=4)
 down_arrow(ax, 10.0, Y1, Y1-0.85, C1,
            label='Session priority score  \u2192  biases APRR W matrix', label_x_offset=0.4)
 
-# ─── OBJECTIVE 2 (tall, contains CROW + OctoRoute) ──────────────────────────
+# ─── OBJECTIVE 2 (tall, contains CDR + PDR) ──────────────────────────
 Y2 = 18.35
 glow_box(ax,0.4,Y2,19.2,5.65,C2,fc='#1a0f05')
 
 t(ax,1.0,23.6,'OBJECTIVE 2',sz=8,c=C2,w='bold',ha='left')
-t(ax,1.0,23.15,'APRR  +  CROW  +  OctoRoute',sz=13,c=WHITE,w='bold',ha='left')
+t(ax,1.0,23.15,'APRR  +  CDR  +  PDR',sz=13,c=WHITE,w='bold',ha='left')
 t(ax,1.0,22.72,'Adaptive Multi-Agent LLM Routing',sz=9,c=DIM,ha='left')
 
 t(ax,1.1,22.25,'P(a\u2c7c | a\u1d62, q)  \u221d  W\u1d62\u2c7c\u207f  \u00b7  \u03b7\u1d62\u2c7c\u1d5d  \u00b7  \u03c8\u2c7c(q)\u02b8',
@@ -152,19 +152,19 @@ t(ax,1.1,21.82,'W  \u2190  (1-\u03bb) \u00b7 W  +  \u03ba \u00b7 1[success] / (L
 t(ax,1.1,21.42,'\u03b1=2.0  \u03b2=1.0  \u03b3=2.5  \u03bb=0.005  \u03ba=5.0  \u03b5=0.15',
   sz=7.5,c=DIM,ha='left')
 
-# CROW sub-box
+# CDR sub-box
 glow_box(ax,0.7,18.6,8.8,2.55,GOLD,fc='#1a1505',lw=1.8,r=0.2)
-t(ax,5.1,20.82,'CROW  \u2014  Chain-of-Reasoning Over Workload',sz=9,c=GOLD,w='bold')
+t(ax,5.1,20.82,'CDR  \u2014  Context-Driven Routing',sz=9,c=GOLD,w='bold')
 t(ax,1.0,20.42,'\u0394W  *=  (1 + \u03b2 \u00b7 \u03c1(T_q))',sz=9,c=MONO,ha='left',mono=True,w='bold')
 t(ax,1.0,20.05,'complexity(q) \u2265 \u03b8  \u2192  CoT deliberation round',sz=8,c=WHITE,ha='left')
 t(ax,1.0,19.68,'reasoning-quality-weighted W update',sz=8,c=DIM,ha='left')
 t(ax,1.0,19.3,'interpretable per-query trace + confidence score',sz=7.5,c=DIM,ha='left')
 t(ax,1.0,18.92,'Novel: First CoT quality-weighted routing affinity',sz=7.5,c=GOLD,ha='left',w='bold')
 
-# OctoRoute sub-box
+# PDR sub-box
 glow_box(ax,9.9,18.6,9.4,2.55,GOLD,fc='#1a1505',lw=1.8,r=0.2)
-t(ax,14.6,20.82,'OctoRoute  \u2014  Distributed Parallel-Dispatch Routing',sz=9,c=GOLD,w='bold')
-t(ax,10.1,20.42,'<octo_k>  functional token dispatch',sz=9,c=MONO,ha='left',mono=True,w='bold')
+t(ax,14.6,20.82,'PDR  \u2014  Parallel Dispatch Routing',sz=9,c=GOLD,w='bold')
+t(ax,10.1,20.42,'<route_k>  functional token dispatch',sz=9,c=MONO,ha='left',mono=True,w='bold')
 t(ax,10.1,20.05,'Layer 1: brain \u2192 functional token \u2192 arm',sz=8,c=WHITE,ha='left')
 t(ax,10.1,19.68,'Layer 2: arm W_local routing (per-domain)',sz=8,c=DIM,ha='left')
 t(ax,10.1,19.3,'Confidence-signal 1-bit confidence signals',sz=7.5,c=DIM,ha='left')
@@ -220,11 +220,11 @@ t(ax,12.8,14.55,
 
 ax.plot([12.5,12.5],[Y3+0.15,Y3+4.65],color=C3+'44',lw=1,zorder=4)
 
-# CROW distress arrow (Obj2 -> Obj3, right side)
+# CDR distress arrow (Obj2 -> Obj3, right side)
 ax.annotate('', xy=(19.4, Y3+3.8), xytext=(19.4, Y2+0.5),
     arrowprops=dict(arrowstyle='->', color=C2+'cc', lw=1.5,
                     connectionstyle='arc3,rad=0'), zorder=4)
-t(ax,19.6,19.85,'CROW neg-quality\n\u2192 distress signal',sz=7,c=C2,ha='left',va='center')
+t(ax,19.6,19.85,'CDR neg-quality\n\u2192 distress signal',sz=7,c=C2,ha='left',va='center')
 
 down_arrow(ax, 10.0, Y3, Y3-0.85, C3,
            label='Mesh context + Borda consensus', label_x_offset=0.4)
@@ -262,7 +262,7 @@ t(ax,12.8,10.62,
 t(ax,12.8,10.2,
   'Global flow-coupled optimisation vs per-item ranking',sz=8,c=DIM,ha='left')
 t(ax,12.8,9.78,
-  'OctoRoute arm label gates domain-specific pruning',sz=8,c=DIM,ha='left')
+  'PDR route label gates domain-specific pruning',sz=8,c=DIM,ha='left')
 t(ax,12.8,9.38,
   'Dashboard: Vercel  |  Kaggle: fcnp_toolbench_benchmark.ipynb',sz=7.5,c=C4,ha='left')
 t(ax,12.8,8.98,
@@ -270,11 +270,8 @@ t(ax,12.8,8.98,
 
 ax.plot([12.5,12.5],[Y4+0.15,Y4+5.0],color=C4+'44',lw=1,zorder=4)
 
-# OctoRoute -> Obj4 arrow (right side)
-ax.annotate('', xy=(19.4, Y4+4.5), xytext=(19.4, Y2+0.2),
-    arrowprops=dict(arrowstyle='->', color=GOLD+'cc', lw=1.5,
-                    connectionstyle='arc3,rad=0.3'), zorder=4)
-t(ax,19.6,12.4,'OctoRoute arm\n\u2192 domain-gated\npruning',sz=7,c=GOLD,ha='left',va='center')
+# PDR -> Obj4 arrow (right side)
+# PDR domain-gated pruning signal (removed stray arc — routing noted via text label below)
 
 # feedback arrow: Obj4 -> Obj1 (left side)
 ax.annotate('', xy=(0.1, 26.7), xytext=(0.1, Y4+2.5),
@@ -293,7 +290,7 @@ t(ax,10.0,6.18,
   '"Coimbatore APMC: \u0ba4\u0b95\u0bcd\u0b95\u0bbe\u0bb3\u0bbf  \u2014  Min \u20b94,200  |  Max \u20b95,600  |  Modal \u20b94,800 / qt  (17 Jun 2026)"',
   sz=9,c=WHITE)
 t(ax,10.0,5.78,
-  'Source: data.gov.in AGMARKNET  |  Confidence: 0.94  |  Route: OctoRoute <octo_1> \u2192 MarketAgent  |  2 hops',
+  'Source: data.gov.in AGMARKNET  |  Confidence: 0.94  |  Route: PDR <route_1> \u2192 MarketAgent  |  2 hops',
   sz=8,c=DIM)
 t(ax,10.0,5.38,
   'Context compressed: 52 records \u2192 5  |  Mesh consensus: 5/5 agents agreed  |  Language: Tamil',
@@ -320,7 +317,7 @@ t(ax,10.0,3.0,
   'Real-Time Agriculture Intelligence for 37M Tamil Nadu Farmers  |  6 Languages  |  data.gov.in Live',
   sz=9.5,c=WHITE)
 t(ax,10.0,2.6,
-  'SessionRerank+ [Obj1]  \u2192  APRR+CROW+OctoRoute [Obj2]  \u2192  MNCD Mesh [Obj3]  \u2192  FCNP [Obj4]',
+  'SessionRerank+ [Obj1]  \u2192  APRR+CDR+PDR [Obj2]  \u2192  MNCD Mesh [Obj3]  \u2192  FCNP [Obj4]',
   sz=9,c=DIM)
 t(ax,10.0,2.18,
   'Gemma 4  |  IndicTrans2  |  HF Space LIVE  |  Vercel LIVE  |  Kaggle  |  data.gov.in',
@@ -331,7 +328,7 @@ t(ax,10.0,1.72,
 
 # ─── RIGHT SIDE LEGEND ──────────────────────────────────────────────────────
 legend = [(C1,'Obj 1: SessionRerank+  (Tool Retrieval)'),
-          (C2,'Obj 2: APRR + CROW + OctoRoute  (Routing)'),
+          (C2,'Obj 2: APRR + CDR + PDR  (Routing)'),
           (C3,'Obj 3: MNCD  (Decentralized Mesh)'),
           (C4,'Obj 4: FCNP  (Context Pruning)'),
           (GOLD,'Output + TN CM Demo'),
@@ -348,7 +345,9 @@ for i,(c,lbl) in enumerate(legend):
     t(ax,xl+0.5,0.55,lbl,sz=6.2,c=DIM,ha='left',va='center')
 
 plt.tight_layout(pad=0.1)
-plt.savefig('/home/user/workspace/phd_master_repo/diagrams/algorithm_flow.png',
+plt.savefig('/home/user/workspace/presentation/algorithm_flow.png',
             dpi=180, bbox_inches='tight', facecolor=BG)
+import shutil
+shutil.copy('/home/user/workspace/presentation/algorithm_flow.png', '/home/user/workspace/phd_master_repo/diagrams/algorithm_flow.png')
 plt.close()
 print("Algorithm flow diagram saved.")

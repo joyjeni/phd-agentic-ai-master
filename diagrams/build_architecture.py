@@ -94,7 +94,7 @@ txt(ax,2.62,6.38,'5-stage cascade  |  5 seeds  |  G1/G2/G3',sz=7,c=C['dim'])
 # ── OBJECTIVE 2 (wide centre) ───────────────────────────────────────────────
 box(ax,5.4,4.5,8.2,11.1,C['c2'],fc='#1c1405',lw=2.5,r=0.35)
 txt(ax,9.5,15.25,'OBJECTIVE 2',sz=7.5,c=C['c2'],w='bold')
-txt(ax,9.5,14.85,'APRR  +  CROW  +  OctoRoute',sz=13,c=C['white'],w='bold')
+txt(ax,9.5,14.85,'APRR  +  CDR  +  PDR',sz=13,c=C['white'],w='bold')
 txt(ax,9.5,14.4,'Adaptive Multi-Agent LLM Routing',sz=9,c=C['dim'])
 
 # APRR core
@@ -104,18 +104,18 @@ txt(ax,9.5,13.95,'P(a_j | a_i, q)  oc  W_ij^alpha  * eta_ij^beta  * psi_j(q)^gam
 txt(ax,9.5,13.55,'W  <-  (1-lambda)*W  +  kappa * 1[success] / (L^2 * latency_norm)',sz=8.5,c=C['c2'])
 txt(ax,9.5,13.2,'alpha=2.0  beta=1.0  gamma=2.5  lambda=0.005  kappa=5.0  epsilon=0.15',sz=7,c=C['dim'])
 
-# CROW sub-box (inside Obj2)
+# CDR sub-box (inside Obj2)
 box(ax,5.65,10.7,3.65,2.2,C['gold'],fc='#1e1608',lw=1.8)
-txt(ax,7.47,12.55,'CROW',sz=11,c=C['gold'],w='bold')
+txt(ax,7.47,12.55,'CDR',sz=11,c=C['gold'],w='bold')
 txt(ax,7.47,12.15,'Chain-of-Reasoning Over Workload',sz=8,c=C['white'])
 txt(ax,7.47,11.78,'Complexity -> greedy vs CoT deliberation',sz=7.5,c=C['dim'])
 txt(ax,7.47,11.43,'DeltaW *= (1 + beta * rho(T_q))',sz=8,c=C['c2'])
 txt(ax,7.47,11.08,'reasoning-quality-weighted W update',sz=7,c=C['dim'])
 txt(ax,7.47,10.82,'interpretable per-query trace',sz=7,c=C['dim'])
 
-# OctoRoute sub-box (inside Obj2)
+# PDR sub-box (inside Obj2)
 box(ax,9.6,10.7,4.0,2.2,C['gold'],fc='#1e1608',lw=1.8)
-txt(ax,11.6,12.55,'OctoRoute',sz=11,c=C['gold'],w='bold')
+txt(ax,11.6,12.55,'PDR',sz=11,c=C['gold'],w='bold')
 txt(ax,11.6,12.15,'Octopus-Inspired Distributed Routing',sz=8,c=C['white'])
 txt(ax,11.6,11.78,'Functional token <octo_k> dispatch',sz=7.5,c=C['dim'])
 txt(ax,11.6,11.43,'Arm-local W_local  |  ASI metric',sz=8,c=C['c2'])
@@ -124,7 +124,7 @@ txt(ax,11.6,10.82,'-22% latency vs APRR  |  2-layer arch',sz=7,c=C['real'])
 
 # Hybrid label
 box(ax,5.65,9.9,7.7,0.62,C['c2'],fc='#1a1206',lw=1)
-txt(ax,9.5,10.24,'CROW-OctoRoute Hybrid: OctoArm domain dispatch + CROW deliberation within arm',sz=7.5,c=C['white'])
+txt(ax,9.5,10.24,'CDR-PDR Hybrid: PDR parallel dispatch + CDR reasoning-gated routing within arm',sz=7.5,c=C['white'])
 
 # Results band
 box(ax,5.65,8.65,7.7,1.0,C['c2'],fc='#140f04',lw=1.2)
@@ -132,15 +132,15 @@ txt(ax,9.5,9.32,'ToolBench Benchmark  (5 seeds x 40 iter x 500 queries  |  G1/G2
 txt(ax,9.5,8.95,'APRR: success=0.470  latency=261ms  hops=2.77   vs Random: 0.323',sz=8,c=C['white'])
 txt(ax,9.5,8.72,'35.7% latency reduction  |  23.9% hop reduction  over StaticSemantic',sz=7.5,c=C['real'])
 
-# OctoRoute latency box
+# PDR latency box
 box(ax,5.65,7.6,3.65,0.82,C['c2'],fc='#1a1206',lw=1)
-txt(ax,7.47,8.08,'OctoRoute: 207ms  (-22%)',sz=8,c=C['white'])
-txt(ax,7.47,7.78,'CROW: 467ms  (+interpretability)',sz=8,c=C['dim'])
+txt(ax,7.47,8.08,'PDR: 207ms  (-22%)',sz=8,c=C['white'])
+txt(ax,7.47,7.78,'CDR: 467ms  (+interpretability)',sz=8,c=C['dim'])
 
 # Kaggle/HF band
 box(ax,9.6,7.6,3.7,0.82,C['c2'],fc='#1a1206',lw=1)
 txt(ax,11.45,8.08,'Kaggle: APRR_Reproducible_Benchmark',sz=7.5,c=C['c2'])
-txt(ax,11.45,7.78,'Colab: APRR_CROW_OctoRoute_Benchmark',sz=7.5,c=C['dim'])
+txt(ax,11.45,7.78,'Colab: APRR_CDR_PDR_Benchmark',sz=7.5,c=C['dim'])
 
 # ToolBench cite
 box(ax,5.65,4.72,7.7,2.65,C['sub'],fc='#161b22',lw=1,r=0.2)
@@ -182,8 +182,8 @@ txt(ax,16.6,9.2,'Kaggle: mncd_mesh.ipynb',sz=7.5,c=C['c3'])
 txt(ax,16.6,8.95,'HF Models: gemma-2-2b-it  Qwen2.5-7B  Llama-3.1-8B',sz=7,c=C['dim'])
 
 box(ax,14.45,7.68,4.3,0.9,C['c2'],fc='#1a1208',lw=1.2)
-txt(ax,16.6,8.2,'Distress signal <-- CROW neg-quality traces',sz=7.5,c=C['c2'])
-txt(ax,16.6,7.9,'CSA drop --> mesh help broadcast (OctoRoute)',sz=7.5,c=C['c2'])
+txt(ax,16.6,8.2,'Distress signal <-- CDR low-confidence traces',sz=7.5,c=C['c2'])
+txt(ax,16.6,7.9,'CSA drop --> mesh help broadcast (PDR)',sz=7.5,c=C['c2'])
 
 # ── OBJECTIVE 4 ─────────────────────────────────────────────────────────────
 box(ax,19.4,7.5,4.35,8.1,C['c4'],fc='#130c20',lw=2.5,r=0.3)
@@ -192,7 +192,7 @@ txt(ax,21.57,14.85,'FCNP Pruning',sz=12,c=C['white'],w='bold')
 txt(ax,21.57,14.45,'Flow-Based Context Network Pruning',sz=8.5,c=C['dim'])
 
 box(ax,19.65,13.6,3.85,0.75,C['c4'],fc=C['sub'],lw=1.2)
-txt(ax,21.57,14.0,'Kirchhoff Potential Field (Slime Mold analog)',sz=7.5,c=C['white'])
+txt(ax,21.57,14.0,'Kirchhoff Potential Field (Conductance Dynamics analog)',sz=7.5,c=C['white'])
 
 box(ax,19.65,12.65,3.85,0.72,C['c4'],fc=C['sub'],lw=1.2)
 txt(ax,21.57,13.05,'D_ij(t+1) = (1-mu)*D_ij + alpha*|Q_ij|^gamma',sz=7.5,c=C['white'])
@@ -213,8 +213,8 @@ txt(ax,21.57,9.2,'Kaggle: fcnp_toolbench_benchmark.ipynb',sz=7.5,c=C['c4'])
 txt(ax,21.57,8.95,'Dashboard: Vercel  |  HF: ToolBench splits',sz=7,c=C['dim'])
 
 box(ax,19.65,7.68,3.85,0.9,C['c2'],fc='#1a1208',lw=1.2)
-txt(ax,21.57,8.2,'Domain-gated pruning <-- OctoRoute arm',sz=7.5,c=C['c2'])
-txt(ax,21.57,7.9,'CROW trace relevance --> context filter',sz=7.5,c=C['c2'])
+txt(ax,21.57,8.2,'Domain-gated pruning <-- PDR route',sz=7.5,c=C['c2'])
+txt(ax,21.57,7.9,'CDR trace relevance --> context filter',sz=7.5,c=C['c2'])
 
 # ── OUTPUT ──────────────────────────────────────────────────────────────────
 box(ax,1.5,3.1,21.0,2.1,C['c1'],fc='#0b1a2e',lw=2,r=0.4)
@@ -236,7 +236,7 @@ box(ax,4.5,0.2,15.0,2.65,C['c2'],fc='#1a1005',lw=2.5,r=0.4)
 txt(ax,12.0,2.5,'Tamil Nadu Chief Minister  —  Startup Investment Demo',
     sz=12,c=C['c2'],w='bold')
 txt(ax,12.0,2.05,'Real-Time Agriculture Intelligence  |  data.gov.in  Live Feed  |  Agentic AI Platform',sz=9,c=C['white'])
-txt(ax,12.0,1.65,'SessionRerank+  [Obj1]  →  APRR+CROW+OctoRoute  [Obj2]  →  MNCD Mesh  [Obj3]  →  FCNP  [Obj4]',sz=8.5,c=C['dim'])
+txt(ax,12.0,1.65,'SessionRerank+  [Obj1]  →  APRR+CDR+PDR  [Obj2]  →  MNCD Mesh  [Obj3]  →  FCNP  [Obj4]',sz=8.5,c=C['dim'])
 txt(ax,12.0,1.28,'Gemma 4  |  ToolBench  |  HF Space  |  Kaggle  |  Vercel  |  data.gov.in',sz=8,c=C['real'])
 txt(ax,12.0,0.78,'Abigail Creations  —  Kyndryl India  —  MS Ramaiah University of Applied Sciences',sz=8,c=C['dim'])
 
@@ -253,10 +253,10 @@ arr(ax,4.9,12.3,5.4,12.0,C['real'],lw=1.5)
 # Obj1 -> Obj2 (session priority)
 darr(ax,4.9,8.5,5.65,9.5,C['c1'],lw=1.8,rad=0.0,label='priority score',lc=C['c1'])
 
-# APRR -> CROW, OctoRoute (internal)
+# APRR -> CDR, PDR (internal)
 arr(ax,7.9,13.1,7.47,12.9,C['c2'],lw=1.2)
 arr(ax,11.1,13.1,11.6,12.9,C['c2'],lw=1.2)
-# CROW <-> OctoRoute hybrid
+# CDR <-> PDR hybrid
 ax.annotate('', xy=(9.6,11.8), xytext=(9.3,11.8),
     arrowprops=dict(arrowstyle='<->', color=C['gold'], lw=1.2), zorder=4)
 
@@ -266,10 +266,10 @@ darr(ax,13.6,11.0,14.2,11.0,C['c2'],lw=2,label='routing\ndecision',lc=C['c2'])
 # Obj3 -> Obj4
 darr(ax,19.0,11.0,19.4,11.0,C['c3'],lw=2,label='mesh\ncontext',lc=C['c3'])
 
-# CROW -> Obj3 distress
+# CDR -> Obj3 distress
 arr(ax,7.5,10.7,14.45,8.5,C['c2'],lw=1.2,rad=-0.12)
 
-# OctoRoute -> Obj4 domain-gated pruning
+# PDR -> Obj4 domain-gated pruning
 arr(ax,13.0,10.7,19.4,8.5,C['c4'],lw=1.2,rad=0.08)
 
 # All -> output
@@ -284,7 +284,7 @@ arr(ax,12.0,3.1,12.0,2.85,C['c2'],lw=2.5)
 # ── LEGEND ──────────────────────────────────────────────────────────────────
 items = [
     (C['c1'],'Obj 1: SessionRerank+ (Tool Retrieval · HF Space live)'),
-    (C['c2'],'Obj 2: APRR + CROW + OctoRoute (Routing · Vercel)'),
+    (C['c2'],'Obj 2: APRR + CDR + PDR (Routing · Vercel)'),
     (C['c3'],'Obj 3: MNCD Mesh (Decentralized Context · Kaggle)'),
     (C['c4'],'Obj 4: FCNP (Context Pruning · Kaggle)'),
     (C['real'],'data.gov.in Real-Time Integration'),
