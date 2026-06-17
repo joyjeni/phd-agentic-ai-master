@@ -1,7 +1,7 @@
 'use strict';
 /**
  * ACRS PhD Research Proposal — build_pptx_v3.js
- * Generates ACRS_PhD_Proposal_v3.pptx (30 slides, Ramaiah University branding)
+ * Generates ACRS_PhD_Proposal_v3.pptx (39 slides, Ramaiah University branding)
  * Run: node build_pptx_v3.js
  */
 
@@ -368,7 +368,8 @@ function addMetric(slide, x, y, number, label) {
     ['8', 'Obj 4: FCNP — Network Pruning', 'Slides 24–27'],
     ['9', 'Architecture, Algorithm Flow & Novelty Matrix', 'Slides 28–30'],
     ['10', 'Feasibility, Ethics, Methodology & Conclusion', 'Slides 31–34'],
-    ['11', 'References', 'Slides 35–38'],
+    ['11', 'ACRS Integration Demo', 'Slide 35'],
+    ['12', 'References', 'Slides 36–39'],
   ];
 
   tocItems.forEach(([num, label, pages], i) => {
@@ -1689,6 +1690,138 @@ addDiagramSlide(pptx,
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+//  SLIDE 35 — ACRS INTEGRATION: ToolBench + data.gov.in + HuggingFace
+// ─────────────────────────────────────────────────────────────────────────────
+{
+  const slide = pptx.addSlide();
+  addContentBg(slide);
+  addHeaderBar(slide, 'ACRS End-to-End Integration — ToolBench, data.gov.in & HuggingFace Deployment');
+  addFooter(slide, 35);
+
+  // Subtitle
+  slide.addText('All four objectives operate on a shared ToolBench dataset and live data.gov.in agriculture feeds — deployed as a unified HuggingFace Spaces demo.', {
+    x: 0.35, y: 0.58, w: 12.6, h: 0.32,
+    fontSize: 13, italic: true, color: C.deepPurple, fontFace: 'Calibri', wrap: true,
+  });
+
+  // ── SHARED DATA LAYER (top bar) ───────────────────────────────────────────
+  slide.addShape(pptx.ShapeType.rect, {
+    x: 0.35, y: 0.98, w: 12.63, h: 0.55,
+    fill: { color: '1A237E' }, line: { color: '1A237E' },
+  });
+  slide.addText('SHARED INPUT: ToolBench (43,000 APIs) + data.gov.in Live Feeds', {
+    x: 0.4, y: 1.02, w: 7.5, h: 0.44,
+    fontSize: 13, bold: true, color: C.white, fontFace: 'Calibri', valign: 'middle',
+  });
+  slide.addText('API Key: 579b464db66ec23bdd000001b3d8ba239cf34372729bac4701843377', {
+    x: 7.95, y: 1.02, w: 4.9, h: 0.44,
+    fontSize: 9, color: 'B0BEC5', fontFace: 'Calibri', valign: 'middle', align: 'right',
+  });
+
+  // ── DATA FEEDS ROW ────────────────────────────────────────────────────────
+  const feeds = [
+    { label: 'Mandi Prices', id: '9ef84268-d588-465a-a308-a864a43d0070', fields: 'state, commodity, modal_price, arrival_date', live: true },
+    { label: 'Crop Arrivals', id: '35985678-0d79-46b4-9ed6-6f13308a1d24', fields: 'State, Commodity, Market, Modal_Price', live: true },
+    { label: 'ToolBench APIs', id: 'Qin et al. 2024 — 43K APIs', fields: 'tool_name, api_endpoint, category, description', live: false },
+  ];
+  feeds.forEach((f, i) => {
+    const x = 0.35 + i * 4.29;
+    slide.addShape(pptx.ShapeType.rect, {
+      x, y: 1.61, w: 4.1, h: 0.82,
+      fill: { color: f.live ? 'E8F5E9' : 'E3F2FD' },
+      line: { color: f.live ? '2E7D32' : '1565C0', pt: 1 },
+    });
+    slide.addText((f.live ? '● LIVE  ' : '● STATIC  ') + f.label, {
+      x: x+0.1, y: 1.64, w: 3.9, h: 0.22,
+      fontSize: 11, bold: true, color: f.live ? '2E7D32' : '1565C0', fontFace: 'Calibri',
+    });
+    slide.addText('ID: ' + f.id, {
+      x: x+0.1, y: 1.86, w: 3.9, h: 0.16,
+      fontSize: 8, color: '607D8B', fontFace: 'Calibri',
+    });
+    slide.addText('Fields: ' + f.fields, {
+      x: x+0.1, y: 2.02, w: 3.9, h: 0.35,
+      fontSize: 9, color: C.darkText, fontFace: 'Calibri', wrap: true,
+    });
+  });
+
+  // Down arrow
+  slide.addShape(pptx.ShapeType.rect, { x: 6.54, y: 2.45, w: 0.25, h: 0.28, fill: { color: C.deepPurple }, line: { color: C.deepPurple } });
+
+  // ── 4 OBJECTIVES PIPELINE ROW ─────────────────────────────────────────────
+  const objs = [
+    { num: '1', title: 'Obj 1 — SessionRerank+', detail: 'Reranks ToolBench APIs using co-activation graph + session history. Selects Top-K APIs for current farmer query.', color: '1565C0', bg: 'E3F2FD' },
+    { num: '2', title: 'Obj 2 — APRR+CDR+PDR', detail: 'Routes query to specialist agents (MarketAgent, WeatherAgent, SchemeAgent) using RL weight matrix W, updated by mandi price signal.', color: 'E65100', bg: 'FFF3E0' },
+    { num: '3', title: 'Obj 3 — MNCD', detail: 'Distributes context across agent mesh via gossip protocol. Borda consensus over live data.gov.in mandi + crop API responses.', color: '2E7D32', bg: 'E8F5E9' },
+    { num: '4', title: 'Obj 4 — FCNP', detail: 'Prunes KV context using Flow Conductance scores. Retains citation-critical tokens from data.gov.in API responses at 10:1 compression.', color: '6A0080', bg: 'F3E5F5' },
+  ];
+  objs.forEach((o, i) => {
+    const x = 0.35 + i * 3.24;
+    slide.addShape(pptx.ShapeType.rect, {
+      x, y: 2.78, w: 3.08, h: 2.28,
+      fill: { color: o.bg }, line: { color: o.color, pt: 1.5 },
+    });
+    // Number badge
+    slide.addShape(pptx.ShapeType.rect, {
+      x, y: 2.78, w: 3.08, h: 0.38,
+      fill: { color: o.color }, line: { color: o.color },
+    });
+    slide.addText(o.title, {
+      x: x+0.08, y: 2.80, w: 2.9, h: 0.34,
+      fontSize: 11, bold: true, color: C.white, fontFace: 'Calibri', valign: 'middle',
+    });
+    slide.addText(o.detail, {
+      x: x+0.1, y: 3.20, w: 2.88, h: 1.76,
+      fontSize: 10, color: C.darkText, fontFace: 'Calibri', wrap: true,
+    });
+    // Arrow between boxes
+    if (i < 3) {
+      slide.addShape(pptx.ShapeType.rect, {
+        x: x + 3.1, y: 3.83, w: 0.12, h: 0.12,
+        fill: { color: C.deepPurple }, line: { color: C.deepPurple },
+      });
+    }
+  });
+
+  // ── OUTPUT + HUGGINGFACE ROW ──────────────────────────────────────────────
+  slide.addShape(pptx.ShapeType.rect, {
+    x: 0.35, y: 5.14, w: 7.6, h: 0.62,
+    fill: { color: C.deepPurple }, line: { color: C.deepPurple },
+  });
+  slide.addText('OUTPUT: Verified, source-attributed, multilingual farmer response — data.gov.in cited', {
+    x: 0.45, y: 5.18, w: 7.4, h: 0.50,
+    fontSize: 12, bold: true, color: C.white, fontFace: 'Calibri', valign: 'middle',
+  });
+
+  slide.addShape(pptx.ShapeType.rect, {
+    x: 8.05, y: 5.14, w: 4.93, h: 0.62,
+    fill: { color: C.red }, line: { color: C.red },
+  });
+  slide.addText('HuggingFace Spaces Demo', {
+    x: 8.15, y: 5.18, w: 2.8, h: 0.28,
+    fontSize: 12, bold: true, color: C.white, fontFace: 'Calibri',
+  });
+  slide.addText('joyjeni/acrs-demo', {
+    x: 8.15, y: 5.44, w: 4.7, h: 0.24,
+    fontSize: 9, color: 'FFCDD2', fontFace: 'Calibri',
+  });
+
+  // ── INTEGRATION FACTS BOTTOM ──────────────────────────────────────────────
+  const facts = [
+    '● All 4 objectives share ToolBench tool index (43K APIs) — Obj1 reranks, Obj2 routes, Obj3 distributes, Obj4 compresses',
+    '● data.gov.in live API feeds inject real mandi prices & crop arrivals into the pipeline at Obj2 (routing signal) and Obj3 (consensus input)',
+    '● HuggingFace Spaces hosts Gradio demo: farmer types query → live ACRS pipeline responds with cited data.gov.in source',
+  ];
+  facts.forEach((fact, i) => {
+    slide.addText(fact, {
+      x: 0.35, y: 5.85 + i * 0.38,
+      w: 12.63, h: 0.34,
+      fontSize: 11, color: C.darkText, fontFace: 'Calibri', wrap: true,
+    });
+  });
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 //  SLIDES 27–30 — REFERENCES (55 papers, 14 per page)
 // ─────────────────────────────────────────────────────────────────────────────
 const allRefs = [
@@ -1759,7 +1892,7 @@ const allRefs = [
 // Split into pages of ~14
 const refsPerPage = 14;
 for (let page = 0; page < 4; page++) {
-  const slideNum = 35 + page;
+  const slideNum = 36 + page;
   const slide = pptx.addSlide();
   addContentBg(slide);
   addHeaderBar(slide, `References (${page + 1} of 4)`);
