@@ -1082,12 +1082,15 @@ $$J(\theta) = \mathbb{E}_{\pi \sim P(\cdot|q)}[R(\pi)]$$
 $$\frac{\partial J}{\partial \theta_{ij}} = \mathbb{E}_{\pi \sim P}\left[ R(\pi) \cdot \sum_{l=0}^{L-1} \frac{\partial \log P(a_{j_{l+1}} | a_{j_l}, q)}{\partial \theta_{ij}} \right]$$
 
 *Proof.* By the likelihood-ratio trick (Williams, 1992):
+
 $$\frac{\partial}{\partial \theta_{ij}} \mathbb{E}_\pi[R(\pi)] = \mathbb{E}_\pi\left[R(\pi) \cdot \frac{\partial \log P(\pi)}{\partial \theta_{ij}}\right]$$
 
 Since $\log P(\pi) = \sum_l \log P(a_{j_{l+1}}|a_{j_l},q)$:
+
 $$\frac{\partial \log P(\pi)}{\partial \theta_{ij}} = \sum_{l: (a_{j_l}, a_{j_{l+1}}) = (a_i, a_j)} \frac{\partial}{\partial \theta_{ij}} \log P(a_j|a_i,q)$$
 
 For the APRR policy:
+
 $$\log P(a_j|a_i,q) = \alpha \theta_{ij} + \beta \log \eta_{ij} + \gamma \log \psi_j(q) - \log Z_i(q)$$
 
 where $Z_i(q) = \sum_{k \in \mathcal{N}(a_i)} W_{ik}^\alpha \eta_{ik}^\beta \psi_k(q)^\gamma$ is the partition function. Therefore:
