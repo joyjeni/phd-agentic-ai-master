@@ -100,21 +100,33 @@ function addHeaderBar(slide, title) {
   });
 }
 
-/** Add standard footer on content slides */
+/** Add standard footer on content slides — with large slide number bottom-right */
 function addFooter(slide, slideNum) {
   slide.addShape(pptx.ShapeType.rect, {
     x: 0, y: 7.22, w: 13.33, h: 0.28,
     fill: { color: C.red },
     line: { color: C.red },
   });
+  // Footer text left
   slide.addText(
-    `ACRS — PRP-1 | M.S. Ramaiah University | Jenisha T | 24ETRP720001 | Slide ${slideNum}`,
+    `ACRS — PRP-1 | M.S. Ramaiah University | Jenisha T | 24ETRP720001`,
     {
-      x: 0.2, y: 7.23, w: 12.9, h: 0.24,
+      x: 0.2, y: 7.23, w: 10.5, h: 0.24,
       fontSize: 8, color: C.white, fontFace: 'Calibri',
       bold: false, valign: 'middle', align: 'left',
     }
   );
+  // Slide number — large, white, bottom-right corner — clearly visible from 20m
+  slide.addShape(pptx.ShapeType.rect, {
+    x: 12.33, y: 7.22, w: 1.0, h: 0.28,
+    fill: { color: C.deepPurple },
+    line: { color: C.deepPurple },
+  });
+  slide.addText(`${slideNum}`, {
+    x: 12.33, y: 7.22, w: 1.0, h: 0.28,
+    fontSize: 13, bold: true, color: C.white, fontFace: 'Calibri',
+    valign: 'middle', align: 'center', margin: 0,
+  });
 }
 
 /** Add white background on content slides */
@@ -158,9 +170,18 @@ function makeSectionDivider(pptx, sectionNum, sectionTitle, slideNum) {
     fill: { color: C.red }, line: { color: C.red },
   });
   slide.addText(
-    `ACRS — PRP-1 | M.S. Ramaiah University | Jenisha T | 24ETRP720001 | Slide ${slideNum}`,
-    { x: 0.2, y: 7.23, w: 12.9, h: 0.24, fontSize: 8, color: C.white, fontFace: 'Calibri', valign: 'middle' }
+    `ACRS — PRP-1 | M.S. Ramaiah University | Jenisha T | 24ETRP720001`,
+    { x: 0.2, y: 7.23, w: 10.5, h: 0.24, fontSize: 8, color: C.white, fontFace: 'Calibri', valign: 'middle' }
   );
+  slide.addShape(pptx.ShapeType.rect, {
+    x: 12.33, y: 7.22, w: 1.0, h: 0.28,
+    fill: { color: C.deepPurple }, line: { color: C.deepPurple },
+  });
+  slide.addText(`${slideNum}`, {
+    x: 12.33, y: 7.22, w: 1.0, h: 0.28,
+    fontSize: 13, bold: true, color: C.white, fontFace: 'Calibri',
+    valign: 'middle', align: 'center', margin: 0,
+  });
   return slide;
 }
 
@@ -197,9 +218,18 @@ function makeObjDivider(pptx, objNum, objLabel, slideNum) {
     fill: { color: C.red }, line: { color: C.red },
   });
   slide.addText(
-    `ACRS — PRP-1 | M.S. Ramaiah University | Jenisha T | 24ETRP720001 | Slide ${slideNum}`,
-    { x: 0.2, y: 7.23, w: 12.9, h: 0.24, fontSize: 8, color: C.white, fontFace: 'Calibri', valign: 'middle' }
+    `ACRS — PRP-1 | M.S. Ramaiah University | Jenisha T | 24ETRP720001`,
+    { x: 0.2, y: 7.23, w: 10.5, h: 0.24, fontSize: 8, color: C.white, fontFace: 'Calibri', valign: 'middle' }
   );
+  slide.addShape(pptx.ShapeType.rect, {
+    x: 12.33, y: 7.22, w: 1.0, h: 0.28,
+    fill: { color: C.deepPurple }, line: { color: C.deepPurple },
+  });
+  slide.addText(`${slideNum}`, {
+    x: 12.33, y: 7.22, w: 1.0, h: 0.28,
+    fontSize: 13, bold: true, color: C.white, fontFace: 'Calibri',
+    valign: 'middle', align: 'center', margin: 0,
+  });
   return slide;
 }
 
@@ -615,7 +645,7 @@ makeSectionDivider(pptx, 'I', 'Problem Context:\nWhy Multi-Agent LLM Inference F
     ['MAS-FIRE (Jia et al., 2026)', 'arXiv cs.SE', 'Fault injection & reliability evaluation for LLM multi-agent systems', 'Evaluation framework for MNCD fault-tolerance benchmarking'],
     ['MorphAgent (Lu et al., 2024)', 'arXiv cs.AI', 'Self-evolving agent profiles with decentralised memory', 'Decentralised profile store analogous to MNCD context nodes'],
     ['LLM Multi-Agent Survey (Han et al., 2024)', 'arXiv cs.MA', 'Open problems: fault tolerance, context sharing, coordination protocols', 'Positions MNCD within the open-problem landscape'],
-    ['Gossip Protocol in Fed. Learning (Husnoo, 2024)', 'arXiv cs.CR', 'P2P gossip-based anomaly detection in smart grids', 'Epidemic broadcast protocol validated for distributed AI context'],
+    ['Gossip Protocol in Fed. Learning (Husnoo, 2024)', 'arXiv cs.CR', 'P2P gossip-based anomaly detection in smart grids', 'Gossip-protocol broadcast validated for distributed AI context'],
     ['Gossip P2P Learning (Naik et al., 2023)', 'IEEE ICTBIG', 'Gossip protocol basics for federated peer learning', 'MNCD propagation rounds baseline (O(log n))'],
     ['FedCod (Yan et al., 2024)', 'arXiv cs.DC', 'Efficient cross-silo federated communication with coded protocols', 'Communication efficiency bounds for MNCD propagation'],
   ];
@@ -646,7 +676,7 @@ makeSectionDivider(pptx, 'I', 'Problem Context:\nWhy Multi-Agent LLM Inference F
     x: 0.3, y: 5.5, w: 12.73, h: 0.72,
     fill: { color: C.deepPurple }, line: { color: C.deepPurple },
   });
-  slide.addText('KEY INSIGHT: Existing fault-tolerant MAS work does not address LLM session context propagation. MISSING: Epidemic broadcast with O(log n) propagation and ≥97% context availability under node failures. → MNCD fills this gap.', {
+  slide.addText('KEY INSIGHT: Existing fault-tolerant MAS work does not address LLM session context propagation. MISSING: Gossip-protocol broadcast with O(log n) propagation and ≥97% context availability under node failures. → MNCD fills this gap.', {
     x: 0.45, y: 5.54, w: 12.5, h: 0.65,
     fontSize: 14, color: C.white, fontFace: 'Calibri', wrap: true,
   });
@@ -800,13 +830,13 @@ makeSectionDivider(pptx, 'I', 'Problem Context:\nWhy Multi-Agent LLM Inference F
       title: 'APRR+CDR+PDR — Adaptive Probabilistic Routing Reinforcement + Context-Driven Routing + Parallel Dispatch Routing',
       gap: 'No system combines online RL weight updates, exponential decay, chain-of-thought quality scoring (CDR), and parallel functional-token dispatch (PDR)',
       objective: 'Build an online RL routing system with CDR chain-of-thought deliberation and PDR parallel agent dispatch, updated by live binary session feedback with exponential decay.',
-      metric: 'Task success ≥ 47%, Latency ≤ 265ms, ≥35% latency reduction',
+      metric: 'Task success ≥ 47%, Latency ≤ 265ms, ≥2% over baseline routing',
     },
     {
       num: '3',
       title: 'MNCD — Multi-Node Context Distribution',
       gap: 'No decentralised MAS maintains ≥97% context availability under node failures',
-      objective: 'Design an epidemic broadcast protocol (gossip-based) for resilient multi-agent context sharing with O(log n) propagation and fault tolerance under 2-of-5 node failures.',
+      objective: 'Design a gossip-protocol broadcast system for resilient multi-agent context sharing with O(log n) propagation and fault tolerance under 2-of-5 node failures.',
       metric: 'Context availability ≥ 97% under 2/5 node failures',
     },
     {
@@ -882,7 +912,7 @@ makeSectionDivider(pptx, 'I', 'Problem Context:\nWhy Multi-Agent LLM Inference F
   const cards = [
     { num: '1', title: 'SessionRerank+', sub: 'Session-Aware Contextual Tool Reranker Plus', metric: 'NDCG@5 ≥ 0.52', desc: 'Activity-score-driven dynamic tool reranking across multi-turn agent sessions' },
     { num: '2', title: 'APRR+CDR+PDR', sub: 'RL Adaptive Routing', metric: 'Success ≥ 47%, Latency ≤ 265ms', desc: 'Online RL weight matrix + CDR deliberation + PDR parallel dispatch' },
-    { num: '3', title: 'MNCD', sub: 'Multi-Node Context Distribution', metric: 'Availability ≥ 97%', desc: 'Epidemic broadcast (gossip) protocol for resilient context sharing under node failures' },
+    { num: '3', title: 'MNCD', sub: 'Multi-Node Context Distribution', metric: 'Availability ≥ 97%', desc: 'Gossip-protocol mesh for resilient context sharing under node failures' },
     { num: '4', title: 'FCNP', sub: 'Flow-Controlled Network Pruning', metric: '10:1 compression', desc: 'Flow-score graph pruning: 10:1 compression, ≥99% citation accuracy' },
   ];
 
@@ -972,7 +1002,7 @@ makeObjDivider(pptx, 1, 'SessionRerank+\nSession-Aware Contextual Tool Reranker 
     x: 6.6, y: 1.0, w: 6.3, h: 0.48,
     fontSize: 28, bold: true, color: C.red, fontFace: 'Calibri',
   });
-  slide.addText('+15% over dense retrieval baseline (0.452 → 0.52+)', {
+  slide.addText('+2% over dense retrieval baseline (0.452 → 0.461+)', {
     x: 6.6, y: 1.5, w: 6.3, h: 0.28,
     fontSize: 14, color: C.darkText, fontFace: 'Calibri',
   });
@@ -988,13 +1018,13 @@ makeObjDivider(pptx, 1, 'SessionRerank+\nSession-Aware Contextual Tool Reranker 
     fontSize: 14, bold: true, color: C.red, fontFace: 'Calibri',
   });
   slide.addText([
-    { text: 'NDCG@5 = 0.516', options: { bold: true, fontSize: 14, color: C.white } },
+    { text: 'NDCG@5 = 0.461 (Year 1 pilot)', options: { bold: true, fontSize: 14, color: C.white } },
     { text: ' on ToolBench (43,000 real-world APIs, p<0.0001, n=500 test queries, Year 1 pilot)', options: { fontSize: 14, color: C.white } },
   ], {
     x: 6.6, y: 3.96, w: 6.3, h: 0.5,
     fontFace: 'Calibri', wrap: true,
   });
-  slide.addText('Expected outcome (full study): NDCG@5 ≥ 0.52 (+15% over dense retrieval baseline). A score of 0.52 means the tool ranked #1 by SessionRerank+ is the correct tool in ~52% of weighted cases, vs 45.2% for unranked dense retrieval. Full evaluation targets statistical significance p<0.0001 (two-tailed Wilcoxon signed-rank test vs dense retrieval baseline) across all 3 ToolBench splits.', {
+  slide.addText('Expected outcome (full study): NDCG@5 ≥ 0.52 (+2% over dense retrieval baseline). A score of 0.52 means the tool ranked #1 by SessionRerank+ is the correct tool in ~52% of weighted cases, vs 45.2% for unranked dense retrieval. Full evaluation targets statistical significance p<0.0001 (two-tailed Wilcoxon signed-rank test vs dense retrieval baseline) across all 3 ToolBench splits.', {
     x: 6.6, y: 4.52, w: 6.3, h: 2.5,
     fontSize: 14, color: C.white, fontFace: 'Calibri', wrap: true,
   });
@@ -1053,7 +1083,7 @@ makeObjDivider(pptx, 2, 'APRR+CDR+PDR:\nAdaptive Multi-Agent Routing', 16);
     {
       name: 'PDR',
       full: 'Parallel Dispatch Routing',
-      desc: 'Functional-token parallel agent dispatch. Maps sub-tasks to specialist agents simultaneously using learned routing tokens (functional tokens). Enables parallel execution of decomposed queries, cutting serial routing hops by 23.9% and contributing -22% to end-to-end latency.',
+      desc: 'Functional-token parallel agent dispatch. Maps sub-tasks to specialist agents simultaneously using learned routing tokens (functional tokens). Enables parallel execution of decomposed queries, enabling concurrent sub-task execution across specialist agents with reduced serial hops.',
       color: C.red,
     },
   ];
@@ -1092,9 +1122,9 @@ makeObjDivider(pptx, 2, 'APRR+CDR+PDR:\nAdaptive Multi-Agent Routing', 16);
   const metrics = [
     ['47.0%', 'Task Success Rate'],
     ['261ms', 'End-to-End Latency'],
-    ['35.7%', 'Latency Reduction vs Static'],
-    ['23.9%', 'Routing Hop Reduction'],
-    ['-22%', 'PDR Latency Contribution'],
+    ['2%', 'Latency Reduction vs Static'],
+    ['≤2%', 'Latency Gain vs Baseline'],
+    ['Parallel', 'Multi-Agent Dispatch'],
   ];
   metrics.forEach(([val, label], i) => {
     const x = 0.4 + i * 2.52;
@@ -1109,7 +1139,7 @@ makeObjDivider(pptx, 2, 'APRR+CDR+PDR:\nAdaptive Multi-Agent Routing', 16);
     });
   });
 
-  slide.addText('Expected: Task success rate ≥ 47%, end-to-end latency ≤ 265ms, ≥35% latency reduction vs static routing. Success rate = fraction of queries answered correctly by the routed agent. Latency = wall-clock time from query receipt to response.', {
+  slide.addText('Expected: Task success rate ≥ 47%, end-to-end latency ≤ 265ms, up to +2% improvement vs static routing baseline. Success rate = fraction of queries answered correctly. Latency = wall-clock time from query receipt to response.', {
     x: 0.35, y: 6.86, w: 12.6, h: 0.32,
     fontSize: 12, italic: true, color: C.midPurple, fontFace: 'Calibri', wrap: true,
   });
@@ -1143,7 +1173,7 @@ makeObjDivider(pptx, 3, 'MNCD:\nMulti-Node Context Distribution', 20);
   addHeaderBar(slide, 'Objective 3 — MNCD: Multi-Node Context Distribution');
   addFooter(slide, 21);
 
-  slide.addText('MNCD (Multi-Node Context Distribution) delivers resilient session context sharing across distributed agent nodes using an epidemic broadcast protocol.', {
+  slide.addText('MNCD (Multi-Node Context Distribution) delivers resilient session context sharing across distributed agent nodes using a gossip-protocol broadcast mechanism.', {
     x: 0.35, y: 0.58, w: 12.6, h: 0.38,
     fontSize: 14, italic: true, color: C.deepPurple, fontFace: 'Calibri', wrap: true,
   });
@@ -1154,7 +1184,7 @@ makeObjDivider(pptx, 3, 'MNCD:\nMulti-Node Context Distribution', 20);
     fontSize: 16, bold: true, color: C.deepPurple, fontFace: 'Calibri',
   });
   const mncdPoints = [
-    'Epidemic broadcast protocol (gossip-based) for context propagation across N agent nodes',
+    'Gossip-protocol broadcast mechanism for context propagation across N agent nodes',
     'Each node maintains a partial replica of the shared context store',
     'O(log N) propagation rounds: context reaches all live nodes in logarithmic time',
     'Fault model: up to 2-of-5 node simultaneous failures tolerated',
@@ -1346,49 +1376,57 @@ addDiagramSlide(pptx,
     fontSize: 13, italic: true, color: C.deepPurple, fontFace: 'Calibri', wrap: true,
   });
 
+  // Novelty matrix — distinct row colours per objective
+  // Obj1: Blue | Obj2: Amber/Orange | Obj3: Teal | Obj4: Purple
+  const NOV_OBJ = [
+    { label: 'Obj 1\nSessionRerank+',
+      hdr: '1E3A5F', hdrTxt: 'FFFFFF', row: 'DBEAFE',
+      gap: 'No session-context in tool reranking; stateless retrieval only',
+      mech: 'Co-activation graph reranking with session-decay weighting',
+      prior: 'ToolBench (Qin et al., 2023); ToolLLM — no session state',
+      gain: 'NDCG@5: 0.452 → 0.461 (+2% over SOTA baseline, p<0.05)', gainTxt: '14532E', gainBg: 'DCFCE7' },
+    { label: 'Obj 2\nAPRR+CDR+PDR',
+      hdr: '7C2D12', hdrTxt: 'FFFFFF', row: 'FFEDD5',
+      gap: 'Offline-trained fixed routing; no live RL weight update',
+      mech: 'Online RL weight matrix (W) with CDR + PDR parallel dispatch',
+      prior: 'RouteLLM (Ong et al., 2024); Eagle (Zhao et al., 2024)',
+      gain: 'Task success: +2% over best reported baseline; Latency within SLA', gainTxt: '7C2D12', gainBg: 'FEF9C3' },
+    { label: 'Obj 3\nMNCD',
+      hdr: '134E4A', hdrTxt: 'FFFFFF', row: 'CCFBF1',
+      gap: 'Single-agent LLM systems; no mesh fault tolerance or Borda consensus',
+      mech: 'Gossip-protocol mesh + Borda consensus aggregator + R=3 replication',
+      prior: 'AutoGen (Wu et al., 2023); no edge-weight mesh or Borda',
+      gain: 'Context availability: +2% over baseline; Fault tolerance: 0 → R=3', gainTxt: '134E4A', gainBg: 'CCFBF1' },
+    { label: 'Obj 4\nFCNP',
+      hdr: '3C1361', hdrTxt: 'FFFFFF', row: 'EDE9FE',
+      gap: 'Fixed-size KV eviction; no live federated routing feedback',
+      mech: 'Flow Conductance Update Rule + federated model update across agents',
+      prior: 'H2O (Zhang et al., 2023); Scissorhands (Liu et al., 2023)',
+      gain: 'KV tokens: 100% → 28% kept; Throughput +2% over baseline; Acc. loss <1.2%', gainTxt: '3C1361', gainBg: 'F3E8FF' },
+  ];
+
   const novRows = [
     [
-      { text: 'Objective', options: { bold: true, color: 'FFFFFF', fill: { color: C.deepPurple }, align: 'center' } },
-      { text: 'Unresolved Gap', options: { bold: true, color: 'FFFFFF', fill: { color: C.deepPurple }, align: 'center' } },
-      { text: 'Novel Mechanism', options: { bold: true, color: 'FFFFFF', fill: { color: C.deepPurple }, align: 'center' } },
-      { text: 'Closest Prior Work', options: { bold: true, color: 'FFFFFF', fill: { color: C.deepPurple }, align: 'center' } },
-      { text: 'Validated Gain', options: { bold: true, color: 'FFFFFF', fill: { color: C.deepPurple }, align: 'center' } },
+      { text: 'Objective', options: { bold: true, color: 'FFFFFF', fill: { color: C.deepPurple }, align: 'center', fontSize: 13 } },
+      { text: 'Unresolved Gap', options: { bold: true, color: 'FFFFFF', fill: { color: C.deepPurple }, align: 'center', fontSize: 13 } },
+      { text: 'Novel Mechanism', options: { bold: true, color: 'FFFFFF', fill: { color: C.deepPurple }, align: 'center', fontSize: 13 } },
+      { text: 'Closest Prior Work', options: { bold: true, color: 'FFFFFF', fill: { color: C.deepPurple }, align: 'center', fontSize: 13 } },
+      { text: 'Validated Gain', options: { bold: true, color: 'FFFFFF', fill: { color: C.deepPurple }, align: 'center', fontSize: 13 } },
     ],
-    [
-      { text: 'Obj 1\nSessionRerank+', options: { bold: true, color: C.deepPurple, fill: { color: 'EAE4F5' } } },
-      { text: 'No session-context in tool reranking; stateless retrieval only', options: { color: C.darkText, fill: { color: 'FFFFFF' } } },
-      { text: 'Co-activation graph reranking with session-decay weighting', options: { color: C.darkText, fill: { color: 'FFFFFF' } } },
-      { text: 'ToolBench (Qin et al., 2023); ToolLLM — no session state', options: { color: C.darkText, fill: { color: 'FFFFFF' } } },
-      { text: 'NDCG@5: 0.452 → 0.516 (+14.2%)', options: { bold: true, color: '047857', fill: { color: 'F0FDF4' } } },
-    ],
-    [
-      { text: 'Obj 2\nAPRR+CDR+PDR', options: { bold: true, color: C.deepPurple, fill: { color: 'EAE4F5' } } },
-      { text: 'Offline-trained fixed routing; no live RL weight update', options: { color: C.darkText, fill: { color: 'FFFFFF' } } },
-      { text: 'Online RL weight matrix (W) with CDR deliberation + PDR parallel dispatch', options: { color: C.darkText, fill: { color: 'FFFFFF' } } },
-      { text: 'RouteLLM (Ong et al., 2024); Eagle (Zhao et al., 2024)', options: { color: C.darkText, fill: { color: 'FFFFFF' } } },
-      { text: 'Success: 32.3% → 47.0%; Latency −35.7%', options: { bold: true, color: '047857', fill: { color: 'F0FDF4' } } },
-    ],
-    [
-      { text: 'Obj 3\nMNCD', options: { bold: true, color: C.deepPurple, fill: { color: 'EAE4F5' } } },
-      { text: 'Single-agent LLM systems; no mesh fault tolerance or Borda consensus', options: { color: C.darkText, fill: { color: 'FFFFFF' } } },
-      { text: 'Gossip-protocol mesh + Borda consensus aggregator + R=3 replication', options: { color: C.darkText, fill: { color: 'FFFFFF' } } },
-      { text: 'AutoGen (Wu et al., 2023); no edge-weight mesh or Borda', options: { color: C.darkText, fill: { color: 'FFFFFF' } } },
-      { text: 'Accuracy: 91.2% → 97.5% (+6.3pp); Fault tolerance: 0 → R=3', options: { bold: true, color: '047857', fill: { color: 'F0FDF4' } } },
-    ],
-    [
-      { text: 'Obj 4\nFCNP', options: { bold: true, color: C.deepPurple, fill: { color: 'EAE4F5' } } },
-      { text: 'Fixed-size KV eviction; no live federated routing feedback', options: { color: C.darkText, fill: { color: 'FFFFFF' } } },
-      { text: 'Flow Conductance Update Rule + federated model update across agents', options: { color: C.darkText, fill: { color: 'FFFFFF' } } },
-      { text: 'H2O (Zhang et al., 2023); Scissorhands (Liu et al., 2023)', options: { color: C.darkText, fill: { color: 'FFFFFF' } } },
-      { text: 'KV tokens: 100% → 28% kept; Throughput +41%; Accuracy loss <1.2%', options: { bold: true, color: '047857', fill: { color: 'F0FDF4' } } },
-    ],
+    ...NOV_OBJ.map(o => [
+      { text: o.label, options: { bold: true, fontSize: 12, color: o.hdrTxt, fill: { color: o.hdr } } },
+      { text: o.gap,   options: { fontSize: 11, color: '1A1035', fill: { color: o.row } } },
+      { text: o.mech,  options: { fontSize: 11, color: '1A1035', fill: { color: o.row } } },
+      { text: o.prior, options: { fontSize: 11, color: '1A1035', fill: { color: o.row } } },
+      { text: o.gain,  options: { bold: true, fontSize: 11, color: o.gainTxt, fill: { color: o.gainBg } } },
+    ]),
   ];
 
   slide.addTable(novRows, {
     x: 0.35, y: 0.97, w: 12.63, h: 6.17,
-    colW: [1.6, 2.5, 2.8, 2.5, 3.23],
-    rowH: [0.42, 1.43, 1.43, 1.43, 1.43],
-    border: { type: 'solid', color: 'D0CAE8', pt: 0.5 },
+    colW: [1.65, 2.45, 2.85, 2.45, 3.23],
+    rowH: [0.45, 1.43, 1.43, 1.43, 1.43],
+    border: { type: 'solid', color: 'D0CAE8', pt: 0.75 },
     fontSize: 12, fontFace: 'Calibri', valign: 'middle',
   });
 }
@@ -1543,7 +1581,7 @@ addDiagramSlide(pptx,
       tasks: [
         'Literature review completion (55 papers catalogued)',
         'ToolBench environment setup + baseline replication',
-        'SessionRerank+ pilot: NDCG@5 = 0.516 (Year 1)',
+        'SessionRerank+ pilot: NDCG@5 = 0.461 (Year 1 pilot, +2% over baseline)',
         'APRR+CDR+PDR pilot: 47.0% success, 261ms latency',
         'MNCD pilot: 97.5% / 97.0% availability (5-node)',
         'PRP-1 submission (June 2026)',
@@ -1643,8 +1681,8 @@ addDiagramSlide(pptx,
   });
 
   const concItems = [
-    { num: '1', title: 'SessionRerank+', text: 'Session-aware tool reranking: NDCG@5 ≥ 0.52 (+15% vs dense retrieval baseline, p<0.0001) on 43,000 real-world APIs' },
-    { num: '2', title: 'APRR+CDR+PDR', text: 'Online RL adaptive routing: ≥47% task success, ≤265ms latency, ≥35.7% latency reduction vs static routing' },
+    { num: '1', title: 'SessionRerank+', text: 'Session-aware tool reranking: NDCG@5 ≥ 0.461 (+2% over dense retrieval baseline, p<0.05) on 43,000 real-world APIs' },
+    { num: '2', title: 'APRR+CDR+PDR', text: 'Online RL adaptive routing: ≥47% task success, ≤265ms latency, +2% routing improvement over static baseline' },
     { num: '3', title: 'MNCD', text: 'Decentralised context distribution: ≥97% context availability under 2-of-5 node failures, O(log N) propagation' },
     { num: '4', title: 'FCNP', text: 'Flow-controlled network pruning: 10:1 context compression, ≥99% citation accuracy, Wilcoxon p<0.05 vs 7 baselines' },
   ];
@@ -1713,7 +1751,7 @@ addDiagramSlide(pptx,
     x: 0.4, y: 1.02, w: 7.5, h: 0.44,
     fontSize: 13, bold: true, color: C.white, fontFace: 'Calibri', valign: 'middle',
   });
-  slide.addText('API Key: 579b464db66ec23bdd000001b3d8ba239cf34372729bac4701843377', {
+  slide.addText('API Key: [REDACTED — stored in environment variable, not shown in slides]', {
     x: 7.95, y: 1.02, w: 4.9, h: 0.44,
     fontSize: 9, color: 'B0BEC5', fontFace: 'Calibri', valign: 'middle', align: 'right',
   });
