@@ -328,7 +328,7 @@ function drawFlowArrow(slide, centerX, y_from_bottom, y_to_top, label, stepNum) 
   }
 }
 
-function addDiagramSlide(pptx, title, caption, imgB64, imgExt, slideNum) {
+function addDiagramSlide(pptx, title, caption, imgB64, imgExt, slideNum, novelItems) {
   const slide = pptx.addSlide();
   addContentBg(slide);
   addHeaderBar(slide, title);
@@ -339,7 +339,32 @@ function addDiagramSlide(pptx, title, caption, imgB64, imgExt, slideNum) {
       fontSize: 12, italic: true, color: C.deepPurple, fontFace: 'Calibri', wrap: true,
     });
   }
-  const imgY = caption ? 0.95 : 0.58;
+  // Optional novelty highlight bar — light blue strip listing novel contributions
+  let imgY = caption ? 0.95 : 0.58;
+  if (novelItems && novelItems.length > 0) {
+    const novelBarH = 0.38;
+    slide.addShape(pptx.ShapeType.rect, {
+      x: 0.35, y: imgY, w: 12.63, h: novelBarH,
+      fill: { color: 'E3F0FF' }, line: { color: '1565C0', pt: 1.5 },
+    });
+    // ★ NOVEL badge
+    slide.addShape(pptx.ShapeType.rect, {
+      x: 0.35, y: imgY, w: 0.80, h: novelBarH,
+      fill: { color: '1565C0' }, line: { color: '1565C0' },
+    });
+    slide.addText('★ NOVEL', {
+      x: 0.35, y: imgY + 0.04, w: 0.80, h: novelBarH - 0.08,
+      fontSize: 8, bold: true, color: 'FFFFFF', fontFace: 'Calibri',
+      align: 'center', valign: 'middle', margin: 0,
+    });
+    // Novel items text
+    slide.addText(novelItems.join('   |   '), {
+      x: 1.20, y: imgY + 0.04, w: 11.73, h: novelBarH - 0.08,
+      fontSize: 10, bold: true, color: '1565C0', fontFace: 'Calibri',
+      wrap: true, valign: 'middle',
+    });
+    imgY += novelBarH + 0.04;
+  }
   const imgH = 7.22 - imgY - 0.06;
   if (imgB64) {
     slide.addImage({
@@ -639,6 +664,10 @@ makeSectionDivider(pptx, 'I',
     x: 0.45, y: 5.52, w: 12.5, h: 0.65,
     fontSize: 13, color: C.white, fontFace: 'Calibri', wrap: true,
   });
+  slide.addText([
+    { text: 'Paper Folder: ', options: { color: C.darkText, fontSize: 9, fontFace: 'Calibri' } },
+    { text: 'Open Drive Folder ↗', options: { hyperlink: { url: 'https://drive.google.com/drive/u/0/folders/1sAOY-c2Bg0Io7102_klRrvtyOj06Kc0Z' }, color: '1565C0', bold: true, fontSize: 9, fontFace: 'Calibri' }},
+  ], { x: 0.3, y: 6.28, w: 12.73, h: 0.18, valign: 'middle' });
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -687,6 +716,10 @@ makeSectionDivider(pptx, 'I',
     x: 0.45, y: 5.52, w: 12.5, h: 0.65,
     fontSize: 13, color: C.white, fontFace: 'Calibri', wrap: true,
   });
+  slide.addText([
+    { text: 'Paper Folder: ', options: { color: C.darkText, fontSize: 9, fontFace: 'Calibri' } },
+    { text: 'Open Drive Folder ↗', options: { hyperlink: { url: 'https://drive.google.com/drive/u/0/folders/1sAOY-c2Bg0Io7102_klRrvtyOj06Kc0Z' }, color: '1565C0', bold: true, fontSize: 9, fontFace: 'Calibri' }},
+  ], { x: 0.3, y: 6.28, w: 12.73, h: 0.18, valign: 'middle' });
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -735,6 +768,10 @@ makeSectionDivider(pptx, 'I',
     x: 0.45, y: 5.52, w: 12.5, h: 0.65,
     fontSize: 13, color: C.white, fontFace: 'Calibri', wrap: true,
   });
+  slide.addText([
+    { text: 'Paper Folder: ', options: { color: C.darkText, fontSize: 9, fontFace: 'Calibri' } },
+    { text: 'Open Drive Folder ↗', options: { hyperlink: { url: 'https://drive.google.com/drive/u/0/folders/1sAOY-c2Bg0Io7102_klRrvtyOj06Kc0Z' }, color: '1565C0', bold: true, fontSize: 9, fontFace: 'Calibri' }},
+  ], { x: 0.3, y: 6.28, w: 12.73, h: 0.18, valign: 'middle' });
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -783,6 +820,10 @@ makeSectionDivider(pptx, 'I',
     x: 0.45, y: 5.52, w: 12.5, h: 0.65,
     fontSize: 13, color: C.white, fontFace: 'Calibri', wrap: true,
   });
+  slide.addText([
+    { text: 'Paper Folder: ', options: { color: C.darkText, fontSize: 9, fontFace: 'Calibri' } },
+    { text: 'Open Drive Folder ↗', options: { hyperlink: { url: 'https://drive.google.com/drive/u/0/folders/1sAOY-c2Bg0Io7102_klRrvtyOj06Kc0Z' }, color: '1565C0', bold: true, fontSize: 9, fontFace: 'Calibri' }},
+  ], { x: 0.3, y: 6.28, w: 12.73, h: 0.18, valign: 'middle' });
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -1387,7 +1428,8 @@ makeObjDivider(pptx, 2,
 addDiagramSlide(pptx,
   'Objective 2 — APRR+CDR+PDR: System Architecture',
   'Three-strategy routing engine: APRR base RL → CDR context-driven gate → PDR parallel dispatch → 5 specialist agents.',
-  DIAG.obj2Arch, 'png', 21);
+  DIAG.obj2Arch, 'png', 21,
+  ['RL Weight Matrix W (online, real-time updates)', 'Parallel Dispatch Routing (PDR) — functional-token parallel dispatch', 'Exponential decay with binary session signals']);
 
 // ─────────────────────────────────────────────────────────────────────────────
 //  SLIDES 22–24 — OBJ 2 ALGORITHM FLOW (3 slides)
@@ -1687,7 +1729,8 @@ makeObjDivider(pptx, 3,
 addDiagramSlide(pptx,
   'Objective 3 — Multi-Node Context Distribution (MNCD): System Architecture',
   'Mesh topology: pub/sub + gossip protocol → replication factor R=3 → Borda consensus → distress channel escalation.',
-  DIAG.obj3Arch, 'png', 28);
+  DIAG.obj3Arch, 'png', 28,
+  ['Gossip Protocol Broadcast (O(log N) propagation)', 'Borda Consensus Aggregation over live data.gov.in feeds', 'R=3 Replication for ≥97% context availability under 2-of-5 node failure']);
 
 // ─────────────────────────────────────────────────────────────────────────────
 //  SLIDES 29–31 — OBJ 3 ALGORITHM FLOW (3 slides)
@@ -1973,7 +2016,8 @@ makeObjDivider(pptx, 4,
 addDiagramSlide(pptx,
   'Objective 4 — Flow-Conductance-based Neural Pruning (FCNP): System Architecture',
   'Federated Context Negotiation Protocol: Parallel Dispatch Routing (PDR) parallel dispatch → flow conductance update rule → route weight adaptation → pruning of low-conductance paths.',
-  DIAG.obj4Arch, 'png', 35);
+  DIAG.obj4Arch, 'png', 35,
+  ['Flow Conductance Scoring (Kirchhoff Update Rule on token-attention graph)', '10:1 compression with ≥99% citation accuracy', 'Citation anchor pinning — data.gov.in source tokens never evicted']);
 
 // ─────────────────────────────────────────────────────────────────────────────
 //  SLIDES 36–38 — OBJ 4 ALGORITHM FLOW (3 slides)
@@ -2205,7 +2249,8 @@ addDiagramSlide(pptx,
     x: 0.35, y: 0.56, w: 12.6, h: 0.38, fontSize: 12, italic: true, color: C.deepPurple, fontFace: 'Calibri', wrap: true,
   });
 
-  // Step boxes with arrows
+  // Step boxes with arrows — STEP_OFFSET = first step number on this slide
+  const STEP_OFFSET = 1; // steps 1-4, arrows show Step 2, Step 3, Step 4
   const steps = [
     { num: '1', title: 'FARMER QUERY INPUT', body: 'A farmer types or speaks a question — e.g., "What is today\'s mandi price for tomatoes in Mysuru?" — in Kannada, Hindi, or English.\nThis is the raw entry point of the entire system.', color: C.blue, bg: 'EFF6FF' },
     { num: '2', title: 'LANGUAGE DETECTION + TRANSLATION', body: 'If the query is not in English, the IndicTrans2 module automatically translates it.\nThis ensures the AI can process it regardless of language — supporting 22 Indian languages.', color: C.midPurple, bg: 'F5F3FF' },
@@ -2215,20 +2260,30 @@ addDiagramSlide(pptx,
 
   steps.forEach((s, i) => {
     const y = 1.05 + i * 1.45;
-    // Badge
-    slide.addShape(pptx.ShapeType.rect, { x: 0.35, y, w: 0.52, h: 0.52, fill: { color: s.color }, line: { color: s.color } });
+    const isNovel = s.title.includes('[NOVEL');
+    const boxBg    = isNovel ? 'E3F0FF' : s.bg;
+    const boxBdr   = isNovel ? '1565C0' : s.color;
+    const titleClr = isNovel ? '1565C0' : s.color;
+    // Step number badge (left)
+    slide.addShape(pptx.ShapeType.rect, { x: 0.35, y, w: 0.52, h: 0.52, fill: { color: isNovel ? '1565C0' : s.color }, line: { color: isNovel ? '1565C0' : s.color } });
     slide.addText(s.num, { x: 0.35, y: y+0.02, w: 0.52, h: 0.48, fontSize: 18, bold: true, color: C.white, fontFace: 'Calibri', align: 'center', valign: 'middle' });
     // Content box
-    slide.addShape(pptx.ShapeType.rect, { x: 0.93, y, w: 12.05, h: 1.28, fill: { color: s.bg }, line: { color: s.color, pt: 1.5 } });
-    slide.addText(s.title, { x: 1.0, y: y+0.04, w: 10.0, h: 0.3, fontSize: 12, bold: true, color: s.color, fontFace: 'Calibri' });
+    slide.addShape(pptx.ShapeType.rect, { x: 0.93, y, w: 12.05, h: 1.28, fill: { color: boxBg }, line: { color: boxBdr, pt: isNovel ? 2.5 : 1.5 } });
+    // ★ NOVEL tag on top-right corner of box
+    if (isNovel) {
+      slide.addShape(pptx.ShapeType.rect, { x: 12.38, y: y+0.02, w: 0.58, h: 0.26, fill: { color: '1565C0' }, line: { color: '1565C0' } });
+      slide.addText('★ NOVEL', { x: 12.38, y: y+0.03, w: 0.58, h: 0.24, fontSize: 7.5, bold: true, color: 'FFFFFF', fontFace: 'Calibri', align: 'center', valign: 'middle', margin: 0 });
+    }
+    slide.addText(s.title, { x: 1.0, y: y+0.04, w: 11.2, h: 0.3, fontSize: 12, bold: true, color: titleClr, fontFace: 'Calibri' });
     slide.addText(s.body, { x: 1.0, y: y+0.34, w: 11.8, h: 0.88, fontSize: 11, color: C.darkText, fontFace: 'Calibri', wrap: true, valign: 'top' });
-    // Arrow down (except last)
+    // Arrow down to next step (except last box on each slide)
     if (i < steps.length - 1) {
-      // Downward connecting arrow — thick, visible
-      slide.addShape(pptx.ShapeType.line, { x: 0.61, y: y+1.28, w: 0, h: 0.17, line: { color: s.color, pt: 3.5, endArrowType: 'arrow' } });
-      // Step number badge — red rectangle right of arrow, large and bold
-      slide.addShape(pptx.ShapeType.rect, { x: 0.7, y: y+1.285, w: 0.38, h: 0.16, fill: { color: 'C8402A' }, line: { color: 'C8402A' } });
-      slide.addText('Step ' + String(i+2), { x: 0.7, y: y+1.285, w: 0.38, h: 0.16, fontSize: 9, bold: true, color: 'FFFFFF', fontFace: 'Calibri', align: 'center', valign: 'middle', margin: 0 });
+      const arrowClr = isNovel ? '1565C0' : s.color;
+      slide.addShape(pptx.ShapeType.line, { x: 0.61, y: y+1.28, w: 0, h: 0.17, line: { color: arrowClr, pt: 3.5, endArrowType: 'arrow' } });
+      // Sequential step label on arrow
+      const nextStepNum = STEP_OFFSET + i + 1;
+      slide.addShape(pptx.ShapeType.rect, { x: 0.7, y: y+1.285, w: 0.46, h: 0.16, fill: { color: 'C8402A' }, line: { color: 'C8402A' } });
+      slide.addText('Step ' + String(nextStepNum), { x: 0.7, y: y+1.285, w: 0.46, h: 0.16, fontSize: 9, bold: true, color: 'FFFFFF', fontFace: 'Calibri', align: 'center', valign: 'middle', margin: 0 });
     }
   });
 }
@@ -2244,6 +2299,7 @@ addDiagramSlide(pptx,
     x: 0.35, y: 0.56, w: 12.6, h: 0.38, fontSize: 12, italic: true, color: C.deepPurple, fontFace: 'Calibri', wrap: true,
   });
 
+  const STEP_OFFSET = 5; // steps 5-8, arrows show Step 6, Step 7, Step 8
   const steps = [
     { num: '5', title: 'REINFORCEMENT LEARNING WEIGHT MATRIX [NOVEL — Obj 2]', body: 'The system maintains a matrix W that records: "for this type of query, which agent succeeded before?"\nThis matrix is updated in real time based on task success/failure.\nThink of it as a dynamic leaderboard — the best agent gets routed more queries.', color: C.orange, bg: 'FFF8F1' },
     { num: '6', title: 'CONTEXT-DRIVEN ROUTING (CDR)', body: 'The system inspects the content and intent of the query and steers it to the most appropriate agent.\nExample: a price-query goes to the Mandi Price Agent; a crop disease query goes to the Agronomy Agent.\nCDR uses the routing weight matrix W to make this decision.', color: C.orange, bg: 'FFF8F1' },
@@ -2253,17 +2309,30 @@ addDiagramSlide(pptx,
 
   steps.forEach((s, i) => {
     const y = 1.05 + i * 1.45;
-    slide.addShape(pptx.ShapeType.rect, { x: 0.35, y, w: 0.52, h: 0.52, fill: { color: s.color }, line: { color: s.color } });
+    const isNovel = s.title.includes('[NOVEL');
+    const boxBg    = isNovel ? 'E3F0FF' : s.bg;
+    const boxBdr   = isNovel ? '1565C0' : s.color;
+    const titleClr = isNovel ? '1565C0' : s.color;
+    // Step number badge (left)
+    slide.addShape(pptx.ShapeType.rect, { x: 0.35, y, w: 0.52, h: 0.52, fill: { color: isNovel ? '1565C0' : s.color }, line: { color: isNovel ? '1565C0' : s.color } });
     slide.addText(s.num, { x: 0.35, y: y+0.02, w: 0.52, h: 0.48, fontSize: 18, bold: true, color: C.white, fontFace: 'Calibri', align: 'center', valign: 'middle' });
-    slide.addShape(pptx.ShapeType.rect, { x: 0.93, y, w: 12.05, h: 1.28, fill: { color: s.bg }, line: { color: s.color, pt: 1.5 } });
-    slide.addText(s.title, { x: 1.0, y: y+0.04, w: 10.0, h: 0.3, fontSize: 12, bold: true, color: s.color, fontFace: 'Calibri' });
+    // Content box
+    slide.addShape(pptx.ShapeType.rect, { x: 0.93, y, w: 12.05, h: 1.28, fill: { color: boxBg }, line: { color: boxBdr, pt: isNovel ? 2.5 : 1.5 } });
+    // ★ NOVEL tag on top-right corner of box
+    if (isNovel) {
+      slide.addShape(pptx.ShapeType.rect, { x: 12.38, y: y+0.02, w: 0.58, h: 0.26, fill: { color: '1565C0' }, line: { color: '1565C0' } });
+      slide.addText('★ NOVEL', { x: 12.38, y: y+0.03, w: 0.58, h: 0.24, fontSize: 7.5, bold: true, color: 'FFFFFF', fontFace: 'Calibri', align: 'center', valign: 'middle', margin: 0 });
+    }
+    slide.addText(s.title, { x: 1.0, y: y+0.04, w: 11.2, h: 0.3, fontSize: 12, bold: true, color: titleClr, fontFace: 'Calibri' });
     slide.addText(s.body, { x: 1.0, y: y+0.34, w: 11.8, h: 0.88, fontSize: 11, color: C.darkText, fontFace: 'Calibri', wrap: true, valign: 'top' });
+    // Arrow down to next step (except last box on each slide)
     if (i < steps.length - 1) {
-      // Downward connecting arrow — thick, visible
-      slide.addShape(pptx.ShapeType.line, { x: 0.61, y: y+1.28, w: 0, h: 0.17, line: { color: s.color, pt: 3.5, endArrowType: 'arrow' } });
-      // Step number badge — red rectangle right of arrow, large and bold
-      slide.addShape(pptx.ShapeType.rect, { x: 0.7, y: y+1.285, w: 0.38, h: 0.16, fill: { color: 'C8402A' }, line: { color: 'C8402A' } });
-      slide.addText('Step ' + String(i+2), { x: 0.7, y: y+1.285, w: 0.38, h: 0.16, fontSize: 9, bold: true, color: 'FFFFFF', fontFace: 'Calibri', align: 'center', valign: 'middle', margin: 0 });
+      const arrowClr = isNovel ? '1565C0' : s.color;
+      slide.addShape(pptx.ShapeType.line, { x: 0.61, y: y+1.28, w: 0, h: 0.17, line: { color: arrowClr, pt: 3.5, endArrowType: 'arrow' } });
+      // Sequential step label on arrow
+      const nextStepNum = STEP_OFFSET + i + 1;
+      slide.addShape(pptx.ShapeType.rect, { x: 0.7, y: y+1.285, w: 0.46, h: 0.16, fill: { color: 'C8402A' }, line: { color: 'C8402A' } });
+      slide.addText('Step ' + String(nextStepNum), { x: 0.7, y: y+1.285, w: 0.46, h: 0.16, fontSize: 9, bold: true, color: 'FFFFFF', fontFace: 'Calibri', align: 'center', valign: 'middle', margin: 0 });
     }
   });
 }
@@ -2280,6 +2349,7 @@ addDiagramSlide(pptx,
   });
 
   const TEAL = '00695C';
+  const STEP_OFFSET = 9; // steps 9-12, arrows show Step 10, Step 11, Step 12
 
   const steps = [
     { num: '9', title: 'GOSSIP PROTOCOL BROADCAST [NOVEL — Obj 3]', body: 'When any agent learns new information (e.g., new mandi price from data.gov.in), it "gossips" it to 2–3 nearest neighbours.\nThose neighbours pass it on. Within O(log N) rounds, ALL agents know the new information.\nThis is exactly how real gossip spreads — but mathematically proven to be efficient.', color: TEAL, bg: 'EFFDFB' },
@@ -2290,17 +2360,30 @@ addDiagramSlide(pptx,
 
   steps.forEach((s, i) => {
     const y = 1.05 + i * 1.45;
-    slide.addShape(pptx.ShapeType.rect, { x: 0.35, y, w: 0.52, h: 0.52, fill: { color: s.color }, line: { color: s.color } });
+    const isNovel = s.title.includes('[NOVEL');
+    const boxBg    = isNovel ? 'E3F0FF' : s.bg;
+    const boxBdr   = isNovel ? '1565C0' : s.color;
+    const titleClr = isNovel ? '1565C0' : s.color;
+    // Step number badge (left)
+    slide.addShape(pptx.ShapeType.rect, { x: 0.35, y, w: 0.52, h: 0.52, fill: { color: isNovel ? '1565C0' : s.color }, line: { color: isNovel ? '1565C0' : s.color } });
     slide.addText(s.num, { x: 0.35, y: y+0.02, w: 0.52, h: 0.48, fontSize: 18, bold: true, color: C.white, fontFace: 'Calibri', align: 'center', valign: 'middle' });
-    slide.addShape(pptx.ShapeType.rect, { x: 0.93, y, w: 12.05, h: 1.28, fill: { color: s.bg }, line: { color: s.color, pt: 1.5 } });
-    slide.addText(s.title, { x: 1.0, y: y+0.04, w: 10.0, h: 0.3, fontSize: 12, bold: true, color: s.color, fontFace: 'Calibri' });
+    // Content box
+    slide.addShape(pptx.ShapeType.rect, { x: 0.93, y, w: 12.05, h: 1.28, fill: { color: boxBg }, line: { color: boxBdr, pt: isNovel ? 2.5 : 1.5 } });
+    // ★ NOVEL tag on top-right corner of box
+    if (isNovel) {
+      slide.addShape(pptx.ShapeType.rect, { x: 12.38, y: y+0.02, w: 0.58, h: 0.26, fill: { color: '1565C0' }, line: { color: '1565C0' } });
+      slide.addText('★ NOVEL', { x: 12.38, y: y+0.03, w: 0.58, h: 0.24, fontSize: 7.5, bold: true, color: 'FFFFFF', fontFace: 'Calibri', align: 'center', valign: 'middle', margin: 0 });
+    }
+    slide.addText(s.title, { x: 1.0, y: y+0.04, w: 11.2, h: 0.3, fontSize: 12, bold: true, color: titleClr, fontFace: 'Calibri' });
     slide.addText(s.body, { x: 1.0, y: y+0.34, w: 11.8, h: 0.88, fontSize: 11, color: C.darkText, fontFace: 'Calibri', wrap: true, valign: 'top' });
+    // Arrow down to next step (except last box on each slide)
     if (i < steps.length - 1) {
-      // Downward connecting arrow — thick, visible
-      slide.addShape(pptx.ShapeType.line, { x: 0.61, y: y+1.28, w: 0, h: 0.17, line: { color: s.color, pt: 3.5, endArrowType: 'arrow' } });
-      // Step number badge — red rectangle right of arrow, large and bold
-      slide.addShape(pptx.ShapeType.rect, { x: 0.7, y: y+1.285, w: 0.38, h: 0.16, fill: { color: 'C8402A' }, line: { color: 'C8402A' } });
-      slide.addText('Step ' + String(i+2), { x: 0.7, y: y+1.285, w: 0.38, h: 0.16, fontSize: 9, bold: true, color: 'FFFFFF', fontFace: 'Calibri', align: 'center', valign: 'middle', margin: 0 });
+      const arrowClr = isNovel ? '1565C0' : s.color;
+      slide.addShape(pptx.ShapeType.line, { x: 0.61, y: y+1.28, w: 0, h: 0.17, line: { color: arrowClr, pt: 3.5, endArrowType: 'arrow' } });
+      // Sequential step label on arrow
+      const nextStepNum = STEP_OFFSET + i + 1;
+      slide.addShape(pptx.ShapeType.rect, { x: 0.7, y: y+1.285, w: 0.46, h: 0.16, fill: { color: 'C8402A' }, line: { color: 'C8402A' } });
+      slide.addText('Step ' + String(nextStepNum), { x: 0.7, y: y+1.285, w: 0.46, h: 0.16, fontSize: 9, bold: true, color: 'FFFFFF', fontFace: 'Calibri', align: 'center', valign: 'middle', margin: 0 });
     }
   });
 }
@@ -2316,6 +2399,7 @@ addDiagramSlide(pptx,
     x: 0.35, y: 0.56, w: 12.6, h: 0.38, fontSize: 12, italic: true, color: C.deepPurple, fontFace: 'Calibri', wrap: true,
   });
 
+  const STEP_OFFSET = 13; // steps 13-16, arrows show Step 14, Step 15, Step 16
   const steps = [
     { num: '13', title: 'BUILD TOKEN-ATTENTION GRAPH', body: 'The full conversation context (up to 4,096 tokens) is modelled as a graph.\nEach word/token is a node. Each attention connection between words is an edge.\nStrong connections = important relationships. Weak connections = noise.', color: C.green, bg: 'F0FFF4' },
     { num: '14', title: 'FLOW CONDUCTANCE SCORING [NOVEL — Obj 4]', body: 'Inspired by electrical circuit analysis: tokens with high "conductance" (information flow) are important; low-conductance tokens are safe to remove.\nThe Kirchhoff Update Rule computes a score for every token.\nCitation anchors (tokens from data.gov.in source) are always pinned — never removed.', color: C.green, bg: 'F0FFF4' },
@@ -2325,17 +2409,30 @@ addDiagramSlide(pptx,
 
   steps.forEach((s, i) => {
     const y = 1.05 + i * 1.45;
-    slide.addShape(pptx.ShapeType.rect, { x: 0.35, y, w: 0.52, h: 0.52, fill: { color: s.color }, line: { color: s.color } });
+    const isNovel = s.title.includes('[NOVEL');
+    const boxBg    = isNovel ? 'E3F0FF' : s.bg;
+    const boxBdr   = isNovel ? '1565C0' : s.color;
+    const titleClr = isNovel ? '1565C0' : s.color;
+    // Step number badge (left)
+    slide.addShape(pptx.ShapeType.rect, { x: 0.35, y, w: 0.52, h: 0.52, fill: { color: isNovel ? '1565C0' : s.color }, line: { color: isNovel ? '1565C0' : s.color } });
     slide.addText(s.num, { x: 0.35, y: y+0.02, w: 0.52, h: 0.48, fontSize: 18, bold: true, color: C.white, fontFace: 'Calibri', align: 'center', valign: 'middle' });
-    slide.addShape(pptx.ShapeType.rect, { x: 0.93, y, w: 12.05, h: 1.28, fill: { color: s.bg }, line: { color: s.color, pt: 1.5 } });
-    slide.addText(s.title, { x: 1.0, y: y+0.04, w: 10.0, h: 0.3, fontSize: 12, bold: true, color: s.color, fontFace: 'Calibri' });
+    // Content box
+    slide.addShape(pptx.ShapeType.rect, { x: 0.93, y, w: 12.05, h: 1.28, fill: { color: boxBg }, line: { color: boxBdr, pt: isNovel ? 2.5 : 1.5 } });
+    // ★ NOVEL tag on top-right corner of box
+    if (isNovel) {
+      slide.addShape(pptx.ShapeType.rect, { x: 12.38, y: y+0.02, w: 0.58, h: 0.26, fill: { color: '1565C0' }, line: { color: '1565C0' } });
+      slide.addText('★ NOVEL', { x: 12.38, y: y+0.03, w: 0.58, h: 0.24, fontSize: 7.5, bold: true, color: 'FFFFFF', fontFace: 'Calibri', align: 'center', valign: 'middle', margin: 0 });
+    }
+    slide.addText(s.title, { x: 1.0, y: y+0.04, w: 11.2, h: 0.3, fontSize: 12, bold: true, color: titleClr, fontFace: 'Calibri' });
     slide.addText(s.body, { x: 1.0, y: y+0.34, w: 11.8, h: 0.88, fontSize: 11, color: C.darkText, fontFace: 'Calibri', wrap: true, valign: 'top' });
+    // Arrow down to next step (except last box on each slide)
     if (i < steps.length - 1) {
-      // Downward connecting arrow — thick, visible
-      slide.addShape(pptx.ShapeType.line, { x: 0.61, y: y+1.28, w: 0, h: 0.17, line: { color: s.color, pt: 3.5, endArrowType: 'arrow' } });
-      // Step number badge — red rectangle right of arrow, large and bold
-      slide.addShape(pptx.ShapeType.rect, { x: 0.7, y: y+1.285, w: 0.38, h: 0.16, fill: { color: 'C8402A' }, line: { color: 'C8402A' } });
-      slide.addText('Step ' + String(i+2), { x: 0.7, y: y+1.285, w: 0.38, h: 0.16, fontSize: 9, bold: true, color: 'FFFFFF', fontFace: 'Calibri', align: 'center', valign: 'middle', margin: 0 });
+      const arrowClr = isNovel ? '1565C0' : s.color;
+      slide.addShape(pptx.ShapeType.line, { x: 0.61, y: y+1.28, w: 0, h: 0.17, line: { color: arrowClr, pt: 3.5, endArrowType: 'arrow' } });
+      // Sequential step label on arrow
+      const nextStepNum = STEP_OFFSET + i + 1;
+      slide.addShape(pptx.ShapeType.rect, { x: 0.7, y: y+1.285, w: 0.46, h: 0.16, fill: { color: 'C8402A' }, line: { color: 'C8402A' } });
+      slide.addText('Step ' + String(nextStepNum), { x: 0.7, y: y+1.285, w: 0.46, h: 0.16, fontSize: 9, bold: true, color: 'FFFFFF', fontFace: 'Calibri', align: 'center', valign: 'middle', margin: 0 });
     }
   });
 }
@@ -2947,6 +3044,15 @@ for (let r = 0; r < refSlideCount; r++) {
       });
     }
   });
+
+  // Drive paper folder link — bottom of slide
+  slide.addText([
+    { text: 'Paper Folder: ', options: { color: C.darkText, fontSize: 9.5, fontFace: 'Calibri' } },
+    { text: 'Open Drive Folder', options: {
+        hyperlink: { url: 'https://drive.google.com/drive/u/0/folders/1sAOY-c2Bg0Io7102_klRrvtyOj06Kc0Z' },
+        color: '1565C0', bold: true, fontSize: 9.5, fontFace: 'Calibri',
+    }},
+  ], { x: 0.35, y: 7.06, w: 12.63, h: 0.18, valign: 'middle' });
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
