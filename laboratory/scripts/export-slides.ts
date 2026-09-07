@@ -1,6 +1,6 @@
 import { mkdirSync, writeFileSync, readdirSync, unlinkSync } from "node:fs";
 import { join } from "node:path";
-import { COLLEGE, PPTX_FILENAME, PPTX_TEMPLATE_COPY, STUDENT_DETAILS } from "../lib/research/college.ts";
+import { COLLEGE, PDF_FILENAME, PPTX_FILENAME, PPTX_TEMPLATE_COPY, STUDENT_DETAILS, ZIP_FILENAME } from "../lib/research/college.ts";
 import { literatureSurveyMarkdown } from "../lib/research/literature.ts";
 import { allSlidesMarkdown, CONTENTS, SLIDES } from "../lib/research/slides.ts";
 
@@ -107,7 +107,12 @@ writeFileSync(
     {
       college: COLLEGE,
       studentDetails: STUDENT_DETAILS,
-      filenames: { pptx: PPTX_FILENAME, templateCopy: PPTX_TEMPLATE_COPY },
+      filenames: {
+        pptx: PPTX_FILENAME,
+        templateCopy: PPTX_TEMPLATE_COPY,
+        zip: ZIP_FILENAME,
+        pdf: PDF_FILENAME,
+      },
       contents: CONTENTS,
       slides: SLIDES,
     },

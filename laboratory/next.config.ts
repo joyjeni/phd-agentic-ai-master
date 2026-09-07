@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
     return [
       { source: "/slides.pptx", destination: "/api/slides/pptx" },
       { source: "/slides.pdf", destination: "/api/slides/pdf" },
+      { source: "/slides.zip", destination: "/api/slides/zip" },
     ];
   },
   async headers() {

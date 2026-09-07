@@ -60,6 +60,8 @@ export const COLLEGE = {
 export const PPTX_FILENAME = "ACRS_PhD_Proposal_JenishaT_24ETRP720001.pptx";
 /** Copy named after the PRP template the scholar asked to reuse. */
 export const PPTX_TEMPLATE_COPY = "Gowrishankar_PPT_PRP2_ACRS_JenishaT.pptx";
+export const ZIP_FILENAME = "ACRS_PhD_Proposal_JenishaT_24ETRP720001.zip";
+export const PDF_FILENAME = "JenishaT_ACRS_PhD_Proposal.pdf";
 export const MD_FILENAME = "ACRS_PhD_Proposal_JenishaT_24ETRP720001.md";
 
 export const STUDENT_DETAILS: { field: string; record: string }[] = [

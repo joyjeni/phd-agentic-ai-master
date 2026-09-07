@@ -500,6 +500,16 @@ describe("college pptx", () => {
     expect(slide1).toMatch(/slidenum/);
     expect(slide1).toMatch(/<p:hf[^>]*sldNum="1"/);
   });
+
+  it("serves the PowerPoint as an attachment, not an HTML page", async () => {
+    const { GET } = await import("@/app/api/slides/pptx/route");
+    const response = await GET();
+    expect(response.headers.get("content-type")).toMatch(/presentationml/);
+    expect(response.headers.get("content-disposition")).toMatch(/attachment/);
+    expect(response.headers.get("content-disposition")).toMatch(/\.pptx/);
+    const bytes = new Uint8Array(await response.arrayBuffer());
+    expect(Buffer.from(bytes.subarray(0, 2)).toString()).toBe("PK");
+  });
 });
 
 describe("data.gov.in robustness", () => {

@@ -16,14 +16,11 @@ export default function HomePage() {
           {COLLEGE.scholar} · {COLLEGE.registerNo}
         </h2>
         <p className="mt-2 text-sm text-[var(--muted)]">
-          If the PowerPoint button does nothing in this preview, open the{" "}
+          Download the college-template PowerPoint, ZIP, PDF, or Markdown from the
+          buttons below. Same files are also on the{" "}
           <Link className="text-[var(--gold)] underline" href="/download">
-            PDF on /download
+            download page
           </Link>
-          {" "}or use{" "}
-          <a className="text-[var(--gold)] underline" href="/api/slides/pptx">
-            /api/slides/pptx
-          </a>
           .
         </p>
         <div className="mt-4">

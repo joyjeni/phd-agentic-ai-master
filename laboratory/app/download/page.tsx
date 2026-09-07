@@ -1,4 +1,5 @@
-import { COLLEGE } from "@/lib/research/college";
+import { FileDownloadButtons } from "@/components/file-download-buttons";
+import { COLLEGE, PDF_FILENAME, PPTX_FILENAME } from "@/lib/research/college";
 import { SLIDES } from "@/lib/research/slides";
 import Link from "next/link";
 
@@ -8,39 +9,29 @@ export default function DownloadPage() {
       <p className="text-[11px] uppercase tracking-[0.22em] text-[var(--gold)]">
         {COLLEGE.university}
       </p>
-      <h1 className="font-serif text-4xl">Slides for {COLLEGE.scholar}</h1>
+      <h1 className="font-serif text-4xl">Download slides — {COLLEGE.scholar}</h1>
       <div className="rounded-xl border border-[var(--gold)] bg-[var(--panel)] p-5 text-sm leading-relaxed text-[var(--muted)]">
         <p>
-          The in-chat preview <strong className="text-[var(--paper)]">cannot save
-          files</strong>. That is why Download did nothing — it is not a broken
-          deck. {SLIDES.length} slides are below as a PDF.
+          {SLIDES.length} slides in the white Gowrishankar college template.
+          Use <strong className="text-[var(--paper)]">Download PowerPoint</strong>{" "}
+          for the FET file ({PPTX_FILENAME}). PDF is {PDF_FILENAME}.
         </p>
-        <p className="mt-3">
-          To get a PowerPoint onto your computer: use the{" "}
-          <strong className="text-[var(--paper)]">files attached to this chat</strong>
-          , click <strong className="text-[var(--paper)]">Create repo</strong> and
-          download from the repository in Chrome/Edge, or open{" "}
-          <code className="text-[var(--paper)]">/api/slides/pptx?raw=1</code> in a
-          normal browser tab (not this preview).
-        </p>
-        <div className="mt-4 flex flex-wrap gap-2">
-          <Link
-            href="/proposal"
-            className="inline-flex h-11 items-center rounded-md bg-[var(--gold)] px-5 text-sm font-semibold text-[var(--ink)]"
-          >
+        <div className="mt-4">
+          <FileDownloadButtons />
+        </div>
+        <p className="mt-4">
+          <Link className="text-[var(--gold)] underline" href="/proposal">
             Flip through slides
           </Link>
-          <a
-            href="/api/slides/pdf"
-            className="inline-flex h-11 items-center rounded-md border border-[var(--gold)] px-5 text-sm font-semibold text-[var(--gold)]"
-          >
-            Open PDF only
-          </a>
-        </div>
+          {" · "}
+          <Link className="text-[var(--gold)] underline" href="/proposal/print">
+            Printable view
+          </Link>
+        </p>
       </div>
       <div className="overflow-hidden rounded-xl border border-[var(--gold)] bg-white">
         <p className="bg-[#3A1C64] px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-white">
-          All {SLIDES.length} slides as PDF
+          PDF preview — all {SLIDES.length} slides
         </p>
         <iframe
           title="ACRS proposal PDF"

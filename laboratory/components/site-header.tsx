@@ -55,7 +55,7 @@ export function SiteHeader() {
             href="/download"
             className="rounded-md bg-[var(--gold)] px-2.5 py-1.5 text-xs font-semibold text-[var(--ink)]"
           >
-            Slides PDF
+            Download
           </Link>
         </nav>
       </div>

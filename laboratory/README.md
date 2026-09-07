@@ -73,12 +73,15 @@ Pasteable Word form: `docs/LITERATURE_SURVEY.md`.
 
 ## Where to get the PowerPoint
 
-The Cursor preview often **blocks `.pptx` downloads**. Use one of these:
+Use the **Download** button in the lab nav, or open `/download`. Buttons save:
 
-1. Open `/download` — the **PDF is embedded** on that page.
-2. Direct PowerPoint: `/api/slides/pptx` or `/slides.pptx`
-3. PDF: `/api/slides/pdf` or `JenishaT_ACRS_PhD_Proposal.pdf`
-4. Files in the repo: `docs/slides/` and the repository root
+1. PowerPoint — `ACRS_PhD_Proposal_JenishaT_24ETRP720001.pptx`
+2. PRP copy — `Gowrishankar_PPT_PRP2_ACRS_JenishaT.pptx`
+3. ZIP of both decks
+4. PDF — `JenishaT_ACRS_PhD_Proposal.pdf`
+5. Markdown — pasteable outline
+
+Direct URLs: `/api/slides/pptx?download=1`, `/api/slides/pdf?download=1`, `/slides.zip`.
 
 Rebuild: `npm run slides` then Chrome-print `/proposal/print` if you need a fresh PDF.
 
