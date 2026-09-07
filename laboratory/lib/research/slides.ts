@@ -121,7 +121,7 @@ export const SLIDES: Slide[] = [
     section: "Contents",
     title: "Contents of Slides",
     kind: "contents",
-    body: "Nine required sections plus the FET mapping To Solve the Research Gap. Literature Review follows the Evidence 1, Evidence 2, … template. After the literature summary, each limitation is closed by a named ACRS module. Research Title & Aim is followed by the overall objective, four individual design objectives with artefacts, and what those objectives do not claim (docs/RESEARCH_OBJECTIVES.md). Research Methodology is expanded for each objective (O1 SATR, O2 APRR, O3 MNCD, O4 FCNP), the integrated loop, the exact repository formulas, and two worked traces (ToolBench-schema ranking; live data.gov.in). Objective order is SATR → APRR → MNCD → FCNP (not SMART).",
+    body: "Main FET sections only. Motivation, architecture figures, O1–O4, and methodology detail remain in the deck under these headings; they are not listed as sub-sections here.",
   },
   {
     id: "introduction",
@@ -557,36 +557,18 @@ export const SLIDES: Slide[] = [
   },
 ];
 
-/** High-level academic outline shown on the Contents slide (required headings, with methodology expanded and the FET gap-mapping slide). */
+/** Contents of Slides: required FET headings only. Sub-section slides stay in the deck. */
 export const OUTLINE: ContentsItem[] = [
   { n: "01", title: "Introduction", slideId: "introduction" },
-  { n: "01a", title: "Motivation", slideId: "motivation" },
   { n: "02", title: "Literature Review", slideId: "literature-e01" },
   { n: "03", title: "Summary of Literature Review", slideId: "literature-summary" },
-  { n: "03a", title: "To Solve the Research Gap", slideId: "solve-gap" },
-  { n: "03b", title: "SOTA architecture (cited)", slideId: "arch-sota" },
-  { n: "03c", title: "Proposed ACRS architecture", slideId: "arch-proposed" },
-  { n: "04", title: "Identified Research Problem", slideId: "problem" },
-  { n: "05", title: "Research Title & Aim", slideId: "title-aim" },
-  { n: "05a", title: "Research Objectives — overall", slideId: "overall-objective" },
-  { n: "06", title: "Research Objectives — individual", slideId: "objectives" },
-  { n: "06a", title: "Objective 1 — SATR", slideId: "o1-satr" },
-  { n: "06b", title: "Objective 2 — APRR", slideId: "o2-aprr" },
-  { n: "06c", title: "Objective 3 — MNCD", slideId: "o3-mncd" },
-  { n: "06d", title: "Objective 4 — FCNP", slideId: "o4-fcnp" },
-  { n: "06e", title: "What these objectives do not claim", slideId: "objectives-nonclaim" },
-  { n: "07", title: "Research Questions", slideId: "questions" },
-  { n: "08", title: "Research Methodology", slideId: "method-overview" },
-  { n: "08a", title: "Methodology — O1 SATR", slideId: "method-satr" },
-  { n: "08b", title: "Methodology — O2 APRR", slideId: "method-aprr" },
-  { n: "08c", title: "Methodology — O3 MNCD", slideId: "method-mncd" },
-  { n: "08d", title: "Methodology — O4 FCNP", slideId: "method-fcnp" },
-  { n: "08e", title: "Methodology — integrated loop", slideId: "method-integrated" },
-  { n: "08f", title: "Methodology — implementation formulas", slideId: "method-formulas" },
-  { n: "08g", title: "Methodology — implemented algorithms", slideId: "method-algorithms" },
-  { n: "08h", title: "Methodology — ToolBench walkthrough", slideId: "method-walk-tb" },
-  { n: "08i", title: "Methodology — data.gov.in walkthrough", slideId: "method-walk-ogd" },
-  { n: "09", title: "Conclusion", slideId: "conclusion" },
+  { n: "04", title: "To Solve the Research Gap", slideId: "solve-gap" },
+  { n: "05", title: "Identified Research Problem", slideId: "problem" },
+  { n: "06", title: "Research Title & Aim", slideId: "title-aim" },
+  { n: "07", title: "Research Objectives", slideId: "overall-objective" },
+  { n: "08", title: "Research Questions", slideId: "questions" },
+  { n: "09", title: "Research Methodology", slideId: "method-overview" },
+  { n: "10", title: "Conclusion", slideId: "conclusion" },
 ];
 
 export const REQUIRED_SECTION_TITLES: readonly string[] = REQUIRED_SECTIONS;

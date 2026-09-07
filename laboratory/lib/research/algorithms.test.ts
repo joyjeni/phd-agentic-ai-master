@@ -65,8 +65,19 @@ describe("implemented algorithms and motivation", () => {
   it("adds motivation and algorithm slides to the proposal deck", () => {
     expect(SLIDES.find((slide) => slide.id === "motivation")?.title).toBe("Motivation");
     expect(SLIDES.find((slide) => slide.id === "method-algorithms")?.diagram).toBe("e2e");
-    expect(CONTENTS.some((item) => item.slideId === "motivation")).toBe(true);
-    expect(CONTENTS.some((item) => item.slideId === "method-algorithms")).toBe(true);
+    expect(CONTENTS.map((item) => item.title)).toEqual([
+      "Introduction",
+      "Literature Review",
+      "Summary of Literature Review",
+      "To Solve the Research Gap",
+      "Identified Research Problem",
+      "Research Title & Aim",
+      "Research Objectives",
+      "Research Questions",
+      "Research Methodology",
+      "Conclusion",
+    ]);
+    expect(CONTENTS.every((item) => /^\d{2}$/.test(item.n))).toBe(true);
     expect(JSON.stringify(SLIDES)).not.toMatch(/SessionRerank\+/);
   });
 
@@ -89,9 +100,8 @@ describe("implemented algorithms and motivation", () => {
     expect(SLIDES.find((slide) => slide.id === "overall-objective")?.body).toBe(OVERALL_OBJECTIVE.statement);
     expect(SLIDES.find((slide) => slide.id === "o1-satr")?.body).toBe(OBJECTIVES[0].objective);
     expect(SLIDES.find((slide) => slide.id === "objectives-nonclaim")?.body).toBe(NON_CLAIMS.statement);
-    expect(CONTENTS.find((item) => item.n === "05a")?.slideId).toBe("overall-objective");
-    expect(CONTENTS.find((item) => item.n === "06")?.slideId).toBe("objectives");
-    expect(CONTENTS.find((item) => item.n === "06e")?.slideId).toBe("objectives-nonclaim");
-    expect(CONTENTS.some((item) => item.slideId === "o1-satr")).toBe(true);
+    expect(CONTENTS.find((item) => item.title === "Research Objectives")?.slideId).toBe(
+      "overall-objective",
+    );
   });
 });

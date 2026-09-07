@@ -378,14 +378,13 @@ export async function buildProposalPptx(): Promise<Buffer> {
     }
 
     if (entry.kind === "contents") {
-      const mid = Math.ceil(CONTENTS.length / 2);
-      const column = (items: typeof CONTENTS) =>
-        items.map((item) => ({
-          text: `${item.n}   ${item.title}`,
-          options: { breakLine: true as const, fontSize: 12, fontFace: "Calibri", color: COLLEGE.ink },
-        }));
-      slide.addText(column(CONTENTS.slice(0, mid)), { x: 0.45, y, w: 6.15, h: 5.2, valign: "top" });
-      slide.addText(column(CONTENTS.slice(mid)), { x: 6.75, y, w: 6.15, h: 5.2, valign: "top" });
+      slide.addText(
+        CONTENTS.map((item) => ({
+          text: `${item.n}      ${item.title}`,
+          options: { breakLine: true as const, fontSize: 18, fontFace: "Calibri", color: COLLEGE.ink },
+        })),
+        { x: 0.7, y: y + 0.15, w: 11.8, h: 5.1, valign: "top", paraSpaceAfter: 10 },
+      );
       return;
     }
 

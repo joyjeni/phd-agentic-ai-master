@@ -198,11 +198,11 @@ function SlideDeckInner() {
           </div>
         ) : null}
         {slide.kind === "contents" ? (
-          <ol className="mt-5 grid gap-1 sm:grid-cols-2">
+          <ol className="mt-6 max-w-2xl space-y-1">
             {CONTENTS.map((item) => (
               <li key={item.slideId}>
                 <button
-                  className="w-full rounded-md px-2 py-1 text-left text-sm text-[#5a5a5a] hover:bg-[#3A1C64]/10 hover:text-[#3A1C64]"
+                  className="w-full rounded-md px-2 py-1.5 text-left text-base text-[#1a1a1a] hover:bg-[#3A1C64]/10 hover:text-[#3A1C64]"
                   onClick={() =>
                     setIndex(SLIDES.findIndex((entry) => entry.id === item.slideId))
                   }

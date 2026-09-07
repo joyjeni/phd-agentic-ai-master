@@ -61,8 +61,8 @@ describe("proposal slides", () => {
   it("includes implementation formulas and both walkthroughs in methodology", () => {
     for (const id of ["method-formulas", "method-walk-tb", "method-walk-ogd"]) {
       expect(SLIDES.some((slide) => slide.id === id)).toBe(true);
-      expect(CONTENTS.some((item) => item.slideId === id)).toBe(true);
     }
+    expect(CONTENTS.some((item) => item.slideId === "method-overview")).toBe(true);
     const blob = JSON.stringify(SLIDES);
     expect(blob).toMatch(/w_base/);
     expect(blob).toMatch(/tb\.agri\.soil_health/);
