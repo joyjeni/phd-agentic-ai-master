@@ -175,6 +175,62 @@ def add_table(slide, left, top, width, height, headers, rows) -> None:
                         run.font.color.rgb = MAROON
 
 
+def add_evidence_cards(slide, items, top) -> None:
+    if not items:
+        return
+    n = len(items)
+    gap = Inches(0.18)
+    left0 = Inches(0.35)
+    total = Inches(12.6)
+    width = Emu(int((total - gap * (n - 1)) / n))
+    height = Inches(4.55)
+    fields = (
+        ("Author(s)", "authors"),
+        ("Year", "year"),
+        ("Title", "title"),
+        ("Publication", "venue"),
+        ("Objective", "objective"),
+        ("Methodology", "methodology"),
+        ("Findings", "findings"),
+        ("Limitations", "limitations"),
+    )
+    for i, ev in enumerate(items):
+        x = left0 + Emu(int(i * (width + gap)))
+        card = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, x, top, width, height)
+        card.fill.solid()
+        card.fill.fore_color.rgb = WHITE
+        card.line.color.rgb = MAROON
+        card.line.width = Pt(1.25)
+        box = slide.shapes.add_textbox(
+            x + Inches(0.1), top + Inches(0.08), width - Inches(0.2), height - Inches(0.16)
+        )
+        tf = box.text_frame
+        tf.word_wrap = True
+        head = tf.paragraphs[0]
+        head.alignment = PP_ALIGN.LEFT
+        run = head.add_run()
+        run.text = f"Evidence {ev['n']}"
+        run.font.size = Pt(13)
+        run.font.bold = True
+        run.font.color.rgb = MAROON
+        run.font.name = "Calibri"
+        for label, key in fields:
+            p = tf.add_paragraph()
+            p.space_before = Pt(4)
+            p.space_after = Pt(0)
+            label_run = p.add_run()
+            label_run.text = f"{label}: "
+            label_run.font.size = Pt(10)
+            label_run.font.bold = True
+            label_run.font.color.rgb = MAROON
+            label_run.font.name = "Calibri"
+            value_run = p.add_run()
+            value_run.text = str(ev.get(key) or "")
+            value_run.font.size = Pt(10)
+            value_run.font.color.rgb = INK
+            value_run.font.name = "Calibri"
+
+
 def add_flow(slide, labels, top, fill: RGBColor) -> None:
     if not labels:
         return
@@ -466,8 +522,8 @@ def build() -> Path:
 
         y = Inches(1.72)
         if entry.get("body"):
-            add_textbox(slide, Inches(0.4), y, Inches(12.5), Inches(0.7), entry["body"], size=14, color=MUTED)
-            y = Inches(2.42)
+            add_textbox(slide, Inches(0.4), y, Inches(12.5), Inches(0.42), entry["body"], size=13, color=MUTED)
+            y = Inches(2.18)
 
         if entry.get("kind") == "contents":
             lines = [f"{item['n']}   {item['title']}" for item in CONTENTS]
@@ -475,6 +531,8 @@ def build() -> Path:
         elif entry.get("table"):
             table = entry["table"]
             add_table(slide, Inches(0.35), y, Inches(12.6), Inches(4.4), table["headers"], table["rows"])
+        elif entry.get("evidence"):
+            add_evidence_cards(slide, entry["evidence"], y)
         else:
             paras = entry.get("paragraphs") or []
             bullets = entry.get("bullets") or []

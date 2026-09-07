@@ -47,8 +47,12 @@ export default function HomePage() {
         <p className="mt-3 text-sm">
           <Link className="text-[var(--gold)] underline" href="/walkthrough">
             Full formula walkthrough
+          </Link>
+          {" · "}
+          <Link className="text-[var(--gold)] underline" href="/literature">
+            Literature survey (Evidence 1–14)
           </Link>{" "}
-          — ToolBench-schema soil tool and live AGMARKNET, all four objectives.
+          — FET template form.
         </p>
       </section>
       <PipelineLab />

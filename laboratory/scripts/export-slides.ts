@@ -1,6 +1,7 @@
 import { mkdirSync, writeFileSync, readdirSync, unlinkSync } from "node:fs";
 import { join } from "node:path";
 import { COLLEGE, PPTX_FILENAME, PPTX_TEMPLATE_COPY, STUDENT_DETAILS } from "../lib/research/college.ts";
+import { literatureSurveyMarkdown } from "../lib/research/literature.ts";
 import { allSlidesMarkdown, CONTENTS, SLIDES } from "../lib/research/slides.ts";
 
 const dir = join(import.meta.dirname, "../docs/slides");
@@ -24,6 +25,19 @@ function render(slide: (typeof SLIDES)[number], index: number): string {
     "",
   ];
   if (slide.body) lines.push(slide.body, "");
+  if (slide.evidence?.length) {
+    for (const item of slide.evidence) {
+      lines.push(`**Evidence ${item.n}**`, "");
+      lines.push(`- Author(s): ${item.authors}`);
+      lines.push(`- Year: ${item.year}`);
+      lines.push(`- Title: ${item.title}`);
+      lines.push(`- Publication: ${item.venue}`);
+      lines.push(`- Objective: ${item.objective}`);
+      lines.push(`- Methodology: ${item.methodology}`);
+      lines.push(`- Findings: ${item.findings}`);
+      lines.push(`- Limitations: ${item.limitations}`, "");
+    }
+  }
   for (const paragraph of slide.paragraphs ?? []) lines.push(paragraph, "");
   if (slide.kind === "contents") {
     lines.push("Paste into the university Google Slides template in this order.", "");
@@ -38,14 +52,16 @@ function render(slide: (typeof SLIDES)[number], index: number): string {
     for (const row of slide.table.rows) lines.push(`| ${row.join(" | ")} |`);
     lines.push("");
   }
-  for (const bullet of slide.bullets ?? []) lines.push(`- ${bullet}`);
-  if (slide.bullets?.length) lines.push("");
+  if (!slide.evidence?.length) {
+    for (const bullet of slide.bullets ?? []) lines.push(`- ${bullet}`);
+    if (slide.bullets?.length) lines.push("");
+  }
   if (slide.diagram && slide.diagram !== "none") {
     lines.push(`Diagram: \`${slide.diagram}\` — open /architecture in the laboratory.`, "");
   }
   if (slide.footnote) lines.push(`_${slide.footnote}_`, "");
   lines.push(
-    "Source of truth: `lib/research/slides.ts`. Paste into the MSRUAS Google Slides template in Contents order.",
+    "Source of truth: `lib/research/literature.ts` (Evidence 1…N) and `lib/research/slides.ts`. Paste into the MSRUAS Google Slides template in Contents order.",
     "",
   );
   return lines.join("\n");
@@ -82,6 +98,7 @@ writeFileSync(
 );
 
 writeFileSync(join(import.meta.dirname, "../docs/PROPOSAL_SLIDES.md"), allSlidesMarkdown());
+writeFileSync(join(import.meta.dirname, "../docs/LITERATURE_SURVEY.md"), literatureSurveyMarkdown());
 
 writeFileSync(
   join(dir, "slides.json"),

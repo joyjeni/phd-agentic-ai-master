@@ -297,6 +297,10 @@ describe("slides", () => {
         true,
       );
     }
+    expect(SLIDES.filter((slide) => slide.section === "Literature Review").length).toBeGreaterThanOrEqual(
+      7,
+    );
+    expect(SLIDES.some((slide) => slide.id === "literature-e01")).toBe(true);
     expect(SLIDES.filter((slide) => slide.section === "Research Methodology").length).toBeGreaterThanOrEqual(
       8,
     );
@@ -342,6 +346,31 @@ describe("slides", () => {
     expect(blob).toMatch(/doi:10\.1609\/aaai\.v34i08\.7039/);
     expect(blob).toMatch(/Science 327\(5964\):439–442/);
     expect(SURVEYED_DATASETS.find((d) => d.id === "agmarknet")?.usedBy).toMatch(/Guo, Woodruff/);
+  });
+
+  it("writes the literature survey as Evidence 1, Evidence 2, … with template fields", async () => {
+    const { LITERATURE_EVIDENCE } = await import("@/lib/research/literature");
+    expect(LITERATURE_EVIDENCE).toHaveLength(14);
+    expect(LITERATURE_EVIDENCE[0]?.n).toBe(1);
+    expect(LITERATURE_EVIDENCE[1]?.n).toBe(2);
+    for (const item of LITERATURE_EVIDENCE) {
+      expect(item.authors.length).toBeGreaterThan(8);
+      expect(item.year).toMatch(/^\d{4}$/);
+      expect(item.title.length).toBeGreaterThan(12);
+      expect(item.venue.length).toBeGreaterThan(8);
+      expect(item.objective.length).toBeGreaterThan(12);
+      expect(item.methodology.length).toBeGreaterThan(12);
+      expect(item.findings.length).toBeGreaterThan(12);
+      expect(item.limitations.length).toBeGreaterThan(12);
+    }
+    const first = SLIDES.find((slide) => slide.id === "literature-e01");
+    expect(first?.evidence?.map((item) => item.n)).toEqual([1, 2]);
+    expect(JSON.stringify(SLIDES)).toMatch(/Evidence 1/);
+    expect(JSON.stringify(SLIDES)).toMatch(/Evidence 14/);
+    expect(LITERATURE_EVIDENCE.find((item) => item.n === 9)?.title).toBe(
+      "Adaptive LLM Routing under Budget Constraints",
+    );
+    expect(LITERATURE_EVIDENCE.find((item) => item.n === 11)?.venue).toMatch(/UIST 2023/);
   });
 
   it("names Jenisha T and the MSRUAS register number on the title slide", async () => {

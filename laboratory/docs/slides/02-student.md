@@ -17,4 +17,4 @@ Attribute and Details as recorded for the FET research-proposal template.
 | Research Topic | Adaptive Context Reasoning System (ACRS) |
 | Supervisor | Dr. Jyothi A P |
 
-Source of truth: `lib/research/slides.ts`. Paste into the MSRUAS Google Slides template in Contents order.
+Source of truth: `lib/research/literature.ts` (Evidence 1…N) and `lib/research/slides.ts`. Paste into the MSRUAS Google Slides template in Contents order.

@@ -24,6 +24,17 @@ function slidePlainText(slide: Slide): string {
     "",
   ];
   if (slide.body) lines.push(slide.body, "");
+  for (const item of slide.evidence ?? []) {
+    lines.push(`Evidence ${item.n}`);
+    lines.push(`Author(s): ${item.authors}`);
+    lines.push(`Year: ${item.year}`);
+    lines.push(`Title: ${item.title}`);
+    lines.push(`Publication: ${item.venue}`);
+    lines.push(`Objective: ${item.objective}`);
+    lines.push(`Methodology: ${item.methodology}`);
+    lines.push(`Findings: ${item.findings}`);
+    lines.push(`Limitations: ${item.limitations}`, "");
+  }
   for (const paragraph of slide.paragraphs ?? []) lines.push(paragraph, "");
   if (slide.kind === "contents") {
     for (const item of CONTENTS) lines.push(`${item.n}  ${item.title}`);
@@ -105,6 +116,54 @@ export function SlideDeck() {
             {paragraph}
           </p>
         ))}
+        {slide.evidence?.length ? (
+          <div className="mt-4 grid gap-3 md:grid-cols-2">
+            {slide.evidence.map((item) => (
+              <article
+                key={item.n}
+                className="rounded-md border border-[#7C1D2E]/35 bg-white/70 p-3"
+              >
+                <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#7C1D2E]">
+                  Evidence {item.n}
+                </p>
+                <dl className="mt-2 space-y-1.5 text-[12px] leading-snug text-[#1a1214]">
+                  <div>
+                    <dt className="font-semibold text-[#7C1D2E]">Author(s)</dt>
+                    <dd>{item.authors}</dd>
+                  </div>
+                  <div>
+                    <dt className="font-semibold text-[#7C1D2E]">Year</dt>
+                    <dd>{item.year}</dd>
+                  </div>
+                  <div>
+                    <dt className="font-semibold text-[#7C1D2E]">Title</dt>
+                    <dd>{item.title}</dd>
+                  </div>
+                  <div>
+                    <dt className="font-semibold text-[#7C1D2E]">Publication</dt>
+                    <dd>{item.venue}</dd>
+                  </div>
+                  <div>
+                    <dt className="font-semibold text-[#7C1D2E]">Objective</dt>
+                    <dd>{item.objective}</dd>
+                  </div>
+                  <div>
+                    <dt className="font-semibold text-[#7C1D2E]">Methodology</dt>
+                    <dd>{item.methodology}</dd>
+                  </div>
+                  <div>
+                    <dt className="font-semibold text-[#7C1D2E]">Findings</dt>
+                    <dd>{item.findings}</dd>
+                  </div>
+                  <div>
+                    <dt className="font-semibold text-[#7C1D2E]">Limitations</dt>
+                    <dd>{item.limitations}</dd>
+                  </div>
+                </dl>
+              </article>
+            ))}
+          </div>
+        ) : null}
         {diagram ? (
           <div className="mt-5 rounded-md border border-[#c4a35a] bg-[#1a1214] p-3">
             <ArchitectureSvg variant={diagram} />
@@ -158,7 +217,7 @@ export function SlideDeck() {
               </tbody>
             </table>
           </div>
-        ) : slide.id === "title" ? (
+        ) : slide.evidence?.length ? null : slide.id === "title" ? (
           <div className="mt-8 space-y-1 text-center">
             <p className="text-lg text-[#5c4a4e]">
               Presented By:{" "}

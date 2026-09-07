@@ -1,5 +1,10 @@
 import { COLLEGE, STUDENT_DETAILS } from "./college";
 import {
+  chunkEvidence,
+  evidenceTemplateLines,
+  type LiteratureEvidence,
+} from "./literature";
+import {
   INTEGRATED_METHODOLOGY,
   OBJECTIVES,
   OVERALL_OBJECTIVE,
@@ -32,7 +37,29 @@ export type Slide = {
   footnote?: string;
   diagram?: SlideDiagram;
   table?: { headers: string[]; rows: string[][] };
+  /** FET template: Evidence 1, Evidence 2, … */
+  evidence?: LiteratureEvidence[];
 };
+
+function literatureReviewSlides(): Slide[] {
+  return chunkEvidence(2).map((pair, index) => {
+    const first = pair[0];
+    const last = pair[pair.length - 1];
+    const range =
+      pair.length === 1 ? `Evidence ${first.n}` : `Evidence ${first.n} & Evidence ${last.n}`;
+    return {
+      id: `literature-e${String(first.n).padStart(2, "0")}`,
+      section: "Literature Review",
+      title: index === 0 ? "Literature Review" : `Literature Review — ${range}`,
+      body:
+        index === 0
+          ? "FET template. Each paper is one Evidence block: Author(s), Year, Title, Publication, Objective, Methodology, Findings, Limitations."
+          : `Continuation. ${range} in the same Evidence template.`,
+      evidence: pair,
+      bullets: pair.flatMap(evidenceTemplateLines),
+    };
+  });
+}
 
 export type ContentsItem = { n: string; title: string; slideId: string };
 
@@ -88,7 +115,7 @@ export const SLIDES: Slide[] = [
     section: "Contents",
     title: "Contents",
     kind: "contents",
-    body: "Nine required sections. Research Methodology is expanded for each objective (O1 SATR, O2 APRR, O3 MNCD, O4 FCNP), the integrated loop, the exact repository formulas, and two worked traces (ToolBench-schema ranking; live data.gov.in). Objective order is SATR → APRR → MNCD → FCNP (not SMART).",
+    body: "Nine required sections. Literature Review follows the FET Evidence 1, Evidence 2, … template. Research Methodology is expanded for each objective (O1 SATR, O2 APRR, O3 MNCD, O4 FCNP), the integrated loop, the exact repository formulas, and two worked traces (ToolBench-schema ranking; live data.gov.in). Objective order is SATR → APRR → MNCD → FCNP (not SMART).",
   },
   {
     id: "introduction",
@@ -98,35 +125,11 @@ export const SLIDES: Slide[] = [
     paragraphs: [
       "Wu et al. introduce AutoGen as a conversation-driven programming framework in which agents exchange messages until a stopping condition (ICLR 2024 LLM Agents Workshop; COLM 2024, arXiv:2308.08155). Hong et al. encode Standard Operating Procedures into MetaGPT so that a software-company metaphor produces structured artefacts (ICLR 2024). Qian et al. organise ChatDev as a chat-chain of organisational roles (ACL 2024). Li et al. study communicative agents in CAMEL (NeurIPS 2023).",
       "Tool use is a parallel line. Qin et al. release ToolLLM / ToolBench: 16k+ REST APIs, a DFSDT planner, and ToolEval (ICLR 2024). Zheng et al. add ToolRerank over ToolLLM candidates (LREC-COLING 2024). Learned routers (RouteLLM, MasRouter, PILOT) pick models or collaboration modes. LLMLingua shortens prompts by token importance (EMNLP 2023).",
-      "Those stacks still leave four operational surfaces underspecified as one contract: session–tool fusion, a training-free specialist posterior, fail-loud live Indian Open Government Data, and a mesh prune that writes a residue back into retrieval.",
+      "Those stacks still leave four operational surfaces underspecified as one contract: session–tool fusion, a training-free specialist posterior, fail-loud live Indian Open Government Data, and a mesh prune that writes a residue back into retrieval. The next slides record that literature as Evidence 1, Evidence 2, … in the FET template.",
       "ACRS is proposed as that missing layer. The integration order is SATR → APRR → MNCD → FCNP. The live demonstration corpus is Agriculture on data.gov.in. This deck does not claim a leaderboard number.",
     ],
   },
-  {
-    id: "literature-mas",
-    section: "Literature Review",
-    title: "Literature Review",
-    body: "Multi-agent systems literature. What the cited papers actually contribute, and what they leave open for a structural orchestration layer.",
-    paragraphs: [
-      "Wu et al., AutoGen (COLM 2024 / ICLR 2024 workshop): conversation as the programming model. Gap: messages, not (toolId, score, live citation), are the unit of coordination.",
-      "Hong et al., MetaGPT (ICLR 2024): authored SOPs reduce role drift. Gap: the graph of who speaks next is written by the designer, not updated from session-local affinity after a live tool call.",
-      "Qian et al., ChatDev (ACL 2024): organisational chat-chain for software artefacts. Gap: the environment is a codebase, not a ministry API.",
-      "Li et al., CAMEL (NeurIPS 2023): inception prompting and communicative role-play. Gap: no first-class vote over tool identifiers backed by Open Government Data.",
-      "Taken together, these systems prove conversation, SOPs, software roles, and inception prompting. None of them is a session–route–mesh–prune loop over live Indian OGD.",
-    ],
-  },
-  {
-    id: "literature-tools",
-    section: "Literature Review",
-    title: "Literature Review — tools, routing, and compression",
-    body: "Tool learning, learned routers, and prompt compression are real literatures. They are not substitutes for the four ACRS modules.",
-    paragraphs: [
-      "Qin et al., ToolLLM / ToolBench (ICLR 2024): SBERT API retriever, DFSDT planner, ToolEval. Zheng et al., ToolRerank (LREC-COLING 2024): contrastive rerank of ToolLLM candidates. Gap: both are turn-amnesic; they do not fuse which tools actually fired into the next rank.",
-      "Ong et al., RouteLLM (ICLR 2025); Yue et al., MasRouter (ACL 2025); Panda et al., Adaptive LLM Routing / PILOT (Findings of EMNLP 2025): learned or bandit routers over LLM SKUs or collaboration modes. Gap: they do not maintain a training-free Dirichlet–Thompson posterior over named tool specialists.",
-      "Jiang et al., LLMLingua (EMNLP 2023): token-importance prompt compression. Gap: compression does not prune a mesh by conductance or write a residue back into retrieval.",
-      "Guo, Woodruff & Yadav, PECAD (AAAI 2020): AGMARKNET as a decision-support input for price prediction. Gap: a crop-yield / price CNN is not a multi-agent live-OGD loop. Cited as domain precedent, not as a baseline to beat.",
-    ],
-  },
+  ...literatureReviewSlides(),
   {
     id: "literature-summary",
     section: "Summary of Literature Review",
@@ -451,7 +454,7 @@ export const SLIDES: Slide[] = [
 /** High-level academic outline shown on the Contents slide (the nine required headings, with methodology expanded). */
 export const OUTLINE: ContentsItem[] = [
   { n: "01", title: "Introduction", slideId: "introduction" },
-  { n: "02", title: "Literature Review", slideId: "literature-mas" },
+  { n: "02", title: "Literature Review", slideId: "literature-e01" },
   { n: "03", title: "Summary of Literature Review", slideId: "literature-summary" },
   { n: "04", title: "Identified Research Problem", slideId: "problem" },
   { n: "05", title: "Research Title & Aim", slideId: "title-aim" },
@@ -486,6 +489,19 @@ function slideToMarkdown(slide: Slide, index: number): string {
     "",
   ];
   if (slide.body) lines.push(slide.body, "");
+  if (slide.evidence?.length) {
+    for (const item of slide.evidence) {
+      lines.push(`**Evidence ${item.n}**`, "");
+      lines.push(`- Author(s): ${item.authors}`);
+      lines.push(`- Year: ${item.year}`);
+      lines.push(`- Title: ${item.title}`);
+      lines.push(`- Publication: ${item.venue}`);
+      lines.push(`- Objective: ${item.objective}`);
+      lines.push(`- Methodology: ${item.methodology}`);
+      lines.push(`- Findings: ${item.findings}`);
+      lines.push(`- Limitations: ${item.limitations}`, "");
+    }
+  }
   for (const paragraph of slide.paragraphs ?? []) {
     lines.push(paragraph, "");
   }
@@ -500,10 +516,12 @@ function slideToMarkdown(slide: Slide, index: number): string {
     }
     lines.push("");
   }
-  for (const bullet of slide.bullets ?? []) {
-    lines.push(`- ${bullet}`);
+  if (!slide.evidence?.length) {
+    for (const bullet of slide.bullets ?? []) {
+      lines.push(`- ${bullet}`);
+    }
+    if (slide.bullets?.length) lines.push("");
   }
-  if (slide.bullets?.length) lines.push("");
   if (slide.diagram && slide.diagram !== "none") {
     lines.push(`Diagram: ${slide.diagram} (see /architecture in the laboratory).`, "");
   }

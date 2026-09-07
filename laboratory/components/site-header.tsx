@@ -9,6 +9,7 @@ const LINKS = [
   { href: "/pipeline", label: "Pipeline" },
   { href: "/walkthrough", label: "Walkthrough" },
   { href: "/objectives", label: "Objectives" },
+  { href: "/literature", label: "Literature" },
   { href: "/architecture", label: "Architecture" },
   { href: "/proposal", label: "Proposal slides" },
   { href: "/datasets", label: "Datasets" },

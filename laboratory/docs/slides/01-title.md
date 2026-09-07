@@ -12,4 +12,4 @@ A Structural Orchestration Layer for Multi-Agent LLM Ecosystems
 
 _Proposal stage. No empirical performance claims. Live Indian Open Government Data is a methodological constraint, not a result._
 
-Source of truth: `lib/research/slides.ts`. Paste into the MSRUAS Google Slides template in Contents order.
+Source of truth: `lib/research/literature.ts` (Evidence 1…N) and `lib/research/slides.ts`. Paste into the MSRUAS Google Slides template in Contents order.

@@ -62,10 +62,12 @@ q_t + co-activation cache + FCNP memory
 ## Research proposal deck
 
 The deck follows the MSRUAS / FET template and the required proposal outline:
-Introduction, Literature Review, Summary of Literature Review, Identified Research
-Problem, Research Title & Aim, Research Objectives, Research Questions, Research
-Methodology (one method slide per objective plus the integrated loop), Conclusion.
-Canonical source: `lib/research/slides.ts`. Preview: `/proposal`.
+Introduction, Literature Review (Evidence 1, Evidence 2, …), Summary of Literature
+Review, Identified Research Problem, Research Title & Aim, Research Objectives,
+Research Questions, Research Methodology (one method slide per objective plus the
+integrated loop), Conclusion. Canonical sources: `lib/research/literature.ts` and
+`lib/research/slides.ts`. Preview: `/proposal` and `/literature`.
+Pasteable Word form: `docs/LITERATURE_SURVEY.md`.
 
 ## Where to get the PowerPoint
 

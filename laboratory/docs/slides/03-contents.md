@@ -2,7 +2,7 @@
 
 *Contents*
 
-Nine required sections. Research Methodology is expanded for each objective (O1 SATR, O2 APRR, O3 MNCD, O4 FCNP), the integrated loop, the exact repository formulas, and two worked traces (ToolBench-schema ranking; live data.gov.in). Objective order is SATR → APRR → MNCD → FCNP (not SMART).
+Nine required sections. Literature Review follows the FET Evidence 1, Evidence 2, … template. Research Methodology is expanded for each objective (O1 SATR, O2 APRR, O3 MNCD, O4 FCNP), the integrated loop, the exact repository formulas, and two worked traces (ToolBench-schema ranking; live data.gov.in). Objective order is SATR → APRR → MNCD → FCNP (not SMART).
 
 Paste into the university Google Slides template in this order.
 
@@ -24,4 +24,4 @@ Paste into the university Google Slides template in this order.
 08h  Methodology — data.gov.in walkthrough
 09  Conclusion
 
-Source of truth: `lib/research/slides.ts`. Paste into the MSRUAS Google Slides template in Contents order.
+Source of truth: `lib/research/literature.ts` (Evidence 1…N) and `lib/research/slides.ts`. Paste into the MSRUAS Google Slides template in Contents order.

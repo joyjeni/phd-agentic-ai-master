@@ -300,6 +300,53 @@ export async function buildProposalPptx(): Promise<Buffer> {
       return;
     }
 
+    if (entry.evidence?.length) {
+      const n = entry.evidence.length;
+      const gap = 0.18;
+      const total = 12.5;
+      const width = (total - gap * (n - 1)) / n;
+      for (let i = 0; i < n; i += 1) {
+        const ev = entry.evidence[i];
+        if (!ev) continue;
+        const x = 0.4 + i * (width + gap);
+        slide.addShape(pptx.ShapeType.roundRect, {
+          x,
+          y,
+          w: width,
+          h: 4.55,
+          fill: { color: "FFFFFF" },
+          line: { color: COLLEGE.maroon, pt: 1.25 },
+          rectRadius: 0.08,
+        });
+        slide.addText(
+          [
+            {
+              text: `Evidence ${ev.n}`,
+              options: { bold: true, color: COLLEGE.maroon, fontSize: 13, breakLine: true },
+            },
+            { text: "Author(s): ", options: { bold: true, color: COLLEGE.maroon, fontSize: 10 } },
+            { text: ev.authors, options: { color: COLLEGE.ink, fontSize: 10, breakLine: true } },
+            { text: "Year: ", options: { bold: true, color: COLLEGE.maroon, fontSize: 10 } },
+            { text: ev.year, options: { color: COLLEGE.ink, fontSize: 10, breakLine: true } },
+            { text: "Title: ", options: { bold: true, color: COLLEGE.maroon, fontSize: 10 } },
+            { text: ev.title, options: { color: COLLEGE.ink, fontSize: 10, breakLine: true } },
+            { text: "Publication: ", options: { bold: true, color: COLLEGE.maroon, fontSize: 10 } },
+            { text: ev.venue, options: { color: COLLEGE.ink, fontSize: 10, breakLine: true } },
+            { text: "Objective: ", options: { bold: true, color: COLLEGE.maroon, fontSize: 10 } },
+            { text: ev.objective, options: { color: COLLEGE.ink, fontSize: 10, breakLine: true } },
+            { text: "Methodology: ", options: { bold: true, color: COLLEGE.maroon, fontSize: 10 } },
+            { text: ev.methodology, options: { color: COLLEGE.ink, fontSize: 10, breakLine: true } },
+            { text: "Findings: ", options: { bold: true, color: COLLEGE.maroon, fontSize: 10 } },
+            { text: ev.findings, options: { color: COLLEGE.ink, fontSize: 10, breakLine: true } },
+            { text: "Limitations: ", options: { bold: true, color: COLLEGE.maroon, fontSize: 10 } },
+            { text: ev.limitations, options: { color: COLLEGE.ink, fontSize: 10, breakLine: true } },
+          ],
+          { x: x + 0.1, y: y + 0.08, w: width - 0.2, h: 4.35, valign: "top", fontFace: "Calibri" },
+        );
+      }
+      return;
+    }
+
     const paras = entry.paragraphs ?? [];
     if (paras.length) {
       const leftover = entry.diagram ? 2.2 : 4.8;
