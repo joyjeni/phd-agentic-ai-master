@@ -69,4 +69,29 @@ describe("implemented algorithms and motivation", () => {
     expect(CONTENTS.some((item) => item.slideId === "method-algorithms")).toBe(true);
     expect(JSON.stringify(SLIDES)).not.toMatch(/SessionRerank\+/);
   });
+
+  it("places RESEARCH_OBJECTIVES.md in story flow on the slides", () => {
+    const ids = SLIDES.map((slide) => slide.id);
+    const motivation = ids.indexOf("motivation");
+    const overall = ids.indexOf("overall-objective");
+    const table = ids.indexOf("objectives");
+    const o1 = ids.indexOf("o1-satr");
+    const o4 = ids.indexOf("o4-fcnp");
+    const nonclaim = ids.indexOf("objectives-nonclaim");
+    const questions = ids.indexOf("questions");
+    expect(motivation).toBeGreaterThan(-1);
+    expect(motivation).toBeLessThan(overall);
+    expect(overall).toBeLessThan(table);
+    expect(table).toBeLessThan(o1);
+    expect(o1).toBeLessThan(o4);
+    expect(o4).toBeLessThan(nonclaim);
+    expect(nonclaim).toBeLessThan(questions);
+    expect(SLIDES.find((slide) => slide.id === "overall-objective")?.body).toBe(OVERALL_OBJECTIVE.statement);
+    expect(SLIDES.find((slide) => slide.id === "o1-satr")?.body).toBe(OBJECTIVES[0].objective);
+    expect(SLIDES.find((slide) => slide.id === "objectives-nonclaim")?.body).toBe(NON_CLAIMS.statement);
+    expect(CONTENTS.find((item) => item.n === "05a")?.slideId).toBe("overall-objective");
+    expect(CONTENTS.find((item) => item.n === "06")?.slideId).toBe("objectives");
+    expect(CONTENTS.find((item) => item.n === "06e")?.slideId).toBe("objectives-nonclaim");
+    expect(CONTENTS.some((item) => item.slideId === "o1-satr")).toBe(true);
+  });
 });

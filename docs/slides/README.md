@@ -34,24 +34,26 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 | 18 | [`18-arch-proposed.md`](./18-arch-proposed.md) | Proposed ACRS architecture |
 | 19 | [`19-problem.md`](./19-problem.md) | Identified Research Problem |
 | 20 | [`20-title-aim.md`](./20-title-aim.md) | Research Title & Aim |
-| 21 | [`21-objectives.md`](./21-objectives.md) | Research Objectives |
-| 22 | [`22-o1-satr.md`](./22-o1-satr.md) | Objective 1 — SATR |
-| 23 | [`23-o2-aprr.md`](./23-o2-aprr.md) | Objective 2 — APRR |
-| 24 | [`24-o3-mncd.md`](./24-o3-mncd.md) | Objective 3 — MNCD |
-| 25 | [`25-o4-fcnp.md`](./25-o4-fcnp.md) | Objective 4 — FCNP |
-| 26 | [`26-questions.md`](./26-questions.md) | Research Questions |
-| 27 | [`27-method-overview.md`](./27-method-overview.md) | Research Methodology |
-| 28 | [`28-method-satr.md`](./28-method-satr.md) | Research Methodology — O1 SATR |
-| 29 | [`29-method-aprr.md`](./29-method-aprr.md) | Research Methodology — O2 APRR |
-| 30 | [`30-method-mncd.md`](./30-method-mncd.md) | Research Methodology — O3 MNCD |
-| 31 | [`31-method-fcnp.md`](./31-method-fcnp.md) | Research Methodology — O4 FCNP |
-| 32 | [`32-method-integrated.md`](./32-method-integrated.md) | Research Methodology — integrated loop |
-| 33 | [`33-method-formulas.md`](./33-method-formulas.md) | Research Methodology — implementation formulas |
-| 34 | [`34-method-algorithms.md`](./34-method-algorithms.md) | Research Methodology — implemented algorithms |
-| 35 | [`35-method-walk-tb.md`](./35-method-walk-tb.md) | Research Methodology — ToolBench walkthrough |
-| 36 | [`36-method-walk-ogd.md`](./36-method-walk-ogd.md) | Research Methodology — data.gov.in walkthrough |
-| 37 | [`37-conclusion.md`](./37-conclusion.md) | Conclusion |
-| 38 | [`38-refs-1.md`](./38-refs-1.md) | References (1/3) — multi-agent orchestration (journals and flagship proceedings) |
-| 39 | [`39-refs-2.md`](./39-refs-2.md) | References (2/3) — tools, routing, compression, reasoning |
-| 40 | [`40-refs-3.md`](./40-refs-3.md) | References (3/3) — memory, biology, Indian agricultural data |
-| 41 | [`41-thanks.md`](./41-thanks.md) | Thank you |
+| 21 | [`21-overall-objective.md`](./21-overall-objective.md) | Research Objectives — overall |
+| 22 | [`22-objectives.md`](./22-objectives.md) | Research Objectives — individual |
+| 23 | [`23-o1-satr.md`](./23-o1-satr.md) | Objective 1 — SATR |
+| 24 | [`24-o2-aprr.md`](./24-o2-aprr.md) | Objective 2 — APRR |
+| 25 | [`25-o3-mncd.md`](./25-o3-mncd.md) | Objective 3 — MNCD |
+| 26 | [`26-o4-fcnp.md`](./26-o4-fcnp.md) | Objective 4 — FCNP |
+| 27 | [`27-objectives-nonclaim.md`](./27-objectives-nonclaim.md) | What these objectives do not claim |
+| 28 | [`28-questions.md`](./28-questions.md) | Research Questions |
+| 29 | [`29-method-overview.md`](./29-method-overview.md) | Research Methodology |
+| 30 | [`30-method-satr.md`](./30-method-satr.md) | Research Methodology — O1 SATR |
+| 31 | [`31-method-aprr.md`](./31-method-aprr.md) | Research Methodology — O2 APRR |
+| 32 | [`32-method-mncd.md`](./32-method-mncd.md) | Research Methodology — O3 MNCD |
+| 33 | [`33-method-fcnp.md`](./33-method-fcnp.md) | Research Methodology — O4 FCNP |
+| 34 | [`34-method-integrated.md`](./34-method-integrated.md) | Research Methodology — integrated loop |
+| 35 | [`35-method-formulas.md`](./35-method-formulas.md) | Research Methodology — implementation formulas |
+| 36 | [`36-method-algorithms.md`](./36-method-algorithms.md) | Research Methodology — implemented algorithms |
+| 37 | [`37-method-walk-tb.md`](./37-method-walk-tb.md) | Research Methodology — ToolBench walkthrough |
+| 38 | [`38-method-walk-ogd.md`](./38-method-walk-ogd.md) | Research Methodology — data.gov.in walkthrough |
+| 39 | [`39-conclusion.md`](./39-conclusion.md) | Conclusion |
+| 40 | [`40-refs-1.md`](./40-refs-1.md) | References (1/3) — multi-agent orchestration (journals and flagship proceedings) |
+| 41 | [`41-refs-2.md`](./41-refs-2.md) | References (2/3) — tools, routing, compression, reasoning |
+| 42 | [`42-refs-3.md`](./42-refs-3.md) | References (3/3) — memory, biology, Indian agricultural data |
+| 43 | [`43-thanks.md`](./43-thanks.md) | Thank you |

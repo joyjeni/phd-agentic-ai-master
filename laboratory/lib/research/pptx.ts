@@ -73,14 +73,14 @@ function chrome(pptx: PptxGenJS, slide: PptxGenJS.Slide, index: number, opts?: {
   addFooter(pptx, slide, index);
 }
 
-function addBody(slide: PptxGenJS.Slide, text: string, y: number, h = 0.7) {
+function addBody(slide: PptxGenJS.Slide, text: string, y: number, h = 0.7, fontSize = 14) {
   slide.addText(text, {
     x: 0.4,
     y,
     w: 12.5,
     h,
     fontFace: "Calibri",
-    fontSize: 14,
+    fontSize,
     color: COLLEGE.ink,
     valign: "top",
   });
@@ -371,16 +371,21 @@ export async function buildProposalPptx(): Promise<Buffer> {
 
     let y = entry.id === "student" ? 2.1 : 1.15;
     if (entry.body && entry.id !== "student") {
-      addBody(slide, entry.body, y, 0.55);
-      y += 0.58;
+      const long = entry.body.length > 220;
+      const h = long ? (entry.diagram ? 1.1 : 1.62) : 0.55;
+      addBody(slide, entry.body, y, h, long ? 13 : 14);
+      y += h + 0.08;
     }
 
     if (entry.kind === "contents") {
-      const items = CONTENTS.map((item) => ({
-        text: `${item.n}   ${item.title}`,
-        options: { breakLine: true as const, fontSize: 13, fontFace: "Calibri", color: COLLEGE.ink },
-      }));
-      slide.addText(items, { x: 0.5, y, w: 12.3, h: 4.9, valign: "top" });
+      const mid = Math.ceil(CONTENTS.length / 2);
+      const column = (items: typeof CONTENTS) =>
+        items.map((item) => ({
+          text: `${item.n}   ${item.title}`,
+          options: { breakLine: true as const, fontSize: 12, fontFace: "Calibri", color: COLLEGE.ink },
+        }));
+      slide.addText(column(CONTENTS.slice(0, mid)), { x: 0.45, y, w: 6.15, h: 5.2, valign: "top" });
+      slide.addText(column(CONTENTS.slice(mid)), { x: 6.75, y, w: 6.15, h: 5.2, valign: "top" });
       return;
     }
 

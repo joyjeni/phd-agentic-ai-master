@@ -438,8 +438,12 @@ describe("slides", () => {
     expect(SLIDES.find((slide) => slide.id === "arch-proposed")?.body).toMatch(/Session-Aware Tool Retrieval/);
     expect(CONTENTS.some((item) => item.slideId === "arch-sota")).toBe(true);
     expect(CONTENTS.some((item) => item.slideId === "arch-proposed")).toBe(true);
+    const overall = SLIDES.find((slide) => slide.id === "overall-objective");
+    expect(overall?.title).toMatch(/^Research Objectives/);
+    expect(overall?.body).toMatch(/To design and implement Adaptive Context Reasoning System/);
     const objectives = SLIDES.find((slide) => slide.id === "objectives");
-    expect(objectives?.body).toMatch(/To solve the research gap/);
+    expect(objectives?.title).toMatch(/^Research Objectives/);
+    expect(objectives?.body).toMatch(/To-design statement/);
     const md = literatureSurveyMarkdown();
     expect(md).toMatch(/## To solve the research gap/);
     expect(md).toMatch(/O1 SATR/);

@@ -5,6 +5,9 @@ Applied Sciences, FET. Supervisor: Dr. Jyothi A P. Date of registration:
 04-Sept-2024. Part Time.
 
 Canonical source: `lib/research/objectives.ts`. Lab page: `/objectives`.
+Proposal slides tell this document in story order: Motivation (01a) → Research
+Objectives — overall (05a) → Research Objectives — individual, then O1–O4
+(06–06d) → What these objectives do not claim (06e) → Research questions (07).
 
 These statements are **design objectives**. They do not commit a retrieval
 score, routing win-rate, consensus percentage, latency bound, token-reduction

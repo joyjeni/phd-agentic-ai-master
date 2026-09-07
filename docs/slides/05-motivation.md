@@ -12,4 +12,6 @@ This research is therefore motivated to specify Adaptive Context Reasoning Syste
 - A live Indian OGD turn needs all four as one fail-loud contract, with write-back into retrieval.
 - The motivation is to specify that contract, not to pre-commit a computational score.
 
+_Source: docs/RESEARCH_OBJECTIVES.md (canonical: lib/research/objectives.ts)._
+
 Source of truth: `lib/research/literature.ts` (Evidence 1…N) and `lib/research/slides.ts`. Paste into the MSRUAS Google Slides template in Contents order.

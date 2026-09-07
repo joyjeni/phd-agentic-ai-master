@@ -28,7 +28,11 @@ export default function ObjectivesPage() {
           <Link className="text-[var(--gold)] underline" href="/diagrams">
             Mermaid figures
           </Link>
-          .
+          {" · "}
+          <Link className="text-[var(--gold)] underline" href="/proposal?slide=motivation">
+            Proposal slides (story order)
+          </Link>
+          . Same text as <code className="text-[var(--paper)]">docs/RESEARCH_OBJECTIVES.md</code>.
         </p>
       </header>
 
