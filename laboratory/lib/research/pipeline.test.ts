@@ -341,8 +341,8 @@ describe("slides", () => {
 
     expect(blob).toMatch(/Adaptive LLM Routing under Budget Constraints/);
     expect(blob).toMatch(/doi:10\.18653\/v1\/2025\.findings-emnlp\.1301/);
-    expect(blob).toMatch(/Learning to Route LLMs from Preference Data\. ICLR 2025/);
-    expect(blob).toMatch(/UIST 2023 \(Best Paper\)\. doi:10\.1145\/3586183\.3606763/);
+    expect(blob).toMatch(/Learning to Route LLMs from Preference Data\. Proceedings of the Thirteenth International Conference on Learning Representations \(ICLR 2025\)/);
+    expect(blob).toMatch(/UIST 2023\), Best Paper\. doi:10\.1145\/3586183\.3606763/);
     expect(blob).toMatch(/Hambro, E\./);
     expect(blob).toMatch(/doi:10\.18653\/v1\/2024\.acl-long\.810/);
     expect(blob).toMatch(/doi:10\.18653\/v1\/2023\.emnlp-main\.825/);
@@ -375,6 +375,15 @@ describe("slides", () => {
       expect(item.limitations.length).toBeGreaterThan(12);
       expect(item.toSolve.length).toBeGreaterThan(12);
       expect(item.toSolve).not.toMatch(/NDCG/i);
+      const journal =
+        /Frontiers of Computer Science|ACM Transactions on Software Engineering and Methodology|^Science /.test(
+          item.venue,
+        );
+      const proceedings =
+        /Proceedings of |Advances in Neural Information Processing Systems|Findings of the Association for Computational Linguistics/.test(
+          item.venue,
+        );
+      expect(journal || proceedings).toBe(true);
     }
     const first = SLIDES.find((slide) => slide.id === "literature-e01");
     expect(first?.evidence?.map((item) => item.n)).toEqual([1, 2]);

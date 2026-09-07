@@ -9,7 +9,7 @@ Continuation. Evidence 5 & Evidence 6 in the same Evidence template.
 - Author(s): Wu, Q., Bansal, G., Zhang, J., Wu, Y., Li, B., Zhu, E., Jiang, L., Zhang, X., Zhang, S., Liu, J., Awadallah, A. H., White, R. W., Burger, D., and Wang, C.
 - Year: 2024
 - Title: AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversations
-- Publication: Conference on Language Modeling (COLM) 2024
+- Publication: Proceedings of the First Conference on Language Modeling (COLM 2024)
 - Objective: Program LLM applications by composing multiple conversable agents.
 - Methodology: Agents exchange natural-language messages until a stopping condition; modes mix LLMs, humans, and tools.
 - Findings: Conversation is a working programming model for multi-agent LLM applications.
@@ -21,7 +21,7 @@ Continuation. Evidence 5 & Evidence 6 in the same Evidence template.
 - Author(s): Hong, S., Zhuge, M., Chen, J., Zheng, X., Cheng, Y., Wang, J., Zhang, C., Wang, Z., Yau, S. K. S., Lin, Z., Zhou, L., Ran, C., Xiao, L., Wu, C., and Schmidhuber, J.
 - Year: 2024
 - Title: MetaGPT: Meta Programming for A Multi-Agent Collaborative Framework
-- Publication: ICLR 2024
+- Publication: Proceedings of the Twelfth International Conference on Learning Representations (ICLR 2024)
 - Objective: Reduce role drift in multi-agent software workflows by encoding human SOPs.
 - Methodology: Standard Operating Procedures are written into prompt sequences; an assembly-line assigns roles.
 - Findings: Authored SOPs produce more coherent software artefacts than unconstrained chat agents.

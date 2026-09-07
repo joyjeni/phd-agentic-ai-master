@@ -9,7 +9,7 @@ Continuation. Evidence 9 & Evidence 10 in the same Evidence template.
 - Author(s): Qin, Y., Liang, S., Ye, Y., Zhu, K., Yan, L., Lu, Y., Lin, Y., Cong, X., Tang, X., Qian, B., Zhao, S., Hong, L., Tian, R., Xie, R., Zhou, J., Gerstein, M., Li, D., Liu, Z., and Sun, M.
 - Year: 2024
 - Title: ToolLLM: Facilitating Large Language Models to Master 16000+ Real-world APIs
-- Publication: ICLR 2024
+- Publication: Proceedings of the Twelfth International Conference on Learning Representations (ICLR 2024)
 - Objective: Give open LLMs general tool-use over a large real-world API catalogue.
 - Methodology: ToolBench: 16,464 RapidAPI REST endpoints; SBERT retriever; DFSDT planner; ToolEval protocol.
 - Findings: A public ranking library and planner exist for large-scale tool use.
@@ -21,7 +21,7 @@ Continuation. Evidence 9 & Evidence 10 in the same Evidence template.
 - Author(s): Zheng, Y., Li, P., Liu, W., Liu, Y., Luan, J., and Wang, B.
 - Year: 2024
 - Title: ToolRerank: Adaptive and Hierarchy-Aware Reranking for Tool Retrieval
-- Publication: LREC-COLING 2024, pages 16263–16273. ACL Anthology 2024.lrec-main.1413
+- Publication: Proceedings of the 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024), pages 16263–16273. ACL Anthology 2024.lrec-main.1413
 - Objective: Refine ToolLLM-style retrieval for seen versus unseen APIs and for tool-library hierarchy.
 - Methodology: Adaptive truncation of seen/unseen APIs plus hierarchy-aware concentration or diversity.
 - Findings: Reranking the SBERT shortlist improves downstream tool execution quality.

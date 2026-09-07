@@ -9,7 +9,7 @@ Continuation. Evidence 15 & Evidence 16 in the same Evidence template.
 - Author(s): Park, J. S., O’Brien, J. C., Cai, C. J., Morris, M. R., Liang, P., and Bernstein, M. S.
 - Year: 2023
 - Title: Generative Agents: Interactive Simulacra of Human Behavior
-- Publication: UIST 2023 (Best Paper). doi:10.1145/3586183.3606763
+- Publication: Proceedings of the 36th Annual ACM Symposium on User Interface Software and Technology (UIST 2023), Best Paper. doi:10.1145/3586183.3606763
 - Objective: Give LLM agents a long-term memory stream for believable behaviour in a sandbox.
 - Methodology: Natural-language memory, reflection, and retrieval (recency, relevance, importance) inside a Sims-like town.
 - Findings: A memory stream supports individual plans and emergent social coordination among agents.

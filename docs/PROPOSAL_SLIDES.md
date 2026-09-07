@@ -85,7 +85,7 @@ ACRS is proposed as that missing layer. The integration order is SATR → APRR �
 
 *Literature Review*
 
-FET template. Each paper is one Evidence block: Author(s), Year, Title, Publication, Objective, Methodology, Findings, Limitations, To solve the research gap. Venues are journals or top international conference proceedings — not preprint reports.
+FET template. Each paper is one Evidence block: Author(s), Year, Title, Publication, Objective, Methodology, Findings, Limitations, To solve the research gap. Publication is the journal or the full international conference proceedings title — not a preprint report.
 
 **Evidence 1**
 
@@ -152,7 +152,7 @@ Continuation. Evidence 5 & Evidence 6 in the same Evidence template.
 - Author(s): Wu, Q., Bansal, G., Zhang, J., Wu, Y., Li, B., Zhu, E., Jiang, L., Zhang, X., Zhang, S., Liu, J., Awadallah, A. H., White, R. W., Burger, D., and Wang, C.
 - Year: 2024
 - Title: AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversations
-- Publication: Conference on Language Modeling (COLM) 2024
+- Publication: Proceedings of the First Conference on Language Modeling (COLM 2024)
 - Objective: Program LLM applications by composing multiple conversable agents.
 - Methodology: Agents exchange natural-language messages until a stopping condition; modes mix LLMs, humans, and tools.
 - Findings: Conversation is a working programming model for multi-agent LLM applications.
@@ -164,7 +164,7 @@ Continuation. Evidence 5 & Evidence 6 in the same Evidence template.
 - Author(s): Hong, S., Zhuge, M., Chen, J., Zheng, X., Cheng, Y., Wang, J., Zhang, C., Wang, Z., Yau, S. K. S., Lin, Z., Zhou, L., Ran, C., Xiao, L., Wu, C., and Schmidhuber, J.
 - Year: 2024
 - Title: MetaGPT: Meta Programming for A Multi-Agent Collaborative Framework
-- Publication: ICLR 2024
+- Publication: Proceedings of the Twelfth International Conference on Learning Representations (ICLR 2024)
 - Objective: Reduce role drift in multi-agent software workflows by encoding human SOPs.
 - Methodology: Standard Operating Procedures are written into prompt sequences; an assembly-line assigns roles.
 - Findings: Authored SOPs produce more coherent software artefacts than unconstrained chat agents.
@@ -182,7 +182,7 @@ Continuation. Evidence 7 & Evidence 8 in the same Evidence template.
 - Author(s): Qian, C., Liu, W., Liu, H., Chen, N., Dang, Y., Li, J., Yang, C., Chen, W., Su, Y., Cong, X., Xu, J., Li, D., Liu, Z., and Sun, M.
 - Year: 2024
 - Title: ChatDev: Communicative Agents for Software Development
-- Publication: ACL 2024 (long), pages 15174–15186. doi:10.18653/v1/2024.acl-long.810
+- Publication: Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), pages 15174–15186. doi:10.18653/v1/2024.acl-long.810
 - Objective: Organise specialised LLM agents as a chat-chain for software design, coding, and testing.
 - Methodology: Chat chain (what to communicate) plus communicative dehallucination (how to communicate).
 - Findings: Natural-language design talk and code-level debug talk can be unified in one multi-agent loop.
@@ -194,7 +194,7 @@ Continuation. Evidence 7 & Evidence 8 in the same Evidence template.
 - Author(s): Li, G., Hammoud, H. A. A. K., Itani, H., Khizbullin, D., and Ghanem, B.
 - Year: 2023
 - Title: CAMEL: Communicative Agents for “Mind” Exploration of Large Language Model Society
-- Publication: NeurIPS 2023
+- Publication: Advances in Neural Information Processing Systems 36 (NeurIPS 2023)
 - Objective: Enable autonomous cooperation among communicative agents with minimal human steering.
 - Methodology: Role-playing with inception prompting to keep agents on a human-specified task.
 - Findings: Inception prompting yields scalable multi-agent conversational data and cooperative behaviour.
@@ -212,7 +212,7 @@ Continuation. Evidence 9 & Evidence 10 in the same Evidence template.
 - Author(s): Qin, Y., Liang, S., Ye, Y., Zhu, K., Yan, L., Lu, Y., Lin, Y., Cong, X., Tang, X., Qian, B., Zhao, S., Hong, L., Tian, R., Xie, R., Zhou, J., Gerstein, M., Li, D., Liu, Z., and Sun, M.
 - Year: 2024
 - Title: ToolLLM: Facilitating Large Language Models to Master 16000+ Real-world APIs
-- Publication: ICLR 2024
+- Publication: Proceedings of the Twelfth International Conference on Learning Representations (ICLR 2024)
 - Objective: Give open LLMs general tool-use over a large real-world API catalogue.
 - Methodology: ToolBench: 16,464 RapidAPI REST endpoints; SBERT retriever; DFSDT planner; ToolEval protocol.
 - Findings: A public ranking library and planner exist for large-scale tool use.
@@ -224,7 +224,7 @@ Continuation. Evidence 9 & Evidence 10 in the same Evidence template.
 - Author(s): Zheng, Y., Li, P., Liu, W., Liu, Y., Luan, J., and Wang, B.
 - Year: 2024
 - Title: ToolRerank: Adaptive and Hierarchy-Aware Reranking for Tool Retrieval
-- Publication: LREC-COLING 2024, pages 16263–16273. ACL Anthology 2024.lrec-main.1413
+- Publication: Proceedings of the 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024), pages 16263–16273. ACL Anthology 2024.lrec-main.1413
 - Objective: Refine ToolLLM-style retrieval for seen versus unseen APIs and for tool-library hierarchy.
 - Methodology: Adaptive truncation of seen/unseen APIs plus hierarchy-aware concentration or diversity.
 - Findings: Reranking the SBERT shortlist improves downstream tool execution quality.
@@ -242,7 +242,7 @@ Continuation. Evidence 11 & Evidence 12 in the same Evidence template.
 - Author(s): Ong, I., Almahairi, A., Wu, V., Chiang, W.-L., Wu, T., Gonzalez, J. E., Kadous, M. W., and Stoica, I.
 - Year: 2025
 - Title: RouteLLM: Learning to Route LLMs from Preference Data
-- Publication: ICLR 2025
+- Publication: Proceedings of the Thirteenth International Conference on Learning Representations (ICLR 2025)
 - Objective: Route each query between a stronger and a weaker LLM from human preference data.
 - Methodology: Trained router plus data augmentation; deployed as a frozen policy at inference.
 - Findings: Preference-trained routers can cut cost while holding response quality on public benchmarks.
@@ -254,7 +254,7 @@ Continuation. Evidence 11 & Evidence 12 in the same Evidence template.
 - Author(s): Yue, Y., Zhang, G., Liu, B., Wan, G., Wang, K., Cheng, D., and Qi, Y.
 - Year: 2025
 - Title: MasRouter: Learning to Route LLMs for Multi-Agent Systems
-- Publication: ACL 2025 (long), pages 15549–15572. doi:10.18653/v1/2025.acl-long.757
+- Publication: Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), pages 15549–15572. doi:10.18653/v1/2025.acl-long.757
 - Objective: Unify collaboration mode, role allocation, and LLM choice as one MAS routing problem.
 - Methodology: Cascaded neural controller trained over multi-agent topologies.
 - Findings: A learned controller can assemble a cheaper MAS than a static multi-agent template.
@@ -284,7 +284,7 @@ Continuation. Evidence 13 & Evidence 14 in the same Evidence template.
 - Author(s): Jiang, H., Wu, Q., Lin, C.-Y., Yang, Y., and Qiu, L.
 - Year: 2023
 - Title: LLMLingua: Compressing Prompts for Accelerated Inference of Large Language Models
-- Publication: EMNLP 2023, pages 13358–13376. doi:10.18653/v1/2023.emnlp-main.825
+- Publication: Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing, pages 13358–13376. doi:10.18653/v1/2023.emnlp-main.825
 - Objective: Shorten long prompts while keeping task performance.
 - Methodology: Budget controller plus token-level iterative compression aligned to the target LLM.
 - Findings: Token-importance compression can reduce prompt length with limited quality loss.
@@ -302,7 +302,7 @@ Continuation. Evidence 15 & Evidence 16 in the same Evidence template.
 - Author(s): Park, J. S., O’Brien, J. C., Cai, C. J., Morris, M. R., Liang, P., and Bernstein, M. S.
 - Year: 2023
 - Title: Generative Agents: Interactive Simulacra of Human Behavior
-- Publication: UIST 2023 (Best Paper). doi:10.1145/3586183.3606763
+- Publication: Proceedings of the 36th Annual ACM Symposium on User Interface Software and Technology (UIST 2023), Best Paper. doi:10.1145/3586183.3606763
 - Objective: Give LLM agents a long-term memory stream for believable behaviour in a sandbox.
 - Methodology: Natural-language memory, reflection, and retrieval (recency, relevance, importance) inside a Sims-like town.
 - Findings: A memory stream supports individual plans and emergent social coordination among agents.
@@ -332,7 +332,7 @@ Continuation. Evidence 17 & Evidence 18 in the same Evidence template.
 - Author(s): Guo, H., Woodruff, A., and Yadav, A.
 - Year: 2020
 - Title: Improving Lives of Indebted Farmers Using Deep Learning: Predicting Agricultural Produce Prices Using Convolutional Neural Networks (PECAD)
-- Publication: AAAI 2020. doi:10.1609/aaai.v34i08.7039
+- Publication: Proceedings of the AAAI Conference on Artificial Intelligence, 34(08):13294–13299. doi:10.1609/aaai.v34i08.7039
 - Objective: Use AGMARKNET price series as decision-support input for indebted farmers.
 - Methodology: Convolutional networks over scraped agricultural produce prices.
 - Findings: AGMARKNET is a real Indian decision-support corpus, not a toy table.
@@ -344,7 +344,7 @@ Continuation. Evidence 17 & Evidence 18 in the same Evidence template.
 - Author(s): Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K., and Cao, Y.
 - Year: 2023
 - Title: ReAct: Synergizing Reasoning and Acting in Language Models
-- Publication: ICLR 2023
+- Publication: Proceedings of the Eleventh International Conference on Learning Representations (ICLR 2023)
 - Objective: Interleave reasoning traces with actions so a language model can use tools.
 - Methodology: Thought–action–observation cycles on the already-chosen tool set.
 - Findings: Reasoning-and-acting beats reason-only or act-only prompting on several agent tasks.
@@ -644,35 +644,35 @@ ACRS is proposed as a structural orchestration layer. The contribution is the cl
 - He, J., Treude, C., and Lo, D. LLM-Based Multi-Agent Systems for Software Engineering: Literature Review, Vision, and the Road Ahead. ACM Transactions on Software Engineering and Methodology, 34(5), May 2025. doi:10.1145/3712003.
 - Guo, T., Chen, X., Wang, Y., Chang, R., Pei, S., Chawla, N. V., Wiest, O., and Zhang, X. Large Language Model based Multi-Agents: A Survey of Progress and Challenges. Proceedings of the Thirty-Third International Joint Conference on Artificial Intelligence (IJCAI-24), Survey Track, pages 8048–8057. doi:10.24963/ijcai.2024/890.
 - Chang, E. Y., and Geng, L. SagaLLM: Context Management, Validation, and Transaction Guarantees for Multi-Agent LLM Planning. Proceedings of the VLDB Endowment (PVLDB), 18(12):4874–4886, 2025. doi:10.14778/3750601.3750611.
-- Wu, Q., Bansal, G., Zhang, J., Wu, Y., Li, B., Zhu, E., Jiang, L., Zhang, X., Zhang, S., Liu, J., Awadallah, A. H., White, R. W., Burger, D., and Wang, C. AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversations. Conference on Language Modeling (COLM) 2024.
-- Hong, S., Zhuge, M., Chen, J., Zheng, X., Cheng, Y., Wang, J., Zhang, C., Wang, Z., Yau, S. K. S., Lin, Z., Zhou, L., Ran, C., Xiao, L., Wu, C., and Schmidhuber, J. MetaGPT: Meta Programming for A Multi-Agent Collaborative Framework. ICLR 2024.
-- Li, G., Hammoud, H. A. A. K., Itani, H., Khizbullin, D., and Ghanem, B. CAMEL: Communicative Agents for “Mind” Exploration of Large Language Model Society. NeurIPS 2023.
-- Qian, C., Liu, W., Liu, H., Chen, N., Dang, Y., Li, J., Yang, C., Chen, W., Su, Y., Cong, X., Xu, J., Li, D., Liu, Z., and Sun, M. ChatDev: Communicative Agents for Software Development. ACL 2024 (long), pages 15174–15186. doi:10.18653/v1/2024.acl-long.810.
+- Wu, Q., Bansal, G., Zhang, J., Wu, Y., Li, B., Zhu, E., Jiang, L., Zhang, X., Zhang, S., Liu, J., Awadallah, A. H., White, R. W., Burger, D., and Wang, C. AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversations. Proceedings of the First Conference on Language Modeling (COLM 2024).
+- Hong, S., Zhuge, M., Chen, J., Zheng, X., Cheng, Y., Wang, J., Zhang, C., Wang, Z., Yau, S. K. S., Lin, Z., Zhou, L., Ran, C., Xiao, L., Wu, C., and Schmidhuber, J. MetaGPT: Meta Programming for A Multi-Agent Collaborative Framework. Proceedings of the Twelfth International Conference on Learning Representations (ICLR 2024).
+- Li, G., Hammoud, H. A. A. K., Itani, H., Khizbullin, D., and Ghanem, B. CAMEL: Communicative Agents for “Mind” Exploration of Large Language Model Society. Advances in Neural Information Processing Systems 36 (NeurIPS 2023).
+- Qian, C., Liu, W., Liu, H., Chen, N., Dang, Y., Li, J., Yang, C., Chen, W., Su, Y., Cong, X., Xu, J., Li, D., Liu, Z., and Sun, M. ChatDev: Communicative Agents for Software Development. Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), pages 15174–15186. doi:10.18653/v1/2024.acl-long.810.
 
 ## 35 References (2/3) — tools, routing, compression, reasoning
 
 *References 2/3*
 
-- Qin, Y., Liang, S., Ye, Y., Zhu, K., Yan, L., Lu, Y., Lin, Y., Cong, X., Tang, X., Qian, B., Zhao, S., Hong, L., Tian, R., Xie, R., Zhou, J., Gerstein, M., Li, D., Liu, Z., and Sun, M. ToolLLM: Facilitating Large Language Models to Master 16000+ Real-world APIs. ICLR 2024.
-- Zheng, Y., Li, P., Liu, W., Liu, Y., Luan, J., and Wang, B. ToolRerank: Adaptive and Hierarchy-Aware Reranking for Tool Retrieval. LREC-COLING 2024, pages 16263–16273. ACL Anthology 2024.lrec-main.1413.
-- Ong, I., Almahairi, A., Wu, V., Chiang, W.-L., Wu, T., Gonzalez, J. E., Kadous, M. W., and Stoica, I. RouteLLM: Learning to Route LLMs from Preference Data. ICLR 2025.
+- Qin, Y., Liang, S., Ye, Y., Zhu, K., Yan, L., Lu, Y., Lin, Y., Cong, X., Tang, X., Qian, B., Zhao, S., Hong, L., Tian, R., Xie, R., Zhou, J., Gerstein, M., Li, D., Liu, Z., and Sun, M. ToolLLM: Facilitating Large Language Models to Master 16000+ Real-world APIs. Proceedings of the Twelfth International Conference on Learning Representations (ICLR 2024).
+- Zheng, Y., Li, P., Liu, W., Liu, Y., Luan, J., and Wang, B. ToolRerank: Adaptive and Hierarchy-Aware Reranking for Tool Retrieval. Proceedings of the 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024), pages 16263–16273. ACL Anthology 2024.lrec-main.1413.
+- Ong, I., Almahairi, A., Wu, V., Chiang, W.-L., Wu, T., Gonzalez, J. E., Kadous, M. W., and Stoica, I. RouteLLM: Learning to Route LLMs from Preference Data. Proceedings of the Thirteenth International Conference on Learning Representations (ICLR 2025).
 - Panda, P., Magazine, R., Devaguptapu, C., Takemori, S., and Sharma, V. Adaptive LLM Routing under Budget Constraints. Findings of the Association for Computational Linguistics: EMNLP 2025, pages 23934–23949. doi:10.18653/v1/2025.findings-emnlp.1301.
-- Yue, Y., Zhang, G., Liu, B., Wan, G., Wang, K., Cheng, D., and Qi, Y. MasRouter: Learning to Route LLMs for Multi-Agent Systems. ACL 2025 (long), pages 15549–15572. doi:10.18653/v1/2025.acl-long.757.
-- Jiang, H., Wu, Q., Lin, C.-Y., Yang, Y., and Qiu, L. LLMLingua: Compressing Prompts for Accelerated Inference of Large Language Models. EMNLP 2023, pages 13358–13376. doi:10.18653/v1/2023.emnlp-main.825.
-- Wei, J., Wang, X., Schuurmans, D., Bosma, M., Ichter, B., Xia, F., Chi, E., Le, Q., and Zhou, D. Chain-of-Thought Prompting Elicits Reasoning in Large Language Models. NeurIPS 2022.
-- Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K., and Cao, Y. ReAct: Synergizing Reasoning and Acting in Language Models. ICLR 2023.
+- Yue, Y., Zhang, G., Liu, B., Wan, G., Wang, K., Cheng, D., and Qi, Y. MasRouter: Learning to Route LLMs for Multi-Agent Systems. Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), pages 15549–15572. doi:10.18653/v1/2025.acl-long.757.
+- Jiang, H., Wu, Q., Lin, C.-Y., Yang, Y., and Qiu, L. LLMLingua: Compressing Prompts for Accelerated Inference of Large Language Models. Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing, pages 13358–13376. doi:10.18653/v1/2023.emnlp-main.825.
+- Wei, J., Wang, X., Schuurmans, D., Bosma, M., Ichter, B., Xia, F., Chi, E., Le, Q., and Zhou, D. Chain-of-Thought Prompting Elicits Reasoning in Large Language Models. Advances in Neural Information Processing Systems 35 (NeurIPS 2022).
+- Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K., and Cao, Y. ReAct: Synergizing Reasoning and Acting in Language Models. Proceedings of the Eleventh International Conference on Learning Representations (ICLR 2023).
 
 ## 36 References (3/3) — memory, biology, Indian agricultural data
 
 *References 3/3*
 
-- Yao, S., Yu, D., Zhao, J., Shafran, I., Griffiths, T. L., Cao, Y., and Narasimhan, K. Tree of Thoughts: Deliberate Problem Solving with Large Language Models. NeurIPS 2023.
-- Park, J. S., O’Brien, J. C., Cai, C. J., Morris, M. R., Liang, P., and Bernstein, M. S. Generative Agents: Interactive Simulacra of Human Behavior. UIST 2023 (Best Paper). doi:10.1145/3586183.3606763.
+- Yao, S., Yu, D., Zhao, J., Shafran, I., Griffiths, T. L., Cao, Y., and Narasimhan, K. Tree of Thoughts: Deliberate Problem Solving with Large Language Models. Advances in Neural Information Processing Systems 36 (NeurIPS 2023).
+- Park, J. S., O’Brien, J. C., Cai, C. J., Morris, M. R., Liang, P., and Bernstein, M. S. Generative Agents: Interactive Simulacra of Human Behavior. Proceedings of the 36th Annual ACM Symposium on User Interface Software and Technology (UIST 2023), Best Paper. doi:10.1145/3586183.3606763.
 - Tero, A., Takagi, S., Saigusa, T., Ito, K., Bebber, D. P., Fricker, M. D., Yumiki, K., Kobayashi, R., and Nakagaki, T. Rules for Biologically Inspired Adaptive Network Design. Science 327(5964):439–442, 2010. doi:10.1126/science.1177894.
-- Shinn, N., Cassano, F., Gopinath, A., Narasimhan, K., and Yao, S. Reflexion: Language Agents with Verbal Reinforcement Learning. NeurIPS 2023.
-- Shen, Y., Song, K., Tan, X., Li, D., Lu, W., and Zhuang, Y. HuggingGPT: Solving AI Tasks with ChatGPT and its Friends in Hugging Face. NeurIPS 2023.
-- Schick, T., Dwivedi-Yu, J., Dessì, R., Raileanu, R., Lomeli, M., Hambro, E., Zettlemoyer, L., Cancedda, N., and Scialom, T. Toolformer: Language Models Can Teach Themselves to Use Tools. NeurIPS 2023.
-- Guo, H., Woodruff, A., and Yadav, A. Improving Lives of Indebted Farmers Using Deep Learning: Predicting Agricultural Produce Prices Using Convolutional Neural Networks (PECAD). AAAI 2020. doi:10.1609/aaai.v34i08.7039. AGMARKNET scrape for price prediction; cited here as Indian OGD precedent, not as a baseline this proposal claims to beat.
+- Shinn, N., Cassano, F., Gopinath, A., Narasimhan, K., and Yao, S. Reflexion: Language Agents with Verbal Reinforcement Learning. Advances in Neural Information Processing Systems 36 (NeurIPS 2023).
+- Shen, Y., Song, K., Tan, X., Li, D., Lu, W., and Zhuang, Y. HuggingGPT: Solving AI Tasks with ChatGPT and its Friends in Hugging Face. Advances in Neural Information Processing Systems 36 (NeurIPS 2023).
+- Schick, T., Dwivedi-Yu, J., Dessì, R., Raileanu, R., Lomeli, M., Hambro, E., Zettlemoyer, L., Cancedda, N., and Scialom, T. Toolformer: Language Models Can Teach Themselves to Use Tools. Advances in Neural Information Processing Systems 36 (NeurIPS 2023).
+- Guo, H., Woodruff, A., and Yadav, A. Improving Lives of Indebted Farmers Using Deep Learning: Predicting Agricultural Produce Prices Using Convolutional Neural Networks (PECAD). Proceedings of the AAAI Conference on Artificial Intelligence, 34(08):13294–13299. doi:10.1609/aaai.v34i08.7039. AGMARKNET scrape for price prediction; cited here as Indian OGD precedent, not as a baseline this proposal claims to beat.
 - Government of India. Open Government Data Platform India (data.gov.in); AGMARKNET resource 9ef84268-d588-465a-a308-a864a43d0070; Directorate of Economics and Statistics crop production; IMD rainfall series; Government Open Data License — India (GODL-India).
 
 _CrewAI is an engineering framework without a flagship peer-reviewed paper in this list; AutoGen and MetaGPT are the MAS citations._

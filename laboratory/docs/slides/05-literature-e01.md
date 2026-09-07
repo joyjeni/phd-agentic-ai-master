@@ -2,7 +2,7 @@
 
 *Literature Review*
 
-FET template. Each paper is one Evidence block: Author(s), Year, Title, Publication, Objective, Methodology, Findings, Limitations, To solve the research gap. Venues are journals or top international conference proceedings — not preprint reports.
+FET template. Each paper is one Evidence block: Author(s), Year, Title, Publication, Objective, Methodology, Findings, Limitations, To solve the research gap. Publication is the journal or the full international conference proceedings title — not a preprint report.
 
 **Evidence 1**
 

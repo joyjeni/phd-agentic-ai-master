@@ -1,6 +1,6 @@
 # Literature Survey
 
-FET / PRP template form for Jenisha T (24ETRP720001). Each numbered block is one published journal article or top international conference paper. Preprints are not cited.
+FET / PRP template form for Jenisha T (24ETRP720001). Each numbered block is one published journal article or a top international conference proceedings paper. Preprints are not cited. Conference Publication fields use the full proceedings title.
 Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 ## Evidence 1
@@ -91,7 +91,7 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **Title:** AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversations
 
-**Publication:** Conference on Language Modeling (COLM) 2024
+**Publication:** Proceedings of the First Conference on Language Modeling (COLM 2024)
 
 **Objective:** Program LLM applications by composing multiple conversable agents.
 
@@ -111,7 +111,7 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **Title:** MetaGPT: Meta Programming for A Multi-Agent Collaborative Framework
 
-**Publication:** ICLR 2024
+**Publication:** Proceedings of the Twelfth International Conference on Learning Representations (ICLR 2024)
 
 **Objective:** Reduce role drift in multi-agent software workflows by encoding human SOPs.
 
@@ -131,7 +131,7 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **Title:** ChatDev: Communicative Agents for Software Development
 
-**Publication:** ACL 2024 (long), pages 15174–15186. doi:10.18653/v1/2024.acl-long.810
+**Publication:** Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), pages 15174–15186. doi:10.18653/v1/2024.acl-long.810
 
 **Objective:** Organise specialised LLM agents as a chat-chain for software design, coding, and testing.
 
@@ -151,7 +151,7 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **Title:** CAMEL: Communicative Agents for “Mind” Exploration of Large Language Model Society
 
-**Publication:** NeurIPS 2023
+**Publication:** Advances in Neural Information Processing Systems 36 (NeurIPS 2023)
 
 **Objective:** Enable autonomous cooperation among communicative agents with minimal human steering.
 
@@ -171,7 +171,7 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **Title:** ToolLLM: Facilitating Large Language Models to Master 16000+ Real-world APIs
 
-**Publication:** ICLR 2024
+**Publication:** Proceedings of the Twelfth International Conference on Learning Representations (ICLR 2024)
 
 **Objective:** Give open LLMs general tool-use over a large real-world API catalogue.
 
@@ -191,7 +191,7 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **Title:** ToolRerank: Adaptive and Hierarchy-Aware Reranking for Tool Retrieval
 
-**Publication:** LREC-COLING 2024, pages 16263–16273. ACL Anthology 2024.lrec-main.1413
+**Publication:** Proceedings of the 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024), pages 16263–16273. ACL Anthology 2024.lrec-main.1413
 
 **Objective:** Refine ToolLLM-style retrieval for seen versus unseen APIs and for tool-library hierarchy.
 
@@ -211,7 +211,7 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **Title:** RouteLLM: Learning to Route LLMs from Preference Data
 
-**Publication:** ICLR 2025
+**Publication:** Proceedings of the Thirteenth International Conference on Learning Representations (ICLR 2025)
 
 **Objective:** Route each query between a stronger and a weaker LLM from human preference data.
 
@@ -231,7 +231,7 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **Title:** MasRouter: Learning to Route LLMs for Multi-Agent Systems
 
-**Publication:** ACL 2025 (long), pages 15549–15572. doi:10.18653/v1/2025.acl-long.757
+**Publication:** Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), pages 15549–15572. doi:10.18653/v1/2025.acl-long.757
 
 **Objective:** Unify collaboration mode, role allocation, and LLM choice as one MAS routing problem.
 
@@ -271,7 +271,7 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **Title:** LLMLingua: Compressing Prompts for Accelerated Inference of Large Language Models
 
-**Publication:** EMNLP 2023, pages 13358–13376. doi:10.18653/v1/2023.emnlp-main.825
+**Publication:** Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing, pages 13358–13376. doi:10.18653/v1/2023.emnlp-main.825
 
 **Objective:** Shorten long prompts while keeping task performance.
 
@@ -291,7 +291,7 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **Title:** Generative Agents: Interactive Simulacra of Human Behavior
 
-**Publication:** UIST 2023 (Best Paper). doi:10.1145/3586183.3606763
+**Publication:** Proceedings of the 36th Annual ACM Symposium on User Interface Software and Technology (UIST 2023), Best Paper. doi:10.1145/3586183.3606763
 
 **Objective:** Give LLM agents a long-term memory stream for believable behaviour in a sandbox.
 
@@ -331,7 +331,7 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **Title:** Improving Lives of Indebted Farmers Using Deep Learning: Predicting Agricultural Produce Prices Using Convolutional Neural Networks (PECAD)
 
-**Publication:** AAAI 2020. doi:10.1609/aaai.v34i08.7039
+**Publication:** Proceedings of the AAAI Conference on Artificial Intelligence, 34(08):13294–13299. doi:10.1609/aaai.v34i08.7039
 
 **Objective:** Use AGMARKNET price series as decision-support input for indebted farmers.
 
@@ -351,7 +351,7 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **Title:** ReAct: Synergizing Reasoning and Acting in Language Models
 
-**Publication:** ICLR 2023
+**Publication:** Proceedings of the Eleventh International Conference on Learning Representations (ICLR 2023)
 
 **Objective:** Interleave reasoning traces with actions so a language model can use tools.
 

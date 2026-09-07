@@ -11,10 +11,11 @@ export default function LiteraturePage() {
         </p>
         <h1 className="mt-2 font-serif text-4xl">Literature Survey</h1>
         <p className="mt-4 text-sm leading-relaxed text-[var(--muted)]">
-          Each numbered block is one published journal article or top
-          international conference paper in the college Evidence form:
+          Each numbered block is one published journal article or a top
+          international conference proceedings paper in the college Evidence form:
           Author(s), Year, Title, Publication, Objective, Methodology, Findings,
-          Limitations, To solve the research gap. Preprints are not cited. Same
+          Limitations, To solve the research gap. Publication is the journal or
+          the full proceedings title. Preprints are not cited. Same
           text is on the proposal slides (two evidences per slide) and in{" "}
           <code className="text-[var(--paper)]">docs/LITERATURE_SURVEY.md</code>.
           No NDCG, latency, or accuracy targets.

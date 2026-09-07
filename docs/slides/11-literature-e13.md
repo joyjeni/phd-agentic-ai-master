@@ -21,7 +21,7 @@ Continuation. Evidence 13 & Evidence 14 in the same Evidence template.
 - Author(s): Jiang, H., Wu, Q., Lin, C.-Y., Yang, Y., and Qiu, L.
 - Year: 2023
 - Title: LLMLingua: Compressing Prompts for Accelerated Inference of Large Language Models
-- Publication: EMNLP 2023, pages 13358–13376. doi:10.18653/v1/2023.emnlp-main.825
+- Publication: Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing, pages 13358–13376. doi:10.18653/v1/2023.emnlp-main.825
 - Objective: Shorten long prompts while keeping task performance.
 - Methodology: Budget controller plus token-level iterative compression aligned to the target LLM.
 - Findings: Token-importance compression can reduce prompt length with limited quality loss.
