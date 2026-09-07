@@ -4,7 +4,7 @@
 
 The memory chapter: Kirchhoff/Physarum conductances prune the mesh trace and write surviving live citations back into SATR. The unit of publication is the coupling, not a token-percentage.
 
-SOTA. Jiang et al., LLMLingua (EMNLP 2023): token-level prompt compression. Tero et al., Science 2010 (doi:10.1126/science.1177894): Physarum adaptive network. Park et al., Generative Agents (CHI 2023): language memory stream in a sandbox. Pipeline: long prompt → compressor → LLM. Memory is not written back into a tool retriever.
+SOTA. Jiang et al., LLMLingua (EMNLP 2023): token-level prompt compression. Tero et al., Science 2010 (doi:10.1126/science.1177894): Physarum adaptive network. Park et al., Generative Agents (UIST 2023): language memory stream in a sandbox. Pipeline: long prompt → compressor → LLM. Memory is not written back into a tool retriever.
 
 Gap. Token compressors are not current-reinforced over a context graph and do not pin live government citations into the next retrieval turn.
 

@@ -17,7 +17,7 @@ export const OVERALL_OBJECTIVE = {
     "Design, implement, and critically evaluate ACRS — a structural orchestration layer in which session-aware tool retrieval (SATR), training-free specialist routing (APRR), mesh consensus over tool identifiers (MNCD), and flow-coupled context pruning with write-back (FCNP) form a closed loop on live Indian Open Government Data. The proposal-stage claim is architectural completeness and live-pipeline integrity, not a leaderboard number.",
   questions: [
     "Can tool retrieval be conditioned on a co-activation cache and session memory rather than a single query embedding (Qin et al., ToolLLM, ICLR 2024; Zheng et al., ToolRerank, LREC-COLING 2024)?",
-    "Can routing sample a training-free posterior over tool-specialist agents instead of a trained neural controller or an authored SOP (Yue et al., MasRouter, ACL 2025; Hong et al., MetaGPT, ICLR 2024; Ong et al., RouteLLM, 2024)?",
+    "Can routing sample a training-free posterior over tool-specialist agents instead of a trained neural controller or an authored SOP (Yue et al., MasRouter, ACL 2025; Hong et al., MetaGPT, ICLR 2024; Ong et al., RouteLLM, ICLR 2025)?",
     "Can execution proceed as gossiped (toolId, score) plus score-sum consensus, then a live data.gov.in GET, instead of a central chat orchestrator (Wu et al., AutoGen, COLM 2024)?",
     "Can Kirchhoff/Physarum pruning pin live citations back into retrieval rather than only shortening the prompt (Jiang et al., LLMLingua, EMNLP 2023; Tero et al., Science 2010)?",
   ],
@@ -70,8 +70,8 @@ export const OBJECTIVES = [
     sota: {
       papers: [
         "Yue et al., MasRouter (ACL 2025, doi:10.18653/v1/2025.acl-long.757): trained neural controller over multi-agent topologies.",
-        "Ong et al., RouteLLM (arXiv:2406.18665, 2024): routers among LLMs.",
-        "Panda et al., PILOT (Findings of EMNLP 2025): preference-prior LinUCB for budget-constrained LLM routing.",
+        "Ong et al., RouteLLM (ICLR 2025, arXiv:2406.18665): routers among LLMs.",
+        "Panda et al., Adaptive LLM Routing under Budget Constraints (PILOT; Findings of EMNLP 2025, doi:10.18653/v1/2025.findings-emnlp.1301): preference-prior LinUCB for budget-constrained LLM routing.",
         "Hong et al., MetaGPT (ICLR 2024): authored SOP workflows.",
       ],
       pipeline: "query → trained controller or difficulty model → choose one LLM/agent → execute",
@@ -104,7 +104,7 @@ export const OBJECTIVES = [
       "Run routed agents as a gossip mesh: publish rank.update, fanout=3, R=3 last-write-wins replicate, score-sum consensus (Borda exists in the repo but is not the eval default), then execute only live data.gov.in Agriculture resources.",
     sota: {
       papers: [
-        "Wu et al., AutoGen (ICLR 2024 LLM Agents Workshop; COLM 2024, arXiv:2308.08155): multi-agent conversation.",
+        "Wu et al., AutoGen (COLM 2024; ICLR 2024 LLM Agents Workshop Best Paper, arXiv:2308.08155): multi-agent conversation.",
         "Hong et al., MetaGPT (ICLR 2024): SOP pipeline.",
         "Qian et al., ChatDev (ACL 2024): organisational chat-chain.",
         "Li et al., CAMEL (NeurIPS 2023): communicative role-playing agents.",
@@ -141,7 +141,7 @@ export const OBJECTIVES = [
       papers: [
         "Jiang et al., LLMLingua (EMNLP 2023): token-level prompt compression.",
         "Tero et al., Science 2010 (doi:10.1126/science.1177894): Physarum adaptive network.",
-        "Park et al., Generative Agents (CHI 2023): language memory stream in a sandbox.",
+        "Park et al., Generative Agents (UIST 2023): language memory stream in a sandbox.",
       ],
       pipeline: "long prompt → compressor → LLM. Memory is not written back into a tool retriever.",
       gap: "Token compressors are not current-reinforced over a context graph and do not pin live government citations into the next retrieval turn.",

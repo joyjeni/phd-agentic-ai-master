@@ -317,6 +317,33 @@ describe("slides", () => {
     expect(blob).not.toMatch(/O\(log N\) proof/i);
   });
 
+  it("bibliography matches published venues, DOIs, and author lists", async () => {
+    const blob = JSON.stringify(SLIDES);
+    const { OBJECTIVES, OVERALL_OBJECTIVE } = await import("@/lib/research/objectives");
+    const { SURVEYED_DATASETS } = await import("@/lib/research/open-datasets");
+    const all = `${blob}${JSON.stringify(OBJECTIVES)}${JSON.stringify(OVERALL_OBJECTIVE)}${JSON.stringify(SURVEYED_DATASETS)}`;
+
+    expect(all).not.toMatch(/CHI 2023/);
+    expect(all).not.toMatch(/Berman, E/);
+    expect(all).not.toMatch(/Panda, S\./);
+    expect(all).not.toMatch(/You et al\., AAAI 2020 \(PECAD\)/);
+    expect(all).not.toMatch(/PILOT: Preference-informed LinUCB for routing/);
+    expect(all).not.toMatch(/Learning to Route LLMs with Preference Data/);
+
+    expect(blob).toMatch(/Adaptive LLM Routing under Budget Constraints/);
+    expect(blob).toMatch(/doi:10\.18653\/v1\/2025\.findings-emnlp\.1301/);
+    expect(blob).toMatch(/Learning to Route LLMs from Preference Data\. ICLR 2025/);
+    expect(blob).toMatch(/UIST 2023 \(Best Paper\)\. doi:10\.1145\/3586183\.3606763/);
+    expect(blob).toMatch(/Hambro, E\./);
+    expect(blob).toMatch(/doi:10\.18653\/v1\/2024\.acl-long\.810/);
+    expect(blob).toMatch(/doi:10\.18653\/v1\/2023\.emnlp-main\.825/);
+    expect(blob).toMatch(/doi:10\.18653\/v1\/2025\.acl-long\.757/);
+    expect(blob).toMatch(/doi:10\.1126\/science\.1177894/);
+    expect(blob).toMatch(/doi:10\.1609\/aaai\.v34i08\.7039/);
+    expect(blob).toMatch(/Science 327\(5964\):439–442/);
+    expect(SURVEYED_DATASETS.find((d) => d.id === "agmarknet")?.usedBy).toMatch(/Guo, Woodruff/);
+  });
+
   it("names Jenisha T and the MSRUAS register number on the title slide", async () => {
     const { COLLEGE } = await import("@/lib/research/college");
     expect(SLIDES[0]?.bullets?.join(" ")).toMatch(/Presented By/);

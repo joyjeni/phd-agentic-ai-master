@@ -6,7 +6,7 @@ Tool learning, learned routers, and prompt compression are real literatures. The
 
 Qin et al., ToolLLM / ToolBench (ICLR 2024): SBERT API retriever, DFSDT planner, ToolEval. Zheng et al., ToolRerank (LREC-COLING 2024): contrastive rerank of ToolLLM candidates. Gap: both are turn-amnesic; they do not fuse which tools actually fired into the next rank.
 
-Ong et al., RouteLLM (2024); Yue et al., MasRouter (ACL 2025); Panda et al., PILOT (Findings of EMNLP 2025): learned or bandit routers over LLM SKUs or collaboration modes. Gap: they do not maintain a training-free Dirichlet–Thompson posterior over named tool specialists.
+Ong et al., RouteLLM (ICLR 2025); Yue et al., MasRouter (ACL 2025); Panda et al., Adaptive LLM Routing / PILOT (Findings of EMNLP 2025): learned or bandit routers over LLM SKUs or collaboration modes. Gap: they do not maintain a training-free Dirichlet–Thompson posterior over named tool specialists.
 
 Jiang et al., LLMLingua (EMNLP 2023): token-importance prompt compression. Gap: compression does not prune a mesh by conductance or write a residue back into retrieval.
 

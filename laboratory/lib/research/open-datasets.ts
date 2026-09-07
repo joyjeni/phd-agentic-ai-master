@@ -25,7 +25,7 @@ export type SurveyedDataset = {
 export const TOOLBENCH_REALITY = {
   title: "ToolBench cannot supply live RapidAPI inference",
   body:
-    "Qin et al. (ToolLLM / ToolBench, ICLR 2024) collected 16,464 RapidAPI endpoints. Live keys are not redistributable. The common follow-on benchmark, StableToolBench (Guo et al.), replaces those calls with a cache or an LLM simulator. That is useful for ranking experiments and the opposite of this lab's rule: Agriculture answers must come from live official APIs.",
+    "Qin et al. (ToolLLM / ToolBench, ICLR 2024) collected 16,464 RapidAPI endpoints. Live keys are not redistributable. The common follow-on benchmark, StableToolBench (Guo, Zhicheng et al., Findings of ACL 2024), replaces those calls with a cache or an LLM simulator. That is useful for ranking experiments and the opposite of this lab's rule: Agriculture answers must come from live official APIs.",
 };
 
 export const SURVEYED_DATASETS: SurveyedDataset[] = [
@@ -34,7 +34,7 @@ export const SURVEYED_DATASETS: SurveyedDataset[] = [
     name: "AGMARKNET daily mandi prices",
     role: "live-tool",
     usedBy:
-      "You et al., AAAI 2020 (PECAD); COMPASS 2023 farmer-collective price intelligence; Smart-Kheti and related Indian agri-ML systems.",
+      "Guo, Woodruff & Yadav, AAAI 2020 (PECAD, doi:10.1609/aaai.v34i08.7039); Ladhar et al., ACM JCSS 2023 (farmer-collective market intelligence, doi:10.1145/3609262); Smart-Kheti and related Indian agri-ML systems.",
     how: "Daily wholesale min/max/modal prices at Indian APMCs. This is the standard live market-price API on data.gov.in.",
     resourceId: "9ef84268-d588-465a-a308-a864a43d0070",
     url: "https://www.data.gov.in/resource/current-daily-price-various-commodities-various-markets-mandi",
