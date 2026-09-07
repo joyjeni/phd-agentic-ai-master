@@ -44,6 +44,12 @@ export default function HomePage() {
           Network Pruning (O4). Catalog:           {CATALOG_STATS.nTools} Agriculture tools, {CATALOG_STATS.nLive} live
           data.gov.in resources.
         </p>
+        <p className="mt-3 text-sm">
+          <Link className="text-[var(--gold)] underline" href="/walkthrough">
+            Full formula walkthrough
+          </Link>{" "}
+          — ToolBench-schema soil tool and live AGMARKNET, all four objectives.
+        </p>
       </section>
       <PipelineLab />
     </div>

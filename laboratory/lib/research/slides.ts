@@ -88,7 +88,7 @@ export const SLIDES: Slide[] = [
     section: "Contents",
     title: "Contents",
     kind: "contents",
-    body: "Nine required sections. Research Methodology is expanded for each objective (O1 SATR, O2 APRR, O3 MNCD, O4 FCNP) plus the integrated SATR → APRR → MNCD → FCNP loop. Objective order is SATR → APRR → MNCD → FCNP (not SMART).",
+    body: "Nine required sections. Research Methodology is expanded for each objective (O1 SATR, O2 APRR, O3 MNCD, O4 FCNP), the integrated loop, the exact repository formulas, and two worked traces (ToolBench-schema ranking; live data.gov.in). Objective order is SATR → APRR → MNCD → FCNP (not SMART).",
   },
   {
     id: "introduction",
@@ -274,6 +274,7 @@ export const SLIDES: Slide[] = [
       "O3 MNCD — gossip + score-sum consensus, then live data.gov.in GET on verified Agriculture UUIDs. Fail loud. No dummy prices.",
       "O4 FCNP — Kirchhoff / Physarum-inspired conductance prune with write-back into SATR. Not LLMLingua token deletion.",
       "Integrated contract. SATR → APRR → MNCD → FCNP must run in that order on one user turn. Skipping MNCD or FCNP is an incomplete run.",
+      "Implementation. The four modules are the functions in satr.ts, aprr.ts, mncd.ts, fcnp.ts — formulas on the next slides, full traces on /walkthrough.",
       "What will not appear in this proposal. Promised retrieval scores, latency targets, consensus percentages, or token-reduction ratios.",
     ],
     diagram: "e2e",
@@ -314,6 +315,66 @@ export const SLIDES: Slide[] = [
     bullets: [...INTEGRATED_METHODOLOGY],
     diagram: "integrated",
     footnote: "Master repository: github.com/joyjeni/phd-agentic-ai-master",
+  },
+  {
+    id: "method-formulas",
+    section: "Research Methodology",
+    title: "Research Methodology — implementation formulas",
+    body: "How the proposal will be implemented: the equations copied from the laboratory, not a promised leaderboard. Constants are the repository defaults.",
+    table: {
+      headers: ["Module", "Formula as coded", "Constants"],
+      rows: [
+        [
+          "O1 SATR",
+          "s(a|q,H)=w_base s_base + w_cat cat + w_sch sch + w_ept ept + w_cooc Σ γ^{n-i} log(1+w_{h_i,a}) + w_rec rec − 0.35 fails;  s_base=0.7 BM25+0.3 TFIDF-cos+0.08 mem-cos",
+          "w=(1, 0.45, 0.25, 0.3, 0.35, 0.25); γ=0.7; ρ=0.02; δ=1; decay=0.85; BM25 k1=1.5 b=0.75",
+        ],
+        [
+          "O2 APRR",
+          "P(a_j|a_i,q) ∝ W_ij^α η_ij^β ψ_j(q)^γ ;  W←(1-λ)W + κ·reward·1/L²·1/lat",
+          "α=2, β=1, γ=2.5, λ=0.005, κ=5, W0=0.1, ε=0 (lab), maxHops=4; reward +1 / −0.05",
+        ],
+        [
+          "O3 MNCD",
+          "s=0.45 score/(|score|+2)+0.35 overlap+liveBoost−0.05 idx;  tally=Σ w_a s_a;  w=success/(1+lat/1000)",
+          "liveBoost 0.25+0.20 preferred; fanout=3; R=2; τ=0.55; score-sum not Borda; live UUID only",
+        ],
+        [
+          "O4 FCNP",
+          "D_ij(t+1)=(1-μ)D_ij+α|Q_ij|^γ ;  L p = I ;  Q=|D(p_i-p_j)|;  keep 35% / summarize 20% / drop",
+          "μ=0.1, α=0.5, γ=1.2, sim≥0.12; pinned live citations never evicted; memory→SATR",
+        ],
+      ],
+    },
+    footnote: "Source: lib/research/satr.ts, aprr.ts, mncd.ts, fcnp.ts. Full walkthrough: /walkthrough.",
+  },
+  {
+    id: "method-walk-tb",
+    section: "Research Methodology",
+    title: "Research Methodology — ToolBench walkthrough",
+    body: "One ToolBench-schema datum, processed by all four objectives. RapidAPI is never GET. Numbers are a 07 September 2026 lab trace, not a metric claim.",
+    bullets: [
+      "Intake. Bundled G1 jsonl qid=6491 is a RapidAPI aircraft query (gold docs 4308–4317). Off-sector flights are stripped. The ranking-library analogue walked here is tb.agri.soil_health with q = “What is the soil pH and recommended fertilizer dose for a farm village?”",
+      "O1 SATR. Cold start so s=z(s_base). tb.agri.soil_health s_base=18.08 → s=5.40 (rank 1, ranking-only). karnataka::shc_karnataka s=1.40. datagov.fertilizer s=0.60 (live, rank 4).",
+      "O2 APRR. Path agriculture_analyst → schema_planner (p=0.73) → retrieval_specialist (p=0.95). Non-Agriculture specialists fall back to SATR #1 = soil_health.",
+      "O3 MNCD. Agent score s=0.45 score/(|score|+2)+0.35 overlap. soil_health 0.5995; tally=3·0.7407·0.5995=1.332. Not liveExecutable. preferredLiveToolId matches fertilizer → GET UUID 2e0e6c04-97f2-456b-9309-bf605650cb11 (44 live subsidy rows, e.g. 2002-03 Indigenous Urea 7790 Rs crore).",
+      "O4 FCNP. 10 spans → keep 6 / drop 4; pin query + live fertilizer observation + citation. Memory written back to SATR.",
+    ],
+    footnote: "ToolBench = ranking library. Live evidence is always a verified data.gov.in Agriculture UUID.",
+  },
+  {
+    id: "method-walk-ogd",
+    section: "Research Methodology",
+    title: "Research Methodology — data.gov.in walkthrough",
+    body: "The same four objectives on live AGMARKNET. Query: “What is the current mandi price of wheat in Punjab?” Fail-loud: no invented Punjab-wheat modal.",
+    bullets: [
+      "Intake. extractToolArguments → state=Punjab, commodity=Wheat. preferredLiveToolId → datagov.mandi_prices (UUID 9ef84268-d588-465a-a308-a864a43d0070). Limit capped at 10 000.",
+      "O1 SATR. karnataka::agmarknet_ka s=3.73 (rank 1, same UUID); datagov.mandi_prices s=3.05 (rank 2, preferred); datagov.msp s=2.31 (ranking-only).",
+      "O2 APRR. Path agriculture_analyst → schema_planner (p=0.54) → tool_executor (p=0.66, terminal stop). Hop 0: Karnataka mandi, national mandi, MSP. Hop 2 live leftover: crop_production.",
+      "O3 MNCD. mandi_prices agent-score 0.787 (liveBoost 0.45); karnataka 0.7789. Score-sum winner karnataka::agmarknet_ka tally=1.154. Live GET: 10 000 arrivals; 0 Wheat in Punjab today; 479 other live Punjab rows; Wheat in 133 live rows from MP, Rajasthan, UP, Gujarat, Maharashtra, West Bengal, Chhattisgarh. Shown mean modal Rs 2593/quintal (e.g. Bhindi, Dera Baba Nanak APMC, Rs 828, 07/09/2026).",
+      "O4 FCNP. 10 spans → keep 7; pin the AGMARKNET citation. W ← (1-λ)W + κ·1/L²/lat on the hop path. Next SATR is session-conditioned.",
+    ],
+    footnote: "Lab trace 07 September 2026. Re-run on /walkthrough; rows change daily. No dummy prices.",
   },
   {
     id: "conclusion",
@@ -402,6 +463,9 @@ export const OUTLINE: ContentsItem[] = [
   { n: "08c", title: "Methodology — O3 MNCD", slideId: "method-mncd" },
   { n: "08d", title: "Methodology — O4 FCNP", slideId: "method-fcnp" },
   { n: "08e", title: "Methodology — integrated loop", slideId: "method-integrated" },
+  { n: "08f", title: "Methodology — implementation formulas", slideId: "method-formulas" },
+  { n: "08g", title: "Methodology — ToolBench walkthrough", slideId: "method-walk-tb" },
+  { n: "08h", title: "Methodology — data.gov.in walkthrough", slideId: "method-walk-ogd" },
   { n: "09", title: "Conclusion", slideId: "conclusion" },
 ];
 
@@ -454,7 +518,7 @@ export function allSlidesMarkdown(): string {
     "Research proposal slides for Jenisha T (24ETRP720001), Ph.D. CSE, MSRUAS / FET.",
     "Supervisor: Dr. Jyothi A P. Date of registration: 04 September 2024.",
     "",
-    "Required outline: Introduction, Literature Review, Summary of Literature Review, Identified Research Problem, Research Title & Aim, Research Objectives, Research Questions, Research Methodology (per objective), Conclusion.",
+    "Required outline: Introduction, Literature Review, Summary of Literature Review, Identified Research Problem, Research Title & Aim, Research Objectives, Research Questions, Research Methodology (per objective, formulas, two worked traces), Conclusion.",
     "Paste into the university Google Slides template in Contents order.",
     "Do not treat older `.pptx` binaries as the source of truth.",
     "Proposal-stage: no NDCG, latency, token, or accuracy commitments.",

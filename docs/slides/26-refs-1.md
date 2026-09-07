@@ -1,4 +1,4 @@
-# 23 References (1/3) — multi-agent systems and tool learning
+# 26 References (1/3) — multi-agent systems and tool learning
 
 *References 1/3*
 

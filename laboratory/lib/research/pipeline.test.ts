@@ -298,7 +298,7 @@ describe("slides", () => {
       );
     }
     expect(SLIDES.filter((slide) => slide.section === "Research Methodology").length).toBeGreaterThanOrEqual(
-      5,
+      8,
     );
     expect(SLIDES.some((slide) => slide.id === "method-satr")).toBe(true);
     expect(SLIDES.some((slide) => slide.id === "method-aprr")).toBe(true);

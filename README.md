@@ -33,8 +33,10 @@ FET outline with **research methodology for each objective**:
 5. Research Title & Aim  
 6. Research Objectives  
 7. Research Questions  
-8. Research Methodology (O1 SATR, O2 APRR, O3 MNCD, O4 FCNP, integrated loop)  
+8. Research Methodology (O1 SATR, O2 APRR, O3 MNCD, O4 FCNP, integrated loop, **exact repository formulas**, ToolBench walkthrough, data.gov.in walkthrough)  
 9. Conclusion  
+
+Worked traces (lab numbers from 07 September 2026, not metric claims): one ToolBench-schema tool (`tb.agri.soil_health`) and one live AGMARKNET query (wheat / Punjab) through all four objectives. In the laboratory: `/walkthrough`. Markdown: `docs/PIPELINE_WALKTHROUGH.md` and `laboratory/docs/PIPELINE_WALKTHROUGH.md`. 
 
 **Download these files from this repository** (open in PowerPoint — Cursor cannot preview `.pptx`):
 
@@ -54,6 +56,8 @@ npm install
 npx vitest run
 npm run dev -- --port 43127 --hostname 0.0.0.0
 ```
+
+Then open `/walkthrough` for the formula-and-data pass, or `/proposal` for the FET deck.
 
 Proposal-stage: **no NDCG, latency, token, or accuracy commitments.**
 

@@ -35,8 +35,11 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 | 19 | [`19-method-mncd.md`](./19-method-mncd.md) | Research Methodology — O3 MNCD |
 | 20 | [`20-method-fcnp.md`](./20-method-fcnp.md) | Research Methodology — O4 FCNP |
 | 21 | [`21-method-integrated.md`](./21-method-integrated.md) | Research Methodology — integrated loop |
-| 22 | [`22-conclusion.md`](./22-conclusion.md) | Conclusion |
-| 23 | [`23-refs-1.md`](./23-refs-1.md) | References (1/3) — multi-agent systems and tool learning |
-| 24 | [`24-refs-2.md`](./24-refs-2.md) | References (2/3) — routing, compression, reasoning, biology |
-| 25 | [`25-refs-3.md`](./25-refs-3.md) | References (3/3) — memory, tools, Indian agricultural data |
-| 26 | [`26-thanks.md`](./26-thanks.md) | Thank you |
+| 22 | [`22-method-formulas.md`](./22-method-formulas.md) | Research Methodology — implementation formulas |
+| 23 | [`23-method-walk-tb.md`](./23-method-walk-tb.md) | Research Methodology — ToolBench walkthrough |
+| 24 | [`24-method-walk-ogd.md`](./24-method-walk-ogd.md) | Research Methodology — data.gov.in walkthrough |
+| 25 | [`25-conclusion.md`](./25-conclusion.md) | Conclusion |
+| 26 | [`26-refs-1.md`](./26-refs-1.md) | References (1/3) — multi-agent systems and tool learning |
+| 27 | [`27-refs-2.md`](./27-refs-2.md) | References (2/3) — routing, compression, reasoning, biology |
+| 28 | [`28-refs-3.md`](./28-refs-3.md) | References (3/3) — memory, tools, Indian agricultural data |
+| 29 | [`29-thanks.md`](./29-thanks.md) | Thank you |

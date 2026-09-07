@@ -35,6 +35,19 @@ rows from the same resource are shown.
 See `/datasets` for the survey. `GET /api/datagov` is the raw probe. Transient
 HTTP 5xx/429 are retried; snapshot files are not used as a fallback.
 
+## Exact formulas and worked traces
+
+How the proposal is implemented (the equations in `lib/research/satr.ts`,
+`aprr.ts`, `mncd.ts`, `fcnp.ts`) plus two complete SATR → APRR → MNCD → FCNP
+passes:
+
+1. One **ToolBench-schema** datum (`tb.agri.soil_health`) — ranking library only.
+2. One **live data.gov.in** AGMARKNET query (wheat / Punjab).
+
+Lab page: `/walkthrough`. Markdown: `docs/PIPELINE_WALKTHROUGH.md`.
+Proposal slides 08f–08h. Numbers dated 07 September 2026 are traces, not
+metric commitments.
+
 ## Closed loop
 
 ```text

@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { SURVEYED_DATASETS, TOOLBENCH_REALITY } from "@/lib/research/open-datasets";
+import Link from "next/link";
 
 const ROLE_LABEL: Record<string, string> = {
   "live-tool": "Live data.gov.in tool",
@@ -20,7 +21,12 @@ export default function DatasetsPage() {
           ToolBench is the ranking library. Live Agriculture inference in Indian
           papers comes from official OGD / AGMARKNET / IMD tables, not from
           RapidAPI and not from invented CSVs. Only resources that fetched live
-          JSON in this lab are marked executable.
+          JSON in this lab are marked executable. A stage-by-stage walkthrough
+          of one ToolBench-schema tool and one live AGMARKNET query is on{" "}
+          <Link className="text-[var(--gold)] underline" href="/walkthrough">
+            /walkthrough
+          </Link>
+          .
         </p>
       </header>
       <Card className="p-5 text-sm leading-relaxed text-[var(--muted)]">
