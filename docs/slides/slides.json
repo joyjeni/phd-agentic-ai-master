@@ -1,0 +1,585 @@
+{
+  "college": {
+    "university": "M. S. Ramaiah University of Applied Sciences",
+    "universityShort": "MSRUAS",
+    "faculty": "FET (Faculty of Engineering and Technology)",
+    "facultyHeader": "Faculty of Engineering and Technology",
+    "facultyLine": "Faculty of Engineering and Technology, MSRUAS",
+    "department": "Computer Science and Engineering",
+    "departmentLine": "Department of Computer Science and Engineering",
+    "campus": "Bangalore",
+    "programme": "Ph.D. in Computer Science and Engineering",
+    "mode": "Part Time",
+    "scholar": "Jenisha T",
+    "registerNo": "24ETRP720001",
+    "supervisor": "Dr. Jyothi A P",
+    "registrationDate": "04-Sept-2024",
+    "email": "jenisha.t@msruas.ac.in",
+    "address": "#123, MSR Nagar, Bangalore. Phone: +91-XXXXXXXXXX",
+    "researchTopic": "Adaptive Context Reasoning System (ACRS)",
+    "kicker": "RESEARCH PROPOSAL",
+    "title": "Adaptive Context Reasoning System (ACRS): A Structural Orchestration Layer for Multi-Agent LLM Ecosystems",
+    "shortTitle": "Adaptive Context Reasoning System (ACRS)",
+    "subtitle": "A Structural Orchestration Layer for Multi-Agent LLM Ecosystems",
+    "maroon": "7C1D2E",
+    "gold": "C4A35A",
+    "cream": "FFFAF3",
+    "ink": "1A1214",
+    "muted": "5C4A4E",
+    "accent": "6B4C9A"
+  },
+  "studentDetails": [
+    {
+      "field": "Full Name",
+      "record": "Jenisha T"
+    },
+    {
+      "field": "Registration Number",
+      "record": "24ETRP720001"
+    },
+    {
+      "field": "Date of Registration",
+      "record": "04-Sept-2024"
+    },
+    {
+      "field": "Department",
+      "record": "Computer Science and Engineering"
+    },
+    {
+      "field": "Faculty/School",
+      "record": "FET (Faculty of Engineering and Technology)"
+    },
+    {
+      "field": "Course Type",
+      "record": "Part Time"
+    },
+    {
+      "field": "Contact Address",
+      "record": "#123, MSR Nagar, Bangalore. Phone: +91-XXXXXXXXXX"
+    },
+    {
+      "field": "Email Address",
+      "record": "jenisha.t@msruas.ac.in"
+    },
+    {
+      "field": "Research Topic",
+      "record": "Adaptive Context Reasoning System (ACRS)"
+    },
+    {
+      "field": "Supervisor",
+      "record": "Dr. Jyothi A P"
+    }
+  ],
+  "filenames": {
+    "pptx": "ACRS_PhD_Proposal_JenishaT_24ETRP720001.pptx",
+    "templateCopy": "Gowrishankar_PPT_PRP2_ACRS_JenishaT.pptx"
+  },
+  "contents": [
+    {
+      "n": "01",
+      "title": "Introduction",
+      "slideId": "introduction"
+    },
+    {
+      "n": "02",
+      "title": "Literature Review",
+      "slideId": "literature-mas"
+    },
+    {
+      "n": "03",
+      "title": "Summary of Literature Review",
+      "slideId": "literature-summary"
+    },
+    {
+      "n": "04",
+      "title": "Identified Research Problem",
+      "slideId": "problem"
+    },
+    {
+      "n": "05",
+      "title": "Research Title & Aim",
+      "slideId": "title-aim"
+    },
+    {
+      "n": "06",
+      "title": "Research Objectives",
+      "slideId": "objectives"
+    },
+    {
+      "n": "07",
+      "title": "Research Questions",
+      "slideId": "questions"
+    },
+    {
+      "n": "08",
+      "title": "Research Methodology",
+      "slideId": "method-overview"
+    },
+    {
+      "n": "08a",
+      "title": "Methodology — O1 SATR",
+      "slideId": "method-satr"
+    },
+    {
+      "n": "08b",
+      "title": "Methodology — O2 APRR",
+      "slideId": "method-aprr"
+    },
+    {
+      "n": "08c",
+      "title": "Methodology — O3 MNCD",
+      "slideId": "method-mncd"
+    },
+    {
+      "n": "08d",
+      "title": "Methodology — O4 FCNP",
+      "slideId": "method-fcnp"
+    },
+    {
+      "n": "08e",
+      "title": "Methodology — integrated loop",
+      "slideId": "method-integrated"
+    },
+    {
+      "n": "09",
+      "title": "Conclusion",
+      "slideId": "conclusion"
+    }
+  ],
+  "slides": [
+    {
+      "id": "title",
+      "section": "Title",
+      "title": "Adaptive Context Reasoning System (ACRS)",
+      "body": "A Structural Orchestration Layer for Multi-Agent LLM Ecosystems",
+      "bullets": [
+        "Presented By: Jenisha T",
+        "(Reg. No. 24ETRP720001)",
+        "Supervisor: Dr. Jyothi A P",
+        "Department of Computer Science and Engineering",
+        "Faculty of Engineering and Technology, MSRUAS"
+      ],
+      "footnote": "Proposal stage. No empirical performance claims. Live Indian Open Government Data is a methodological constraint, not a result."
+    },
+    {
+      "id": "student",
+      "section": "Research student details",
+      "title": "Research student details",
+      "body": "Attribute and Details as recorded for the FET research-proposal template.",
+      "table": {
+        "headers": [
+          "Attribute",
+          "Details"
+        ],
+        "rows": [
+          [
+            "Full Name",
+            "Jenisha T"
+          ],
+          [
+            "Registration Number",
+            "24ETRP720001"
+          ],
+          [
+            "Date of Registration",
+            "04-Sept-2024"
+          ],
+          [
+            "Department",
+            "Computer Science and Engineering"
+          ],
+          [
+            "Faculty/School",
+            "FET (Faculty of Engineering and Technology)"
+          ],
+          [
+            "Course Type",
+            "Part Time"
+          ],
+          [
+            "Contact Address",
+            "#123, MSR Nagar, Bangalore. Phone: +91-XXXXXXXXXX"
+          ],
+          [
+            "Email Address",
+            "jenisha.t@msruas.ac.in"
+          ],
+          [
+            "Research Topic",
+            "Adaptive Context Reasoning System (ACRS)"
+          ],
+          [
+            "Supervisor",
+            "Dr. Jyothi A P"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "contents",
+      "section": "Contents",
+      "title": "Contents",
+      "kind": "contents",
+      "body": "Nine required sections. Research Methodology is expanded for each objective (O1 SATR, O2 APRR, O3 MNCD, O4 FCNP) plus the integrated SATR → APRR → MNCD → FCNP loop. Objective order is SATR → APRR → MNCD → FCNP (not SMART)."
+    },
+    {
+      "id": "introduction",
+      "section": "Introduction",
+      "title": "Introduction",
+      "body": "This proposal treats multi-agent LLM systems as a computer-science systems problem: not a new foundation model, but a missing orchestration layer between session memory, specialist routing, live tools, and context growth.",
+      "paragraphs": [
+        "Wu et al. introduce AutoGen as a conversation-driven programming framework in which agents exchange messages until a stopping condition (ICLR 2024 LLM Agents Workshop; COLM 2024, arXiv:2308.08155). Hong et al. encode Standard Operating Procedures into MetaGPT so that a software-company metaphor produces structured artefacts (ICLR 2024). Qian et al. organise ChatDev as a chat-chain of organisational roles (ACL 2024). Li et al. study communicative agents in CAMEL (NeurIPS 2023).",
+        "Tool use is a parallel line. Qin et al. release ToolLLM / ToolBench: 16k+ REST APIs, a DFSDT planner, and ToolEval (ICLR 2024). Zheng et al. add ToolRerank over ToolLLM candidates (LREC-COLING 2024). Learned routers (RouteLLM, MasRouter, PILOT) pick models or collaboration modes. LLMLingua shortens prompts by token importance (EMNLP 2023).",
+        "Those stacks still leave four operational surfaces underspecified as one contract: session–tool fusion, a training-free specialist posterior, fail-loud live Indian Open Government Data, and a mesh prune that writes a residue back into retrieval.",
+        "ACRS is proposed as that missing layer. The integration order is SATR → APRR → MNCD → FCNP. The live demonstration corpus is Agriculture on data.gov.in. This deck does not claim a leaderboard number."
+      ]
+    },
+    {
+      "id": "literature-mas",
+      "section": "Literature Review",
+      "title": "Literature Review",
+      "body": "Multi-agent systems literature. What the cited papers actually contribute, and what they leave open for a structural orchestration layer.",
+      "paragraphs": [
+        "Wu et al., AutoGen (COLM 2024 / ICLR 2024 workshop): conversation as the programming model. Gap: messages, not (toolId, score, live citation), are the unit of coordination.",
+        "Hong et al., MetaGPT (ICLR 2024): authored SOPs reduce role drift. Gap: the graph of who speaks next is written by the designer, not updated from session-local affinity after a live tool call.",
+        "Qian et al., ChatDev (ACL 2024): organisational chat-chain for software artefacts. Gap: the environment is a codebase, not a ministry API.",
+        "Li et al., CAMEL (NeurIPS 2023): inception prompting and communicative role-play. Gap: no first-class vote over tool identifiers backed by Open Government Data.",
+        "Taken together, these systems prove conversation, SOPs, software roles, and inception prompting. None of them is a session–route–mesh–prune loop over live Indian OGD."
+      ]
+    },
+    {
+      "id": "literature-tools",
+      "section": "Literature Review",
+      "title": "Literature Review — tools, routing, and compression",
+      "body": "Tool learning, learned routers, and prompt compression are real literatures. They are not substitutes for the four ACRS modules.",
+      "paragraphs": [
+        "Qin et al., ToolLLM / ToolBench (ICLR 2024): SBERT API retriever, DFSDT planner, ToolEval. Zheng et al., ToolRerank (LREC-COLING 2024): contrastive rerank of ToolLLM candidates. Gap: both are turn-amnesic; they do not fuse which tools actually fired into the next rank.",
+        "Ong et al., RouteLLM (2024); Yue et al., MasRouter (ACL 2025); Panda et al., PILOT (Findings of EMNLP 2025): learned or bandit routers over LLM SKUs or collaboration modes. Gap: they do not maintain a training-free Dirichlet–Thompson posterior over named tool specialists.",
+        "Jiang et al., LLMLingua (EMNLP 2023): token-importance prompt compression. Gap: compression does not prune a mesh by conductance or write a residue back into retrieval.",
+        "Guo, Woodruff & Yadav, PECAD (AAAI 2020): AGMARKNET as a decision-support input for price prediction. Gap: a crop-yield / price CNN is not a multi-agent live-OGD loop. Cited as domain precedent, not as a baseline to beat."
+      ]
+    },
+    {
+      "id": "literature-summary",
+      "section": "Summary of Literature Review",
+      "title": "Summary of Literature Review",
+      "body": "Qualitative map only. This table names the gap each family leaves for ACRS; it does not claim a percentage improvement over any baseline.",
+      "table": {
+        "headers": [
+          "Literature family",
+          "What it already does",
+          "What ACRS still has to add"
+        ],
+        "rows": [
+          [
+            "MAS frameworks (AutoGen, MetaGPT, ChatDev, CAMEL)",
+            "Conversation, SOPs, software roles, inception prompting",
+            "A closed session–route–mesh–prune contract, not another chat runtime"
+          ],
+          [
+            "Tool learning (ToolLLM / ToolBench / ToolRerank)",
+            "Large-scale tool-use corpus and ToolEval-style ranking protocol",
+            "Session-fused ranking plus live Indian OGD execution (not RapidAPI replay)"
+          ],
+          [
+            "Learned routers (RouteLLM, MasRouter, PILOT)",
+            "Train or bandit-route over model SKUs or collaboration modes",
+            "Training-free Dirichlet–Thompson posterior over named specialists"
+          ],
+          [
+            "Prompt compression (LLMLingua)",
+            "Shorten tokens before the LLM",
+            "Prune a mesh by conductance and write the residue back into SATR"
+          ],
+          [
+            "Indian agriculture DSS (PECAD)",
+            "Shows AGMARKNET as a real decision-support input",
+            "Live, fail-loud OGD inside a multi-agent loop — not a crop-yield model to beat"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "problem",
+      "section": "Identified Research Problem",
+      "title": "Identified Research Problem",
+      "body": "Five architectural gaps. Four named objectives. One integration contract. Closing a gap is evidenced by a runnable loop and citable equations, not by a promised leaderboard number.",
+      "bullets": [
+        "G1 — Turn-amnesic retrieval. ToolLLM SBERT (Qin et al., ICLR 2024) and ToolRerank (Zheng et al., LREC-COLING 2024) score each query independently. Session co-activation is unused. → Objective 1 SATR.",
+        "G2 — Routers pick models or authored SOPs, not tool-specialist agents with a training-free posterior. RouteLLM / PILOT / MasRouter / MetaGPT. → Objective 2 APRR.",
+        "G3 — MAS communication is star, SOP, or chat. No mesh vote whose object is a live tool identifier. AutoGen, MetaGPT, ChatDev, CAMEL. → Objective 3 MNCD.",
+        "G4 — Prompt compressors (LLMLingua, EMNLP 2023) do not write live citations back into retrieval. → Objective 4 FCNP.",
+        "G5 — No closed four-stage contract executed on journal-publishable Indian OGD (data.gov.in / AGMARKNET / IMD / DES), with ToolBench used only as a ranking library. → Integrated ACRS."
+      ],
+      "footnote": "Gaps are architectural. This deck does not convert them into NDCG, latency, or accuracy targets."
+    },
+    {
+      "id": "title-aim",
+      "section": "Research Title & Aim",
+      "title": "Research Title & Aim",
+      "body": "Adaptive Context Reasoning System (ACRS): A Structural Orchestration Layer for Multi-Agent LLM Ecosystems",
+      "bullets": [
+        "Aim. Design, implement, and critically evaluate ACRS — a structural orchestration layer in which session-aware tool retrieval (SATR), training-free specialist routing (APRR), mesh consensus over tool identifiers (MNCD), and flow-coupled context pruning with write-back (FCNP) form a closed loop on live Indian Open Government Data. The proposal-stage claim is architectural completeness and live-pipeline integrity, not a leaderboard number.",
+        "Scope of the title. Adaptive = session-conditioned ranking and routing. Context = fused session memory plus mesh residue. Reasoning = specialist posterior plus score-sum consensus. System = four named modules on one contract.",
+        "What the title is not. It is not a new LLM, not a crop-yield model, and not a claim that ACRS already outperforms ToolLLM, MasRouter, or LLMLingua on a published leaderboard.",
+        "Domain lock for the live loop. Agriculture on data.gov.in (AGMARKNET and related verified UUIDs). Other sectors stay out of the inference path in this proposal.",
+        "Integration order that the aim implies. SATR (memory) → APRR (who acts) → MNCD (live evidence) → FCNP (prune and write back)."
+      ]
+    },
+    {
+      "id": "objectives",
+      "section": "Research Objectives",
+      "title": "Research Objectives",
+      "body": "Four named modules. Each row is a thesis-sized design claim. Metric targets are deferred until a protocol is frozen.",
+      "table": {
+        "headers": [
+          "ID",
+          "Objective",
+          "What will be designed"
+        ],
+        "rows": [
+          [
+            "O1",
+            "SessionRerank+ (SATR)",
+            "The retrieval chapter of the thesis: given query q and session history H, return a ranked list of ToolBench-schema tools fused with a co-activation cache. The unit of publication is the fusion rule, not an NDCG target."
+          ],
+          [
+            "O2",
+            "Adaptive Probabilistic Routing Reinforcement (APRR)",
+            "The routing chapter: a training-free posterior over tool-specialist agents, updated from SATR scores and from live MNCD observations. The unit of publication is the Bayesian controller, not a Pareto chart."
+          ],
+          [
+            "O3",
+            "Mesh Network Context Diffusion (MNCD)",
+            "The consensus-and-execution chapter: gossip (toolId, score), score-sum consensus, live data.gov.in GET on verified UUIDs. The unit of publication is the protocol plus the citation contract."
+          ],
+          [
+            "O4",
+            "Flow-Coupled Network Pruning (FCNP)",
+            "The memory chapter: Kirchhoff/Physarum conductances prune the mesh trace and write surviving live citations back into SATR. The unit of publication is the coupling, not a token-percentage."
+          ]
+        ]
+      }
+    },
+    {
+      "id": "o1-satr",
+      "section": "Research Objectives",
+      "title": "Objective 1 — SATR",
+      "body": "The retrieval chapter of the thesis: given query q and session history H, return a ranked list of ToolBench-schema tools fused with a co-activation cache. The unit of publication is the fusion rule, not an NDCG target.",
+      "paragraphs": [
+        "SOTA. Qin et al., ToolLLM / ToolBench (ICLR 2024): Sentence-BERT API retriever over 16,464 RapidAPI tools, then ToolLLaMA + DFSDT. Zheng et al., ToolRerank (LREC-COLING 2024): adaptive truncation of seen vs unseen APIs and hierarchy-aware concentration/diversity. Pipeline: instruction → SBERT retrieve top-k APIs → (optional ToolRerank truncate/rerank) → LLM DFSDT/ReAct planner",
+        "Gap. SOTA retrievers are turn-amnesic. They do not maintain a success-conditioned co-activation graph or ingest pruned memory from later stages.",
+        "Novelty. Session co-activation cache as a first-class prior over tool pairs. Convex fusion of semantic and session scores; λ may grow with session length. ToolRerank-style seen/unseen truncation kept, then applied after session scoring. FCNP memory mixed into the next SATR prior so retrieval is closed-loop."
+      ],
+      "diagram": "compare-satr",
+      "footnote": "Repository: github.com/joyjeni/session-aware-toolbench-rerank"
+    },
+    {
+      "id": "o2-aprr",
+      "section": "Research Objectives",
+      "title": "Objective 2 — APRR",
+      "body": "The routing chapter: a training-free posterior over tool-specialist agents, updated from SATR scores and from live MNCD observations. The unit of publication is the Bayesian controller, not a Pareto chart.",
+      "paragraphs": [
+        "SOTA. Yue et al., MasRouter (ACL 2025, doi:10.18653/v1/2025.acl-long.757): trained neural controller over multi-agent topologies. Ong et al., RouteLLM (arXiv:2406.18665, 2024): routers among LLMs. Panda et al., PILOT (Findings of EMNLP 2025): preference-prior LinUCB for budget-constrained LLM routing. Hong et al., MetaGPT (ICLR 2024): authored SOP workflows. Pipeline: query → trained controller or difficulty model → choose one LLM/agent → execute",
+        "Gap. SOTA either trains a neural router, picks a model, or follows an authored SOP. It does not maintain a training-free affinity matrix over Indian OGD tool families.",
+        "Novelty. Training-free online W versus MasRouter's learned controller. Implemented update is κ·reward·1/L²·1/lat_norm with negative reward on failure. CTGR and FTDR remain in the GitHub repo; this lab runs core APRR hops. W is session state, so routing can adapt across farmer turns."
+      ],
+      "diagram": "compare-aprr",
+      "footnote": "Repository: github.com/joyjeni/aprr-multi-agent-routing"
+    },
+    {
+      "id": "o3-mncd",
+      "section": "Research Objectives",
+      "title": "Objective 3 — MNCD",
+      "body": "The consensus-and-execution chapter: gossip (toolId, score), score-sum consensus, live data.gov.in GET on verified UUIDs. The unit of publication is the protocol plus the citation contract.",
+      "paragraphs": [
+        "SOTA. Wu et al., AutoGen (ICLR 2024 LLM Agents Workshop; COLM 2024, arXiv:2308.08155): multi-agent conversation. Hong et al., MetaGPT (ICLR 2024): SOP pipeline. Qian et al., ChatDev (ACL 2024): organisational chat-chain. Li et al., CAMEL (NeurIPS 2023): communicative role-playing agents. Pipeline: manager LLM → sequential or star-topology agent messages → tool calls",
+        "Gap. Star and chat topologies coordinate over natural-language messages. They do not vote over tool identifiers backed by a ministry API.",
+        "Novelty. First-class vote object is a tool ID, not a chat utterance. consensus_pick is score-sum; consensus_pick_borda is a non-default variant. Live Indian OGD only. Catalog-only tools stay ranking-only; prices are never invented. HTTP 5xx/429 are retried; empty filters show other live rows from the same resource."
+      ],
+      "diagram": "compare-mncd",
+      "footnote": "Repository: github.com/joyjeni/mncd-mesh-agents"
+    },
+    {
+      "id": "o4-fcnp",
+      "section": "Research Objectives",
+      "title": "Objective 4 — FCNP",
+      "body": "The memory chapter: Kirchhoff/Physarum conductances prune the mesh trace and write surviving live citations back into SATR. The unit of publication is the coupling, not a token-percentage.",
+      "paragraphs": [
+        "SOTA. Jiang et al., LLMLingua (EMNLP 2023): token-level prompt compression. Tero et al., Science 2010 (doi:10.1126/science.1177894): Physarum adaptive network. Park et al., Generative Agents (CHI 2023): language memory stream in a sandbox. Pipeline: long prompt → compressor → LLM. Memory is not written back into a tool retriever.",
+        "Gap. Token compressors are not current-reinforced over a context graph and do not pin live government citations into the next retrieval turn.",
+        "Novelty. Laplacian solve with grounded sink, matching the published Python pruner. Hybrid tiering and persistent high-flow citations. If a requested crop/state has no AGMARKNET rows today, other live rows are shown; nothing is invented. Closed loop: retained spans become SATR session memory."
+      ],
+      "diagram": "compare-fcnp",
+      "footnote": "Repository: github.com/joyjeni/fcnp-context-pruning"
+    },
+    {
+      "id": "questions",
+      "section": "Research Questions",
+      "title": "Research Questions",
+      "body": "Each question is paired with one objective. Answers will be empirical after a protocol is frozen; this slide does not pre-commit scores.",
+      "bullets": [
+        "RQ1. Can tool retrieval be conditioned on a co-activation cache and session memory rather than a single query embedding (Qin et al., ToolLLM, ICLR 2024; Zheng et al., ToolRerank, LREC-COLING 2024)?  →  addressed by O1 (SessionRerank+ (SATR)).",
+        "RQ2. Can routing sample a training-free posterior over tool-specialist agents instead of a trained neural controller or an authored SOP (Yue et al., MasRouter, ACL 2025; Hong et al., MetaGPT, ICLR 2024; Ong et al., RouteLLM, 2024)?  →  addressed by O2 (Adaptive Probabilistic Routing Reinforcement (APRR)).",
+        "RQ3. Can execution proceed as gossiped (toolId, score) plus score-sum consensus, then a live data.gov.in GET, instead of a central chat orchestrator (Wu et al., AutoGen, COLM 2024)?  →  addressed by O3 (Mesh Network Context Diffusion (MNCD)).",
+        "RQ4. Can Kirchhoff/Physarum pruning pin live citations back into retrieval rather than only shortening the prompt (Jiang et al., LLMLingua, EMNLP 2023; Tero et al., Science 2010)?  →  addressed by O4 (Flow-Coupled Network Pruning (FCNP))."
+      ]
+    },
+    {
+      "id": "method-overview",
+      "section": "Research Methodology",
+      "title": "Research Methodology",
+      "body": "One methodology per objective, then one integrated protocol. Proposal-stage: design the loop and freeze the protocol; do not pre-commit a leaderboard.",
+      "bullets": [
+        "O1 SATR — fused session ranking against a ToolBench-style library. Live mandi rows are not SATR’s job.",
+        "O2 APRR — training-free Dirichlet–Thompson posterior over named specialists. Learned routers are a future bake-off, not the implementation.",
+        "O3 MNCD — gossip + score-sum consensus, then live data.gov.in GET on verified Agriculture UUIDs. Fail loud. No dummy prices.",
+        "O4 FCNP — Kirchhoff / Physarum-inspired conductance prune with write-back into SATR. Not LLMLingua token deletion.",
+        "Integrated contract. SATR → APRR → MNCD → FCNP must run in that order on one user turn. Skipping MNCD or FCNP is an incomplete run.",
+        "What will not appear in this proposal. Promised retrieval scores, latency targets, consensus percentages, or token-reduction ratios."
+      ],
+      "diagram": "e2e"
+    },
+    {
+      "id": "method-satr",
+      "section": "Research Methodology",
+      "title": "Research Methodology — O1 SATR",
+      "body": "How session-aware ranking will be designed and later evaluated.",
+      "bullets": [
+        "Design method. Specify a fused session object: query + dialogue turns + last tool traces + co-activation counts. Rank tools with that object, not with the raw utterance alone.",
+        "Ranking library (not live prices). Use ToolBench / ToolLLM artefacts as a public tool-ranking library and protocol family. RapidAPI-style traces are ranking evidence only.",
+        "Live Indian OGD is out of SATR’s ranking path. Mandi and weather rows enter at MNCD. SATR must not invent or cache dummy AGMARKNET prices.",
+        "Implementation path. Persist co-activation in a session store; expose a rank(query, session) API that APRR can call. Fail loud if the session schema is incomplete.",
+        "Future evaluation protocol (not a result). When the protocol is frozen, compare session-fused ranking against query-only ranking on the same ToolBench-style split. Report the protocol, not a pre-committed score.",
+        "Deliverable for the thesis chapter. Algorithm, schema, and ablation plan (with vs without tool-trace fusion)."
+      ]
+    },
+    {
+      "id": "method-aprr",
+      "section": "Research Methodology",
+      "title": "Research Methodology — O2 APRR",
+      "body": "How the specialist posterior will be designed. No win-rate or millisecond target is claimed at proposal stage.",
+      "bullets": [
+        "Design method. Maintain a Dirichlet–Thompson posterior over named specialists. Sample or take the MAP specialist given SATR’s fused session.",
+        "Allocation rule (proposal form). P(agent | context) ∝ W^α · η^β · ψ^γ, with W = session-matched specialist weight, η = reliability, ψ = cost/risk. Exponents are design knobs, not fitted claims.",
+        "Training-free stance. Do not train a MasRouter- or RouteLLM-style classifier as the primary method. Learned routers remain a future bake-off class, not the implementation.",
+        "What is being routed. Specialists in the ACRS mesh — not LLM SKUs (GPT-4 vs Mixtral) and not AutoGen conversation modes as the object of routing.",
+        "Update rule. After MNCD returns verified or failed evidence, update η (and optionally W) so the next turn’s posterior is not identical to a cold start.",
+        "Future evaluation protocol (not a result). Log specialist choice vs task type on held-out session traces; compare against a static role graph. No pre-committed accuracy."
+      ]
+    },
+    {
+      "id": "method-mncd",
+      "section": "Research Methodology",
+      "title": "Research Methodology — O3 MNCD",
+      "body": "How live Indian OGD and score-sum consensus will be executed. PECAD is a domain precedent, not a baseline to beat.",
+      "bullets": [
+        "Design method. Specialists selected by APRR gossip partial beliefs. Aggregate with score-sum (not Borda). Every live claim must cite a verified data.gov.in resource UUID.",
+        "Corpus / API. Agriculture-only Open Government Data: AGMARKNET (9ef84268-d588-465a-a308-a864a43d0070) and other UUIDs that pass verification.",
+        "Fail-loud contract. HTTP 5xx/429 are retried with backoff; missing API key, unverified UUID, or empty filtered universe hard-fail. No dummy mandi prices.",
+        "Platform constraint. data.gov.in Elastic max_result_window is 10 000; limit is capped. Pagination is sequential, not a fabricated parallel harvest.",
+        "Related work used correctly. Guo, Woodruff & Yadav, PECAD (AAAI 2020) shows AGMARKNET as a real DSS input. MNCD does not re-implement crop-yield prediction.",
+        "Future evaluation protocol (not a result). Measure citation completeness, fail-loud rate on injected faults, and qualitative agreement of score-sum vs majority vote."
+      ]
+    },
+    {
+      "id": "method-fcnp",
+      "section": "Research Methodology",
+      "title": "Research Methodology — O4 FCNP",
+      "body": "How mesh pruning will be designed. No token-reduction ratio is claimed at proposal stage.",
+      "bullets": [
+        "Design method. Treat the post-MNCD mesh as a flow network. Apply a Kirchhoff / Physarum-inspired conductance update; drop low-conductance specialist edges; keep a residue.",
+        "Write-back (the integration hinge). The residue is written into SATR’s next fused session. Without write-back, FCNP would be prompt compression by another name.",
+        "Contrast with LLMLingua. LLMLingua shortens tokens before the LLM. FCNP prunes who remains in the mesh. Tokenisers are not the primary artefact.",
+        "Heuristic honesty. Discrete conductance is a design heuristic inspired by Tero et al. (Science, 2010), not a proof that the mesh is a Physarum organism.",
+        "Safety. Pruning must not delete the last live-data specialist if MNCD still has an open verified query. Fail loud rather than silently drop evidence.",
+        "Future evaluation protocol (not a result). Compare mesh size and downstream SATR rank stability with vs without pruning on the same session traces."
+      ]
+    },
+    {
+      "id": "method-integrated",
+      "section": "Research Methodology",
+      "title": "Research Methodology — integrated loop",
+      "body": "Closed contract SATR → APRR → MNCD → FCNP → SATR. The novelty is the loop and the data contract, not a claimed accuracy.",
+      "bullets": [
+        "Closed-loop protocol. One user turn must traverse all four modules in order. Skipping MNCD (no live UUID) or FCNP (no write-back) is treated as an incomplete run, not a successful demo.",
+        "Two evidence regimes. (1) ToolBench-style ranking traces for SATR. (2) Live data.gov.in Agriculture rows for MNCD. Do not mix dummy prices into (1) or RapidAPI tools into (2).",
+        "Independent variables (future experiments). Session fusion on/off; Dirichlet routing vs static roles; score-sum vs majority; FCNP write-back on/off.",
+        "Dependent measures (to be frozen later). Citation completeness, fail-loud correctness, rank stability across turns, qualitative specialist-choice logs.",
+        "Domain lock. Agriculture on Indian OGD for the live path. Other sectors are out of scope until a later amendment.",
+        "Ethics / data. Public government catalogues only; no personal data; API keys stay in the environment, never in the thesis text."
+      ],
+      "diagram": "integrated",
+      "footnote": "Master repository: github.com/joyjeni/phd-agentic-ai-master"
+    },
+    {
+      "id": "conclusion",
+      "section": "Conclusion",
+      "title": "Conclusion",
+      "body": "ACRS is proposed as a structural orchestration layer. The contribution is the closed loop and the four named gaps — not a pre-committed leaderboard.",
+      "bullets": [
+        "The literature (AutoGen, MetaGPT, ChatDev, CAMEL, ToolLLM, MasRouter, RouteLLM, PILOT, LLMLingua, PECAD) establishes conversation, tools, learned routing, and prompt compression. It does not establish SATR → APRR → MNCD → FCNP as one contract over live Indian OGD.",
+        "The identified problem is five gaps: G1 session–tool fusion, G2 training-free specialist posterior, G3 live fail-loud Indian OGD, G4 conductance prune with write-back, G5 missing integration layer.",
+        "The aim is to design that layer. Four objectives (SATR, APRR, MNCD, FCNP) and four research questions map onto it.",
+        "Methodology is specified per objective: ToolBench as ranking library; Dirichlet–Thompson routing; verified data.gov.in UUIDs with score-sum; Physarum-inspired prune with SATR write-back. Metric numbers are deferred.",
+        "Next step after approval. Freeze evaluation protocols, implement the closed loop, and report whatever the measurements show — including negative results."
+      ]
+    },
+    {
+      "id": "refs-1",
+      "section": "References 1/3",
+      "title": "References (1/3) — multi-agent systems and tool learning",
+      "bullets": [
+        "Wu, Q., Bansal, G., Zhang, J., Wu, Y., Li, B., Zhu, E., Jiang, L., Zhang, X., Zhang, S., Liu, J., Awadallah, A. H., White, R. W., Burger, D., and Wang, C. AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation. ICLR 2024 Workshop on Large Language Model (LLM) Agents; also COLM 2024. arXiv:2308.08155.",
+        "Hong, S., Zhuge, M., Chen, J., Zheng, X., Cheng, Y., Wang, J., Zhang, C., Wang, Z., Yau, S. K. S., Lin, Z., Zhou, L., Ran, C., Xiao, L., Wu, C., and Schmidhuber, J. MetaGPT: Meta Programming for A Multi-Agent Collaborative Framework. ICLR 2024.",
+        "Li, G., Hammoud, H. A. A. K., Itani, H., Khizbullin, D., and Ghanem, B. CAMEL: Communicative Agents for “Mind” Exploration of Large Language Model Society. NeurIPS 2023.",
+        "Qian, C., Liu, W., Liu, H., Chen, N., Dang, Y., Li, J., Yang, C., Chen, W., Su, Y., Cong, X., Xu, J., Li, D., Liu, Z., and Sun, M. ChatDev: Communicative Agents for Software Development. ACL 2024. arXiv:2307.07924.",
+        "Qin, Y., Liang, S., Ye, Y., Zhu, K., Yan, L., Lu, Y., Lin, Y., Cong, X., Tang, X., Qian, B., Zhao, S., Hong, L., Tian, R., Xie, R., Zhou, J., Gerstein, M., Li, D., Liu, Z., and Sun, M. ToolLLM: Facilitating Large Language Models to Master 16000+ Real-world APIs. ICLR 2024.",
+        "Zheng, Y., Li, P., Liu, W., Liu, Y., Luan, J., and Wang, B. ToolRerank: Adaptive and Hierarchy-Aware Reranking for Tool Retrieval. LREC-COLING 2024."
+      ]
+    },
+    {
+      "id": "refs-2",
+      "section": "References 2/3",
+      "title": "References (2/3) — routing, compression, reasoning, biology",
+      "bullets": [
+        "Ong, I., Almahairi, A., Wu, V., Chiang, W.-L., Wu, T., Gonzalez, J. E., Kadous, M. W., and Stoica, I. RouteLLM: Learning to Route LLMs with Preference Data. arXiv:2406.18665, 2024.",
+        "Panda, S., and co-authors. PILOT: Preference-informed LinUCB for routing among language models. Findings of EMNLP 2025.",
+        "Yue, Y., Zhang, G., Liu, B., Wan, G., Wang, K., Cheng, D., and Qi, Y. MasRouter: Learning to Route LLMs for Multi-Agent Systems. ACL 2025 (long). doi:10.18653/v1/2025.acl-long.757.",
+        "Jiang, H., Wu, Q., Lin, C.-Y., Yang, Y., and Qiu, L. LLMLingua: Compressing Prompts for Accelerated Inference of Large Language Models. EMNLP 2023.",
+        "Wei, J., Wang, X., Schuurmans, D., Bosma, M., Ichter, B., Xia, F., Chi, E., Le, Q., and Zhou, D. Chain-of-Thought Prompting Elicits Reasoning in Large Language Models. NeurIPS 2022.",
+        "Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K., and Cao, Y. ReAct: Synergizing Reasoning and Acting in Language Models. ICLR 2023.",
+        "Yao, S., Yu, D., Zhao, J., Shafran, I., Griffiths, T. L., Cao, Y., and Narasimhan, K. Tree of Thoughts: Deliberate Problem Solving with Large Language Models. NeurIPS 2023.",
+        "Tero, A., Takagi, S., Saigusa, T., Ito, K., Bebber, D. P., Fricker, M. D., Yumiki, K., Kobayashi, R., and Nakagaki, T. Rules for Biologically Inspired Adaptive Network Design. Science, 2010. doi:10.1126/science.1177894."
+      ]
+    },
+    {
+      "id": "refs-3",
+      "section": "References 3/3",
+      "title": "References (3/3) — memory, tools, Indian agricultural data",
+      "bullets": [
+        "Park, J. S., O’Brien, J. C., Cai, C. J., Morris, M. R., Liang, P., and Bernstein, M. S. Generative Agents: Interactive Simulacra of Human Behavior. CHI 2023.",
+        "Shinn, N., Cassano, F., Berman, E., Gopinath, A., Narasimhan, K., and Yao, S. Reflexion: Language Agents with Verbal Reinforcement Learning. NeurIPS 2023.",
+        "Shen, Y., Song, K., Tan, X., Li, D., Lu, W., and Zhuang, Y. HuggingGPT: Solving AI Tasks with ChatGPT and its Friends in Hugging Face. NeurIPS 2023.",
+        "Schick, T., Dwivedi-Yu, J., Dessì, R., Raileanu, R., Lomeli, M., Zettlemoyer, L., Cancedda, N., and Scialom, T. Toolformer: Language Models Can Teach Themselves to Use Tools. NeurIPS 2023.",
+        "Guo, H., Woodruff, A., and Yadav, A. Improving Lives of Indebted Farmers Using Deep Learning: Predicting Agricultural Produce Prices Using Convolutional Neural Networks (PECAD). AAAI 2020. doi:10.1609/aaai.v34i08.7039. AGMARKNET scrape for price prediction; cited here as Indian OGD precedent, not as a baseline this proposal claims to beat.",
+        "Government of India. Open Government Data Platform India (data.gov.in); AGMARKNET resource 9ef84268-d588-465a-a308-a864a43d0070; Directorate of Economics and Statistics crop production; IMD rainfall series; Government Open Data License — India (GODL-India)."
+      ],
+      "footnote": "CrewAI is an engineering framework without a flagship peer-reviewed paper in this list; AutoGen and MetaGPT are the MAS citations."
+    },
+    {
+      "id": "thanks",
+      "section": "Thank you",
+      "title": "Thank you",
+      "body": "Adaptive Context Reasoning System — a research programme, not a performance number.",
+      "bullets": [
+        "Presented By: Jenisha T",
+        "(Reg. No. 24ETRP720001)",
+        "Supervisor: Dr. Jyothi A P",
+        "Department of Computer Science and Engineering",
+        "Faculty of Engineering and Technology, MSRUAS",
+        "jenisha.t@msruas.ac.in"
+      ]
+    }
+  ]
+}

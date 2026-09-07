@@ -22,6 +22,41 @@ q_t + M_{t-1} → SATR → APRR → MNCD → FCNP → a_t + M_t
 
 with \(M_t\) becoming SATR’s prior at \(t+1\).
 
+## Current proposal deck (07 September 2026)
+
+FET outline with **research methodology for each objective**:
+
+1. Introduction  
+2. Literature Review  
+3. Summary of Literature Review  
+4. Identified Research Problem  
+5. Research Title & Aim  
+6. Research Objectives  
+7. Research Questions  
+8. Research Methodology (O1 SATR, O2 APRR, O3 MNCD, O4 FCNP, integrated loop)  
+9. Conclusion  
+
+**Download these files from this repository** (open in PowerPoint — Cursor cannot preview `.pptx`):
+
+| File | What it is |
+|------|------------|
+| [`Gowrishankar_PPT_PRP2_ACRS_JenishaT.pptx`](./Gowrishankar_PPT_PRP2_ACRS_JenishaT.pptx) | PRP copy: live slide numbers + automatic date |
+| [`JenishaT_ACRS_PhD_Proposal.pdf`](./JenishaT_ACRS_PhD_Proposal.pdf) | Same deck as PDF |
+| [`presentations/ACRS_PhD_Proposal_JenishaT_24ETRP720001.pptx`](./presentations/ACRS_PhD_Proposal_JenishaT_24ETRP720001.pptx) | Same PowerPoint, college filename |
+
+Editable slide source: `docs/slides/` and `laboratory/lib/research/slides.ts`.
+
+Runnable Next.js laboratory (SATR → APRR → MNCD → FCNP on live data.gov.in):
+
+```bash
+cd laboratory
+npm install
+npx vitest run
+npm run dev -- --port 43127 --hostname 0.0.0.0
+```
+
+Proposal-stage: **no NDCG, latency, token, or accuracy commitments.**
+
 ## Proposal-stage stance
 
 This programme **does not commit** NDCG, latency, hop-count, token-ratio, or

@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #0e1724;
+  --panel: #162233;
+  --paper: #f4efe4;
+  --muted: #9aa8b8;
+  --gold: #c4a35a;
+  --line: #2a3b50;
+  --sage: #3d6b5a;
+}
+
+@theme inline {
+  --color-background: var(--ink);
+  --color-foreground: var(--paper);
+  --font-sans: var(--font-source-sans);
+  --font-serif: var(--font-source-serif);
+}
+
+html,
+body {
+  background: radial-gradient(1200px 600px at 10% -10%, #1d3348 0%, var(--ink) 55%);
+  color: var(--paper);
+}
+
+body {
+  font-family: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+.font-serif {
+  font-family: var(--font-source-serif), Georgia, "Times New Roman", serif;
+}
+
+@media print {
+  @page {
+    size: landscape;
+    margin: 10mm;
+  }
+
+  html,
+  body {
+    background: #fffaf3 !important;
+    color: #1a1214 !important;
+  }
+
+  .college-print-page {
+    break-after: page;
+    break-inside: avoid;
+  }
+}
