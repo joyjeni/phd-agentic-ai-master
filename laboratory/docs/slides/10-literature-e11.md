@@ -6,26 +6,26 @@ Continuation. Evidence 11 & Evidence 12 in the same Evidence template.
 
 **Evidence 11**
 
-- Author(s): Park, J. S., O’Brien, J. C., Cai, C. J., Morris, M. R., Liang, P., and Bernstein, M. S.
-- Year: 2023
-- Title: Generative Agents: Interactive Simulacra of Human Behavior
-- Publication: UIST 2023 (Best Paper). doi:10.1145/3586183.3606763
-- Objective: Give LLM agents a long-term memory stream for believable behaviour in a sandbox.
-- Methodology: Natural-language memory, reflection, and retrieval (recency, relevance, importance) inside a Sims-like town.
-- Findings: A memory stream supports individual plans and emergent social coordination among agents.
-- Limitations: Memory lives in a sandbox simulation. It is not written back into a tool retriever over ministry APIs.
-- To solve the research gap: O4 FCNP — pin live ministry citations into the next SATR prior, not a sandbox memory stream.
+- Author(s): Ong, I., Almahairi, A., Wu, V., Chiang, W.-L., Wu, T., Gonzalez, J. E., Kadous, M. W., and Stoica, I.
+- Year: 2025
+- Title: RouteLLM: Learning to Route LLMs from Preference Data
+- Publication: ICLR 2025
+- Objective: Route each query between a stronger and a weaker LLM from human preference data.
+- Methodology: Trained router plus data augmentation; deployed as a frozen policy at inference.
+- Findings: Preference-trained routers can cut cost while holding response quality on public benchmarks.
+- Limitations: The object of routing is an LLM SKU, not a named Indian-OGD specialist with a training-free posterior.
+- To solve the research gap: O2 APRR — route named mandi / crop / rainfall specialists, not foundation-model SKUs.
 
 **Evidence 12**
 
-- Author(s): Tero, A., Takagi, S., Saigusa, T., Ito, K., Bebber, D. P., Fricker, M. D., Yumiki, K., Kobayashi, R., and Nakagaki, T.
-- Year: 2010
-- Title: Rules for Biologically Inspired Adaptive Network Design
-- Publication: Science 327(5964):439–442. doi:10.1126/science.1177894
-- Objective: Capture how Physarum polycephalum grows efficient, fault-tolerant transport networks.
-- Methodology: Feedback between tube conductance and protoplasmic flux; compared with the Tokyo rail system.
-- Findings: A local conductance update can yield globally efficient adaptive networks without a central planner.
-- Limitations: A biological transport model, not an LLM context pruner. ACRS uses it as a design heuristic, not as a claim that the mesh is an organism.
-- To solve the research gap: O4 FCNP — Physarum-inspired conductance as a design heuristic, with write-back into SATR.
+- Author(s): Yue, Y., Zhang, G., Liu, B., Wan, G., Wang, K., Cheng, D., and Qi, Y.
+- Year: 2025
+- Title: MasRouter: Learning to Route LLMs for Multi-Agent Systems
+- Publication: ACL 2025 (long), pages 15549–15572. doi:10.18653/v1/2025.acl-long.757
+- Objective: Unify collaboration mode, role allocation, and LLM choice as one MAS routing problem.
+- Methodology: Cascaded neural controller trained over multi-agent topologies.
+- Findings: A learned controller can assemble a cheaper MAS than a static multi-agent template.
+- Limitations: Requires training. It does not maintain a Dirichlet–Thompson matrix over mandi / crop / rainfall specialists.
+- To solve the research gap: O2 APRR — Dirichlet–Thompson posterior over named specialists; learned routers stay a future bake-off.
 
 Source of truth: `lib/research/literature.ts` (Evidence 1…N) and `lib/research/slides.ts`. Paste into the MSRUAS Google Slides template in Contents order.

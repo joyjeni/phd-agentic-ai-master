@@ -54,7 +54,7 @@ function literatureReviewSlides(): Slide[] {
       title: index === 0 ? "Literature Review" : `Literature Review — ${range}`,
       body:
         index === 0
-          ? "FET template. Each paper is one Evidence block: Author(s), Year, Title, Publication, Objective, Methodology, Findings, Limitations, To solve the research gap."
+          ? "FET template. Each paper is one Evidence block: Author(s), Year, Title, Publication, Objective, Methodology, Findings, Limitations, To solve the research gap. Venues are journals or top international conference proceedings — not preprint reports."
           : `Continuation. ${range} in the same Evidence template.`,
       evidence: pair,
       bullets: pair.flatMap(evidenceTemplateLines),
@@ -125,9 +125,10 @@ export const SLIDES: Slide[] = [
     title: "Introduction",
     body: "This proposal treats multi-agent LLM systems as a computer-science systems problem: not a new foundation model, but a missing orchestration layer between session memory, specialist routing, live tools, and context growth.",
     paragraphs: [
-      "Wu et al. introduce AutoGen as a conversation-driven programming framework in which agents exchange messages until a stopping condition (ICLR 2024 LLM Agents Workshop; COLM 2024, arXiv:2308.08155). Hong et al. encode Standard Operating Procedures into MetaGPT so that a software-company metaphor produces structured artefacts (ICLR 2024). Qian et al. organise ChatDev as a chat-chain of organisational roles (ACL 2024). Li et al. study communicative agents in CAMEL (NeurIPS 2023).",
+      "Wang et al. survey LLM-based autonomous agents as a construction problem in Frontiers of Computer Science (2024, doi:10.1007/s11704-024-40231-1). He, Treude and Lo review LLM-based multi-agent systems for software engineering in ACM TOSEM (2025, doi:10.1145/3712003). Guo et al. survey LLM multi-agent profiling and communication at IJCAI-24 (doi:10.24963/ijcai.2024/890). Chang and Geng give transactional context management for multi-agent LLM planning in PVLDB 2025 (doi:10.14778/3750601.3750611).",
+      "Wu et al. introduce AutoGen as a conversation-driven programming framework in which agents exchange messages until a stopping condition (COLM 2024). Hong et al. encode Standard Operating Procedures into MetaGPT so that a software-company metaphor produces structured artefacts (ICLR 2024). Qian et al. organise ChatDev as a chat-chain of organisational roles (ACL 2024). Li et al. study communicative agents in CAMEL (NeurIPS 2023).",
       "Tool use is a parallel line. Qin et al. release ToolLLM / ToolBench: 16k+ REST APIs, a DFSDT planner, and ToolEval (ICLR 2024). Zheng et al. add ToolRerank over ToolLLM candidates (LREC-COLING 2024). Learned routers (RouteLLM, MasRouter, PILOT) pick models or collaboration modes. LLMLingua shortens prompts by token importance (EMNLP 2023).",
-      "Those stacks still leave four operational surfaces underspecified as one contract: session–tool fusion, a training-free specialist posterior, fail-loud live Indian Open Government Data, and a mesh prune that writes a residue back into retrieval. The next slides record that literature as Evidence 1, Evidence 2, … in the FET template.",
+      "Those stacks still leave four operational surfaces underspecified as one contract: session–tool fusion, a training-free specialist posterior, fail-loud live Indian Open Government Data, and a mesh prune that writes a residue back into retrieval. The next slides record that literature as Evidence 1, Evidence 2, … in the FET template. Every Evidence block is a journal article or a top international conference paper.",
       "ACRS is proposed as that missing layer. The integration order is SATR → APRR → MNCD → FCNP. The live demonstration corpus is Agriculture on data.gov.in. This deck does not claim a leaderboard number.",
     ],
   },
@@ -144,6 +145,11 @@ export const SLIDES: Slide[] = [
           "MAS frameworks (AutoGen, MetaGPT, ChatDev, CAMEL)",
           "Conversation, SOPs, software roles, inception prompting",
           "A closed session–route–mesh–prune contract, not another chat runtime",
+        ],
+        [
+          "MAS surveys and orchestration (Wang et al. FCS 2024; He et al. TOSEM 2025; Guo et al. IJCAI-24; SagaLLM PVLDB 2025)",
+          "Journal and flagship-conference accounts of how LLM agents are built, profiled, and given transactional context",
+          "A live Indian-OGD loop whose vote object is a tool identifier, not a software SDLC or a saga log",
         ],
         [
           "Tool learning (ToolLLM / ToolBench / ToolRerank)",
@@ -172,7 +178,7 @@ export const SLIDES: Slide[] = [
     id: "solve-gap",
     section: "To Solve the Research Gap",
     title: "To Solve the Research Gap",
-    body: "To solve the research gaps identified in Evidence 1–14, the following work is proposed. Closing a gap is a named module on a closed loop, not a promised leaderboard number.",
+    body: "To solve the research gaps identified in Evidence 1–18, the following work is proposed. Closing a gap is a named module on a closed loop, not a promised leaderboard number.",
     table: {
       headers: ["Research gap", "Left open by", "To solve the research gap"],
       rows: RESEARCH_GAP_SOLUTIONS.map((row) => [row.gap, row.evidence, row.solves]),
@@ -399,7 +405,7 @@ export const SLIDES: Slide[] = [
     title: "Conclusion",
     body: "ACRS is proposed as a structural orchestration layer. The contribution is the closed loop and the four named gaps — not a pre-committed leaderboard.",
     bullets: [
-      "The literature (AutoGen, MetaGPT, ChatDev, CAMEL, ToolLLM, MasRouter, RouteLLM, PILOT, LLMLingua, PECAD) establishes conversation, tools, learned routing, and prompt compression. It does not establish SATR → APRR → MNCD → FCNP as one contract over live Indian OGD.",
+      "The literature (Wang et al. FCS 2024; He et al. TOSEM 2025; Guo et al. IJCAI-24; SagaLLM PVLDB 2025; AutoGen, MetaGPT, ChatDev, CAMEL, ToolLLM, MasRouter, RouteLLM, PILOT, LLMLingua, PECAD) establishes agent construction, conversation, tools, learned routing, and prompt compression. It does not establish SATR → APRR → MNCD → FCNP as one contract over live Indian OGD.",
       "The identified problem is five gaps: G1 session–tool fusion, G2 training-free specialist posterior, G3 live fail-loud Indian OGD, G4 conductance prune with write-back, G5 missing integration layer.",
       "The aim is to design that layer. Four objectives (SATR, APRR, MNCD, FCNP) and four research questions map onto it.",
       "Methodology is specified per objective: ToolBench as ranking library; Dirichlet–Thompson routing; verified data.gov.in UUIDs with score-sum; Physarum-inspired prune with SATR write-back. Metric numbers are deferred.",
@@ -409,37 +415,41 @@ export const SLIDES: Slide[] = [
   {
     id: "refs-1",
     section: "References 1/3",
-    title: "References (1/3) — multi-agent systems and tool learning",
+    title: "References (1/3) — multi-agent orchestration (journals and flagship proceedings)",
     bullets: [
-      "Wu, Q., Bansal, G., Zhang, J., Wu, Y., Li, B., Zhu, E., Jiang, L., Zhang, X., Zhang, S., Liu, J., Awadallah, A. H., White, R. W., Burger, D., and Wang, C. AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversations. Conference on Language Modeling (COLM) 2024. Also ICLR 2024 Workshop on Large Language Model (LLM) Agents (Best Paper). arXiv:2308.08155.",
+      "Wang, L., Ma, C., Feng, X., Zhang, Z., Yang, H., Zhang, J., Chen, Z., Tang, J., Chen, X., Lin, Y., Zhao, W. X., Wei, Z., and Wen, J. A survey on large language model based autonomous agents. Frontiers of Computer Science, 18, article 186345 (2024). doi:10.1007/s11704-024-40231-1.",
+      "He, J., Treude, C., and Lo, D. LLM-Based Multi-Agent Systems for Software Engineering: Literature Review, Vision, and the Road Ahead. ACM Transactions on Software Engineering and Methodology, 34(5), May 2025. doi:10.1145/3712003.",
+      "Guo, T., Chen, X., Wang, Y., Chang, R., Pei, S., Chawla, N. V., Wiest, O., and Zhang, X. Large Language Model based Multi-Agents: A Survey of Progress and Challenges. Proceedings of the Thirty-Third International Joint Conference on Artificial Intelligence (IJCAI-24), Survey Track, pages 8048–8057. doi:10.24963/ijcai.2024/890.",
+      "Chang, E. Y., and Geng, L. SagaLLM: Context Management, Validation, and Transaction Guarantees for Multi-Agent LLM Planning. Proceedings of the VLDB Endowment (PVLDB), 18(12):4874–4886, 2025. doi:10.14778/3750601.3750611.",
+      "Wu, Q., Bansal, G., Zhang, J., Wu, Y., Li, B., Zhu, E., Jiang, L., Zhang, X., Zhang, S., Liu, J., Awadallah, A. H., White, R. W., Burger, D., and Wang, C. AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversations. Conference on Language Modeling (COLM) 2024.",
       "Hong, S., Zhuge, M., Chen, J., Zheng, X., Cheng, Y., Wang, J., Zhang, C., Wang, Z., Yau, S. K. S., Lin, Z., Zhou, L., Ran, C., Xiao, L., Wu, C., and Schmidhuber, J. MetaGPT: Meta Programming for A Multi-Agent Collaborative Framework. ICLR 2024.",
       "Li, G., Hammoud, H. A. A. K., Itani, H., Khizbullin, D., and Ghanem, B. CAMEL: Communicative Agents for “Mind” Exploration of Large Language Model Society. NeurIPS 2023.",
       "Qian, C., Liu, W., Liu, H., Chen, N., Dang, Y., Li, J., Yang, C., Chen, W., Su, Y., Cong, X., Xu, J., Li, D., Liu, Z., and Sun, M. ChatDev: Communicative Agents for Software Development. ACL 2024 (long), pages 15174–15186. doi:10.18653/v1/2024.acl-long.810.",
-      "Qin, Y., Liang, S., Ye, Y., Zhu, K., Yan, L., Lu, Y., Lin, Y., Cong, X., Tang, X., Qian, B., Zhao, S., Hong, L., Tian, R., Xie, R., Zhou, J., Gerstein, M., Li, D., Liu, Z., and Sun, M. ToolLLM: Facilitating Large Language Models to Master 16000+ Real-world APIs. ICLR 2024.",
-      "Zheng, Y., Li, P., Liu, W., Liu, Y., Luan, J., and Wang, B. ToolRerank: Adaptive and Hierarchy-Aware Reranking for Tool Retrieval. LREC-COLING 2024, pages 16263–16273. ACL Anthology 2024.lrec-main.1413.",
     ],
   },
   {
     id: "refs-2",
     section: "References 2/3",
-    title: "References (2/3) — routing, compression, reasoning, biology",
+    title: "References (2/3) — tools, routing, compression, reasoning",
     bullets: [
-      "Ong, I., Almahairi, A., Wu, V., Chiang, W.-L., Wu, T., Gonzalez, J. E., Kadous, M. W., and Stoica, I. RouteLLM: Learning to Route LLMs from Preference Data. ICLR 2025. arXiv:2406.18665.",
+      "Qin, Y., Liang, S., Ye, Y., Zhu, K., Yan, L., Lu, Y., Lin, Y., Cong, X., Tang, X., Qian, B., Zhao, S., Hong, L., Tian, R., Xie, R., Zhou, J., Gerstein, M., Li, D., Liu, Z., and Sun, M. ToolLLM: Facilitating Large Language Models to Master 16000+ Real-world APIs. ICLR 2024.",
+      "Zheng, Y., Li, P., Liu, W., Liu, Y., Luan, J., and Wang, B. ToolRerank: Adaptive and Hierarchy-Aware Reranking for Tool Retrieval. LREC-COLING 2024, pages 16263–16273. ACL Anthology 2024.lrec-main.1413.",
+      "Ong, I., Almahairi, A., Wu, V., Chiang, W.-L., Wu, T., Gonzalez, J. E., Kadous, M. W., and Stoica, I. RouteLLM: Learning to Route LLMs from Preference Data. ICLR 2025.",
       "Panda, P., Magazine, R., Devaguptapu, C., Takemori, S., and Sharma, V. Adaptive LLM Routing under Budget Constraints. Findings of the Association for Computational Linguistics: EMNLP 2025, pages 23934–23949. doi:10.18653/v1/2025.findings-emnlp.1301.",
       "Yue, Y., Zhang, G., Liu, B., Wan, G., Wang, K., Cheng, D., and Qi, Y. MasRouter: Learning to Route LLMs for Multi-Agent Systems. ACL 2025 (long), pages 15549–15572. doi:10.18653/v1/2025.acl-long.757.",
       "Jiang, H., Wu, Q., Lin, C.-Y., Yang, Y., and Qiu, L. LLMLingua: Compressing Prompts for Accelerated Inference of Large Language Models. EMNLP 2023, pages 13358–13376. doi:10.18653/v1/2023.emnlp-main.825.",
       "Wei, J., Wang, X., Schuurmans, D., Bosma, M., Ichter, B., Xia, F., Chi, E., Le, Q., and Zhou, D. Chain-of-Thought Prompting Elicits Reasoning in Large Language Models. NeurIPS 2022.",
       "Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K., and Cao, Y. ReAct: Synergizing Reasoning and Acting in Language Models. ICLR 2023.",
-      "Yao, S., Yu, D., Zhao, J., Shafran, I., Griffiths, T. L., Cao, Y., and Narasimhan, K. Tree of Thoughts: Deliberate Problem Solving with Large Language Models. NeurIPS 2023.",
-      "Tero, A., Takagi, S., Saigusa, T., Ito, K., Bebber, D. P., Fricker, M. D., Yumiki, K., Kobayashi, R., and Nakagaki, T. Rules for Biologically Inspired Adaptive Network Design. Science 327(5964):439–442, 2010. doi:10.1126/science.1177894.",
     ],
   },
   {
     id: "refs-3",
     section: "References 3/3",
-    title: "References (3/3) — memory, tools, Indian agricultural data",
+    title: "References (3/3) — memory, biology, Indian agricultural data",
     bullets: [
+      "Yao, S., Yu, D., Zhao, J., Shafran, I., Griffiths, T. L., Cao, Y., and Narasimhan, K. Tree of Thoughts: Deliberate Problem Solving with Large Language Models. NeurIPS 2023.",
       "Park, J. S., O’Brien, J. C., Cai, C. J., Morris, M. R., Liang, P., and Bernstein, M. S. Generative Agents: Interactive Simulacra of Human Behavior. UIST 2023 (Best Paper). doi:10.1145/3586183.3606763.",
+      "Tero, A., Takagi, S., Saigusa, T., Ito, K., Bebber, D. P., Fricker, M. D., Yumiki, K., Kobayashi, R., and Nakagaki, T. Rules for Biologically Inspired Adaptive Network Design. Science 327(5964):439–442, 2010. doi:10.1126/science.1177894.",
       "Shinn, N., Cassano, F., Gopinath, A., Narasimhan, K., and Yao, S. Reflexion: Language Agents with Verbal Reinforcement Learning. NeurIPS 2023.",
       "Shen, Y., Song, K., Tan, X., Li, D., Lu, W., and Zhuang, Y. HuggingGPT: Solving AI Tasks with ChatGPT and its Friends in Hugging Face. NeurIPS 2023.",
       "Schick, T., Dwivedi-Yu, J., Dessì, R., Raileanu, R., Lomeli, M., Hambro, E., Zettlemoyer, L., Cancedda, N., and Scialom, T. Toolformer: Language Models Can Teach Themselves to Use Tools. NeurIPS 2023.",

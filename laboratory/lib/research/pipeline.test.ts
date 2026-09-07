@@ -325,7 +325,10 @@ describe("slides", () => {
     const blob = JSON.stringify(SLIDES);
     const { OBJECTIVES, OVERALL_OBJECTIVE } = await import("@/lib/research/objectives");
     const { SURVEYED_DATASETS } = await import("@/lib/research/open-datasets");
-    const all = `${blob}${JSON.stringify(OBJECTIVES)}${JSON.stringify(OVERALL_OBJECTIVE)}${JSON.stringify(SURVEYED_DATASETS)}`;
+    const { LITERATURE_EVIDENCE, literatureSurveyMarkdown } = await import(
+      "@/lib/research/literature"
+    );
+    const all = `${blob}${JSON.stringify(OBJECTIVES)}${JSON.stringify(OVERALL_OBJECTIVE)}${JSON.stringify(SURVEYED_DATASETS)}${JSON.stringify(LITERATURE_EVIDENCE)}${literatureSurveyMarkdown()}`;
 
     expect(all).not.toMatch(/CHI 2023/);
     expect(all).not.toMatch(/Berman, E/);
@@ -333,6 +336,8 @@ describe("slides", () => {
     expect(all).not.toMatch(/You et al\., AAAI 2020 \(PECAD\)/);
     expect(all).not.toMatch(/PILOT: Preference-informed LinUCB for routing/);
     expect(all).not.toMatch(/Learning to Route LLMs with Preference Data/);
+    expect(all).not.toMatch(/arXiv:/i);
+    expect(all).not.toMatch(/arxiv\.org/i);
 
     expect(blob).toMatch(/Adaptive LLM Routing under Budget Constraints/);
     expect(blob).toMatch(/doi:10\.18653\/v1\/2025\.findings-emnlp\.1301/);
@@ -345,12 +350,18 @@ describe("slides", () => {
     expect(blob).toMatch(/doi:10\.1126\/science\.1177894/);
     expect(blob).toMatch(/doi:10\.1609\/aaai\.v34i08\.7039/);
     expect(blob).toMatch(/Science 327\(5964\):439–442/);
+    expect(blob).toMatch(/Frontiers of Computer Science/);
+    expect(blob).toMatch(/doi:10\.1007\/s11704-024-40231-1/);
+    expect(blob).toMatch(/ACM Transactions on Software Engineering and Methodology/);
+    expect(blob).toMatch(/doi:10\.1145\/3712003/);
+    expect(blob).toMatch(/doi:10\.24963\/ijcai\.2024\/890/);
+    expect(blob).toMatch(/doi:10\.14778\/3750601\.3750611/);
     expect(SURVEYED_DATASETS.find((d) => d.id === "agmarknet")?.usedBy).toMatch(/Guo, Woodruff/);
   });
 
   it("writes the literature survey as Evidence 1, Evidence 2, … with template fields", async () => {
     const { LITERATURE_EVIDENCE } = await import("@/lib/research/literature");
-    expect(LITERATURE_EVIDENCE).toHaveLength(14);
+    expect(LITERATURE_EVIDENCE).toHaveLength(18);
     expect(LITERATURE_EVIDENCE[0]?.n).toBe(1);
     expect(LITERATURE_EVIDENCE[1]?.n).toBe(2);
     for (const item of LITERATURE_EVIDENCE) {
@@ -369,13 +380,19 @@ describe("slides", () => {
     expect(first?.evidence?.map((item) => item.n)).toEqual([1, 2]);
     expect(JSON.stringify(SLIDES)).toMatch(/Evidence 1/);
     expect(JSON.stringify(SLIDES)).toMatch(/Evidence 14/);
-    expect(LITERATURE_EVIDENCE.find((item) => item.n === 9)?.title).toBe(
+    expect(LITERATURE_EVIDENCE.find((item) => item.n === 13)?.title).toBe(
       "Adaptive LLM Routing under Budget Constraints",
     );
-    expect(LITERATURE_EVIDENCE.find((item) => item.n === 11)?.venue).toMatch(/UIST 2023/);
+    expect(LITERATURE_EVIDENCE.find((item) => item.n === 15)?.venue).toMatch(/UIST 2023/);
+    expect(LITERATURE_EVIDENCE.find((item) => item.n === 1)?.venue).toMatch(
+      /Frontiers of Computer Science/,
+    );
+    expect(LITERATURE_EVIDENCE.find((item) => item.n === 2)?.venue).toMatch(
+      /ACM Transactions on Software Engineering and Methodology/,
+    );
   });
 
-  it("maps Evidence 1–14 onto named ACRS modules to solve the research gap", async () => {
+  it("maps Evidence 1–18 onto named ACRS modules to solve the research gap", async () => {
     const { RESEARCH_GAP_SOLUTIONS, literatureSurveyMarkdown } = await import(
       "@/lib/research/literature"
     );

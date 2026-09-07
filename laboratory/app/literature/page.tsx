@@ -11,10 +11,11 @@ export default function LiteraturePage() {
         </p>
         <h1 className="mt-2 font-serif text-4xl">Literature Survey</h1>
         <p className="mt-4 text-sm leading-relaxed text-[var(--muted)]">
-          Each numbered block is one published paper in the college Evidence form:
+          Each numbered block is one published journal article or top
+          international conference paper in the college Evidence form:
           Author(s), Year, Title, Publication, Objective, Methodology, Findings,
-          Limitations, To solve the research gap. Same text is on the proposal
-          slides (two evidences per slide) and in{" "}
+          Limitations, To solve the research gap. Preprints are not cited. Same
+          text is on the proposal slides (two evidences per slide) and in{" "}
           <code className="text-[var(--paper)]">docs/LITERATURE_SURVEY.md</code>.
           No NDCG, latency, or accuracy targets.
         </p>
@@ -63,7 +64,7 @@ export default function LiteraturePage() {
       <section className="rounded-xl border border-[var(--gold)] bg-[var(--panel)] p-5">
         <h2 className="font-serif text-2xl">To solve the research gap</h2>
         <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[var(--muted)]">
-          The limitations in Evidence 1–14 collapse into five architectural gaps.
+          The limitations in Evidence 1–18 collapse into five architectural gaps.
           This proposal solves them as named modules on a closed loop, not as a
           promised leaderboard number.
         </p>

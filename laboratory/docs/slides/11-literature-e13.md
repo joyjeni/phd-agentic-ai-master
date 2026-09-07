@@ -6,26 +6,26 @@ Continuation. Evidence 13 & Evidence 14 in the same Evidence template.
 
 **Evidence 13**
 
-- Author(s): Guo, H., Woodruff, A., and Yadav, A.
-- Year: 2020
-- Title: Improving Lives of Indebted Farmers Using Deep Learning: Predicting Agricultural Produce Prices Using Convolutional Neural Networks (PECAD)
-- Publication: AAAI 2020. doi:10.1609/aaai.v34i08.7039
-- Objective: Use AGMARKNET price series as decision-support input for indebted farmers.
-- Methodology: Convolutional networks over scraped agricultural produce prices.
-- Findings: AGMARKNET is a real Indian decision-support corpus, not a toy table.
-- Limitations: A crop-price CNN is not a multi-agent live-OGD loop. Cited as domain precedent, not as a baseline to beat.
-- To solve the research gap: O3 MNCD — live AGMARKNET UUID as a citation. PECAD is domain precedent, not a baseline to beat.
+- Author(s): Panda, P., Magazine, R., Devaguptapu, C., Takemori, S., and Sharma, V.
+- Year: 2025
+- Title: Adaptive LLM Routing under Budget Constraints
+- Publication: Findings of the Association for Computational Linguistics: EMNLP 2025, pages 23934–23949. doi:10.18653/v1/2025.findings-emnlp.1301. Method name: PILOT (Preference-prior Informed LinUCB).
+- Objective: Treat LLM routing as a contextual bandit under a user budget.
+- Methodology: Preference-prior LinUCB in a shared query–LLM embedding space, plus an online cost policy.
+- Findings: Bandit routing can adapt without exhaustive inference of every LLM on every query.
+- Limitations: Routes foundation-model SKUs under a dollar budget, not tool-specialist agents after a live data.gov.in GET.
+- To solve the research gap: O2 APRR — specialist hops after SATR, updated from live MNCD outcomes, not SKU bandits under a dollar budget.
 
 **Evidence 14**
 
-- Author(s): Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K., and Cao, Y.
+- Author(s): Jiang, H., Wu, Q., Lin, C.-Y., Yang, Y., and Qiu, L.
 - Year: 2023
-- Title: ReAct: Synergizing Reasoning and Acting in Language Models
-- Publication: ICLR 2023
-- Objective: Interleave reasoning traces with actions so a language model can use tools.
-- Methodology: Thought–action–observation cycles on the already-chosen tool set.
-- Findings: Reasoning-and-acting beats reason-only or act-only prompting on several agent tasks.
-- Limitations: Assumes the tool set is already determined. It does not fuse session co-activation into the next rank, nor cite a live data.gov.in UUID.
-- To solve the research gap: O1 SATR — choose the tool set from session memory before any ReAct-style acting. O3 MNCD cites the UUID.
+- Title: LLMLingua: Compressing Prompts for Accelerated Inference of Large Language Models
+- Publication: EMNLP 2023, pages 13358–13376. doi:10.18653/v1/2023.emnlp-main.825
+- Objective: Shorten long prompts while keeping task performance.
+- Methodology: Budget controller plus token-level iterative compression aligned to the target LLM.
+- Findings: Token-importance compression can reduce prompt length with limited quality loss.
+- Limitations: Deletes tokens before the LLM. It does not prune a mesh by conductance or write live citations back into retrieval.
+- To solve the research gap: O4 FCNP — prune the mesh by conductance and pin live citations into SATR, not token deletion.
 
 Source of truth: `lib/research/literature.ts` (Evidence 1…N) and `lib/research/slides.ts`. Paste into the MSRUAS Google Slides template in Contents order.

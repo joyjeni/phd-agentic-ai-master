@@ -6,26 +6,26 @@ Continuation. Evidence 7 & Evidence 8 in the same Evidence template.
 
 **Evidence 7**
 
-- Author(s): Ong, I., Almahairi, A., Wu, V., Chiang, W.-L., Wu, T., Gonzalez, J. E., Kadous, M. W., and Stoica, I.
-- Year: 2025
-- Title: RouteLLM: Learning to Route LLMs from Preference Data
-- Publication: ICLR 2025. arXiv:2406.18665
-- Objective: Route each query between a stronger and a weaker LLM from human preference data.
-- Methodology: Trained router plus data augmentation; deployed as a frozen policy at inference.
-- Findings: Preference-trained routers can cut cost while holding response quality on public benchmarks.
-- Limitations: The object of routing is an LLM SKU, not a named Indian-OGD specialist with a training-free posterior.
-- To solve the research gap: O2 APRR — route named mandi / crop / rainfall specialists, not foundation-model SKUs.
+- Author(s): Qian, C., Liu, W., Liu, H., Chen, N., Dang, Y., Li, J., Yang, C., Chen, W., Su, Y., Cong, X., Xu, J., Li, D., Liu, Z., and Sun, M.
+- Year: 2024
+- Title: ChatDev: Communicative Agents for Software Development
+- Publication: ACL 2024 (long), pages 15174–15186. doi:10.18653/v1/2024.acl-long.810
+- Objective: Organise specialised LLM agents as a chat-chain for software design, coding, and testing.
+- Methodology: Chat chain (what to communicate) plus communicative dehallucination (how to communicate).
+- Findings: Natural-language design talk and code-level debug talk can be unified in one multi-agent loop.
+- Limitations: The environment is a codebase, not a ministry API with a fail-loud live GET.
+- To solve the research gap: O3 MNCD — the environment is a verified ministry UUID; empty filters fail loud instead of inventing rows.
 
 **Evidence 8**
 
-- Author(s): Yue, Y., Zhang, G., Liu, B., Wan, G., Wang, K., Cheng, D., and Qi, Y.
-- Year: 2025
-- Title: MasRouter: Learning to Route LLMs for Multi-Agent Systems
-- Publication: ACL 2025 (long), pages 15549–15572. doi:10.18653/v1/2025.acl-long.757
-- Objective: Unify collaboration mode, role allocation, and LLM choice as one MAS routing problem.
-- Methodology: Cascaded neural controller trained over multi-agent topologies.
-- Findings: A learned controller can assemble a cheaper MAS than a static multi-agent template.
-- Limitations: Requires training. It does not maintain a Dirichlet–Thompson matrix over mandi / crop / rainfall specialists.
-- To solve the research gap: O2 APRR — Dirichlet–Thompson posterior over named specialists; learned routers stay a future bake-off.
+- Author(s): Li, G., Hammoud, H. A. A. K., Itani, H., Khizbullin, D., and Ghanem, B.
+- Year: 2023
+- Title: CAMEL: Communicative Agents for “Mind” Exploration of Large Language Model Society
+- Publication: NeurIPS 2023
+- Objective: Enable autonomous cooperation among communicative agents with minimal human steering.
+- Methodology: Role-playing with inception prompting to keep agents on a human-specified task.
+- Findings: Inception prompting yields scalable multi-agent conversational data and cooperative behaviour.
+- Limitations: No first-class vote over tool identifiers backed by Open Government Data.
+- To solve the research gap: O3 MNCD — the vote object is a tool identifier backed by Open Government Data, not a role-play utterance.
 
 Source of truth: `lib/research/literature.ts` (Evidence 1…N) and `lib/research/slides.ts`. Paste into the MSRUAS Google Slides template in Contents order.

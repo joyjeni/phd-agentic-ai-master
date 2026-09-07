@@ -6,26 +6,26 @@ Continuation. Evidence 5 & Evidence 6 in the same Evidence template.
 
 **Evidence 5**
 
-- Author(s): Qin, Y., Liang, S., Ye, Y., Zhu, K., Yan, L., Lu, Y., Lin, Y., Cong, X., Tang, X., Qian, B., Zhao, S., Hong, L., Tian, R., Xie, R., Zhou, J., Gerstein, M., Li, D., Liu, Z., and Sun, M.
+- Author(s): Wu, Q., Bansal, G., Zhang, J., Wu, Y., Li, B., Zhu, E., Jiang, L., Zhang, X., Zhang, S., Liu, J., Awadallah, A. H., White, R. W., Burger, D., and Wang, C.
 - Year: 2024
-- Title: ToolLLM: Facilitating Large Language Models to Master 16000+ Real-world APIs
-- Publication: ICLR 2024
-- Objective: Give open LLMs general tool-use over a large real-world API catalogue.
-- Methodology: ToolBench: 16,464 RapidAPI REST endpoints; SBERT retriever; DFSDT planner; ToolEval protocol.
-- Findings: A public ranking library and planner exist for large-scale tool use.
-- Limitations: Retrieval is turn-amnesic. RapidAPI keys are not redistributable, so this lab cannot execute ToolBench endpoints live.
-- To solve the research gap: O1 SATR uses ToolBench as a ranking library only. O3 MNCD executes live Indian OGD, never RapidAPI replay.
+- Title: AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversations
+- Publication: Conference on Language Modeling (COLM) 2024
+- Objective: Program LLM applications by composing multiple conversable agents.
+- Methodology: Agents exchange natural-language messages until a stopping condition; modes mix LLMs, humans, and tools.
+- Findings: Conversation is a working programming model for multi-agent LLM applications.
+- Limitations: The unit of coordination is a chat message, not a live (toolId, score, citation) on Indian Open Government Data.
+- To solve the research gap: O3 MNCD — gossip (toolId, score), score-sum consensus, then a fail-loud live data.gov.in GET.
 
 **Evidence 6**
 
-- Author(s): Zheng, Y., Li, P., Liu, W., Liu, Y., Luan, J., and Wang, B.
+- Author(s): Hong, S., Zhuge, M., Chen, J., Zheng, X., Cheng, Y., Wang, J., Zhang, C., Wang, Z., Yau, S. K. S., Lin, Z., Zhou, L., Ran, C., Xiao, L., Wu, C., and Schmidhuber, J.
 - Year: 2024
-- Title: ToolRerank: Adaptive and Hierarchy-Aware Reranking for Tool Retrieval
-- Publication: LREC-COLING 2024, pages 16263–16273. ACL Anthology 2024.lrec-main.1413
-- Objective: Refine ToolLLM-style retrieval for seen versus unseen APIs and for tool-library hierarchy.
-- Methodology: Adaptive truncation of seen/unseen APIs plus hierarchy-aware concentration or diversity.
-- Findings: Reranking the SBERT shortlist improves downstream tool execution quality.
-- Limitations: Still query-only. Session co-activation and later write-back from a pruned mesh are unused.
-- To solve the research gap: O1 SATR — fuse co-activation after ToolRerank-style truncation. O4 FCNP writes the residue back.
+- Title: MetaGPT: Meta Programming for A Multi-Agent Collaborative Framework
+- Publication: ICLR 2024
+- Objective: Reduce role drift in multi-agent software workflows by encoding human SOPs.
+- Methodology: Standard Operating Procedures are written into prompt sequences; an assembly-line assigns roles.
+- Findings: Authored SOPs produce more coherent software artefacts than unconstrained chat agents.
+- Limitations: Who speaks next is designed in advance. The graph is not updated from session-local affinity after a live tool call.
+- To solve the research gap: O2 APRR — training-free specialist posterior updated after live outcomes, not an authored SOP graph.
 
 Source of truth: `lib/research/literature.ts` (Evidence 1…N) and `lib/research/slides.ts`. Paste into the MSRUAS Google Slides template in Contents order.

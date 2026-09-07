@@ -5,7 +5,8 @@
  * template uses: Author(s), Year, Title, Publication, Objective,
  * Methodology, Findings, Limitations, To solve the research gap.
  *
- * Citations match the verified bibliography in slides.ts. No NDCG,
+ * Citations are peer-reviewed journals or top international conference
+ * proceedings. Preprints are not cited. No NDCG,
  * latency, or accuracy targets.
  */
 
@@ -26,10 +27,81 @@ export type LiteratureEvidence = {
 export const LITERATURE_EVIDENCE: LiteratureEvidence[] = [
   {
     n: 1,
+    authors:
+      "Wang, L., Ma, C., Feng, X., Zhang, Z., Yang, H., Zhang, J., Chen, Z., Tang, J., Chen, X., Lin, Y., Zhao, W. X., Wei, Z., and Wen, J.",
+    year: "2024",
+    title: "A survey on large language model based autonomous agents",
+    venue: "Frontiers of Computer Science, 18, article 186345 (2024). doi:10.1007/s11704-024-40231-1",
+    objective: "Unify how LLM-based autonomous agents are constructed, applied, and evaluated.",
+    methodology:
+      "Journal survey of agent construction: a profile–memory–planning–action framework covering social science, natural science, and engineering applications.",
+    findings:
+      "Most published agents share a construction template, but coordination remains an open systems problem rather than a solved runtime.",
+    limitations:
+      "The survey organises single- and multi-agent construction. It does not specify a closed SATR → APRR → MNCD → FCNP contract over live Indian Open Government Data.",
+    toSolve:
+      "Integrated ACRS — four named modules on one turn, with O3 MNCD citing a verified data.gov.in UUID.",
+  },
+  {
+    n: 2,
+    authors: "He, J., Treude, C., and Lo, D.",
+    year: "2025",
+    title:
+      "LLM-Based Multi-Agent Systems for Software Engineering: Literature Review, Vision, and the Road Ahead",
+    venue:
+      "ACM Transactions on Software Engineering and Methodology, 34(5), May 2025. doi:10.1145/3712003",
+    objective: "Map LLM-based multi-agent (LMA) systems across the software development lifecycle.",
+    methodology:
+      "Systematic review of primary LMA studies in software engineering, plus case studies of current frameworks and a two-phase research agenda.",
+    findings:
+      "Role-specialised LMA systems can divide software work, but agent synergy and trustworthiness remain research gaps.",
+    limitations:
+      "The environment is a software project, not a ministry API. Orchestration is reviewed as chat/SOP collaboration, not a live (toolId, score, citation).",
+    toSolve:
+      "O3 MNCD — the vote object is a live tool identifier on data.gov.in, not a software-engineering role in a chat chain.",
+  },
+  {
+    n: 3,
+    authors:
+      "Guo, T., Chen, X., Wang, Y., Chang, R., Pei, S., Chawla, N. V., Wiest, O., and Zhang, X.",
+    year: "2024",
+    title: "Large Language Model based Multi-Agents: A Survey of Progress and Challenges",
+    venue:
+      "Proceedings of the Thirty-Third International Joint Conference on Artificial Intelligence (IJCAI-24), Survey Track, pages 8048–8057. doi:10.24963/ijcai.2024/890",
+    objective: "Survey how LLM-based multi-agent systems are profiled, how they communicate, and how their capacities grow.",
+    methodology:
+      "IJCAI survey track: domains and environments, agent profiling, communication mechanisms, and capacity-growth methods.",
+    findings:
+      "Published MAS work clusters on conversation, role profiles, and simulated worlds; live tool-identifier consensus is not the unit of analysis.",
+    limitations:
+      "Communication is reviewed as natural-language exchange. There is no fail-loud live Open Government Data GET as the coordination object.",
+    toSolve:
+      "O3 MNCD — gossip (toolId, score), score-sum consensus, then a fail-loud live data.gov.in GET.",
+  },
+  {
+    n: 4,
+    authors: "Chang, E. Y., and Geng, L.",
+    year: "2025",
+    title:
+      "SagaLLM: Context Management, Validation, and Transaction Guarantees for Multi-Agent LLM Planning",
+    venue:
+      "Proceedings of the VLDB Endowment (PVLDB), 18(12):4874–4886, 2025. doi:10.14778/3750601.3750611",
+    objective: "Give multi-agent LLM planners persistent context, validation, and compensable transactions.",
+    methodology:
+      "Saga-style checkpointing and compensation around multi-LLM planning, with independent validators and state tracking.",
+    findings:
+      "Transactional context management can recover multi-agent plans from disruption better than unconstrained chat loops.",
+    limitations:
+      "Orchestration is a planning/transaction runtime. It does not maintain a training-free specialist posterior over Indian OGD tool families, nor cite a ministry UUID.",
+    toSolve:
+      "O2 APRR plus O3 MNCD — Dirichlet–Thompson specialist hops, then a verified Agriculture UUID rather than a compensable software saga.",
+  },
+  {
+    n: 5,
     authors: "Wu, Q., Bansal, G., Zhang, J., Wu, Y., Li, B., Zhu, E., Jiang, L., Zhang, X., Zhang, S., Liu, J., Awadallah, A. H., White, R. W., Burger, D., and Wang, C.",
     year: "2024",
     title: "AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversations",
-    venue: "Conference on Language Modeling (COLM) 2024; ICLR 2024 Workshop on LLM Agents (Best Paper). arXiv:2308.08155",
+    venue: "Conference on Language Modeling (COLM) 2024",
     objective: "Program LLM applications by composing multiple conversable agents.",
     methodology: "Agents exchange natural-language messages until a stopping condition; modes mix LLMs, humans, and tools.",
     findings: "Conversation is a working programming model for multi-agent LLM applications.",
@@ -39,7 +111,7 @@ export const LITERATURE_EVIDENCE: LiteratureEvidence[] = [
       "O3 MNCD — gossip (toolId, score), score-sum consensus, then a fail-loud live data.gov.in GET.",
   },
   {
-    n: 2,
+    n: 6,
     authors: "Hong, S., Zhuge, M., Chen, J., Zheng, X., Cheng, Y., Wang, J., Zhang, C., Wang, Z., Yau, S. K. S., Lin, Z., Zhou, L., Ran, C., Xiao, L., Wu, C., and Schmidhuber, J.",
     year: "2024",
     title: "MetaGPT: Meta Programming for A Multi-Agent Collaborative Framework",
@@ -53,7 +125,7 @@ export const LITERATURE_EVIDENCE: LiteratureEvidence[] = [
       "O2 APRR — training-free specialist posterior updated after live outcomes, not an authored SOP graph.",
   },
   {
-    n: 3,
+    n: 7,
     authors: "Qian, C., Liu, W., Liu, H., Chen, N., Dang, Y., Li, J., Yang, C., Chen, W., Su, Y., Cong, X., Xu, J., Li, D., Liu, Z., and Sun, M.",
     year: "2024",
     title: "ChatDev: Communicative Agents for Software Development",
@@ -66,7 +138,7 @@ export const LITERATURE_EVIDENCE: LiteratureEvidence[] = [
       "O3 MNCD — the environment is a verified ministry UUID; empty filters fail loud instead of inventing rows.",
   },
   {
-    n: 4,
+    n: 8,
     authors: "Li, G., Hammoud, H. A. A. K., Itani, H., Khizbullin, D., and Ghanem, B.",
     year: "2023",
     title: "CAMEL: Communicative Agents for “Mind” Exploration of Large Language Model Society",
@@ -79,7 +151,7 @@ export const LITERATURE_EVIDENCE: LiteratureEvidence[] = [
       "O3 MNCD — the vote object is a tool identifier backed by Open Government Data, not a role-play utterance.",
   },
   {
-    n: 5,
+    n: 9,
     authors: "Qin, Y., Liang, S., Ye, Y., Zhu, K., Yan, L., Lu, Y., Lin, Y., Cong, X., Tang, X., Qian, B., Zhao, S., Hong, L., Tian, R., Xie, R., Zhou, J., Gerstein, M., Li, D., Liu, Z., and Sun, M.",
     year: "2024",
     title: "ToolLLM: Facilitating Large Language Models to Master 16000+ Real-world APIs",
@@ -94,7 +166,7 @@ export const LITERATURE_EVIDENCE: LiteratureEvidence[] = [
       "O1 SATR uses ToolBench as a ranking library only. O3 MNCD executes live Indian OGD, never RapidAPI replay.",
   },
   {
-    n: 6,
+    n: 10,
     authors: "Zheng, Y., Li, P., Liu, W., Liu, Y., Luan, J., and Wang, B.",
     year: "2024",
     title: "ToolRerank: Adaptive and Hierarchy-Aware Reranking for Tool Retrieval",
@@ -108,11 +180,11 @@ export const LITERATURE_EVIDENCE: LiteratureEvidence[] = [
       "O1 SATR — fuse co-activation after ToolRerank-style truncation. O4 FCNP writes the residue back.",
   },
   {
-    n: 7,
+    n: 11,
     authors: "Ong, I., Almahairi, A., Wu, V., Chiang, W.-L., Wu, T., Gonzalez, J. E., Kadous, M. W., and Stoica, I.",
     year: "2025",
     title: "RouteLLM: Learning to Route LLMs from Preference Data",
-    venue: "ICLR 2025. arXiv:2406.18665",
+    venue: "ICLR 2025",
     objective: "Route each query between a stronger and a weaker LLM from human preference data.",
     methodology: "Trained router plus data augmentation; deployed as a frozen policy at inference.",
     findings: "Preference-trained routers can cut cost while holding response quality on public benchmarks.",
@@ -122,7 +194,7 @@ export const LITERATURE_EVIDENCE: LiteratureEvidence[] = [
       "O2 APRR — route named mandi / crop / rainfall specialists, not foundation-model SKUs.",
   },
   {
-    n: 8,
+    n: 12,
     authors: "Yue, Y., Zhang, G., Liu, B., Wan, G., Wang, K., Cheng, D., and Qi, Y.",
     year: "2025",
     title: "MasRouter: Learning to Route LLMs for Multi-Agent Systems",
@@ -136,7 +208,7 @@ export const LITERATURE_EVIDENCE: LiteratureEvidence[] = [
       "O2 APRR — Dirichlet–Thompson posterior over named specialists; learned routers stay a future bake-off.",
   },
   {
-    n: 9,
+    n: 13,
     authors: "Panda, P., Magazine, R., Devaguptapu, C., Takemori, S., and Sharma, V.",
     year: "2025",
     title: "Adaptive LLM Routing under Budget Constraints",
@@ -151,7 +223,7 @@ export const LITERATURE_EVIDENCE: LiteratureEvidence[] = [
       "O2 APRR — specialist hops after SATR, updated from live MNCD outcomes, not SKU bandits under a dollar budget.",
   },
   {
-    n: 10,
+    n: 14,
     authors: "Jiang, H., Wu, Q., Lin, C.-Y., Yang, Y., and Qiu, L.",
     year: "2023",
     title: "LLMLingua: Compressing Prompts for Accelerated Inference of Large Language Models",
@@ -165,7 +237,7 @@ export const LITERATURE_EVIDENCE: LiteratureEvidence[] = [
       "O4 FCNP — prune the mesh by conductance and pin live citations into SATR, not token deletion.",
   },
   {
-    n: 11,
+    n: 15,
     authors: "Park, J. S., O’Brien, J. C., Cai, C. J., Morris, M. R., Liang, P., and Bernstein, M. S.",
     year: "2023",
     title: "Generative Agents: Interactive Simulacra of Human Behavior",
@@ -179,7 +251,7 @@ export const LITERATURE_EVIDENCE: LiteratureEvidence[] = [
       "O4 FCNP — pin live ministry citations into the next SATR prior, not a sandbox memory stream.",
   },
   {
-    n: 12,
+    n: 16,
     authors: "Tero, A., Takagi, S., Saigusa, T., Ito, K., Bebber, D. P., Fricker, M. D., Yumiki, K., Kobayashi, R., and Nakagaki, T.",
     year: "2010",
     title: "Rules for Biologically Inspired Adaptive Network Design",
@@ -193,7 +265,7 @@ export const LITERATURE_EVIDENCE: LiteratureEvidence[] = [
       "O4 FCNP — Physarum-inspired conductance as a design heuristic, with write-back into SATR.",
   },
   {
-    n: 13,
+    n: 17,
     authors: "Guo, H., Woodruff, A., and Yadav, A.",
     year: "2020",
     title:
@@ -208,7 +280,7 @@ export const LITERATURE_EVIDENCE: LiteratureEvidence[] = [
       "O3 MNCD — live AGMARKNET UUID as a citation. PECAD is domain precedent, not a baseline to beat.",
   },
   {
-    n: 14,
+    n: 18,
     authors: "Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K., and Cao, Y.",
     year: "2023",
     title: "ReAct: Synergizing Reasoning and Acting in Language Models",
@@ -245,31 +317,31 @@ export const RESEARCH_GAP_SOLUTIONS: {
 }[] = [
   {
     gap: "G1 — Turn-amnesic retrieval",
-    evidence: "Evidence 5, 6, 14",
+    evidence: "Evidence 9, 10, 18",
     solves:
       "O1 SATR. Fuse session co-activation with semantic rank; write FCNP residue into the next prior.",
   },
   {
     gap: "G2 — Model / SOP routers",
-    evidence: "Evidence 2, 7, 8, 9",
+    evidence: "Evidence 6, 11, 12, 13",
     solves:
       "O2 APRR. Training-free Dirichlet–Thompson posterior over named specialists, not LLM SKUs.",
   },
   {
     gap: "G3 — Chat / star coordination",
-    evidence: "Evidence 1, 2, 3, 4",
+    evidence: "Evidence 1–5, 7, 8",
     solves:
       "O3 MNCD. Score-sum over live tool identifiers, then a fail-loud data.gov.in GET.",
   },
   {
     gap: "G4 — Token compression, no write-back",
-    evidence: "Evidence 10, 11, 12",
+    evidence: "Evidence 14, 15, 16",
     solves:
       "O4 FCNP. Conductance prune of the mesh; pin live citations back into SATR.",
   },
   {
     gap: "G5 — No live Indian OGD loop",
-    evidence: "Evidence 5, 13",
+    evidence: "Evidence 9, 17",
     solves:
       "Integrated ACRS on verified Agriculture UUIDs. ToolBench is ranking-only; prices are never invented.",
   },
@@ -311,13 +383,13 @@ export function literatureSurveyMarkdown(): string {
   return [
     "# Literature Survey",
     "",
-    "FET / PRP template form for Jenisha T (24ETRP720001). Each numbered block is one published paper.",
+    "FET / PRP template form for Jenisha T (24ETRP720001). Each numbered block is one published journal article or top international conference paper. Preprints are not cited.",
     "Proposal-stage: no NDCG, latency, token, or accuracy commitments.",
     "",
     ...blocks,
     "## To solve the research gap",
     "",
-    "The limitations in Evidence 1–14 collapse into five architectural gaps. This proposal solves them as follows. Closing a gap is a named module on a closed loop, not a promised leaderboard number.",
+    "The limitations in Evidence 1–18 collapse into five architectural gaps. This proposal solves them as follows. Closing a gap is a named module on a closed loop, not a promised leaderboard number.",
     "",
     "| Research gap | Left open by | To solve the research gap |",
     "|---|---|---|",

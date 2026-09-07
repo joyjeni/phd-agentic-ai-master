@@ -62,7 +62,8 @@ q_t + co-activation cache + FCNP memory
 ## Research proposal deck
 
 The deck follows the MSRUAS / FET template and the required proposal outline:
-Introduction, Literature Review (Evidence 1, Evidence 2, …), Summary of Literature
+Introduction, Literature Review (Evidence 1, Evidence 2, … — journals and top
+conference proceedings only; preprints are not cited), Summary of Literature
 Review, To Solve the Research Gap (G1–G5 mapped onto SATR / APRR / MNCD / FCNP),
 Identified Research Problem, Research Title & Aim, Research Objectives,
 Research Questions, Research Methodology (one method slide per objective plus the

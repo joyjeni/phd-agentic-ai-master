@@ -70,7 +70,7 @@ export const OBJECTIVES = [
     sota: {
       papers: [
         "Yue et al., MasRouter (ACL 2025, doi:10.18653/v1/2025.acl-long.757): trained neural controller over multi-agent topologies.",
-        "Ong et al., RouteLLM (ICLR 2025, arXiv:2406.18665): routers among LLMs.",
+        "Ong et al., RouteLLM (ICLR 2025): routers among LLMs.",
         "Panda et al., Adaptive LLM Routing under Budget Constraints (PILOT; Findings of EMNLP 2025, doi:10.18653/v1/2025.findings-emnlp.1301): preference-prior LinUCB for budget-constrained LLM routing.",
         "Hong et al., MetaGPT (ICLR 2024): authored SOP workflows.",
       ],
@@ -104,7 +104,11 @@ export const OBJECTIVES = [
       "Run routed agents as a gossip mesh: publish rank.update, fanout=3, R=3 last-write-wins replicate, score-sum consensus (Borda exists in the repo but is not the eval default), then execute only live data.gov.in Agriculture resources.",
     sota: {
       papers: [
-        "Wu et al., AutoGen (COLM 2024; ICLR 2024 LLM Agents Workshop Best Paper, arXiv:2308.08155): multi-agent conversation.",
+        "Wang et al., A survey on large language model based autonomous agents (Frontiers of Computer Science, 2024, doi:10.1007/s11704-024-40231-1): construction of LLM agents.",
+        "He, Treude and Lo, LLM-Based Multi-Agent Systems for Software Engineering (ACM TOSEM, 2025, doi:10.1145/3712003): LMA systems across the SDLC.",
+        "Guo et al., Large Language Model based Multi-Agents (IJCAI-24, doi:10.24963/ijcai.2024/890): profiling and communication.",
+        "Chang and Geng, SagaLLM (PVLDB 2025, doi:10.14778/3750601.3750611): transactional context for multi-agent LLM planning.",
+        "Wu et al., AutoGen (COLM 2024): multi-agent conversation.",
         "Hong et al., MetaGPT (ICLR 2024): SOP pipeline.",
         "Qian et al., ChatDev (ACL 2024): organisational chat-chain.",
         "Li et al., CAMEL (NeurIPS 2023): communicative role-playing agents.",

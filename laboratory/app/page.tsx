@@ -50,7 +50,7 @@ export default function HomePage() {
           </Link>
           {" · "}
           <Link className="text-[var(--gold)] underline" href="/literature">
-            Literature survey (Evidence 1–14)
+            Literature survey (Evidence 1–18)
           </Link>{" "}
           — FET template, including how ACRS solves each gap.
         </p>

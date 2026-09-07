@@ -1,9 +1,89 @@
 # Literature Survey
 
-FET / PRP template form for Jenisha T (24ETRP720001). Each numbered block is one published paper.
+FET / PRP template form for Jenisha T (24ETRP720001). Each numbered block is one published journal article or top international conference paper. Preprints are not cited.
 Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 ## Evidence 1
+
+**Author(s):** Wang, L., Ma, C., Feng, X., Zhang, Z., Yang, H., Zhang, J., Chen, Z., Tang, J., Chen, X., Lin, Y., Zhao, W. X., Wei, Z., and Wen, J.
+
+**Year:** 2024
+
+**Title:** A survey on large language model based autonomous agents
+
+**Publication:** Frontiers of Computer Science, 18, article 186345 (2024). doi:10.1007/s11704-024-40231-1
+
+**Objective:** Unify how LLM-based autonomous agents are constructed, applied, and evaluated.
+
+**Methodology:** Journal survey of agent construction: a profile–memory–planning–action framework covering social science, natural science, and engineering applications.
+
+**Findings:** Most published agents share a construction template, but coordination remains an open systems problem rather than a solved runtime.
+
+**Limitations:** The survey organises single- and multi-agent construction. It does not specify a closed SATR → APRR → MNCD → FCNP contract over live Indian Open Government Data.
+
+**To solve the research gap:** Integrated ACRS — four named modules on one turn, with O3 MNCD citing a verified data.gov.in UUID.
+
+## Evidence 2
+
+**Author(s):** He, J., Treude, C., and Lo, D.
+
+**Year:** 2025
+
+**Title:** LLM-Based Multi-Agent Systems for Software Engineering: Literature Review, Vision, and the Road Ahead
+
+**Publication:** ACM Transactions on Software Engineering and Methodology, 34(5), May 2025. doi:10.1145/3712003
+
+**Objective:** Map LLM-based multi-agent (LMA) systems across the software development lifecycle.
+
+**Methodology:** Systematic review of primary LMA studies in software engineering, plus case studies of current frameworks and a two-phase research agenda.
+
+**Findings:** Role-specialised LMA systems can divide software work, but agent synergy and trustworthiness remain research gaps.
+
+**Limitations:** The environment is a software project, not a ministry API. Orchestration is reviewed as chat/SOP collaboration, not a live (toolId, score, citation).
+
+**To solve the research gap:** O3 MNCD — the vote object is a live tool identifier on data.gov.in, not a software-engineering role in a chat chain.
+
+## Evidence 3
+
+**Author(s):** Guo, T., Chen, X., Wang, Y., Chang, R., Pei, S., Chawla, N. V., Wiest, O., and Zhang, X.
+
+**Year:** 2024
+
+**Title:** Large Language Model based Multi-Agents: A Survey of Progress and Challenges
+
+**Publication:** Proceedings of the Thirty-Third International Joint Conference on Artificial Intelligence (IJCAI-24), Survey Track, pages 8048–8057. doi:10.24963/ijcai.2024/890
+
+**Objective:** Survey how LLM-based multi-agent systems are profiled, how they communicate, and how their capacities grow.
+
+**Methodology:** IJCAI survey track: domains and environments, agent profiling, communication mechanisms, and capacity-growth methods.
+
+**Findings:** Published MAS work clusters on conversation, role profiles, and simulated worlds; live tool-identifier consensus is not the unit of analysis.
+
+**Limitations:** Communication is reviewed as natural-language exchange. There is no fail-loud live Open Government Data GET as the coordination object.
+
+**To solve the research gap:** O3 MNCD — gossip (toolId, score), score-sum consensus, then a fail-loud live data.gov.in GET.
+
+## Evidence 4
+
+**Author(s):** Chang, E. Y., and Geng, L.
+
+**Year:** 2025
+
+**Title:** SagaLLM: Context Management, Validation, and Transaction Guarantees for Multi-Agent LLM Planning
+
+**Publication:** Proceedings of the VLDB Endowment (PVLDB), 18(12):4874–4886, 2025. doi:10.14778/3750601.3750611
+
+**Objective:** Give multi-agent LLM planners persistent context, validation, and compensable transactions.
+
+**Methodology:** Saga-style checkpointing and compensation around multi-LLM planning, with independent validators and state tracking.
+
+**Findings:** Transactional context management can recover multi-agent plans from disruption better than unconstrained chat loops.
+
+**Limitations:** Orchestration is a planning/transaction runtime. It does not maintain a training-free specialist posterior over Indian OGD tool families, nor cite a ministry UUID.
+
+**To solve the research gap:** O2 APRR plus O3 MNCD — Dirichlet–Thompson specialist hops, then a verified Agriculture UUID rather than a compensable software saga.
+
+## Evidence 5
 
 **Author(s):** Wu, Q., Bansal, G., Zhang, J., Wu, Y., Li, B., Zhu, E., Jiang, L., Zhang, X., Zhang, S., Liu, J., Awadallah, A. H., White, R. W., Burger, D., and Wang, C.
 
@@ -11,7 +91,7 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **Title:** AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversations
 
-**Publication:** Conference on Language Modeling (COLM) 2024; ICLR 2024 Workshop on LLM Agents (Best Paper). arXiv:2308.08155
+**Publication:** Conference on Language Modeling (COLM) 2024
 
 **Objective:** Program LLM applications by composing multiple conversable agents.
 
@@ -23,7 +103,7 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **To solve the research gap:** O3 MNCD — gossip (toolId, score), score-sum consensus, then a fail-loud live data.gov.in GET.
 
-## Evidence 2
+## Evidence 6
 
 **Author(s):** Hong, S., Zhuge, M., Chen, J., Zheng, X., Cheng, Y., Wang, J., Zhang, C., Wang, Z., Yau, S. K. S., Lin, Z., Zhou, L., Ran, C., Xiao, L., Wu, C., and Schmidhuber, J.
 
@@ -43,7 +123,7 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **To solve the research gap:** O2 APRR — training-free specialist posterior updated after live outcomes, not an authored SOP graph.
 
-## Evidence 3
+## Evidence 7
 
 **Author(s):** Qian, C., Liu, W., Liu, H., Chen, N., Dang, Y., Li, J., Yang, C., Chen, W., Su, Y., Cong, X., Xu, J., Li, D., Liu, Z., and Sun, M.
 
@@ -63,7 +143,7 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **To solve the research gap:** O3 MNCD — the environment is a verified ministry UUID; empty filters fail loud instead of inventing rows.
 
-## Evidence 4
+## Evidence 8
 
 **Author(s):** Li, G., Hammoud, H. A. A. K., Itani, H., Khizbullin, D., and Ghanem, B.
 
@@ -83,7 +163,7 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **To solve the research gap:** O3 MNCD — the vote object is a tool identifier backed by Open Government Data, not a role-play utterance.
 
-## Evidence 5
+## Evidence 9
 
 **Author(s):** Qin, Y., Liang, S., Ye, Y., Zhu, K., Yan, L., Lu, Y., Lin, Y., Cong, X., Tang, X., Qian, B., Zhao, S., Hong, L., Tian, R., Xie, R., Zhou, J., Gerstein, M., Li, D., Liu, Z., and Sun, M.
 
@@ -103,7 +183,7 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **To solve the research gap:** O1 SATR uses ToolBench as a ranking library only. O3 MNCD executes live Indian OGD, never RapidAPI replay.
 
-## Evidence 6
+## Evidence 10
 
 **Author(s):** Zheng, Y., Li, P., Liu, W., Liu, Y., Luan, J., and Wang, B.
 
@@ -123,7 +203,7 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **To solve the research gap:** O1 SATR — fuse co-activation after ToolRerank-style truncation. O4 FCNP writes the residue back.
 
-## Evidence 7
+## Evidence 11
 
 **Author(s):** Ong, I., Almahairi, A., Wu, V., Chiang, W.-L., Wu, T., Gonzalez, J. E., Kadous, M. W., and Stoica, I.
 
@@ -131,7 +211,7 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **Title:** RouteLLM: Learning to Route LLMs from Preference Data
 
-**Publication:** ICLR 2025. arXiv:2406.18665
+**Publication:** ICLR 2025
 
 **Objective:** Route each query between a stronger and a weaker LLM from human preference data.
 
@@ -143,7 +223,7 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **To solve the research gap:** O2 APRR — route named mandi / crop / rainfall specialists, not foundation-model SKUs.
 
-## Evidence 8
+## Evidence 12
 
 **Author(s):** Yue, Y., Zhang, G., Liu, B., Wan, G., Wang, K., Cheng, D., and Qi, Y.
 
@@ -163,7 +243,7 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **To solve the research gap:** O2 APRR — Dirichlet–Thompson posterior over named specialists; learned routers stay a future bake-off.
 
-## Evidence 9
+## Evidence 13
 
 **Author(s):** Panda, P., Magazine, R., Devaguptapu, C., Takemori, S., and Sharma, V.
 
@@ -183,7 +263,7 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **To solve the research gap:** O2 APRR — specialist hops after SATR, updated from live MNCD outcomes, not SKU bandits under a dollar budget.
 
-## Evidence 10
+## Evidence 14
 
 **Author(s):** Jiang, H., Wu, Q., Lin, C.-Y., Yang, Y., and Qiu, L.
 
@@ -203,7 +283,7 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **To solve the research gap:** O4 FCNP — prune the mesh by conductance and pin live citations into SATR, not token deletion.
 
-## Evidence 11
+## Evidence 15
 
 **Author(s):** Park, J. S., O’Brien, J. C., Cai, C. J., Morris, M. R., Liang, P., and Bernstein, M. S.
 
@@ -223,7 +303,7 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **To solve the research gap:** O4 FCNP — pin live ministry citations into the next SATR prior, not a sandbox memory stream.
 
-## Evidence 12
+## Evidence 16
 
 **Author(s):** Tero, A., Takagi, S., Saigusa, T., Ito, K., Bebber, D. P., Fricker, M. D., Yumiki, K., Kobayashi, R., and Nakagaki, T.
 
@@ -243,7 +323,7 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **To solve the research gap:** O4 FCNP — Physarum-inspired conductance as a design heuristic, with write-back into SATR.
 
-## Evidence 13
+## Evidence 17
 
 **Author(s):** Guo, H., Woodruff, A., and Yadav, A.
 
@@ -263,7 +343,7 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **To solve the research gap:** O3 MNCD — live AGMARKNET UUID as a citation. PECAD is domain precedent, not a baseline to beat.
 
-## Evidence 14
+## Evidence 18
 
 **Author(s):** Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K., and Cao, Y.
 
@@ -285,14 +365,14 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 ## To solve the research gap
 
-The limitations in Evidence 1–14 collapse into five architectural gaps. This proposal solves them as follows. Closing a gap is a named module on a closed loop, not a promised leaderboard number.
+The limitations in Evidence 1–18 collapse into five architectural gaps. This proposal solves them as follows. Closing a gap is a named module on a closed loop, not a promised leaderboard number.
 
 | Research gap | Left open by | To solve the research gap |
 |---|---|---|
-| G1 — Turn-amnesic retrieval | Evidence 5, 6, 14 | O1 SATR. Fuse session co-activation with semantic rank; write FCNP residue into the next prior. |
-| G2 — Model / SOP routers | Evidence 2, 7, 8, 9 | O2 APRR. Training-free Dirichlet–Thompson posterior over named specialists, not LLM SKUs. |
-| G3 — Chat / star coordination | Evidence 1, 2, 3, 4 | O3 MNCD. Score-sum over live tool identifiers, then a fail-loud data.gov.in GET. |
-| G4 — Token compression, no write-back | Evidence 10, 11, 12 | O4 FCNP. Conductance prune of the mesh; pin live citations back into SATR. |
-| G5 — No live Indian OGD loop | Evidence 5, 13 | Integrated ACRS on verified Agriculture UUIDs. ToolBench is ranking-only; prices are never invented. |
+| G1 — Turn-amnesic retrieval | Evidence 9, 10, 18 | O1 SATR. Fuse session co-activation with semantic rank; write FCNP residue into the next prior. |
+| G2 — Model / SOP routers | Evidence 6, 11, 12, 13 | O2 APRR. Training-free Dirichlet–Thompson posterior over named specialists, not LLM SKUs. |
+| G3 — Chat / star coordination | Evidence 1–5, 7, 8 | O3 MNCD. Score-sum over live tool identifiers, then a fail-loud data.gov.in GET. |
+| G4 — Token compression, no write-back | Evidence 14, 15, 16 | O4 FCNP. Conductance prune of the mesh; pin live citations back into SATR. |
+| G5 — No live Indian OGD loop | Evidence 9, 17 | Integrated ACRS on verified Agriculture UUIDs. ToolBench is ranking-only; prices are never invented. |
 
 Integration order: SATR → APRR → MNCD → FCNP on one user turn.
