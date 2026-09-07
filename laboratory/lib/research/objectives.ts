@@ -10,11 +10,20 @@ export const RESEARCH = {
   shortTitle: COLLEGE.shortTitle,
 };
 
+export const MOTIVATION = {
+  title: "Motivation",
+  paragraphs: [
+    "Published LLM-agent stacks already retrieve APIs, route among models, coordinate over chat, and compress prompts. Those four operations are still specified as separate families rather than one closed contract. A farmer turn on Indian Open Government Data needs all four at once: the next tool list must remember which tools succeeded together; the next hop must be a named specialist rather than a foundation-model SKU; the vote object must be a tool identifier backed by a verified ministry UUID; and whatever survives pruning must re-enter retrieval rather than vanish as deleted tokens.",
+    "Wang et al. organise LLM agents as Profiling, Memory, Planning, and Action (Frontiers of Computer Science, 2024). That template does not name a session co-activation cache, a training-free specialist posterior, a mesh whose consensus object is a live tool ID, or a Physarum-style write-back into retrieval. ToolLLM / ToolRerank retrieve from the current query. RouteLLM, PILOT, MasRouter, and MetaGPT pick models or follow authored SOPs. AutoGen, ChatDev, and CAMEL coordinate over messages. LLMLingua shortens the prompt. None of those papers, taken together, is a live Agriculture loop on data.gov.in.",
+    "ACRS is proposed as the missing structural orchestration layer. The motivation is architectural: to make session retrieval, specialist routing, live Indian OGD execution, and citation write-back one fail-loud protocol. The proposal does not motivate a leaderboard number, a latency target, or a token-reduction ratio.",
+  ],
+} as const;
+
 export const OVERALL_OBJECTIVE = {
   id: "overall",
-  title: "Overall objective",
+  title: "Overall research objective",
   statement:
-    "Design, implement, and critically evaluate ACRS — a structural orchestration layer in which SATR (Session-Aware Tool Retrieval), training-free specialist routing (APRR), mesh consensus over tool identifiers (MNCD), and flow-coupled context pruning with write-back (FCNP) form a closed loop on live Indian Open Government Data. The proposal-stage claim is architectural completeness and live-pipeline integrity, not a leaderboard number.",
+    "Design and implement ACRS as a closed structural orchestration layer in which SATR (Session-Aware Tool Retrieval), training-free specialist routing (APRR), mesh consensus over tool identifiers (MNCD), and flow-coupled context pruning with write-back (FCNP) execute in that order on one user turn, using live Indian Open Government Data as the only execution corpus. The proposal-stage claim is architectural completeness and live-pipeline integrity — that the four modules form one fail-loud loop — not a retrieval, routing, consensus, or compression score.",
   questions: [
     "Can tool retrieval be conditioned on a co-activation cache and session memory rather than a single query embedding (Qin et al., ToolLLM, ICLR 2024; Zheng et al., ToolRerank, LREC-COLING 2024)?",
     "Can routing sample a training-free posterior over tool-specialist agents instead of a trained neural controller or an authored SOP (Yue et al., MasRouter, ACL 2025; Hong et al., MetaGPT, ICLR 2024; Ong et al., RouteLLM, ICLR 2025)?",

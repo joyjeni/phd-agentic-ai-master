@@ -7,6 +7,7 @@ import {
 } from "./literature";
 import {
   INTEGRATED_METHODOLOGY,
+  MOTIVATION,
   OBJECTIVES,
   OVERALL_OBJECTIVE,
   SATR,
@@ -132,6 +133,18 @@ export const SLIDES: Slide[] = [
       "Tool use is a parallel line. Qin et al. release ToolLLM / ToolBench: 16k+ REST APIs, a DFSDT planner, and ToolEval (ICLR 2024). Zheng et al. add ToolRerank over ToolLLM candidates (LREC-COLING 2024). Learned routers (RouteLLM, MasRouter, PILOT) pick models or collaboration modes. LLMLingua shortens prompts by token importance (EMNLP 2023).",
       "Those stacks still leave four operational surfaces underspecified as one contract: session–tool fusion, a training-free specialist posterior, fail-loud live Indian Open Government Data, and a mesh prune that writes a residue back into retrieval. The next slides record that literature as Evidence 1, Evidence 2, … in the FET template. Every Evidence block is a journal article or a top international conference paper.",
       "ACRS is proposed as that missing layer. The integration order is SATR → APRR → MNCD → FCNP. The live demonstration corpus is Agriculture on data.gov.in. This deck does not claim a leaderboard number.",
+    ],
+  },
+  {
+    id: "motivation",
+    section: "Motivation",
+    title: "Motivation",
+    body: MOTIVATION.paragraphs[0],
+    paragraphs: MOTIVATION.paragraphs.slice(1),
+    bullets: [
+      "Four published families remain four families: retrieve, route, chat, compress.",
+      "A farmer turn on Indian OGD needs them as one fail-loud contract, with write-back into retrieval.",
+      "The motivation is architectural completeness, not a retrieval, latency, consensus, or token number.",
     ],
   },
   ...literatureReviewSlides(),
@@ -340,6 +353,7 @@ export const SLIDES: Slide[] = [
     title: "Research Methodology — O1 SATR",
     body: "How session-aware ranking will be designed and later evaluated.",
     bullets: [...OBJECTIVES[0].methodology],
+    diagram: "satr",
   },
   {
     id: "method-aprr",
@@ -347,6 +361,7 @@ export const SLIDES: Slide[] = [
     title: "Research Methodology — O2 APRR",
     body: "How the specialist posterior will be designed. No win-rate or millisecond target is claimed at proposal stage.",
     bullets: [...OBJECTIVES[1].methodology],
+    diagram: "aprr",
   },
   {
     id: "method-mncd",
@@ -354,6 +369,7 @@ export const SLIDES: Slide[] = [
     title: "Research Methodology — O3 MNCD",
     body: "How live Indian OGD and score-sum consensus will be executed. PECAD is a domain precedent, not a baseline to beat.",
     bullets: [...OBJECTIVES[2].methodology],
+    diagram: "mncd",
   },
   {
     id: "method-fcnp",
@@ -361,6 +377,7 @@ export const SLIDES: Slide[] = [
     title: "Research Methodology — O4 FCNP",
     body: "How mesh pruning will be designed. No token-reduction ratio is claimed at proposal stage.",
     bullets: [...OBJECTIVES[3].methodology],
+    diagram: "fcnp",
   },
   {
     id: "method-integrated",
@@ -401,7 +418,22 @@ export const SLIDES: Slide[] = [
         ],
       ],
     },
-    footnote: "Source: lib/research/satr.ts, aprr.ts, mncd.ts, fcnp.ts. Full walkthrough: /walkthrough.",
+    footnote: "Source: lib/research/satr.ts, aprr.ts, mncd.ts, fcnp.ts. Full walkthrough: /walkthrough. Pseudocode and mermaid: /algorithms.",
+  },
+  {
+    id: "method-algorithms",
+    section: "Research Methodology",
+    title: "Research Methodology — implemented algorithms",
+    body: "Pseudocode is the laboratory functions. Full listings, mermaid, and the animated ToolBench pass are on /algorithms. Constants are repository defaults, not claimed results.",
+    bullets: [
+      "O1 SATR. s(a|q,H)=w_base s_base + session priors + co-activation − fail penalty. Truncate seen/unseen. Do not GET RapidAPI or data.gov.in.",
+      "O2 APRR. Sample P(a_j|a_i,q) ∝ W^α η^β ψ^γ from agriculture_analyst. assignTools by category. Update W after MNCD.",
+      "O3 MNCD. Gossip (toolId, score). Score-sum. Execute only liveExecutable UUIDs; else force preferredLiveToolId. Fail loud.",
+      "O4 FCNP. D←(1−μ)D+α|Q|^γ after L p = I. Keep / summarize / drop. Pin live citations. Write M_t into SATR.",
+      "Integration. One turn must traverse all four. ToolBench-schema ranking and live OGD are two evidence regimes, not two mixed corpora.",
+      "What this slide does not contain. NDCG, latency, consensus accuracy, or token-reduction targets.",
+    ],
+    diagram: "e2e",
   },
   {
     id: "method-walk-tb",
@@ -510,6 +542,7 @@ export const SLIDES: Slide[] = [
 /** High-level academic outline shown on the Contents slide (required headings, with methodology expanded and the FET gap-mapping slide). */
 export const OUTLINE: ContentsItem[] = [
   { n: "01", title: "Introduction", slideId: "introduction" },
+  { n: "01a", title: "Motivation", slideId: "motivation" },
   { n: "02", title: "Literature Review", slideId: "literature-e01" },
   { n: "03", title: "Summary of Literature Review", slideId: "literature-summary" },
   { n: "03a", title: "To Solve the Research Gap", slideId: "solve-gap" },
@@ -526,8 +559,9 @@ export const OUTLINE: ContentsItem[] = [
   { n: "08d", title: "Methodology — O4 FCNP", slideId: "method-fcnp" },
   { n: "08e", title: "Methodology — integrated loop", slideId: "method-integrated" },
   { n: "08f", title: "Methodology — implementation formulas", slideId: "method-formulas" },
-  { n: "08g", title: "Methodology — ToolBench walkthrough", slideId: "method-walk-tb" },
-  { n: "08h", title: "Methodology — data.gov.in walkthrough", slideId: "method-walk-ogd" },
+  { n: "08g", title: "Methodology — implemented algorithms", slideId: "method-algorithms" },
+  { n: "08h", title: "Methodology — ToolBench walkthrough", slideId: "method-walk-tb" },
+  { n: "08i", title: "Methodology — data.gov.in walkthrough", slideId: "method-walk-ogd" },
   { n: "09", title: "Conclusion", slideId: "conclusion" },
 ];
 

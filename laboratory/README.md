@@ -44,9 +44,10 @@ passes:
 1. One **ToolBench-schema** datum (`tb.agri.soil_health`) — ranking library only.
 2. One **live data.gov.in** AGMARKNET query (wheat / Punjab).
 
-Lab page: `/walkthrough`. Markdown: `docs/PIPELINE_WALKTHROUGH.md`.
-Proposal slides 08f–08h. Numbers dated 07 September 2026 are traces, not
-metric commitments.
+Lab page: `/walkthrough`. Animated pseudocode and mermaid: `/algorithms`.
+Markdown: `docs/PIPELINE_WALKTHROUGH.md`.
+Proposal slides include motivation, formulas, and implemented algorithms.
+Numbers dated 07 September 2026 are traces, not metric commitments.
 
 ## Closed loop
 

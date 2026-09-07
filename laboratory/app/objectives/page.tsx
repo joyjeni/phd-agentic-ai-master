@@ -1,4 +1,4 @@
-import { OBJECTIVES, OVERALL_OBJECTIVE } from "@/lib/research/objectives";
+import { MOTIVATION, OBJECTIVES, OVERALL_OBJECTIVE } from "@/lib/research/objectives";
 
 export default function ObjectivesPage() {
   return (
@@ -9,10 +9,17 @@ export default function ObjectivesPage() {
         </p>
         <h1 className="mt-2 font-serif text-4xl">{OVERALL_OBJECTIVE.title}</h1>
         <p className="mt-4 text-sm leading-relaxed text-[var(--muted)]">
-          To solve the research gap, four named modules are proposed.{" "}
           {OVERALL_OBJECTIVE.statement}
         </p>
       </header>
+      <section className="space-y-3">
+        <h2 className="font-serif text-2xl">{MOTIVATION.title}</h2>
+        {MOTIVATION.paragraphs.map((paragraph) => (
+          <p key={paragraph.slice(0, 48)} className="max-w-3xl text-sm leading-relaxed text-[var(--muted)]">
+            {paragraph}
+          </p>
+        ))}
+      </section>
       <section>
         <h2 className="font-serif text-2xl">Research questions</h2>
         <ol className="mt-3 space-y-2">

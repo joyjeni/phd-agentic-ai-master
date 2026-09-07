@@ -84,7 +84,12 @@ export default function WalkthroughPage() {
           <Link className="text-[var(--gold)] underline" href="/proposal">
             proposal slides
           </Link>
-          . The same equations are in <code>docs/PIPELINE_WALKTHROUGH.md</code>.
+          {" "}and the{" "}
+          <Link className="text-[var(--gold)] underline" href="/algorithms">
+            implemented algorithms
+          </Link>
+          {" "}(pseudocode, mermaid, animated ToolBench dataflow). The same equations are in{" "}
+          <code>docs/PIPELINE_WALKTHROUGH.md</code>.
         </p>
       </header>
 

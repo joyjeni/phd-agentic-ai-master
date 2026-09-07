@@ -47,6 +47,10 @@ export default function HomePage() {
             Full formula walkthrough
           </Link>
           {" · "}
+          <Link className="text-[var(--gold)] underline" href="/algorithms">
+            Pseudocode, mermaid, animated ToolBench dataflow
+          </Link>
+          {" · "}
           <Link className="text-[var(--gold)] underline" href="/literature">
             Literature survey (Evidence 1–18)
           </Link>{" "}

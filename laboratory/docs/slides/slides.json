@@ -98,6 +98,11 @@
       "slideId": "introduction"
     },
     {
+      "n": "01a",
+      "title": "Motivation",
+      "slideId": "motivation"
+    },
+    {
       "n": "02",
       "title": "Literature Review",
       "slideId": "literature-e01"
@@ -179,11 +184,16 @@
     },
     {
       "n": "08g",
+      "title": "Methodology — implemented algorithms",
+      "slideId": "method-algorithms"
+    },
+    {
+      "n": "08h",
       "title": "Methodology — ToolBench walkthrough",
       "slideId": "method-walk-tb"
     },
     {
-      "n": "08h",
+      "n": "08i",
       "title": "Methodology — data.gov.in walkthrough",
       "slideId": "method-walk-ogd"
     },
@@ -280,6 +290,21 @@
         "Tool use is a parallel line. Qin et al. release ToolLLM / ToolBench: 16k+ REST APIs, a DFSDT planner, and ToolEval (ICLR 2024). Zheng et al. add ToolRerank over ToolLLM candidates (LREC-COLING 2024). Learned routers (RouteLLM, MasRouter, PILOT) pick models or collaboration modes. LLMLingua shortens prompts by token importance (EMNLP 2023).",
         "Those stacks still leave four operational surfaces underspecified as one contract: session–tool fusion, a training-free specialist posterior, fail-loud live Indian Open Government Data, and a mesh prune that writes a residue back into retrieval. The next slides record that literature as Evidence 1, Evidence 2, … in the FET template. Every Evidence block is a journal article or a top international conference paper.",
         "ACRS is proposed as that missing layer. The integration order is SATR → APRR → MNCD → FCNP. The live demonstration corpus is Agriculture on data.gov.in. This deck does not claim a leaderboard number."
+      ]
+    },
+    {
+      "id": "motivation",
+      "section": "Motivation",
+      "title": "Motivation",
+      "body": "Published LLM-agent stacks already retrieve APIs, route among models, coordinate over chat, and compress prompts. Those four operations are still specified as separate families rather than one closed contract. A farmer turn on Indian Open Government Data needs all four at once: the next tool list must remember which tools succeeded together; the next hop must be a named specialist rather than a foundation-model SKU; the vote object must be a tool identifier backed by a verified ministry UUID; and whatever survives pruning must re-enter retrieval rather than vanish as deleted tokens.",
+      "paragraphs": [
+        "Wang et al. organise LLM agents as Profiling, Memory, Planning, and Action (Frontiers of Computer Science, 2024). That template does not name a session co-activation cache, a training-free specialist posterior, a mesh whose consensus object is a live tool ID, or a Physarum-style write-back into retrieval. ToolLLM / ToolRerank retrieve from the current query. RouteLLM, PILOT, MasRouter, and MetaGPT pick models or follow authored SOPs. AutoGen, ChatDev, and CAMEL coordinate over messages. LLMLingua shortens the prompt. None of those papers, taken together, is a live Agriculture loop on data.gov.in.",
+        "ACRS is proposed as the missing structural orchestration layer. The motivation is architectural: to make session retrieval, specialist routing, live Indian OGD execution, and citation write-back one fail-loud protocol. The proposal does not motivate a leaderboard number, a latency target, or a token-reduction ratio."
+      ],
+      "bullets": [
+        "Four published families remain four families: retrieve, route, chat, compress.",
+        "A farmer turn on Indian OGD needs them as one fail-loud contract, with write-back into retrieval.",
+        "The motivation is architectural completeness, not a retrieval, latency, consensus, or token number."
       ]
     },
     {
@@ -902,7 +927,7 @@
       "title": "Research Title & Aim",
       "body": "Adaptive Context Reasoning System (ACRS): A Structural Orchestration Layer for Multi-Agent LLM Ecosystems",
       "bullets": [
-        "Aim. Design, implement, and critically evaluate ACRS — a structural orchestration layer in which SATR (Session-Aware Tool Retrieval), training-free specialist routing (APRR), mesh consensus over tool identifiers (MNCD), and flow-coupled context pruning with write-back (FCNP) form a closed loop on live Indian Open Government Data. The proposal-stage claim is architectural completeness and live-pipeline integrity, not a leaderboard number.",
+        "Aim. Design and implement ACRS as a closed structural orchestration layer in which SATR (Session-Aware Tool Retrieval), training-free specialist routing (APRR), mesh consensus over tool identifiers (MNCD), and flow-coupled context pruning with write-back (FCNP) execute in that order on one user turn, using live Indian Open Government Data as the only execution corpus. The proposal-stage claim is architectural completeness and live-pipeline integrity — that the four modules form one fail-loud loop — not a retrieval, routing, consensus, or compression score.",
         "Scope of the title. Adaptive = SATR (Session-Aware Tool Retrieval) and APRR. Context = fused session memory plus mesh residue. Reasoning = specialist posterior plus score-sum consensus. System = four named modules on one contract.",
         "What the title is not. It is not a new LLM, not a crop-yield model, and not a claim that ACRS already outperforms ToolLLM, MasRouter, or LLMLingua on a published leaderboard.",
         "Domain lock for the live loop. Agriculture on data.gov.in (AGMARKNET and related verified UUIDs). Other sectors stay out of the inference path in this proposal.",
@@ -1036,7 +1061,8 @@
         "Implementation path. Persist co-activation in a session store; expose a rank(query, session) API that APRR can call. Fail loud if the session schema is incomplete.",
         "Future evaluation protocol (not a result). When the protocol is frozen, compare session-fused ranking against query-only ranking on the same ToolBench-style split. Report the protocol, not a pre-committed score.",
         "Deliverable for the thesis chapter. Algorithm, schema, and ablation plan (with vs without tool-trace fusion)."
-      ]
+      ],
+      "diagram": "satr"
     },
     {
       "id": "method-aprr",
@@ -1050,7 +1076,8 @@
         "What is being routed. Specialists in the ACRS mesh — not LLM SKUs (GPT-4 vs Mixtral) and not AutoGen conversation modes as the object of routing.",
         "Update rule. After MNCD returns verified or failed evidence, update η (and optionally W) so the next turn’s posterior is not identical to a cold start.",
         "Future evaluation protocol (not a result). Log specialist choice vs task type on held-out session traces; compare against a static role graph. No pre-committed accuracy."
-      ]
+      ],
+      "diagram": "aprr"
     },
     {
       "id": "method-mncd",
@@ -1064,7 +1091,8 @@
         "Platform constraint. data.gov.in Elastic max_result_window is 10 000; limit is capped. Pagination is sequential, not a fabricated parallel harvest.",
         "Related work used correctly. Guo, Woodruff & Yadav, PECAD (AAAI 2020) shows AGMARKNET as a real DSS input. MNCD does not re-implement crop-yield prediction.",
         "Future evaluation protocol (not a result). Measure citation completeness, fail-loud rate on injected faults, and qualitative agreement of score-sum vs majority vote."
-      ]
+      ],
+      "diagram": "mncd"
     },
     {
       "id": "method-fcnp",
@@ -1078,7 +1106,8 @@
         "Heuristic honesty. Discrete conductance is a design heuristic inspired by Tero et al. (Science, 2010), not a proof that the mesh is a Physarum organism.",
         "Safety. Pruning must not delete the last live-data specialist if MNCD still has an open verified query. Fail loud rather than silently drop evidence.",
         "Future evaluation protocol (not a result). Compare mesh size and downstream SATR rank stability with vs without pruning on the same session traces."
-      ]
+      ],
+      "diagram": "fcnp"
     },
     {
       "id": "method-integrated",
@@ -1130,7 +1159,22 @@
           ]
         ]
       },
-      "footnote": "Source: lib/research/satr.ts, aprr.ts, mncd.ts, fcnp.ts. Full walkthrough: /walkthrough."
+      "footnote": "Source: lib/research/satr.ts, aprr.ts, mncd.ts, fcnp.ts. Full walkthrough: /walkthrough. Pseudocode and mermaid: /algorithms."
+    },
+    {
+      "id": "method-algorithms",
+      "section": "Research Methodology",
+      "title": "Research Methodology — implemented algorithms",
+      "body": "Pseudocode is the laboratory functions. Full listings, mermaid, and the animated ToolBench pass are on /algorithms. Constants are repository defaults, not claimed results.",
+      "bullets": [
+        "O1 SATR. s(a|q,H)=w_base s_base + session priors + co-activation − fail penalty. Truncate seen/unseen. Do not GET RapidAPI or data.gov.in.",
+        "O2 APRR. Sample P(a_j|a_i,q) ∝ W^α η^β ψ^γ from agriculture_analyst. assignTools by category. Update W after MNCD.",
+        "O3 MNCD. Gossip (toolId, score). Score-sum. Execute only liveExecutable UUIDs; else force preferredLiveToolId. Fail loud.",
+        "O4 FCNP. D←(1−μ)D+α|Q|^γ after L p = I. Keep / summarize / drop. Pin live citations. Write M_t into SATR.",
+        "Integration. One turn must traverse all four. ToolBench-schema ranking and live OGD are two evidence regimes, not two mixed corpora.",
+        "What this slide does not contain. NDCG, latency, consensus accuracy, or token-reduction targets."
+      ],
+      "diagram": "e2e"
     },
     {
       "id": "method-walk-tb",

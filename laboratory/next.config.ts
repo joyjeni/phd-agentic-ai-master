@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   allowedDevOrigins: ["127.0.0.1", "localhost"],
   serverExternalPackages: ["pptxgenjs"],
+  transpilePackages: ["mermaid"],
   async rewrites() {
     return [
       { source: "/slides.pptx", destination: "/api/slides/pptx" },

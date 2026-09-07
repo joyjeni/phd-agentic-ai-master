@@ -47,6 +47,7 @@ Attribute and Details as recorded for the FET research-proposal template (Gowris
 Nine required sections plus the FET mapping To Solve the Research Gap. Literature Review follows the Evidence 1, Evidence 2, … template. After the literature summary, each limitation is closed by a named ACRS module. Research Methodology is expanded for each objective (O1 SATR, O2 APRR, O3 MNCD, O4 FCNP), the integrated loop, the exact repository formulas, and two worked traces (ToolBench-schema ranking; live data.gov.in). Objective order is SATR → APRR → MNCD → FCNP (not SMART).
 
 01  Introduction
+01a  Motivation
 02  Literature Review
 03  Summary of Literature Review
 03a  To Solve the Research Gap
@@ -63,8 +64,9 @@ Nine required sections plus the FET mapping To Solve the Research Gap. Literatur
 08d  Methodology — O4 FCNP
 08e  Methodology — integrated loop
 08f  Methodology — implementation formulas
-08g  Methodology — ToolBench walkthrough
-08h  Methodology — data.gov.in walkthrough
+08g  Methodology — implemented algorithms
+08h  Methodology — ToolBench walkthrough
+08i  Methodology — data.gov.in walkthrough
 09  Conclusion
 
 ## 04 Introduction
@@ -83,7 +85,21 @@ Those stacks still leave four operational surfaces underspecified as one contrac
 
 ACRS is proposed as that missing layer. The integration order is SATR → APRR → MNCD → FCNP. The live demonstration corpus is Agriculture on data.gov.in. This deck does not claim a leaderboard number.
 
-## 05 Literature Review
+## 05 Motivation
+
+*Motivation*
+
+Published LLM-agent stacks already retrieve APIs, route among models, coordinate over chat, and compress prompts. Those four operations are still specified as separate families rather than one closed contract. A farmer turn on Indian Open Government Data needs all four at once: the next tool list must remember which tools succeeded together; the next hop must be a named specialist rather than a foundation-model SKU; the vote object must be a tool identifier backed by a verified ministry UUID; and whatever survives pruning must re-enter retrieval rather than vanish as deleted tokens.
+
+Wang et al. organise LLM agents as Profiling, Memory, Planning, and Action (Frontiers of Computer Science, 2024). That template does not name a session co-activation cache, a training-free specialist posterior, a mesh whose consensus object is a live tool ID, or a Physarum-style write-back into retrieval. ToolLLM / ToolRerank retrieve from the current query. RouteLLM, PILOT, MasRouter, and MetaGPT pick models or follow authored SOPs. AutoGen, ChatDev, and CAMEL coordinate over messages. LLMLingua shortens the prompt. None of those papers, taken together, is a live Agriculture loop on data.gov.in.
+
+ACRS is proposed as the missing structural orchestration layer. The motivation is architectural: to make session retrieval, specialist routing, live Indian OGD execution, and citation write-back one fail-loud protocol. The proposal does not motivate a leaderboard number, a latency target, or a token-reduction ratio.
+
+- Four published families remain four families: retrieve, route, chat, compress.
+- A farmer turn on Indian OGD needs them as one fail-loud contract, with write-back into retrieval.
+- The motivation is architectural completeness, not a retrieval, latency, consensus, or token number.
+
+## 06 Literature Review
 
 *Literature Review*
 
@@ -113,7 +129,7 @@ FET template. Each paper is one Evidence block: Author(s), Year, Title, Publicat
 - Limitations: The environment is a software project, not a ministry API. Orchestration is reviewed as chat/SOP collaboration, not a live (toolId, score, citation).
 - To solve the research gap: O3 MNCD — the vote object is a live tool identifier on data.gov.in, not a software-engineering role in a chat chain.
 
-## 06 Literature Review — Evidence 3 & Evidence 4
+## 07 Literature Review — Evidence 3 & Evidence 4
 
 *Literature Review*
 
@@ -143,7 +159,7 @@ Continuation. Evidence 3 & Evidence 4 in the same Evidence template.
 - Limitations: Orchestration is a planning/transaction runtime. It does not maintain a training-free specialist posterior over Indian OGD tool families, nor cite a ministry UUID.
 - To solve the research gap: O2 APRR plus O3 MNCD — Dirichlet–Thompson specialist hops, then a verified Agriculture UUID rather than a compensable software saga.
 
-## 07 Literature Review — Evidence 5 & Evidence 6
+## 08 Literature Review — Evidence 5 & Evidence 6
 
 *Literature Review*
 
@@ -173,7 +189,7 @@ Continuation. Evidence 5 & Evidence 6 in the same Evidence template.
 - Limitations: Who speaks next is designed in advance. The graph is not updated from session-local affinity after a live tool call.
 - To solve the research gap: O2 APRR — training-free specialist posterior updated after live outcomes, not an authored SOP graph.
 
-## 08 Literature Review — Evidence 7 & Evidence 8
+## 09 Literature Review — Evidence 7 & Evidence 8
 
 *Literature Review*
 
@@ -203,7 +219,7 @@ Continuation. Evidence 7 & Evidence 8 in the same Evidence template.
 - Limitations: No first-class vote over tool identifiers backed by Open Government Data.
 - To solve the research gap: O3 MNCD — the vote object is a tool identifier backed by Open Government Data, not a role-play utterance.
 
-## 09 Literature Review — Evidence 9 & Evidence 10
+## 10 Literature Review — Evidence 9 & Evidence 10
 
 *Literature Review*
 
@@ -233,7 +249,7 @@ Continuation. Evidence 9 & Evidence 10 in the same Evidence template.
 - Limitations: Still query-only. Session co-activation and later write-back from a pruned mesh are unused.
 - To solve the research gap: O1 SATR — fuse co-activation after ToolRerank-style truncation. O4 FCNP writes the residue back.
 
-## 10 Literature Review — Evidence 11 & Evidence 12
+## 11 Literature Review — Evidence 11 & Evidence 12
 
 *Literature Review*
 
@@ -263,7 +279,7 @@ Continuation. Evidence 11 & Evidence 12 in the same Evidence template.
 - Limitations: Requires training. It does not maintain a Dirichlet–Thompson matrix over mandi / crop / rainfall specialists.
 - To solve the research gap: O2 APRR — Dirichlet–Thompson posterior over named specialists; learned routers stay a future bake-off.
 
-## 11 Literature Review — Evidence 13 & Evidence 14
+## 12 Literature Review — Evidence 13 & Evidence 14
 
 *Literature Review*
 
@@ -293,7 +309,7 @@ Continuation. Evidence 13 & Evidence 14 in the same Evidence template.
 - Limitations: Deletes tokens before the LLM. It does not prune a mesh by conductance or write live citations back into retrieval.
 - To solve the research gap: O4 FCNP — prune the mesh by conductance and pin live citations into SATR, not token deletion.
 
-## 12 Literature Review — Evidence 15 & Evidence 16
+## 13 Literature Review — Evidence 15 & Evidence 16
 
 *Literature Review*
 
@@ -323,7 +339,7 @@ Continuation. Evidence 15 & Evidence 16 in the same Evidence template.
 - Limitations: A biological transport model, not an LLM context pruner. ACRS uses it as a design heuristic, not as a claim that the mesh is an organism.
 - To solve the research gap: O4 FCNP — Physarum-inspired conductance as a design heuristic, with write-back into SATR.
 
-## 13 Literature Review — Evidence 17 & Evidence 18
+## 14 Literature Review — Evidence 17 & Evidence 18
 
 *Literature Review*
 
@@ -353,7 +369,7 @@ Continuation. Evidence 17 & Evidence 18 in the same Evidence template.
 - Limitations: Assumes the tool set is already determined. It does not fuse session co-activation into the next rank, nor cite a live data.gov.in UUID.
 - To solve the research gap: O1 SATR — choose the tool set from session memory before any ReAct-style acting. O3 MNCD cites the UUID.
 
-## 14 Summary of Literature Review
+## 15 Summary of Literature Review
 
 *Summary of Literature Review*
 
@@ -368,7 +384,7 @@ Qualitative map only. This table names the gap each family leaves for ACRS; it d
 | Prompt compression (LLMLingua) | Shorten tokens before the LLM | Prune a mesh by conductance and write the residue back into SATR |
 | Indian agriculture DSS (PECAD) | Shows AGMARKNET as a real decision-support input | Live, fail-loud OGD inside a multi-agent loop — not a crop-yield model to beat |
 
-## 15 To Solve the Research Gap
+## 16 To Solve the Research Gap
 
 *To Solve the Research Gap*
 
@@ -384,7 +400,7 @@ To solve the research gaps identified in Evidence 1–18, the following work is 
 
 _Integration order: SATR → APRR → MNCD → FCNP on one user turn. No NDCG, latency, or accuracy target is attached to any row._
 
-## 16 SOTA architecture (Wang et al., 2024)
+## 17 SOTA architecture (Wang et al., 2024)
 
 *SOTA architecture*
 
@@ -399,7 +415,7 @@ Diagram: sota (see /architecture in the laboratory).
 
 _Wang L. et al. Front. Comput. Sci. 18:186345 (2024). Figure 1 is redrawn for this proposal; it is not a scanned publisher PDF._
 
-## 17 Proposed ACRS architecture
+## 18 Proposed ACRS architecture
 
 *Proposed architecture*
 
@@ -414,7 +430,7 @@ Diagram: proposed (see /architecture in the laboratory).
 
 _Figure 2 is drawn for this proposal. Contrast with Figure 1 (Wang et al., FCS 2024). No NDCG is drawn._
 
-## 18 Identified Research Problem
+## 19 Identified Research Problem
 
 *Identified Research Problem*
 
@@ -428,19 +444,19 @@ Five architectural gaps. Four named objectives. One integration contract. The pr
 
 _Gaps are architectural. This deck does not convert them into NDCG, latency, or accuracy targets._
 
-## 19 Research Title & Aim
+## 20 Research Title & Aim
 
 *Research Title & Aim*
 
 Adaptive Context Reasoning System (ACRS): A Structural Orchestration Layer for Multi-Agent LLM Ecosystems
 
-- Aim. Design, implement, and critically evaluate ACRS — a structural orchestration layer in which SATR (Session-Aware Tool Retrieval), training-free specialist routing (APRR), mesh consensus over tool identifiers (MNCD), and flow-coupled context pruning with write-back (FCNP) form a closed loop on live Indian Open Government Data. The proposal-stage claim is architectural completeness and live-pipeline integrity, not a leaderboard number.
+- Aim. Design and implement ACRS as a closed structural orchestration layer in which SATR (Session-Aware Tool Retrieval), training-free specialist routing (APRR), mesh consensus over tool identifiers (MNCD), and flow-coupled context pruning with write-back (FCNP) execute in that order on one user turn, using live Indian Open Government Data as the only execution corpus. The proposal-stage claim is architectural completeness and live-pipeline integrity — that the four modules form one fail-loud loop — not a retrieval, routing, consensus, or compression score.
 - Scope of the title. Adaptive = SATR (Session-Aware Tool Retrieval) and APRR. Context = fused session memory plus mesh residue. Reasoning = specialist posterior plus score-sum consensus. System = four named modules on one contract.
 - What the title is not. It is not a new LLM, not a crop-yield model, and not a claim that ACRS already outperforms ToolLLM, MasRouter, or LLMLingua on a published leaderboard.
 - Domain lock for the live loop. Agriculture on data.gov.in (AGMARKNET and related verified UUIDs). Other sectors stay out of the inference path in this proposal.
 - Integration order that the aim implies. SATR (memory) → APRR (who acts) → MNCD (live evidence) → FCNP (prune and write back).
 
-## 20 Research Objectives
+## 21 Research Objectives
 
 *Research Objectives*
 
@@ -453,7 +469,7 @@ To solve the research gap, four named modules are proposed. Each row is a thesis
 | O3 | Mesh Network Context Diffusion (MNCD) | The consensus-and-execution chapter: gossip (toolId, score), score-sum consensus, live data.gov.in GET on verified UUIDs. The unit of publication is the protocol plus the citation contract. |
 | O4 | Flow-Coupled Network Pruning (FCNP) | The memory chapter: Kirchhoff/Physarum conductances prune the mesh trace and write surviving live citations back into SATR. The unit of publication is the coupling, not a token-percentage. |
 
-## 21 Objective 1 — SATR
+## 22 Objective 1 — SATR
 
 *Research Objectives*
 
@@ -469,7 +485,7 @@ Diagram: compare-satr (see /architecture in the laboratory).
 
 _Repository: github.com/joyjeni/session-aware-toolbench-rerank_
 
-## 22 Objective 2 — APRR
+## 23 Objective 2 — APRR
 
 *Research Objectives*
 
@@ -485,7 +501,7 @@ Diagram: compare-aprr (see /architecture in the laboratory).
 
 _Repository: github.com/joyjeni/aprr-multi-agent-routing_
 
-## 23 Objective 3 — MNCD
+## 24 Objective 3 — MNCD
 
 *Research Objectives*
 
@@ -501,7 +517,7 @@ Diagram: compare-mncd (see /architecture in the laboratory).
 
 _Repository: github.com/joyjeni/mncd-mesh-agents_
 
-## 24 Objective 4 — FCNP
+## 25 Objective 4 — FCNP
 
 *Research Objectives*
 
@@ -517,7 +533,7 @@ Diagram: compare-fcnp (see /architecture in the laboratory).
 
 _Repository: github.com/joyjeni/fcnp-context-pruning_
 
-## 25 Research Questions
+## 26 Research Questions
 
 *Research Questions*
 
@@ -528,7 +544,7 @@ Each question is paired with one objective. Answers will be empirical after a pr
 - RQ3. Can execution proceed as gossiped (toolId, score) plus score-sum consensus, then a live data.gov.in GET, instead of a central chat orchestrator (Wu et al., AutoGen, COLM 2024)?  →  addressed by O3 (Mesh Network Context Diffusion (MNCD)).
 - RQ4. Can Kirchhoff/Physarum pruning pin live citations back into retrieval rather than only shortening the prompt (Jiang et al., LLMLingua, EMNLP 2023; Tero et al., Science 2010)?  →  addressed by O4 (Flow-Coupled Network Pruning (FCNP)).
 
-## 26 Research Methodology
+## 27 Research Methodology
 
 *Research Methodology*
 
@@ -544,7 +560,7 @@ One methodology per objective, then one integrated protocol. Proposal-stage: des
 
 Diagram: e2e (see /architecture in the laboratory).
 
-## 27 Research Methodology — O1 SATR
+## 28 Research Methodology — O1 SATR
 
 *Research Methodology*
 
@@ -557,7 +573,9 @@ How session-aware ranking will be designed and later evaluated.
 - Future evaluation protocol (not a result). When the protocol is frozen, compare session-fused ranking against query-only ranking on the same ToolBench-style split. Report the protocol, not a pre-committed score.
 - Deliverable for the thesis chapter. Algorithm, schema, and ablation plan (with vs without tool-trace fusion).
 
-## 28 Research Methodology — O2 APRR
+Diagram: satr (see /architecture in the laboratory).
+
+## 29 Research Methodology — O2 APRR
 
 *Research Methodology*
 
@@ -570,7 +588,9 @@ How the specialist posterior will be designed. No win-rate or millisecond target
 - Update rule. After MNCD returns verified or failed evidence, update η (and optionally W) so the next turn’s posterior is not identical to a cold start.
 - Future evaluation protocol (not a result). Log specialist choice vs task type on held-out session traces; compare against a static role graph. No pre-committed accuracy.
 
-## 29 Research Methodology — O3 MNCD
+Diagram: aprr (see /architecture in the laboratory).
+
+## 30 Research Methodology — O3 MNCD
 
 *Research Methodology*
 
@@ -583,7 +603,9 @@ How live Indian OGD and score-sum consensus will be executed. PECAD is a domain 
 - Related work used correctly. Guo, Woodruff & Yadav, PECAD (AAAI 2020) shows AGMARKNET as a real DSS input. MNCD does not re-implement crop-yield prediction.
 - Future evaluation protocol (not a result). Measure citation completeness, fail-loud rate on injected faults, and qualitative agreement of score-sum vs majority vote.
 
-## 30 Research Methodology — O4 FCNP
+Diagram: mncd (see /architecture in the laboratory).
+
+## 31 Research Methodology — O4 FCNP
 
 *Research Methodology*
 
@@ -596,7 +618,9 @@ How mesh pruning will be designed. No token-reduction ratio is claimed at propos
 - Safety. Pruning must not delete the last live-data specialist if MNCD still has an open verified query. Fail loud rather than silently drop evidence.
 - Future evaluation protocol (not a result). Compare mesh size and downstream SATR rank stability with vs without pruning on the same session traces.
 
-## 31 Research Methodology — integrated loop
+Diagram: fcnp (see /architecture in the laboratory).
+
+## 32 Research Methodology — integrated loop
 
 *Research Methodology*
 
@@ -613,7 +637,7 @@ Diagram: integrated (see /architecture in the laboratory).
 
 _Master repository: github.com/joyjeni/phd-agentic-ai-master_
 
-## 32 Research Methodology — implementation formulas
+## 33 Research Methodology — implementation formulas
 
 *Research Methodology*
 
@@ -626,9 +650,24 @@ How the proposal will be implemented: the equations copied from the laboratory, 
 | O3 MNCD | s=0.45 score/(|score|+2)+0.35 overlap+liveBoost−0.05 idx;  tally=Σ w_a s_a;  w=success/(1+lat/1000) | liveBoost 0.25+0.20 preferred; fanout=3; R=2; τ=0.55; score-sum not Borda; live UUID only |
 | O4 FCNP | D_ij(t+1)=(1-μ)D_ij+α|Q_ij|^γ ;  L p = I ;  Q=|D(p_i-p_j)|;  keep 35% / summarize 20% / drop | μ=0.1, α=0.5, γ=1.2, sim≥0.12; pinned live citations never evicted; memory→SATR |
 
-_Source: lib/research/satr.ts, aprr.ts, mncd.ts, fcnp.ts. Full walkthrough: /walkthrough._
+_Source: lib/research/satr.ts, aprr.ts, mncd.ts, fcnp.ts. Full walkthrough: /walkthrough. Pseudocode and mermaid: /algorithms._
 
-## 33 Research Methodology — ToolBench walkthrough
+## 34 Research Methodology — implemented algorithms
+
+*Research Methodology*
+
+Pseudocode is the laboratory functions. Full listings, mermaid, and the animated ToolBench pass are on /algorithms. Constants are repository defaults, not claimed results.
+
+- O1 SATR. s(a|q,H)=w_base s_base + session priors + co-activation − fail penalty. Truncate seen/unseen. Do not GET RapidAPI or data.gov.in.
+- O2 APRR. Sample P(a_j|a_i,q) ∝ W^α η^β ψ^γ from agriculture_analyst. assignTools by category. Update W after MNCD.
+- O3 MNCD. Gossip (toolId, score). Score-sum. Execute only liveExecutable UUIDs; else force preferredLiveToolId. Fail loud.
+- O4 FCNP. D←(1−μ)D+α|Q|^γ after L p = I. Keep / summarize / drop. Pin live citations. Write M_t into SATR.
+- Integration. One turn must traverse all four. ToolBench-schema ranking and live OGD are two evidence regimes, not two mixed corpora.
+- What this slide does not contain. NDCG, latency, consensus accuracy, or token-reduction targets.
+
+Diagram: e2e (see /architecture in the laboratory).
+
+## 35 Research Methodology — ToolBench walkthrough
 
 *Research Methodology*
 
@@ -642,7 +681,7 @@ One ToolBench-schema datum, processed by all four objectives. RapidAPI is never 
 
 _ToolBench = ranking library. Live evidence is always a verified data.gov.in Agriculture UUID._
 
-## 34 Research Methodology — data.gov.in walkthrough
+## 36 Research Methodology — data.gov.in walkthrough
 
 *Research Methodology*
 
@@ -656,7 +695,7 @@ The same four objectives on live AGMARKNET. Query: “What is the current mandi 
 
 _Lab trace 07 September 2026. Re-run on /walkthrough; rows change daily. No dummy prices._
 
-## 35 Conclusion
+## 37 Conclusion
 
 *Conclusion*
 
@@ -668,7 +707,7 @@ ACRS is proposed as a structural orchestration layer. The contribution is the cl
 - Methodology is specified per objective: ToolBench as ranking library; Dirichlet–Thompson routing; verified data.gov.in UUIDs with score-sum; Physarum-inspired prune with SATR write-back. Metric numbers are deferred.
 - Next step after approval. Freeze evaluation protocols, implement the closed loop, and report whatever the measurements show — including negative results.
 
-## 36 References (1/3) — multi-agent orchestration (journals and flagship proceedings)
+## 38 References (1/3) — multi-agent orchestration (journals and flagship proceedings)
 
 *References 1/3*
 
@@ -681,7 +720,7 @@ ACRS is proposed as a structural orchestration layer. The contribution is the cl
 - Li, G., Hammoud, H. A. A. K., Itani, H., Khizbullin, D., and Ghanem, B. CAMEL: Communicative Agents for “Mind” Exploration of Large Language Model Society. Advances in Neural Information Processing Systems 36 (NeurIPS 2023).
 - Qian, C., Liu, W., Liu, H., Chen, N., Dang, Y., Li, J., Yang, C., Chen, W., Su, Y., Cong, X., Xu, J., Li, D., Liu, Z., and Sun, M. ChatDev: Communicative Agents for Software Development. Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), pages 15174–15186. doi:10.18653/v1/2024.acl-long.810.
 
-## 37 References (2/3) — tools, routing, compression, reasoning
+## 39 References (2/3) — tools, routing, compression, reasoning
 
 *References 2/3*
 
@@ -694,7 +733,7 @@ ACRS is proposed as a structural orchestration layer. The contribution is the cl
 - Wei, J., Wang, X., Schuurmans, D., Bosma, M., Ichter, B., Xia, F., Chi, E., Le, Q., and Zhou, D. Chain-of-Thought Prompting Elicits Reasoning in Large Language Models. Advances in Neural Information Processing Systems 35 (NeurIPS 2022).
 - Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K., and Cao, Y. ReAct: Synergizing Reasoning and Acting in Language Models. Proceedings of the Eleventh International Conference on Learning Representations (ICLR 2023).
 
-## 38 References (3/3) — memory, biology, Indian agricultural data
+## 40 References (3/3) — memory, biology, Indian agricultural data
 
 *References 3/3*
 
@@ -709,7 +748,7 @@ ACRS is proposed as a structural orchestration layer. The contribution is the cl
 
 _CrewAI is an engineering framework without a flagship peer-reviewed paper in this list; AutoGen and MetaGPT are the MAS citations._
 
-## 39 Thank you
+## 41 Thank you
 
 *Thank you*
 
