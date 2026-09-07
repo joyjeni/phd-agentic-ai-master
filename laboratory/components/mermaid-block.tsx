@@ -46,7 +46,10 @@ export function MermaidBlock({ chart, title }: { chart: string; title?: string }
         </figcaption>
       ) : null}
       {svg && !failed ? (
-        <div className="mermaid-svg min-h-[12rem]" dangerouslySetInnerHTML={{ __html: svg }} />
+        <div
+          className="mermaid-svg mermaid-flow min-h-[12rem]"
+          dangerouslySetInnerHTML={{ __html: svg }}
+        />
       ) : (
         <pre className="overflow-x-auto whitespace-pre-wrap font-mono text-[11px] leading-relaxed text-[#c9d4e0]">
           {chart}

@@ -1,4 +1,5 @@
 import { Card } from "@/components/ui/card";
+import { DataflowLab } from "@/components/dataflow-lab";
 import { WalkthroughLive } from "@/components/walkthrough-live";
 import {
   APRR_FORMULA,
@@ -92,6 +93,7 @@ export default function WalkthroughPage() {
           <code>docs/PIPELINE_WALKTHROUGH.md</code>.
         </p>
       </header>
+      <DataflowLab compact />
 
       <section className="space-y-4">
         <h2 className="font-serif text-3xl">Closed-loop algorithm</h2>
