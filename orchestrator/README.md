@@ -1,6 +1,10 @@
 # Four-objective HTTP orchestrator
 
-The Next.js lab (Vercel) is the integrated farmer demo. This folder is the
+> ACRS integration contract (SATR → APRR → MNCD → FCNP). Proposal-stage: no
+> NDCG / latency / accuracy commitments. Live mandi rows fail loudly; they are
+> never invented.
+
+The Next.js laboratory is the integrated farmer demo. This folder is the
 Python equivalent: start each GitHub module's `service/app.py`, then:
 
 ```bash
