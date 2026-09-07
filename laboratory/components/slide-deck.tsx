@@ -9,9 +9,6 @@ import { Button } from "@/components/ui/button";
 import { CollegeSlideFrame } from "@/components/college-slide";
 import { DoiText } from "@/components/doi-text";
 import { DownloadSlides } from "@/components/download-slides";
-import { Button } from "@/components/ui/button";
-import { CollegeSlideFrame } from "@/components/college-slide";
-import { DownloadSlides } from "@/components/download-slides";
 import { COLLEGE } from "@/lib/research/college";
 
 function diagramFor(slide: Slide): DiagramKind | null {
