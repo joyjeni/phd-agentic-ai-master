@@ -1,4 +1,5 @@
 import { ArchitectureSvg } from "@/components/architecture-svg";
+import { DataflowLab } from "@/components/dataflow-lab";
 import { SATR } from "@/lib/research/objectives";
 
 const PANELS = [
@@ -75,6 +76,7 @@ export default function ArchitecturePage() {
           name is historical; the module in this proposal is SATR.
         </p>
       </section>
+      <DataflowLab compact />
       <div className="space-y-6">
         {PANELS.map((panel) => (
           <section

@@ -31,12 +31,31 @@ body {
   font-family: var(--font-source-serif), Georgia, "Times New Roman", serif;
 }
 
-.dataflow-packet {
-  transition: cx 0.7s ease-in-out;
+.dataflow-pipe {
+  animation: dataflow-dash 1.1s linear infinite;
+}
+
+.dataflow-return {
+  animation: dataflow-dash-back 2.2s linear infinite;
+}
+
+@keyframes dataflow-dash {
+  to {
+    stroke-dashoffset: -36;
+  }
+}
+
+@keyframes dataflow-dash-back {
+  to {
+    stroke-dashoffset: 36;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .dataflow-packet {
+  .dataflow-packet,
+  .dataflow-pipe,
+  .dataflow-return {
+    animation: none;
     transition: none;
   }
 }

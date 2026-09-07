@@ -46,6 +46,8 @@ export default function AlgorithmsPage() {
         </p>
       </header>
 
+      <DataflowLab />
+
       <section className="space-y-4">
         <h2 className="font-serif text-3xl">{MOTIVATION.title}</h2>
         {MOTIVATION.paragraphs.map((paragraph) => (
@@ -143,8 +145,6 @@ export default function AlgorithmsPage() {
           ))}
         </ol>
       </section>
-
-      <DataflowLab />
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import { PipelineLab } from "@/components/pipeline-lab";
 import { DownloadSlides } from "@/components/download-slides";
+import { DataflowLab } from "@/components/dataflow-lab";
 import { CATALOG_STATS } from "@/lib/research/catalog";
 import { RESEARCH } from "@/lib/research/objectives";
 import { COLLEGE } from "@/lib/research/college";
@@ -57,6 +58,7 @@ export default function HomePage() {
           — FET template, including how ACRS solves each gap.
         </p>
       </section>
+      <DataflowLab compact />
       <PipelineLab />
     </div>
   );
