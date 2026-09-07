@@ -44,9 +44,9 @@ passes:
 1. One **ToolBench-schema** datum (`tb.agri.soil_health`) — ranking library only.
 2. One **live data.gov.in** AGMARKNET query (wheat / Punjab).
 
-Lab page: `/walkthrough`. Animated information flow (looping labeled packets on
-SATR → APRR → MNCD ↔ data.gov.in → FCNP → SATR): home, `/algorithms`,
-`/architecture`, and `/walkthrough`. Pseudocode and mermaid: `/algorithms`.
+Lab page: `/walkthrough`. Animated information flow: home, `/algorithms`,
+`/architecture`, and `/walkthrough`. Pseudocode: `/algorithms`. Journal mermaid
+redraws of every archived GitHub `diagrams/` PNG: `/diagrams`.
 Markdown: `docs/PIPELINE_WALKTHROUGH.md`.
 Proposal slides include motivation, formulas, and implemented algorithms.
 Numbers dated 07 September 2026 are traces, not metric commitments.

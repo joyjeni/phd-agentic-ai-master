@@ -1,0 +1,27 @@
+%% Figure 3A. Implemented SATR architecture
+%% source lib/research/satr.ts
+%% replaces diagrams/obj1_architecture.png
+flowchart LR
+  subgraph inputs["Inputs actually read"]
+    q["q"]
+    H["H successful tool ids"]
+    M["M FCNP memory bag"]
+    C["C Agriculture catalog"]
+    W["W_cooc co-activation"]
+  end
+  subgraph satr["satr.ts satrRerank"]
+    idx["indexCatalog tokenize DF avgdl"]
+    sbase["s_base = 0.7 BM25 + 0.3 TFIDF + 0.08 mem"]
+    z["z-score across C"]
+    prior["cat / sch / ept / rec decay 0.85"]
+    cooc["cooc = sum gamma n-i log(1+W)"]
+    fuse["s = z + 0.45 cat + 0.25 sch + 0.3 ept + 0.35 cooc + 0.25 rec - 0.35 fails"]
+    cut["seen/unseen truncate then category cap"]
+  end
+  q --> idx
+  C --> idx
+  M --> sbase
+  idx --> sbase --> z --> fuse
+  H --> prior --> fuse
+  W --> cooc --> fuse
+  fuse --> cut --> short["truncated shortlist to APRR"]

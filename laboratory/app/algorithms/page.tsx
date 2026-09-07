@@ -23,11 +23,12 @@ export default function AlgorithmsPage() {
         </p>
         <h1 className="mt-2 font-serif text-4xl">Implemented algorithms — formulas, pseudocode, diagrams</h1>
         <p className="mt-4 text-sm leading-relaxed text-[var(--muted)]">
-          Each objective is the function that actually runs: SATR, APRR, MNCD, FCNP.
-          Mermaid figures redraw that code. They are not the archived matplotlib PNGs
-          under github.com/joyjeni/phd-agentic-ai-master/diagrams (those still name
-          SessionRerank+, NDCG, and Borda-as-default). No computational target is
-          claimed.
+          Mermaid figures on this page are the control-flow listings. The 1:1
+          redraw of every archived GitHub PNG, with journal captions, is on{" "}
+          <Link className="text-[var(--gold)] underline" href="/diagrams">
+            /diagrams
+          </Link>
+          . Those matplotlib files still name SessionRerank+, NDCG, and Borda-as-default.
         </p>
         <p className="mt-2 text-sm">
           Scholar {COLLEGE.scholar} ({COLLEGE.registerNo}).{" "}
@@ -109,7 +110,11 @@ export default function AlgorithmsPage() {
               </pre>
             </div>
             <div className="space-y-3">
-              <MermaidBlock chart={algo.mermaid} title={`${algo.figure} mermaid — implemented ${algo.code}`} />
+              <MermaidBlock
+                chart={algo.mermaid}
+                title={`${algo.figure} mermaid — implemented ${algo.code}`}
+                caption={algo.caption}
+              />
               <div className="rounded-md border border-[#5B9BD5] bg-[#0f1c2a] p-2">
                 <ArchitectureSvg variant={algo.diagram} />
               </div>
@@ -133,7 +138,11 @@ export default function AlgorithmsPage() {
       <section id="integration" className="space-y-4">
         <h2 className="font-serif text-3xl">Overall integration</h2>
         <p className="max-w-3xl text-sm text-[var(--muted)]">{INTEGRATION.caption}</p>
-        <MermaidBlock chart={INTEGRATION.mermaid} title={`${INTEGRATION.figure} mermaid — closed ACRS loop`} />
+        <MermaidBlock
+          chart={INTEGRATION.mermaid}
+          title={`${INTEGRATION.figure} mermaid — closed ACRS loop`}
+          caption={INTEGRATION.caption}
+        />
         <div className="rounded-md border border-[#5B9BD5] bg-[#0f1c2a] p-2">
           <ArchitectureSvg variant="proposed" />
         </div>

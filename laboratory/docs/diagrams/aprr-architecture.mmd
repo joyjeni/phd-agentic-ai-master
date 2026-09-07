@@ -1,0 +1,25 @@
+%% Figure 4A. Implemented APRR architecture
+%% source lib/research/aprr.ts
+%% replaces diagrams/obj2_architecture.png
+flowchart LR
+  subgraph in2["Inputs"]
+    S["SATR truncated shortlist"]
+    q2["query q"]
+    Waff["affinity W or W0=0.1"]
+  end
+  subgraph aprr["aprr.ts aprrRoute"]
+    agents["A = analyst planner executor critic retrieval"]
+    start["hop 0 = agriculture_analyst"]
+    sample["P(a_j|a_i,q) proportional to W^a eta^b psi^g"]
+    assign["assignTools: category pref else SATR hash 1"]
+  end
+  subgraph out2["Output then delayed update"]
+    hops["path A_t plus per-hop tools"]
+    upd["after MNCD: W leftarrow (1-lambda)W + kappa reward / L^2 lat"]
+  end
+  S --> start
+  q2 --> sample
+  Waff --> sample
+  agents --> start --> sample --> assign --> hops
+  hops --> mncd2["to MNCD"]
+  live2["MNCD live success or fail"] --> upd --> Waff

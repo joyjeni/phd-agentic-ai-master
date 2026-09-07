@@ -1,0 +1,31 @@
+%% Figure 8 (companion). Implemented pipeline (companion to the archived GIF)
+%% source lib/research/pipeline.ts
+%% replaces diagrams/acrs_overall_pipeline.gif
+flowchart TB
+  q["q_t farmer query"] --> satr
+  M["M t-1 FCNP memory"] --> satr
+  H["H session history"] --> satr
+  C["Catalog C Agriculture only"] --> satr
+  subgraph o1["O1 SATR Session-Aware Tool Retrieval"]
+    satr["satrRerank in satr.ts"]
+    satr --> short["truncated RankedTool K=8"]
+  end
+  short --> aprr
+  subgraph o2["O2 APRR specialist hops"]
+    aprr["aprrRoute in aprr.ts"]
+    aprr --> path["hop path A_t plus assignTools"]
+  end
+  path --> mncd
+  subgraph o3["O3 MNCD mesh"]
+    mncd["mncdExecute in mncd.ts"]
+    live["GET api.data.gov.in UUID"] --> mncd
+    mncd --> obs["score-sum plus live observations"]
+  end
+  tb["ToolBench schema ranking-only"] -.->|never GET RapidAPI| mncd
+  obs --> fcnp
+  subgraph o4["O4 FCNP Kirchhoff prune"]
+    fcnp["fcnpPrune in fcnp.ts"]
+    fcnp --> ans["a_t plus pinned citations"]
+    fcnp --> Mt["M_t retained[:24]"]
+  end
+  Mt --> satr

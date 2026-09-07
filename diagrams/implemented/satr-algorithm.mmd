@@ -1,0 +1,16 @@
+%% Figure 3B. Implemented SATR algorithm flow
+%% source lib/research/satr.ts
+%% replaces diagrams/obj1_algorithm_flow.png
+flowchart TB
+  i["INPUT q, S = H W_cooc M, catalog C"] --> a1
+  a1["1 indexCatalog: tokenize each tool; DF; avgdl"] --> a2
+  a2["2 s_base = 0.7 BM25 k1=1.5 b=0.75 + 0.3 TFIDF cosine + 0.08 cosine(M,a)"] --> a3
+  a3["3 z-score s_base across C"] --> a4
+  a4["4 session priors from successful history: cat sch ept rec"] --> a5
+  a5["5 co-activation score from W_cooc gamma=0.7"] --> a6
+  a6["6 if H nonempty: log(1+10x) then z-score priors"] --> a7
+  a7["7 fuse with SATR_WEIGHTS; subtract 0.35 times failCount"] --> a8
+  a8["8 sort descending; mark seen vs unseen from H"] --> a9
+  a9["9 keep max(2, ceil 0.45 K) seen and the rest unseen"] --> a10
+  a10["10 unless looksMultiTool, cap three tools per category"] --> a11
+  a11["11 return top-K truncated. SATR does not GET."] --> out["OUTPUT RankedTool shortlist for APRR"]

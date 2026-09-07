@@ -1,0 +1,12 @@
+%% Figure 6B. Implemented FCNP algorithm flow
+%% source lib/research/fcnp.ts
+%% replaces diagrams/obj4_algorithm_flow.png
+flowchart TB
+  d0["INPUT q, MNCD result, prior memory, turn t"] --> d1
+  d1["1 nodes: pinned query, prior memory, proposals, live observations, pinned citations, notes"] --> d2
+  d2["2 D_ij = cosine(e_i,e_j) if cosine ge 0.12 else 0; ground a sink by query mass"] --> d3
+  d3["3 repeat at most 40: solve L p = I; Q = |D(p_i-p_j)|; D = (1-0.1)D + 0.5 |Q|^1.2"] --> d4
+  d4["4 stop if Delta D less than 1e-4 times sum D"] --> d5
+  d5["5 rank nodes by flow; keep top 35% verbatim; next 20% extractive summarize le 40 tokens"] --> d6
+  d6["6 pinned live citations and the user query are never evicted"] --> d7
+  d7["7 session.memory = retained[:24]; next SATR mixes M into s_base"] --> dout["OUTPUT M_t write-back"]

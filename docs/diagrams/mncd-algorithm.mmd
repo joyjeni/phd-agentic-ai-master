@@ -1,0 +1,14 @@
+%% Figure 5B. Implemented MNCD algorithm flow
+%% source lib/research/mncd.ts
+%% replaces diagrams/obj3_algorithm_flow.png
+flowchart TB
+  c0["INPUT q, APRR assignments, peerStats"] --> c1
+  c1["1 nodes = agents on the APRR path; mesh edge w = success / (1 + lat_ms/1000)"] --> c2
+  c2["2 s = 0.45 score/(|score|+2) + 0.35 overlap + liveBoost - 0.05 index"] --> c3
+  c3["3 liveBoost = 0.25 liveExecutable + 0.20 preferredLiveToolId"] --> c4
+  c4["4 gossip fanout 3, rounds 2; distress if confidence less than 0.55"] --> c5
+  c5["5 score-sum: tally[tool] = sum_a w_a s_a(tool); winner = argmax"] --> c6
+  c6["6 execution gate: keep liveExecutable Agriculture UUIDs only"] --> c7
+  c7["7 if none survive, force preferredLiveToolId(q)"] --> c8
+  c8["8 GET api.data.gov.in with verified UUID; cap limit 10000; fail loud"] --> c9
+  c9["9 update peerStats EMA; pass votes and executed rows to FCNP"] --> cout["OUTPUT observations for FCNP"]

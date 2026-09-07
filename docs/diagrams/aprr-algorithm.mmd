@@ -1,0 +1,14 @@
+%% Figure 4B. Implemented APRR algorithm flow
+%% source lib/research/aprr.ts
+%% replaces diagrams/obj2_algorithm_flow.png
+flowchart TB
+  b0["INPUT SATR shortlist, session W, query q"] --> b1
+  b1["1 Agents: agriculture_analyst, schema_planner, tool_executor, mesh_critic, retrieval_specialist"] --> b2
+  b2["2 hashedEmbedding 32-d; eta = cosine(e_i,e_j); psi = cosine(e_q,e_j)"] --> b3
+  b3["3 start at agriculture_analyst; lab epsilon = 0"] --> b4
+  b4["4 for hop 1 to maxHops-1: sample unvisited j from P proportional to W^2 eta^1 psi^2.5"] --> b5
+  b5["5 stop early if sampled agent is terminal and path length at least 3"] --> b6
+  b6["6 assignTools: pref = 1 if category match else 0.12; +0.35 executor and live; +0.2 analyst and Agriculture"] --> b7
+  b7["7 keep pref greater than 0.2 else SATR rank 1; at most 3 tools per hop"] --> b8
+  b8["8 return path and assignments. APRR does not pick an LLM SKU."] --> bout["OUTPUT hop path for MNCD"]
+  bout -.->|after live result| b9["9 updateAgentRewards: reward +1 live ok else -0.05"]

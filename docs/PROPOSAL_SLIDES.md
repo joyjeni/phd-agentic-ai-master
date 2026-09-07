@@ -656,7 +656,7 @@ _Source: lib/research/satr.ts, aprr.ts, mncd.ts, fcnp.ts. Full walkthrough: /wal
 
 *Research Methodology*
 
-Pseudocode is the laboratory functions. Full listings, mermaid, and the animated ToolBench pass are on /algorithms. Constants are repository defaults, not claimed results.
+Pseudocode is the laboratory functions. Full listings are on /algorithms. Journal mermaid redraws of every archived GitHub diagrams/ PNG are on /diagrams. Constants are repository defaults, not claimed results.
 
 - O1 SATR. s(a|q,H)=w_base s_base + session priors + co-activation − fail penalty. Truncate seen/unseen. Do not GET RapidAPI or data.gov.in.
 - O2 APRR. Sample P(a_j|a_i,q) ∝ W^α η^β ψ^γ from agriculture_analyst. assignTools by category. Update W after MNCD.

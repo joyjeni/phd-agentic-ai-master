@@ -52,6 +52,10 @@ export default function HomePage() {
             Pseudocode, mermaid, animated ToolBench dataflow
           </Link>
           {" · "}
+          <Link className="text-[var(--gold)] underline" href="/diagrams">
+            Journal mermaid of every GitHub diagrams/ PNG
+          </Link>
+          {" · "}
           <Link className="text-[var(--gold)] underline" href="/literature">
             Literature survey (Evidence 1–18)
           </Link>{" "}

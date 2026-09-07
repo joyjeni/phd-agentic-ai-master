@@ -2,7 +2,15 @@
 
 import { useEffect, useId, useState } from "react";
 
-export function MermaidBlock({ chart, title }: { chart: string; title?: string }) {
+export function MermaidBlock({
+  chart,
+  title,
+  caption,
+}: {
+  chart: string;
+  title?: string;
+  caption?: string;
+}) {
   const reactId = useId().replace(/:/g, "");
   const [svg, setSvg] = useState<string>("");
   const [failed, setFailed] = useState(false);
@@ -55,6 +63,11 @@ export function MermaidBlock({ chart, title }: { chart: string; title?: string }
           {chart}
         </pre>
       )}
+      {caption ? (
+        <p className="mt-3 border-t border-[#5B9BD5]/40 pt-3 text-[13px] leading-relaxed text-[#c9d4e0] italic">
+          {caption}
+        </p>
+      ) : null}
     </figure>
   );
 }

@@ -1,6 +1,7 @@
 import { ArchitectureSvg } from "@/components/architecture-svg";
 import { DataflowLab } from "@/components/dataflow-lab";
 import { SATR } from "@/lib/research/objectives";
+import Link from "next/link";
 
 const PANELS = [
   {
@@ -57,7 +58,12 @@ export default function ArchitecturePage() {
         <p className="mt-3 text-sm text-[var(--muted)]">
           Figure 1 is the cited journal SOTA (Wang et al., FCS 2024). Figure 2 is
           the proposed ACRS loop drawn for this work. Diagrams are qualitative.
-          They do not encode NDCG, latency, token, or accuracy targets.
+          They do not encode NDCG, latency, token, or accuracy targets. Implemented
+          mermaid redraws of the GitHub <code>diagrams/</code> PNGs:{" "}
+          <Link className="text-[var(--gold)] underline" href="/diagrams">
+            /diagrams
+          </Link>
+          .
         </p>
       </header>
       <section className="rounded-xl border border-[var(--gold)] bg-[var(--panel)] p-5">

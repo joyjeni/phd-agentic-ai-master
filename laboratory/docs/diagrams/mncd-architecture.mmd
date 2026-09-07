@@ -1,0 +1,18 @@
+%% Figure 5A. Implemented MNCD architecture
+%% source lib/research/mncd.ts
+%% replaces diagrams/obj3_architecture.png
+flowchart TB
+  hops3["APRR hop path"] --> mesh
+  subgraph mesh["mncd.ts mncdExecute"]
+    pub["each agent rank.update on assigned tools"]
+    gossip["gossip fanout=3 rounds=2"]
+    sum["consensus_pick score-sum tally"]
+    gate{"tool.liveExecutable?"}
+  end
+  hops3 --> pub --> gossip --> sum --> gate
+  gate -->|yes| get["executeTool GET data.gov.in"]
+  gate -->|no| force["force preferredLiveToolId"]
+  force --> get
+  rankonly["tb.agri.* liveExecutable false"] -.->|never RapidAPI| gate
+  get --> obs3["observations plus consensusNotes to FCNP"]
+  get --> ema["peerStats EMA alpha=0.3"]

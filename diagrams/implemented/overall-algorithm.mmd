@@ -1,0 +1,21 @@
+%% Figure 9. Implemented ACRS algorithmic flow
+%% source lib/research/pipeline.ts
+%% replaces diagrams/algorithm_flow.png
+flowchart TB
+  in["INPUT q plus session S"] --> s1
+  s1["SATR score every tool in C"] --> s2
+  s2["SATR truncate seen/unseen top-K"] --> s3
+  s3["APRR start agriculture_analyst"] --> s4
+  s4["APRR sample P proportional to W^a eta^b psi^g"] --> s5
+  s5["APRR assignTools pref greater than 0.2"] --> s6
+  s6["MNCD rank.update plus gossip fanout 3"] --> s7
+  s7["MNCD score-sum tally"] --> s8
+  s8{"liveExecutable Agriculture UUID?"}
+  s8 -->|yes| s9["GET data.gov.in cap limit 10000"]
+  s8 -->|no| s8b["force preferredLiveToolId"]
+  s8b --> s9
+  s9 --> s10["FCNP buildTraceContext pin query and citations"]
+  s10 --> s11["FCNP L p = I then D update"]
+  s11 --> s12["keep 35 percent / summarize 20 percent / drop"]
+  s12 --> s13["write-back memory W_cooc affinity W"]
+  s13 --> in

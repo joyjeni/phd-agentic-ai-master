@@ -1,0 +1,23 @@
+%% Figure 6A. Implemented FCNP architecture
+%% source lib/research/fcnp.ts
+%% replaces diagrams/obj4_architecture.png
+flowchart LR
+  subgraph in4["Inputs"]
+    tr["MNCD proposals executions notes"]
+    q4["pinned query"]
+    old["prior session.memory"]
+  end
+  subgraph fcnp["fcnp.ts"]
+    build["buildTraceContext"]
+    D["D_ij = cosine if ge 0.12 else 0"]
+    k["solve grounded L p = I"]
+    Q["Q_ij = |D (p_i - p_j)|"]
+    phy["D leftarrow (1-mu)D + alpha |Q|^gamma"]
+    tier["keep 35% / summarize 20% / drop"]
+    pin["never evict query or live citations"]
+  end
+  tr --> build
+  q4 --> build
+  old --> build
+  build --> D --> k --> Q --> phy
+  phy --> tier --> pin --> mem["M_t = retained[:24] into SATR s_base"]

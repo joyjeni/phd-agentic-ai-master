@@ -6,6 +6,13 @@
  */
 
 import {
+  APRR_MERMAID,
+  FCNP_MERMAID,
+  INTEGRATION_MERMAID,
+  MNCD_MERMAID,
+  SATR_MERMAID,
+} from "./implemented-diagrams";
+import {
   APRR_FORMULA,
   FCNP_FORMULA,
   MNCD_FORMULA,
@@ -65,19 +72,7 @@ export const ALGORITHMS: AlgorithmSpec[] = [
       "10. Unless looksMultiTool(q), cap three tools per category.",
       "11. Return top-K as truncated. SATR does not GET RapidAPI or data.gov.in.",
     ],
-    mermaid: `flowchart LR
-  q["q query"] --> idx
-  H["H session history"] --> prior
-  M["M FCNP memory"] --> sbase
-  C["Catalog C Agriculture"] --> idx
-  idx["Tokenize / DF / avgdl"] --> sbase["s_base BM25 + TFIDF + mem"]
-  sbase --> z["z-score across C"]
-  H --> cooc["co-activation W_cooc"]
-  prior["cat / sch / ept / rec"] --> fuse
-  cooc --> fuse
-  z --> fuse["s(a|q,H) fused rank"]
-  fuse --> cut["seen / unseen truncate"]
-  cut --> short["shortlist K → APRR"]`,
+    mermaid: SATR_MERMAID,
     logic: [
       "Left boxes are the three inputs the code actually reads: the query, session history (including co-activation), and FCNP memory mixed into s_base as a bag-of-words cosine.",
       "The index / s_base / z-score chain is satrRerank: BM25 k1=1.5 b=0.75, then catalog-wide z-score so session priors can be added on a common scale.",
@@ -115,17 +110,7 @@ export const ALGORITHMS: AlgorithmSpec[] = [
       "6. After MNCD returns: W ← (1−λ)W + κ · reward · 1/L² · 1/lat_norm, reward ∈ {+1, −0.05}.",
       "7. APRR never trains a neural controller and never picks a foundation-model SKU.",
     ],
-    mermaid: `flowchart LR
-  S["SATR shortlist"] --> start
-  W["Affinity W"] --> sample
-  q["query embedding e_q"] --> psi
-  start["start agriculture_analyst"] --> sample["sample P ∝ W^α η^β ψ^γ"]
-  psi["ψ_j = cos(e_q, e_j)"] --> sample
-  sample --> assign["assignTools pref > 0.2"]
-  assign --> path["hop path A_t"]
-  path --> mncd["→ MNCD"]
-  live["MNCD success / fail"] --> upd["W ← (1−λ)W + κ reward / L² lat"]
-  upd --> W`,
+    mermaid: APRR_MERMAID,
     logic: [
       "The start box is hardcoded hop 0 = agriculture_analyst, matching aprrRoute.",
       "Sampling is a categorical draw from the normalised product W^α η^β ψ^γ. Lab ε=0 so the path is deterministic given the session seed.",
@@ -166,16 +151,7 @@ export const ALGORITHMS: AlgorithmSpec[] = [
       "6. executeTool: GET api.data.gov.in with verified UUID; cap limit at 10000; fail loud.",
       "7. Update peerStats EMA α=0.3. Pass observations and consensus notes to FCNP.",
     ],
-    mermaid: `flowchart LR
-  hops["APRR hop path"] --> pub["each agent rank.update"]
-  pub --> gossip["gossip fanout 3 / R 2"]
-  gossip --> sum["tally = Σ w_a s_a  score-sum"]
-  sum --> gate{"liveExecutable?"}
-  gate -->|yes| get["GET data.gov.in UUID"]
-  gate -->|no| force["force preferredLiveToolId"]
-  force --> get
-  tb["ToolBench schema ranking-only"] -.->|never GET RapidAPI| gate
-  get --> obs["observations → FCNP"]`,
+    mermaid: MNCD_MERMAID,
     logic: [
       "The vote object is a toolId, which is the increment versus AutoGen/ChatDev message passing.",
       "On the ToolBench soil query, SATR #1 is tb.agri.soil_health (not live). The gate therefore forces datagov.fertilizer because the query matches fertilizer|urea|npk|subsidy.",
@@ -210,14 +186,7 @@ export const ALGORITHMS: AlgorithmSpec[] = [
       "5. Persistent: pinned live citations and the user query are never evicted.",
       "6. S.memory ← retained[:24]. Next SATR mixes this memory into s_base (step 2 of SATR).",
     ],
-    mermaid: `flowchart LR
-  tr["MNCD trace + query"] --> G["graph D_ij cosine ≥ 0.12"]
-  G --> k["solve L p = I grounded"]
-  k --> qf["Q_ij = |D (p_i − p_j)|"]
-  qf --> phy["D ← (1−μ)D + α|Q|^γ"]
-  phy --> tier["keep 35% / summarize 20% / drop"]
-  tier --> pin["pin query + live citations"]
-  pin --> mem["M_t → SATR t+1"]`,
+    mermaid: FCNP_MERMAID,
     logic: [
       "buildTraceContext is the left box: query and live citations are pinned before the solver runs, so pruning cannot delete the ministry evidence.",
       "The Kirchhoff / Physarum loop is fcnpPrune, matching Tero et al. as a design heuristic, not a biological claim.",
@@ -233,17 +202,7 @@ export const INTEGRATION = {
   figure: "Figure 7",
   caption:
     "Implemented ACRS integration. One user turn must traverse SATR → APRR → MNCD → FCNP. Live Indian OGD enters only at MNCD. FCNP writes M_t back into SATR. Redrawn from pipeline.ts. Archived github.com/joyjeni/phd-agentic-ai-master/diagrams PNGs that still say SessionRerank+, NDCG, or Borda-as-default are not this figure.",
-  mermaid: `flowchart TB
-  q["Farmer query q_t"] --> satr
-  mem["M_{t-1} FCNP residue"] --> satr
-  satr["O1 SATR fused rank"] --> short["ToolBench-schema shortlist"]
-  short --> aprr["O2 APRR specialist hops"]
-  aprr --> mesh["O3 MNCD score-sum"]
-  live["data.gov.in UUID"] --> mesh
-  mesh --> fcnp["O4 FCNP Kirchhoff prune"]
-  fcnp --> ans["a_t answer + pinned citations"]
-  fcnp --> mem2["M_t"]
-  mem2 --> satr`,
+  mermaid: INTEGRATION_MERMAID,
   steps: [
     "Intake. Tokenize q. Load Agriculture catalog. Do not call RapidAPI.",
     "SATR. Score every catalog tool; truncate; hand shortlist to APRR.",
