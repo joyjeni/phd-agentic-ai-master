@@ -25,7 +25,7 @@ Continuation. Evidence 11 & Evidence 12 in the same Evidence template.
 - Objective: Unify collaboration mode, role allocation, and LLM choice as one MAS routing problem.
 - Methodology: Cascaded neural controller trained over multi-agent topologies.
 - Findings: A learned controller can assemble a cheaper MAS than a static multi-agent template.
-- Limitations: Requires training. It does not maintain a Dirichlet–Thompson matrix over mandi / crop / rainfall specialists.
-- To solve the research gap: O2 APRR — Dirichlet–Thompson posterior over named specialists; learned routers stay a future bake-off.
+- Limitations: Requires training. It does not maintain a training-free affinity matrix over named tool-specialist agents.
+- To solve the research gap: O2 APRR — training-free hop sampling over named specialists; learned routers stay a later comparison class.
 
 Source of truth: `lib/research/literature.ts` (Evidence 1…N) and `lib/research/slides.ts`. Paste into the MSRUAS Google Slides template in Contents order.

@@ -10,12 +10,27 @@ export const RESEARCH = {
   shortTitle: COLLEGE.shortTitle,
 };
 
+/**
+ * Proposal-stage non-claim. Evaluation protocols, if frozen later, are not
+ * part of these objectives.
+ */
+export const NON_CLAIMS = {
+  title: "What these objectives do not claim",
+  statement:
+    "Motivation and objectives in this proposal are design statements. They specify what will be built, in what order, on which corpus, and with which fail-loud rules. They do not commit a retrieval score, a routing win-rate, a consensus percentage, a latency bound, a token-reduction ratio, or any other computational metric. Later experimental chapters may name a protocol; that protocol is outside these objectives.",
+} as const;
+
 export const MOTIVATION = {
   title: "Motivation",
   paragraphs: [
-    "Published LLM-agent stacks already retrieve APIs, route among models, coordinate over chat, and compress prompts. Those four operations are still specified as separate families rather than one closed contract. A farmer turn on Indian Open Government Data needs all four at once: the next tool list must remember which tools succeeded together; the next hop must be a named specialist rather than a foundation-model SKU; the vote object must be a tool identifier backed by a verified ministry UUID; and whatever survives pruning must re-enter retrieval rather than vanish as deleted tokens.",
-    "Wang et al. organise LLM agents as Profiling, Memory, Planning, and Action (Frontiers of Computer Science, 2024). That template does not name a session co-activation cache, a training-free specialist posterior, a mesh whose consensus object is a live tool ID, or a Physarum-style write-back into retrieval. ToolLLM / ToolRerank retrieve from the current query. RouteLLM, PILOT, MasRouter, and MetaGPT pick models or follow authored SOPs. AutoGen, ChatDev, and CAMEL coordinate over messages. LLMLingua shortens the prompt. None of those papers, taken together, is a live Agriculture loop on data.gov.in.",
-    "ACRS is proposed as the missing structural orchestration layer. The motivation is architectural: to make session retrieval, specialist routing, live Indian OGD execution, and citation write-back one fail-loud protocol. The proposal does not motivate a leaderboard number, a latency target, or a token-reduction ratio.",
+    "Large-language-model agents already retrieve tools, choose among models or workflows, coordinate over messages, and shorten prompts. In the published literature those four operations remain four families. A farmer query against Indian Open Government Data needs them as one turn: the next tool list must remember which tools succeeded together; the next hop must be a named specialist rather than a foundation-model SKU; the object that is voted on must be a tool identifier backed by a verified ministry UUID; and whatever is kept after pruning must re-enter retrieval rather than disappear as deleted tokens.",
+    "Wang et al. organise LLM agents as Profiling, Memory, Planning, and Action (Frontiers of Computer Science, 2024). That template does not name a session co-activation cache, a training-free hop sampler over tool specialists, a mesh whose consensus object is a live tool ID, or a conductance prune that writes citations back into retrieval. ToolLLM and ToolRerank retrieve from the current query. RouteLLM, PILOT, MasRouter, and MetaGPT pick models or follow authored SOPs. AutoGen, ChatDev, and CAMEL coordinate over chat. LLMLingua shortens the prompt. Taken together, those papers are not a live Agriculture loop on data.gov.in.",
+    "This research is therefore motivated to specify Adaptive Context Reasoning System (ACRS) as the missing structural orchestration layer: one fail-loud contract in which session retrieval, specialist routing, live Indian OGD execution, and citation write-back occur in a fixed order. The motivation is architectural completeness — that the four surfaces are named, ordered, and closed — not a leaderboard comparison.",
+  ],
+  bullets: [
+    "Published stacks retrieve, route, chat, or compress as separate families.",
+    "A live Indian OGD turn needs all four as one fail-loud contract, with write-back into retrieval.",
+    "The motivation is to specify that contract, not to pre-commit a computational score.",
   ],
 } as const;
 
@@ -23,7 +38,13 @@ export const OVERALL_OBJECTIVE = {
   id: "overall",
   title: "Overall research objective",
   statement:
-    "Design and implement ACRS as a closed structural orchestration layer in which SATR (Session-Aware Tool Retrieval), training-free specialist routing (APRR), mesh consensus over tool identifiers (MNCD), and flow-coupled context pruning with write-back (FCNP) execute in that order on one user turn, using live Indian Open Government Data as the only execution corpus. The proposal-stage claim is architectural completeness and live-pipeline integrity — that the four modules form one fail-loud loop — not a retrieval, routing, consensus, or compression score.",
+    "To design and implement Adaptive Context Reasoning System (ACRS) as a closed structural orchestration layer in which SATR (Session-Aware Tool Retrieval), training-free specialist routing (APRR), mesh consensus over tool identifiers (MNCD), and flow-coupled context pruning with write-back (FCNP) execute in that order on one user turn, using live Indian Open Government Data as the only execution corpus. The proposal-stage claim is architectural completeness and live-pipeline integrity — that the four modules form one fail-loud loop — not a retrieval, routing, consensus, or compression score.",
+  scope: [
+    "Live execution is Agriculture on verified data.gov.in resource UUIDs only.",
+    "ToolBench / ToolLLM artefacts are a ranking library and protocol family, not an execution corpus. RapidAPI endpoints are never GET.",
+    "SATR is not a new language model. MNCD is not a crop-yield predictor. FCNP is not a tokeniser.",
+    "Skipping MNCD (no live UUID) or FCNP (no write-back) is an incomplete run, not a successful demonstration.",
+  ],
   questions: [
     "Can tool retrieval be conditioned on a co-activation cache and session memory rather than a single query embedding (Qin et al., ToolLLM, ICLR 2024; Zheng et al., ToolRerank, LREC-COLING 2024)?",
     "Can routing sample a training-free posterior over tool-specialist agents instead of a trained neural controller or an authored SOP (Yue et al., MasRouter, ACL 2025; Hong et al., MetaGPT, ICLR 2024; Ong et al., RouteLLM, ICLR 2025)?",
@@ -39,7 +60,7 @@ export const SATR = {
   formerly: "SessionRerank+",
   repo: "session-aware-toolbench-rerank",
   what:
-    "SATR is Session-Aware Tool Retrieval — Objective 1 of ACRS. Given the current query q and the session history H (dialogue turns, last tool traces, and a co-activation cache of tools that succeeded together), SATR returns a ranked shortlist of ToolBench-schema tools. Semantic rank is fused with session scores; λ may grow with session length. SATR is not a new language model. Live mandi and weather rows are not SATR’s job; they enter at MNCD. The shortlist is the input to APRR. FCNP writes surviving live citations back into the next SATR prior, so retrieval is closed-loop.",
+    "SATR is Session-Aware Tool Retrieval — Objective 1 of ACRS. Given the current query q and the session history H (dialogue turns, last successful tool traces, and a co-activation cache of tools that succeeded together), SATR returns a ranked shortlist of ToolBench-schema tools. Semantic rank is fused with session priors. SATR is not a new language model. Live mandi and weather rows are not SATR’s job; they enter at MNCD. The shortlist is the input to APRR. FCNP writes surviving live citations back into the next SATR prior, so retrieval is closed-loop.",
 } as const;
 
 export const OBJECTIVES = [
@@ -49,9 +70,9 @@ export const OBJECTIVES = [
     repo: SATR.repo,
     title: SATR.title,
     journalDefinition:
-      "The retrieval chapter of the thesis: given query q and session history H, SATR (Session-Aware Tool Retrieval) returns a ranked list of ToolBench-schema tools fused with a co-activation cache. The unit of publication is the fusion rule, not an NDCG target.",
+      "To design Session-Aware Tool Retrieval: a fused ranker that, given query q, session history H, co-activation cache W_cooc, FCNP memory M, and an Agriculture catalog C, returns a truncated ToolBench-schema shortlist for APRR.",
     objective:
-      "Rank ToolBench-schema and data.gov.in Agriculture APIs with a session-aware score that mixes semantic similarity, category/schema/endpoint affinity, recency, and a co-activation cache w_{u,v}←(1-ρ)w_{u,v}+δ·1[success]. Live ministry rows are never invented at this stage.",
+      "To design SATR so that tool ranking is conditioned on the current query together with session history and a co-activation cache of tools that succeeded together, and so that SATR never executes live ministry APIs.",
     sota: {
       papers: [
         "Qin et al., ToolLLM / ToolBench (ICLR 2024): Sentence-BERT API retriever over 16,464 RapidAPI tools, then ToolLLaMA + DFSDT.",
@@ -63,18 +84,17 @@ export const OBJECTIVES = [
     },
     novelty: [
       "Session co-activation cache as a first-class prior over tool pairs.",
-      "Convex fusion of semantic and session scores; λ may grow with session length.",
-      "ToolRerank-style seen/unseen truncation kept, then applied after session scoring.",
+      "Fusion of a BM25/TFIDF base with category, schema, endpoint, recency, and co-activation priors.",
+      "ToolRerank-style seen/unseen truncation kept, applied after session scoring.",
       "FCNP memory mixed into the next SATR prior so retrieval is closed-loop.",
     ],
-    outputs: "Ranked shortlist consumed by APRR. No NDCG commitment at proposal stage.",
+    outputs: "Truncated RankedTool shortlist consumed by APRR.",
     methodology: [
-      "Design method. Specify a fused session object: query + dialogue turns + last tool traces + co-activation counts. Rank tools with that object, not with the raw utterance alone.",
-      "Ranking library (not live prices). Use ToolBench / ToolLLM artefacts as a public tool-ranking library and protocol family. RapidAPI-style traces are ranking evidence only.",
-      "Live Indian OGD is out of SATR’s ranking path. Mandi and weather rows enter at MNCD. SATR must not invent or cache dummy AGMARKNET prices.",
+      "Design method. Specify a fused session object: query + dialogue turns + last successful tool traces + co-activation counts. Rank tools with that object, not with the raw utterance alone.",
+      "Ranking library. Use ToolBench / ToolLLM artefacts as a public tool-ranking library. RapidAPI-style traces are ranking evidence only and are never GET.",
+      "Live Indian OGD is out of SATR’s path. Mandi and weather rows enter at MNCD. SATR must not invent or cache dummy AGMARKNET prices.",
       "Implementation path. Persist co-activation in a session store; expose a rank(query, session) API that APRR can call. Fail loud if the session schema is incomplete.",
-      "Future evaluation protocol (not a result). When the protocol is frozen, compare session-fused ranking against query-only ranking on the same ToolBench-style split. Report the protocol, not a pre-committed score.",
-      "Deliverable for the thesis chapter. Algorithm, schema, and ablation plan (with vs without tool-trace fusion).",
+      "Deliverable for the thesis chapter. Algorithm, schema, and the fusion rule. Comparison protocols, if any, are named later and are not this objective.",
     ],
   },
   {
@@ -83,9 +103,9 @@ export const OBJECTIVES = [
     repo: "aprr-multi-agent-routing",
     title: "Adaptive Probabilistic Routing Reinforcement (APRR)",
     journalDefinition:
-      "The routing chapter: a training-free posterior over tool-specialist agents, updated from SATR scores and from live MNCD observations. The unit of publication is the Bayesian controller, not a Pareto chart.",
+      "To design training-free hop sampling over named tool-specialist agents that takes the SATR shortlist and produces a hop path and per-hop tool assignments for MNCD.",
     objective:
-      "Sample a specialist-agent hop path with P(a_j|a_i,q) ∝ W_ij^α · η_ij^β · ψ_j(q)^γ, then decay-regularise W after MNCD outcomes. Agents are mandi / crop-production / rainfall / horticulture specialists, not foundation-model SKUs.",
+      "To design APRR so that routing samples a training-free path among tool-specialist agents (agriculture_analyst, schema_planner, tool_executor, mesh_critic, retrieval_specialist) rather than choosing a foundation-model SKU or following an authored SOP.",
     sota: {
       papers: [
         "Yue et al., MasRouter (ACL 2025, doi:10.18653/v1/2025.acl-long.757): trained neural controller over multi-agent topologies.",
@@ -97,19 +117,19 @@ export const OBJECTIVES = [
       gap: "SOTA either trains a neural router, picks a model, or follows an authored SOP. It does not maintain a training-free affinity matrix over Indian OGD tool families.",
     },
     novelty: [
-      "Training-free online W versus MasRouter's learned controller.",
-      "Implemented update is κ·reward·1/L²·1/lat_norm with negative reward on failure.",
-      "CTGR and FTDR remain in the GitHub repo; this lab runs core APRR hops.",
-      "W is session state, so routing can adapt across farmer turns.",
+      "Training-free online affinity W versus a learned controller.",
+      "Hop 0 is agriculture_analyst; later hops are sampled from P(a_j|a_i,q) ∝ W_ij^α · η_ij^β · ψ_j(q)^γ.",
+      "assignTools is a category gate with fallback to SATR rank 1, not a second ranker.",
+      "W is updated after MNCD returns, so the next turn is not a cold start.",
     ],
-    outputs: "Hop path and agent-tool assignments consumed by MNCD. No latency target.",
+    outputs: "Hop path A_t and per-hop tool assignments consumed by MNCD.",
     methodology: [
-      "Design method. Maintain a Dirichlet–Thompson posterior over named specialists. Sample or take the MAP specialist given SATR’s fused session.",
-      "Allocation rule (proposal form). P(agent | context) ∝ W^α · η^β · ψ^γ, with W = session-matched specialist weight, η = reliability, ψ = cost/risk. Exponents are design knobs, not fitted claims.",
-      "Training-free stance. Do not train a MasRouter- or RouteLLM-style classifier as the primary method. Learned routers remain a future bake-off class, not the implementation.",
-      "What is being routed. Specialists in the ACRS mesh — not LLM SKUs (GPT-4 vs Mixtral) and not AutoGen conversation modes as the object of routing.",
-      "Update rule. After MNCD returns verified or failed evidence, update η (and optionally W) so the next turn’s posterior is not identical to a cold start.",
-      "Future evaluation protocol (not a result). Log specialist choice vs task type on held-out session traces; compare against a static role graph. No pre-committed accuracy.",
+      "Design method. Maintain an affinity matrix W over named specialists. Sample the next hop from the normalised product of affinity, pairwise similarity, and query fit.",
+      "Allocation rule. P(a_j | a_i, q) ∝ W_ij^α · η_ij^β · ψ_j(q)^γ. Exponents are design knobs, not fitted claims.",
+      "Training-free stance. Do not train a MasRouter- or RouteLLM-style classifier as the primary method. Learned routers remain a later comparison class, not this objective.",
+      "What is being routed. Specialists in the ACRS mesh — not LLM SKUs and not AutoGen conversation modes.",
+      "Update rule. After MNCD returns verified or failed evidence, update W so the next turn’s path is not identical to a cold start.",
+      "Deliverable for the thesis chapter. Sampling rule, agent set, assignment gate, and the delayed W update. No routing score is part of this objective.",
     ],
   },
   {
@@ -118,9 +138,9 @@ export const OBJECTIVES = [
     repo: "mncd-mesh-agents",
     title: "Mesh Network Context Diffusion (MNCD)",
     journalDefinition:
-      "The consensus-and-execution chapter: gossip (toolId, score), score-sum consensus, live data.gov.in GET on verified UUIDs. The unit of publication is the protocol plus the citation contract.",
+      "To design a gossip mesh whose vote object is a tool identifier, whose consensus is score-sum, and whose execution is a GET of a verified data.gov.in Agriculture UUID.",
     objective:
-      "Run routed agents as a gossip mesh: publish rank.update, fanout=3, R=3 last-write-wins replicate, score-sum consensus (Borda exists in the repo but is not the eval default), then execute only live data.gov.in Agriculture resources.",
+      "To design MNCD so that APRR agents publish (toolId, score), aggregate by score-sum rather than by chat, and execute only liveExecutable Agriculture resources on data.gov.in, failing loud when the live call cannot be completed.",
     sota: {
       papers: [
         "Wang et al., A survey on large language model based autonomous agents (Frontiers of Computer Science, 2024, doi:10.1007/s11704-024-40231-1): construction of LLM agents.",
@@ -137,18 +157,18 @@ export const OBJECTIVES = [
     },
     novelty: [
       "First-class vote object is a tool ID, not a chat utterance.",
-      "consensus_pick is score-sum; consensus_pick_borda is a non-default variant.",
-      "Live Indian OGD only. Catalog-only tools stay ranking-only; prices are never invented.",
-      "HTTP 5xx/429 are retried; empty filters show other live rows from the same resource.",
+      "Laboratory consensus is score-sum. A Borda variant exists in the ranking-library repository and is not this objective’s default.",
+      "Live Indian OGD only. Catalog-only ToolBench tools stay ranking-only; records are never invented.",
+      "HTTP 5xx/429 are retried; missing key, unverified UUID, or empty live universe fail loud.",
     ],
     outputs: "Consensus tally plus live observations consumed by FCNP.",
     methodology: [
-      "Design method. Specialists selected by APRR gossip partial beliefs. Aggregate with score-sum (not Borda). Every live claim must cite a verified data.gov.in resource UUID.",
-      "Corpus / API. Agriculture-only Open Government Data: AGMARKNET (9ef84268-d588-465a-a308-a864a43d0070) and other UUIDs that pass verification.",
-      "Fail-loud contract. HTTP 5xx/429 are retried with backoff; missing API key, unverified UUID, or empty filtered universe hard-fail. No dummy mandi prices.",
-      "Platform constraint. data.gov.in Elastic max_result_window is 10 000; limit is capped. Pagination is sequential, not a fabricated parallel harvest.",
+      "Design method. Specialists selected by APRR gossip partial beliefs. Aggregate with score-sum. Every live claim must cite a verified data.gov.in resource UUID.",
+      "Corpus / API. Agriculture-only Open Government Data, including AGMARKNET 9ef84268-d588-465a-a308-a864a43d0070 and other UUIDs that pass verification.",
+      "Fail-loud contract. HTTP 5xx/429 are retried with backoff. Missing API key, unverified UUID, or empty filtered universe hard-fail. No dummy mandi prices.",
+      "Platform constraint. data.gov.in Elastic max_result_window is 10 000; limit is capped. Pagination is sequential.",
       "Related work used correctly. Guo, Woodruff & Yadav, PECAD (AAAI 2020) shows AGMARKNET as a real DSS input. MNCD does not re-implement crop-yield prediction.",
-      "Future evaluation protocol (not a result). Measure citation completeness, fail-loud rate on injected faults, and qualitative agreement of score-sum vs majority vote.",
+      "Deliverable for the thesis chapter. Gossip, score-sum, live gate, and the citation contract. No consensus percentage is part of this objective.",
     ],
   },
   {
@@ -157,9 +177,9 @@ export const OBJECTIVES = [
     repo: "fcnp-context-pruning",
     title: "Flow-Coupled Network Pruning (FCNP)",
     journalDefinition:
-      "The memory chapter: Kirchhoff/Physarum conductances prune the mesh trace and write surviving live citations back into SATR. The unit of publication is the coupling, not a token-percentage.",
+      "To design Kirchhoff/Physarum pruning of the MNCD trace so that a residue of pinned live citations is written back into SATR as session memory.",
     objective:
-      "Prune the mesh trace with a Kirchhoff/Physarum loop D_ij(t+1)=(1-μ)D_ij+α|Q_ij|^γ, hybrid keep/summarize/drop tiers, and persistent citations written back to SATR.",
+      "To design FCNP so that the post-MNCD context graph is pruned by a grounded conductance update, live citations and the user query are never evicted, and the retained residue is written back as the next SATR prior.",
     sota: {
       papers: [
         "Jiang et al., LLMLingua (EMNLP 2023): token-level prompt compression.",
@@ -170,30 +190,30 @@ export const OBJECTIVES = [
       gap: "Token compressors are not current-reinforced over a context graph and do not pin live government citations into the next retrieval turn.",
     },
     novelty: [
-      "Laplacian solve with grounded sink, matching the published Python pruner.",
-      "Hybrid tiering and persistent high-flow citations.",
-      "If a requested crop/state has no AGMARKNET rows today, other live rows are shown; nothing is invented.",
-      "Closed loop: retained spans become SATR session memory.",
+      "Laplacian solve with a grounded sink, matching the laboratory pruner.",
+      "Hybrid keep / extractive-summarize / drop tiers, with pinned query and live citations.",
+      "If a requested crop or state has no rows today, other live rows from the same resource are shown; nothing is invented.",
+      "Closed loop: retained spans become SATR session memory. Without write-back, FCNP would be prompt compression by another name.",
     ],
-    outputs: "Compact session memory for SATR at turn t+1. No compression-ratio commitment.",
+    outputs: "Retained session memory M_t written into SATR at turn t+1.",
     methodology: [
-      "Design method. Treat the post-MNCD mesh as a flow network. Apply a Kirchhoff / Physarum-inspired conductance update; drop low-conductance specialist edges; keep a residue.",
-      "Write-back (the integration hinge). The residue is written into SATR’s next fused session. Without write-back, FCNP would be prompt compression by another name.",
-      "Contrast with LLMLingua. LLMLingua shortens tokens before the LLM. FCNP prunes who remains in the mesh. Tokenisers are not the primary artefact.",
-      "Heuristic honesty. Discrete conductance is a design heuristic inspired by Tero et al. (Science, 2010), not a proof that the mesh is a Physarum organism.",
-      "Safety. Pruning must not delete the last live-data specialist if MNCD still has an open verified query. Fail loud rather than silently drop evidence.",
-      "Future evaluation protocol (not a result). Compare mesh size and downstream SATR rank stability with vs without pruning on the same session traces.",
+      "Design method. Treat the post-MNCD mesh as a flow network. Apply a Kirchhoff / Physarum-inspired conductance update; drop low-conductance nodes; keep a residue.",
+      "Write-back. The residue is written into SATR’s next fused session. That coupling is the integration hinge of Objective 4.",
+      "Contrast with LLMLingua. LLMLingua shortens tokens before the LLM. FCNP prunes who remains in the mesh.",
+      "Heuristic honesty. Discrete conductance is a design heuristic inspired by Tero et al. (Science, 2010), not a claim that the mesh is a Physarum organism.",
+      "Safety. Pruning must not delete the last pinned live citation. Fail loud rather than silently drop ministry evidence.",
+      "Deliverable for the thesis chapter. Graph construction, conductance update, pinning rule, and write-back. No compression ratio is part of this objective.",
     ],
   },
 ] as const;
 
 export const INTEGRATED_METHODOLOGY = [
-  "Closed-loop protocol. One user turn must traverse all four modules in order. Skipping MNCD (no live UUID) or FCNP (no write-back) is treated as an incomplete run, not a successful demo.",
+  "Closed-loop protocol. One user turn must traverse SATR → APRR → MNCD → FCNP in that order.",
   "Two evidence regimes. (1) ToolBench-style ranking traces for SATR. (2) Live data.gov.in Agriculture rows for MNCD. Do not mix dummy prices into (1) or RapidAPI tools into (2).",
-  "Independent variables (future experiments). Session fusion on/off; Dirichlet routing vs static roles; score-sum vs majority; FCNP write-back on/off.",
-  "Dependent measures (to be frozen later). Citation completeness, fail-loud correctness, rank stability across turns, qualitative specialist-choice logs.",
+  "Independent design switches (for later experiments, not for these objectives). Session fusion on/off; sampled hops vs a static role graph; score-sum vs majority; FCNP write-back on/off.",
   "Domain lock. Agriculture on Indian OGD for the live path. Other sectors are out of scope until a later amendment.",
   "Ethics / data. Public government catalogues only; no personal data; API keys stay in the environment, never in the thesis text.",
+  "Proposal-stage claim. Architectural completeness and live-pipeline integrity. Computational scores are not objectives.",
 ] as const;
 
 export const PIPELINE_EDGES = [

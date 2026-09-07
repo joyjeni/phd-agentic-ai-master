@@ -94,7 +94,7 @@ export const LITERATURE_EVIDENCE: LiteratureEvidence[] = [
     limitations:
       "Orchestration is a planning/transaction runtime. It does not maintain a training-free specialist posterior over Indian OGD tool families, nor cite a ministry UUID.",
     toSolve:
-      "O2 APRR plus O3 MNCD — Dirichlet–Thompson specialist hops, then a verified Agriculture UUID rather than a compensable software saga.",
+      "O2 APRR plus O3 MNCD — training-free specialist hops, then a verified Agriculture UUID rather than a compensable software saga.",
   },
   {
     n: 5,
@@ -206,9 +206,9 @@ export const LITERATURE_EVIDENCE: LiteratureEvidence[] = [
     methodology: "Cascaded neural controller trained over multi-agent topologies.",
     findings: "A learned controller can assemble a cheaper MAS than a static multi-agent template.",
     limitations:
-      "Requires training. It does not maintain a Dirichlet–Thompson matrix over mandi / crop / rainfall specialists.",
+      "Requires training. It does not maintain a training-free affinity matrix over named tool-specialist agents.",
     toSolve:
-      "O2 APRR — Dirichlet–Thompson posterior over named specialists; learned routers stay a future bake-off.",
+      "O2 APRR — training-free hop sampling over named specialists; learned routers stay a later comparison class.",
   },
   {
     n: 13,
@@ -331,7 +331,7 @@ export const RESEARCH_GAP_SOLUTIONS: {
     gap: "G2 — Model / SOP routers",
     evidence: "Evidence 6, 11, 12, 13",
     solves:
-      "O2 APRR. Training-free Dirichlet–Thompson posterior over named specialists, not LLM SKUs.",
+      "O2 APRR. Training-free hop sampling over named tool-specialist agents, not LLM SKUs.",
   },
   {
     gap: "G3 — Chat / star coordination",

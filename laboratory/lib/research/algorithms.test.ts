@@ -1,16 +1,36 @@
 import { describe, expect, it } from "vitest";
 import { ALGORITHMS, INTEGRATION, TOOLBENCH_FLOW } from "./algorithms";
-import { MOTIVATION, OVERALL_OBJECTIVE } from "./objectives";
+import { MOTIVATION, NON_CLAIMS, OBJECTIVES, OVERALL_OBJECTIVE } from "./objectives";
 import { CONTENTS, SLIDES } from "./slides";
 
 describe("implemented algorithms and motivation", () => {
   it("states motivation and the overall objective without metric commitments", () => {
-    const blob = `${MOTIVATION.paragraphs.join(" ")} ${OVERALL_OBJECTIVE.statement}`;
+    const blob = `${MOTIVATION.paragraphs.join(" ")} ${OVERALL_OBJECTIVE.statement} ${NON_CLAIMS.statement}`;
     expect(blob).not.toMatch(/NDCG/);
     expect(blob).not.toMatch(/\d+(\.\d+)?%/);
     expect(blob).toMatch(/architectural/);
     expect(OVERALL_OBJECTIVE.statement).toMatch(/SATR \(Session-Aware Tool Retrieval\)/);
     expect(OVERALL_OBJECTIVE.statement).toMatch(/live-pipeline integrity/);
+  });
+
+  it("states four individual design objectives without computational scores", () => {
+    expect(OBJECTIVES.map((item) => item.code)).toEqual(["O1", "O2", "O3", "O4"]);
+    const blob = OBJECTIVES.map(
+      (item) => `${item.objective} ${item.journalDefinition} ${item.outputs} ${item.methodology.join(" ")}`,
+    ).join("\n");
+    expect(blob).not.toMatch(/NDCG/);
+    expect(blob).not.toMatch(/Pareto/);
+    expect(blob).not.toMatch(/win-rate/);
+    expect(blob).not.toMatch(/latency target/i);
+    expect(blob).not.toMatch(/token-percentage/);
+    expect(blob).not.toMatch(/\d+(\.\d+)?%/);
+    expect(OBJECTIVES[0].objective).toMatch(/^To design SATR/);
+    expect(OBJECTIVES[1].objective).toMatch(/^To design APRR/);
+    expect(OBJECTIVES[2].objective).toMatch(/^To design MNCD/);
+    expect(OBJECTIVES[3].objective).toMatch(/^To design FCNP/);
+    expect(OBJECTIVES[1].objective).toMatch(/agriculture_analyst/);
+    expect(OBJECTIVES[2].objective).toMatch(/score-sum/);
+    expect(OBJECTIVES[3].objective).toMatch(/written back/);
   });
 
   it("gives formula, pseudocode, mermaid, and diagram logic for each objective", () => {

@@ -9,7 +9,7 @@ Qualitative map only. This table names the gap each family leaves for ACRS; it d
 | MAS frameworks (AutoGen, MetaGPT, ChatDev, CAMEL) | Conversation, SOPs, software roles, inception prompting | A closed session–route–mesh–prune contract, not another chat runtime |
 | MAS surveys and orchestration (Wang et al. FCS 2024; He et al. TOSEM 2025; Guo et al. IJCAI-24; SagaLLM PVLDB 2025) | Journal and flagship-conference accounts of how LLM agents are built, profiled, and given transactional context | A live Indian-OGD loop whose vote object is a tool identifier, not a software SDLC or a saga log |
 | Tool learning (ToolLLM / ToolBench / ToolRerank) | Large-scale tool-use corpus and ToolEval-style ranking protocol | Session-fused ranking plus live Indian OGD execution (not RapidAPI replay) |
-| Learned routers (RouteLLM, MasRouter, PILOT) | Train or bandit-route over model SKUs or collaboration modes | Training-free Dirichlet–Thompson posterior over named specialists |
+| Learned routers (RouteLLM, MasRouter, PILOT) | Train or bandit-route over model SKUs or collaboration modes | Training-free hop sampling over named tool-specialist agents |
 | Prompt compression (LLMLingua) | Shorten tokens before the LLM | Prune a mesh by conductance and write the residue back into SATR |
 | Indian agriculture DSS (PECAD) | Shows AGMARKNET as a real decision-support input | Live, fail-loud OGD inside a multi-agent loop — not a crop-yield model to beat |
 

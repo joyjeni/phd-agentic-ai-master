@@ -5,7 +5,7 @@
 One methodology per objective, then one integrated protocol. Proposal-stage: design the loop and freeze the protocol; do not pre-commit a leaderboard.
 
 - O1 SATR — fused session ranking against a ToolBench-style library. Live mandi rows are not SATR’s job.
-- O2 APRR — training-free Dirichlet–Thompson posterior over named specialists. Learned routers are a future bake-off, not the implementation.
+- O2 APRR — training-free hop sampling over named tool-specialist agents. Learned routers are a later comparison class, not this objective.
 - O3 MNCD — gossip + score-sum consensus, then live data.gov.in GET on verified Agriculture UUIDs. Fail loud. No dummy prices.
 - O4 FCNP — Kirchhoff / Physarum-inspired conductance prune with write-back into SATR. Not LLMLingua token deletion.
 - Integrated contract. SATR → APRR → MNCD → FCNP must run in that order on one user turn. Skipping MNCD or FCNP is an incomplete run.

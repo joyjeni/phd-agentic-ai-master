@@ -330,7 +330,7 @@ export function ArchitectureSvg({ variant }: { variant: DiagramKind }) {
           O2 comparison — model/SOP routers vs APRR tool-specialist posterior
         </text>
         <text x="20" y="42" fill="#7f93ab" fontSize="11">
-          Top: RouteLLM / PILOT / MasRouter / MetaGPT. Bottom: training-free Dirichlet–Thompson over agents.
+          Top: RouteLLM / PILOT / MasRouter / MetaGPT. Bottom: training-free hop sampling over agents.
         </text>
         <Node box={{ x: 20, y: 58, w: 200, h: 50, title: "Query encoder" }} />
         <Node box={{ x: 240, y: 58, w: 220, h: 50, title: "Trained F_θ / SOP", sub: "ACL 2025 / ICLR 2024" }} />
@@ -348,7 +348,7 @@ export function ArchitectureSvg({ variant }: { variant: DiagramKind }) {
             y: 150,
             w: 250,
             h: 58,
-            title: "Dirichlet × Thompson",
+            title: "P ∝ W^α η^β ψ^γ",
             sub: "agent, not model SKU",
             tone: "new",
           }}

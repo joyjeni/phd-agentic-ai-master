@@ -3,7 +3,7 @@ import { DataflowLab } from "@/components/dataflow-lab";
 import { MermaidBlock } from "@/components/mermaid-block";
 import { ALGORITHMS, INTEGRATION } from "@/lib/research/algorithms";
 import { COLLEGE } from "@/lib/research/college";
-import { MOTIVATION, OBJECTIVES, OVERALL_OBJECTIVE, SATR } from "@/lib/research/objectives";
+import { MOTIVATION, NON_CLAIMS, OBJECTIVES, OVERALL_OBJECTIVE, SATR } from "@/lib/research/objectives";
 import Link from "next/link";
 
 function Formula({ children }: { children: string }) {
@@ -67,9 +67,7 @@ export default function AlgorithmsPage() {
           {OVERALL_OBJECTIVE.statement}
         </p>
         <p className="mt-3 text-sm text-[var(--muted)]">
-          {SATR.acronym} means {SATR.expansion}. The four individual objectives below
-          are thesis-sized design claims. Metric commitments are deferred until a
-          protocol is frozen.
+          {SATR.acronym} means {SATR.expansion}. {NON_CLAIMS.statement}
         </p>
         <ol className="mt-4 grid gap-3 md:grid-cols-2">
           {OBJECTIVES.map((item) => (

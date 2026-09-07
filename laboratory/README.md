@@ -48,7 +48,9 @@ Lab page: `/walkthrough`. Animated information flow: home, `/algorithms`,
 `/architecture`, and `/walkthrough`. Pseudocode: `/algorithms`. Journal mermaid
 redraws of every archived GitHub `diagrams/` PNG: `/diagrams`.
 Markdown: `docs/PIPELINE_WALKTHROUGH.md`.
-Proposal slides include motivation, formulas, and implemented algorithms.
+Proposal slides include motivation, overall and individual research objectives
+(design claims only; no computational metric is committed), formulas, and
+implemented algorithms.
 Numbers dated 07 September 2026 are traces, not metric commitments.
 
 ## Closed loop

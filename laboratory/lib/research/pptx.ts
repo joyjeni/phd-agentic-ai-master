@@ -166,11 +166,11 @@ function addDiagram(pptx: PptxGenJS, slide: PptxGenJS.Slide, kind: Slide["diagra
     ],
     "compare-aprr": [
       ["Query", "MasRouter / RouteLLM / SOP", "Pick an LLM"],
-      ["SATR shortlist", "Dirichlet–Thompson", "Specialist path → MNCD"],
+      ["SATR shortlist", "P ∝ W^α η^β ψ^γ", "Specialist path → MNCD"],
     ],
     aprr: [
       ["Query", "MasRouter / RouteLLM / SOP", "Pick an LLM"],
-      ["SATR shortlist", "Dirichlet–Thompson", "Specialist path → MNCD"],
+      ["SATR shortlist", "P ∝ W^α η^β ψ^γ", "Specialist path → MNCD"],
     ],
     "compare-mncd": [
       ["Manager LLM", "Star / chat messages"],

@@ -2,13 +2,13 @@
 
 *Research Objectives*
 
-To solve the research gap, four named modules are proposed. Each row is a thesis-sized design claim. Metric targets are deferred until a protocol is frozen.
+To solve the research gap, four named modules are proposed. Each row is a thesis-sized design objective. Computational scores are not part of these objectives.
 
-| ID | Objective | What will be designed |
+| ID | Name | Design objective |
 | --- | --- | --- |
-| O1 | SATR (Session-Aware Tool Retrieval) | The retrieval chapter of the thesis: given query q and session history H, SATR (Session-Aware Tool Retrieval) returns a ranked list of ToolBench-schema tools fused with a co-activation cache. The unit of publication is the fusion rule, not an NDCG target. |
-| O2 | Adaptive Probabilistic Routing Reinforcement (APRR) | The routing chapter: a training-free posterior over tool-specialist agents, updated from SATR scores and from live MNCD observations. The unit of publication is the Bayesian controller, not a Pareto chart. |
-| O3 | Mesh Network Context Diffusion (MNCD) | The consensus-and-execution chapter: gossip (toolId, score), score-sum consensus, live data.gov.in GET on verified UUIDs. The unit of publication is the protocol plus the citation contract. |
-| O4 | Flow-Coupled Network Pruning (FCNP) | The memory chapter: Kirchhoff/Physarum conductances prune the mesh trace and write surviving live citations back into SATR. The unit of publication is the coupling, not a token-percentage. |
+| O1 | SATR (Session-Aware Tool Retrieval) | To design SATR so that tool ranking is conditioned on the current query together with session history and a co-activation cache of tools that succeeded together, and so that SATR never executes live ministry APIs. |
+| O2 | Adaptive Probabilistic Routing Reinforcement (APRR) | To design APRR so that routing samples a training-free path among tool-specialist agents (agriculture_analyst, schema_planner, tool_executor, mesh_critic, retrieval_specialist) rather than choosing a foundation-model SKU or following an authored SOP. |
+| O3 | Mesh Network Context Diffusion (MNCD) | To design MNCD so that APRR agents publish (toolId, score), aggregate by score-sum rather than by chat, and execute only liveExecutable Agriculture resources on data.gov.in, failing loud when the live call cannot be completed. |
+| O4 | Flow-Coupled Network Pruning (FCNP) | To design FCNP so that the post-MNCD context graph is pruned by a grounded conductance update, live citations and the user query are never evicted, and the retained residue is written back as the next SATR prior. |
 
 Source of truth: `lib/research/literature.ts` (Evidence 1…N) and `lib/research/slides.ts`. Paste into the MSRUAS Google Slides template in Contents order.

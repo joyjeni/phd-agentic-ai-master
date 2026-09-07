@@ -26,6 +26,6 @@ Continuation. Evidence 3 & Evidence 4 in the same Evidence template.
 - Methodology: Saga-style checkpointing and compensation around multi-LLM planning, with independent validators and state tracking.
 - Findings: Transactional context management can recover multi-agent plans from disruption better than unconstrained chat loops.
 - Limitations: Orchestration is a planning/transaction runtime. It does not maintain a training-free specialist posterior over Indian OGD tool families, nor cite a ministry UUID.
-- To solve the research gap: O2 APRR plus O3 MNCD — Dirichlet–Thompson specialist hops, then a verified Agriculture UUID rather than a compensable software saga.
+- To solve the research gap: O2 APRR plus O3 MNCD — training-free specialist hops, then a verified Agriculture UUID rather than a compensable software saga.
 
 Source of truth: `lib/research/literature.ts` (Evidence 1…N) and `lib/research/slides.ts`. Paste into the MSRUAS Google Slides template in Contents order.
