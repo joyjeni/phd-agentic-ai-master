@@ -29,25 +29,27 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 | 13 | [`13-literature-e17.md`](./13-literature-e17.md) | Literature Review — Evidence 17 & Evidence 18 |
 | 14 | [`14-literature-summary.md`](./14-literature-summary.md) | Summary of Literature Review |
 | 15 | [`15-solve-gap.md`](./15-solve-gap.md) | To Solve the Research Gap |
-| 16 | [`16-problem.md`](./16-problem.md) | Identified Research Problem |
-| 17 | [`17-title-aim.md`](./17-title-aim.md) | Research Title & Aim |
-| 18 | [`18-objectives.md`](./18-objectives.md) | Research Objectives |
-| 19 | [`19-o1-satr.md`](./19-o1-satr.md) | Objective 1 — SATR |
-| 20 | [`20-o2-aprr.md`](./20-o2-aprr.md) | Objective 2 — APRR |
-| 21 | [`21-o3-mncd.md`](./21-o3-mncd.md) | Objective 3 — MNCD |
-| 22 | [`22-o4-fcnp.md`](./22-o4-fcnp.md) | Objective 4 — FCNP |
-| 23 | [`23-questions.md`](./23-questions.md) | Research Questions |
-| 24 | [`24-method-overview.md`](./24-method-overview.md) | Research Methodology |
-| 25 | [`25-method-satr.md`](./25-method-satr.md) | Research Methodology — O1 SATR |
-| 26 | [`26-method-aprr.md`](./26-method-aprr.md) | Research Methodology — O2 APRR |
-| 27 | [`27-method-mncd.md`](./27-method-mncd.md) | Research Methodology — O3 MNCD |
-| 28 | [`28-method-fcnp.md`](./28-method-fcnp.md) | Research Methodology — O4 FCNP |
-| 29 | [`29-method-integrated.md`](./29-method-integrated.md) | Research Methodology — integrated loop |
-| 30 | [`30-method-formulas.md`](./30-method-formulas.md) | Research Methodology — implementation formulas |
-| 31 | [`31-method-walk-tb.md`](./31-method-walk-tb.md) | Research Methodology — ToolBench walkthrough |
-| 32 | [`32-method-walk-ogd.md`](./32-method-walk-ogd.md) | Research Methodology — data.gov.in walkthrough |
-| 33 | [`33-conclusion.md`](./33-conclusion.md) | Conclusion |
-| 34 | [`34-refs-1.md`](./34-refs-1.md) | References (1/3) — multi-agent orchestration (journals and flagship proceedings) |
-| 35 | [`35-refs-2.md`](./35-refs-2.md) | References (2/3) — tools, routing, compression, reasoning |
-| 36 | [`36-refs-3.md`](./36-refs-3.md) | References (3/3) — memory, biology, Indian agricultural data |
-| 37 | [`37-thanks.md`](./37-thanks.md) | Thank you |
+| 16 | [`16-arch-sota.md`](./16-arch-sota.md) | SOTA architecture (Wang et al., 2024) |
+| 17 | [`17-arch-proposed.md`](./17-arch-proposed.md) | Proposed ACRS architecture |
+| 18 | [`18-problem.md`](./18-problem.md) | Identified Research Problem |
+| 19 | [`19-title-aim.md`](./19-title-aim.md) | Research Title & Aim |
+| 20 | [`20-objectives.md`](./20-objectives.md) | Research Objectives |
+| 21 | [`21-o1-satr.md`](./21-o1-satr.md) | Objective 1 — SATR |
+| 22 | [`22-o2-aprr.md`](./22-o2-aprr.md) | Objective 2 — APRR |
+| 23 | [`23-o3-mncd.md`](./23-o3-mncd.md) | Objective 3 — MNCD |
+| 24 | [`24-o4-fcnp.md`](./24-o4-fcnp.md) | Objective 4 — FCNP |
+| 25 | [`25-questions.md`](./25-questions.md) | Research Questions |
+| 26 | [`26-method-overview.md`](./26-method-overview.md) | Research Methodology |
+| 27 | [`27-method-satr.md`](./27-method-satr.md) | Research Methodology — O1 SATR |
+| 28 | [`28-method-aprr.md`](./28-method-aprr.md) | Research Methodology — O2 APRR |
+| 29 | [`29-method-mncd.md`](./29-method-mncd.md) | Research Methodology — O3 MNCD |
+| 30 | [`30-method-fcnp.md`](./30-method-fcnp.md) | Research Methodology — O4 FCNP |
+| 31 | [`31-method-integrated.md`](./31-method-integrated.md) | Research Methodology — integrated loop |
+| 32 | [`32-method-formulas.md`](./32-method-formulas.md) | Research Methodology — implementation formulas |
+| 33 | [`33-method-walk-tb.md`](./33-method-walk-tb.md) | Research Methodology — ToolBench walkthrough |
+| 34 | [`34-method-walk-ogd.md`](./34-method-walk-ogd.md) | Research Methodology — data.gov.in walkthrough |
+| 35 | [`35-conclusion.md`](./35-conclusion.md) | Conclusion |
+| 36 | [`36-refs-1.md`](./36-refs-1.md) | References (1/3) — multi-agent orchestration (journals and flagship proceedings) |
+| 37 | [`37-refs-2.md`](./37-refs-2.md) | References (2/3) — tools, routing, compression, reasoning |
+| 38 | [`38-refs-3.md`](./38-refs-3.md) | References (3/3) — memory, biology, Indian agricultural data |
+| 39 | [`39-thanks.md`](./39-thanks.md) | Thank you |

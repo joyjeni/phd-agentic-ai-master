@@ -10,6 +10,8 @@ Paste into the university Google Slides template in this order.
 02  Literature Review
 03  Summary of Literature Review
 03a  To Solve the Research Gap
+03b  SOTA architecture (cited)
+03c  Proposed ACRS architecture
 04  Identified Research Problem
 05  Research Title & Aim
 06  Research Objectives

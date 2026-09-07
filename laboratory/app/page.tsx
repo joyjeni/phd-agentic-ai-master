@@ -36,9 +36,10 @@ export default function HomePage() {
         </h1>
         <p className="mt-4 text-sm leading-relaxed text-[var(--muted)]">
           {RESEARCH.scholar} · {RESEARCH.email}. Four GitHub algorithms run as
-          microservices: SessionRerank+ (O1), Adaptive Probabilistic Routing
-          Reinforcement (O2), Mesh Network Context Diffusion (O3), Flow-Coupled
-          Network Pruning (O4). Catalog:           {CATALOG_STATS.nTools} Agriculture tools, {CATALOG_STATS.nLive} live
+          microservices: SATR — Session-Aware Tool Retrieval (O1; not a new LLM),
+          Adaptive Probabilistic Routing Reinforcement (O2), Mesh Network Context
+          Diffusion (O3), Flow-Coupled Network Pruning (O4). Catalog:{" "}
+          {CATALOG_STATS.nTools} Agriculture tools, {CATALOG_STATS.nLive} live
           data.gov.in resources.
         </p>
         <p className="mt-3 text-sm">

@@ -1,16 +1,16 @@
 import { ArchitectureSvg } from "@/components/architecture-svg";
+import { SATR } from "@/lib/research/objectives";
 
 const PANELS = [
   {
-    title: "SOTA composition",
+    title: "Figure 1 — SOTA architecture (cited journal)",
     caption:
-      "Qin et al. (ToolLLM, ICLR 2024) retrieve from the current query; Zheng et al. (ToolRerank, LREC-COLING 2024) truncate; a single planner calls tools. Session memory never returns.",
+      "Redrawn after Wang et al., Frontiers of Computer Science 18:186345 (2024), doi:10.1007/s11704-024-40231-1. Canonical LLM agent: Profiling, Memory, Planning, Action. Tool-use instantiation: Qin et al., ToolLLM (ICLR 2024) and Zheng et al., ToolRerank (LREC-COLING 2024). Related surveys: He et al., ACM TOSEM 2025; Guo et al., IJCAI-24. Figure 1 is redrawn; it is not a scanned publisher PDF.",
     variant: "sota" as const,
   },
   {
-    title: "Proposed ACRS composition",
-    caption:
-      "Four named artefacts move along the loop. FCNP memory is an input to SATR. The claim is the contract, not a metric.",
+    title: "Figure 2 — Proposed ACRS architecture (drawn)",
+    caption: SATR.what,
     variant: "proposed" as const,
   },
   {
@@ -22,7 +22,7 @@ const PANELS = [
   {
     title: "O1 SATR vs ToolLLM / ToolRerank",
     caption:
-      "Hierarchy-aware truncation is kept. Session priors, co-activation cache, and FCNP memory are the increment. No NDCG is promised.",
+      "SATR is Session-Aware Tool Retrieval. Hierarchy-aware truncation is kept. Session priors, co-activation cache, and FCNP memory are the increment. No NDCG is promised.",
     variant: "compare-satr" as const,
   },
   {
@@ -54,11 +54,27 @@ export default function ArchitecturePage() {
         </p>
         <h1 className="mt-2 font-serif text-4xl">SOTA versus proposed novelty</h1>
         <p className="mt-3 text-sm text-[var(--muted)]">
-          Each diagram names a published system on the grey path and the ACRS
-          increment on the green path. Diagrams are qualitative. They do not
-          encode NDCG, latency, token, or accuracy targets.
+          Figure 1 is the cited journal SOTA (Wang et al., FCS 2024). Figure 2 is
+          the proposed ACRS loop drawn for this work. Diagrams are qualitative.
+          They do not encode NDCG, latency, token, or accuracy targets.
         </p>
       </header>
+      <section className="rounded-xl border border-[var(--gold)] bg-[var(--panel)] p-5">
+        <p className="text-[11px] uppercase tracking-[0.22em] text-[var(--gold)]">
+          What {SATR.acronym} is
+        </p>
+        <h2 className="mt-2 font-serif text-2xl">
+          {SATR.acronym} = {SATR.expansion}
+        </h2>
+        <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[var(--muted)]">
+          {SATR.what}
+        </p>
+        <p className="mt-3 text-xs text-[var(--muted)]">
+          Formerly labelled SessionRerank+. The GitHub ranking library remains{" "}
+          <code className="text-[var(--paper)]">{SATR.repo}</code>. That folder
+          name is historical; the module in this proposal is SATR.
+        </p>
+      </section>
       <div className="space-y-6">
         {PANELS.map((panel) => (
           <section

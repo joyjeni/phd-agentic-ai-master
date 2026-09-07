@@ -8,8 +8,8 @@ Engineering and Technology. Supervisor: **Dr. Jyothi A P**. Date of registration
 The programme proposes **ACRS** — a structural orchestration layer for multi-agent
 LLM ecosystems — as four named subsystems in one closed loop:
 
-1. **O1 SATR** (`session-aware-toolbench-rerank`) — session-aware ToolBench rerank
-   with a co-activation cache.
+1. **O1 SATR** (`session-aware-toolbench-rerank`) — **Session-Aware Tool Retrieval**:
+   fused session ranking with a co-activation cache. Not a new LLM. Not live prices.
 2. **O2 APRR** (`aprr-multi-agent-routing`) — Adaptive **Probabilistic** Routing
    Reinforcement over tool-specialist agents.
 3. **O3 MNCD** (`mncd-mesh-agents`) — Mesh Network Context Diffusion: gossip,

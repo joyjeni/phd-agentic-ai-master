@@ -10,7 +10,7 @@ import { SATR_WEIGHTS } from "./satr";
 
 export { APRR_CONFIG, FCNP_CONFIG, SATR_WEIGHTS };
 
-/** SATR SessionRerank+ — lib/research/satr.ts */
+/** SATR (Session-Aware Tool Retrieval) — lib/research/satr.ts */
 export const SATR_FORMULA = {
   latex:
     "s(a|q,H)= w_base s_base + w_cat cat + w_sch sch + w_ept ept + w_cooc Σ_i γ^{n-i} log(1+w_{h_i,a}) + w_rec rec − 0.35·fails",

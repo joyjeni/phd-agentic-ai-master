@@ -33,6 +33,13 @@ export default function ObjectivesPage() {
               {item.code} · {item.repo}
             </p>
             <h2 className="mt-1 font-serif text-2xl">{item.title}</h2>
+            {item.id === "satr" ? (
+              <p className="mt-3 text-sm leading-relaxed text-[var(--paper)]/90">
+                SATR is Session-Aware Tool Retrieval. It is Objective 1 of ACRS: a
+                fused ranker over query + session history + co-activation, not a
+                new language model and not a live price cache.
+              </p>
+            ) : null}
             <p className="mt-2 text-xs uppercase tracking-wide text-[var(--gold)]">
               Journal / thesis definition
             </p>

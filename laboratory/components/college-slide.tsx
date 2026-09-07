@@ -93,7 +93,7 @@ export function CollegeSlideFrame({
   }
 
   return (
-    <article className="college-slide relative overflow-hidden rounded-lg border border-[#d5deea] bg-white text-[#1a1a1a] shadow-lg print:rounded-none print:shadow-none">
+    <article className="college-slide relative overflow-visible rounded-lg border border-[#d5deea] bg-white text-[#1a1a1a] shadow-lg print:rounded-none print:shadow-none">
       <SideBars />
       <header className="relative flex items-start justify-between gap-4 px-6 pt-4">
         <div className="min-w-0 flex-1">

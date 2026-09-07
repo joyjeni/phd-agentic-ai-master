@@ -1,7 +1,7 @@
 export const PUBLICATION = [
   {
     code: "O1",
-    title: "SessionRerank+",
+    title: "SATR",
     venueFit: "ACL / EMNLP Findings, or IR workshops (SIGIR short) if ToolBench numbers hold",
     ready: false,
     claim: "Session-conditioned API reranking with a co-activation cache is a distinct retrieval chapter versus turn-amnesic ToolLLM/ToolRerank. Empirical bake-off is future work, not a proposal result.",
@@ -13,7 +13,7 @@ export const PUBLICATION = [
     blockers: [
       "Reported agri NDCG is on a small Karnataka set, not the full ToolBench 16k index.",
       "No unit tests in the GitHub repo.",
-      "agri_extension/__init__.py imported a missing BioRerankAgri module (now pointed at SessionRerankPlus).",
+      "agri_extension/__init__.py imported a missing BioRerankAgri module (now pointed at SATR / Session-Aware Tool Retrieval).",
       "Web demo used keyword base scores, not Gemma embeddings.",
     ],
     next: "Run ToolEval on G1–G3 with frozen weights, ablate w_cooc, report CI over seeds.",

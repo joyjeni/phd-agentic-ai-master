@@ -9,11 +9,13 @@ import {
   INTEGRATED_METHODOLOGY,
   OBJECTIVES,
   OVERALL_OBJECTIVE,
+  SATR,
 } from "./objectives";
 
 export type SlideDiagram =
   | "none"
   | "sota"
+  | "proposed"
   | "e2e"
   | "satr"
   | "aprr"
@@ -187,6 +189,36 @@ export const SLIDES: Slide[] = [
       "Integration order: SATR → APRR → MNCD → FCNP on one user turn. No NDCG, latency, or accuracy target is attached to any row.",
   },
   {
+    id: "arch-sota",
+    section: "SOTA architecture",
+    title: "SOTA architecture (Wang et al., 2024)",
+    body: "Figure 1 after Wang et al., Frontiers of Computer Science 18:186345 (2024), doi:10.1007/s11704-024-40231-1. Four modules: Profiling, Memory, Planning, Action. Tool instantiation: Qin ToolLLM + Zheng ToolRerank (query only).",
+    bullets: [
+      "Journal source of Figure 1. Wang et al., Front. Comput. Sci. 18:186345 (2024). Four modules: Profiling, Memory, Planning, Action.",
+      "Related surveys. He, Treude and Lo, ACM TOSEM 34(5) (2025); Guo et al., IJCAI-24, 8048–8057.",
+      "Tool instantiation. Qin/Zheng: turn-amnesic API retrieval. That is the grey path under Figure 1.",
+      "What SOTA does not draw. A co-activation cache, a specialist posterior, a live data.gov.in GET, or write-back into retrieval.",
+    ],
+    diagram: "sota",
+    footnote:
+      "Wang L. et al. Front. Comput. Sci. 18:186345 (2024). Figure 1 is redrawn for this proposal; it is not a scanned publisher PDF.",
+  },
+  {
+    id: "arch-proposed",
+    section: "Proposed architecture",
+    title: "Proposed ACRS architecture",
+    body: "Figure 2 is drawn for this proposal. SATR means Session-Aware Tool Retrieval — not a new LLM and not a live price cache.",
+    bullets: [
+      `${SATR.acronym} (${SATR.expansion}) ranks tools from q + session memory H + FCNP residue M, then hands a shortlist to APRR.`,
+      "APRR samples a specialist hop path from that shortlist (training-free Dirichlet–Thompson).",
+      "MNCD score-sums tool IDs and GETs a live data.gov.in UUID. Fail loud. No dummy prices.",
+      "FCNP prunes the mesh by conductance and writes M_t back into SATR — that is the closed loop drawn in Figure 2.",
+    ],
+    diagram: "proposed",
+    footnote:
+      "Figure 2 is drawn for this proposal. Contrast with Figure 1 (Wang et al., FCS 2024). No NDCG is drawn.",
+  },
+  {
     id: "problem",
     section: "Identified Research Problem",
     title: "Identified Research Problem",
@@ -208,7 +240,7 @@ export const SLIDES: Slide[] = [
     body: COLLEGE.title,
     bullets: [
       `Aim. ${OVERALL_OBJECTIVE.statement}`,
-      "Scope of the title. Adaptive = session-conditioned ranking and routing. Context = fused session memory plus mesh residue. Reasoning = specialist posterior plus score-sum consensus. System = four named modules on one contract.",
+      "Scope of the title. Adaptive = SATR (Session-Aware Tool Retrieval) and APRR. Context = fused session memory plus mesh residue. Reasoning = specialist posterior plus score-sum consensus. System = four named modules on one contract.",
       "What the title is not. It is not a new LLM, not a crop-yield model, and not a claim that ACRS already outperforms ToolLLM, MasRouter, or LLMLingua on a published leaderboard.",
       "Domain lock for the live loop. Agriculture on data.gov.in (AGMARKNET and related verified UUIDs). Other sectors stay out of the inference path in this proposal.",
       "Integration order that the aim implies. SATR (memory) → APRR (who acts) → MNCD (live evidence) → FCNP (prune and write back).",
@@ -228,14 +260,14 @@ export const SLIDES: Slide[] = [
     id: "o1-satr",
     section: "Research Objectives",
     title: "Objective 1 — SATR",
-    body: OBJECTIVES[0].journalDefinition,
+    body: SATR.what,
     paragraphs: [
       `SOTA. ${OBJECTIVES[0].sota.papers.join(" ")} Pipeline: ${OBJECTIVES[0].sota.pipeline}`,
       `Gap. ${OBJECTIVES[0].sota.gap}`,
       `Novelty. ${OBJECTIVES[0].novelty.join(" ")}`,
     ],
     diagram: "compare-satr",
-    footnote: "Repository: github.com/joyjeni/session-aware-toolbench-rerank",
+    footnote: `Repository: github.com/joyjeni/${SATR.repo}`,
   },
   {
     id: "o2-aprr",
@@ -481,6 +513,8 @@ export const OUTLINE: ContentsItem[] = [
   { n: "02", title: "Literature Review", slideId: "literature-e01" },
   { n: "03", title: "Summary of Literature Review", slideId: "literature-summary" },
   { n: "03a", title: "To Solve the Research Gap", slideId: "solve-gap" },
+  { n: "03b", title: "SOTA architecture (cited)", slideId: "arch-sota" },
+  { n: "03c", title: "Proposed ACRS architecture", slideId: "arch-proposed" },
   { n: "04", title: "Identified Research Problem", slideId: "problem" },
   { n: "05", title: "Research Title & Aim", slideId: "title-aim" },
   { n: "06", title: "Research Objectives", slideId: "objectives" },

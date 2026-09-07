@@ -101,62 +101,133 @@ export type DiagramKind =
 
 export function ArchitectureSvg({ variant }: { variant: DiagramKind }) {
   if (variant === "sota") {
-    const boxes: Box[] = [
-      { x: 20, y: 70, w: 130, h: 56, title: "Query only", sub: "no session H", tone: "io" },
-      { x: 180, y: 70, w: 150, h: 56, title: "SBERT retrieve", sub: "Qin ICLR 2024" },
-      { x: 360, y: 70, w: 160, h: 56, title: "ToolRerank", sub: "Zheng LREC-COLING" },
-      { x: 550, y: 70, w: 150, h: 56, title: "One LLM", sub: "DFSDT / ReAct" },
-      { x: 730, y: 70, w: 140, h: 56, title: "Answer", sub: "no write-back", tone: "io" },
-    ];
     return (
-      <svg viewBox="0 0 900 200" className="h-auto w-full">
+      <svg viewBox="0 0 920 360" className="h-auto w-full">
         <Defs />
-        <text x="20" y="28" fill="#c4a35a" fontSize="13" fontFamily="Georgia, serif">
-          SOTA tool-agent pipeline (ToolLLM + ToolRerank + single planner)
+        <text x="20" y="22" fill="#c4a35a" fontSize="13" fontFamily="Georgia, serif">
+          Figure 1. SOTA LLM-agent architecture (journal)
         </text>
-        {boxes.map((box) => (
-          <Node key={box.title} box={box} />
-        ))}
-        <Arrow x1={150} y1={98} x2={178} y2={98} />
-        <Arrow x1={330} y1={98} x2={358} y2={98} />
-        <Arrow x1={520} y1={98} x2={548} y2={98} />
-        <Arrow x1={700} y1={98} x2={728} y2={98} />
+        <text x="20" y="42" fill="#9aa8b8" fontSize="11">
+          After Wang et al., Frontiers of Computer Science 18:186345 (2024), doi:10.1007/s11704-024-40231-1 — Profiling, Memory, Planning, Action.
+        </text>
+        <Node box={{ x: 20, y: 62, w: 200, h: 62, title: "Profiling", sub: "role / persona" }} />
+        <Node box={{ x: 250, y: 62, w: 200, h: 62, title: "Memory", sub: "short- and long-term" }} />
+        <Node box={{ x: 480, y: 62, w: 200, h: 62, title: "Planning", sub: "ReAct / DFSDT" }} />
+        <Node box={{ x: 710, y: 62, w: 190, h: 62, title: "Action", sub: "tools / APIs", tone: "io" }} />
+        <Arrow x1={220} y1={93} x2={248} y2={93} />
+        <Arrow x1={450} y1={93} x2={478} y2={93} />
+        <Arrow x1={680} y1={93} x2={708} y2={93} />
+        <text x="20" y="156" fill="#c4a35a" fontSize="12" fontFamily="Georgia, serif">
+          Tool-use instantiation (still SOTA, still turn-amnesic)
+        </text>
+        <text x="20" y="174" fill="#9aa8b8" fontSize="11">
+          Qin et al., ToolLLM, ICLR 2024; Zheng et al., ToolRerank, LREC-COLING 2024. Query only — no session H, no write-back.
+        </text>
+        <Node box={{ x: 20, y: 192, w: 150, h: 56, title: "Query only", sub: "no session H", tone: "io" }} />
+        <Node box={{ x: 190, y: 192, w: 160, h: 56, title: "SBERT retrieve", sub: "Qin ICLR 2024" }} />
+        <Node box={{ x: 370, y: 192, w: 170, h: 56, title: "ToolRerank", sub: "Zheng 2024" }} />
+        <Node box={{ x: 560, y: 192, w: 160, h: 56, title: "One LLM", sub: "DFSDT / ReAct" }} />
+        <Node box={{ x: 740, y: 192, w: 160, h: 56, title: "Answer", sub: "open loop", tone: "io" }} />
+        <Arrow x1={170} y1={220} x2={188} y2={220} />
+        <Arrow x1={350} y1={220} x2={368} y2={220} />
+        <Arrow x1={540} y1={220} x2={558} y2={220} />
+        <Arrow x1={720} y1={220} x2={738} y2={220} />
+        <text x="20" y="280" fill="#7f93ab" fontSize="11">
+          What this figure does not contain: a co-activation cache, a specialist posterior, live data.gov.in, or write-back into retrieval.
+        </text>
+        <text x="20" y="300" fill="#7f93ab" fontSize="11">
+          Citation. Wang L. et al. Front. Comput. Sci. 18, 186345 (2024). Redrawn for this proposal; not a scanned publisher PDF.
+        </text>
+        <text x="20" y="332" fill="#7f93ab" fontSize="11">
+          Related SOTA surveys: He et al., ACM TOSEM 34(5) (2025); Guo et al., IJCAI-24, 8048–8057.
+        </text>
       </svg>
     );
   }
 
   if (variant === "proposed" || variant === "e2e") {
-    const boxes: Box[] = [
-      { x: 20, y: 80, w: 140, h: 60, title: "q_t + M_{t-1}", sub: "session memory", tone: "io" },
-      { x: 185, y: 80, w: 125, h: 60, title: "SATR", sub: "O1 rerank", tone: "new" },
-      { x: 335, y: 80, w: 125, h: 60, title: "APRR", sub: "O2 route", tone: "new" },
-      { x: 485, y: 80, w: 125, h: 60, title: "MNCD", sub: "O3 mesh vote", tone: "new" },
-      { x: 635, y: 80, w: 125, h: 60, title: "FCNP", sub: "O4 prune", tone: "new" },
-      { x: 785, y: 80, w: 100, h: 60, title: "a_t + M_t", tone: "io" },
-    ];
     return (
-      <svg viewBox="0 0 910 210" className="h-auto w-full">
+      <svg viewBox="0 0 940 390" className="h-auto w-full">
         <Defs />
-        <text x="20" y="28" fill="#7dcea0" fontSize="13" fontFamily="Georgia, serif">
-          Proposed ACRS loop — each arrow is a typed artefact, not a chat message
+        <text x="20" y="22" fill="#7dcea0" fontSize="13" fontFamily="Georgia, serif">
+          Figure 2. Proposed ACRS architecture (this work) — drawn, not copied
         </text>
-        {boxes.map((box) => (
-          <Node key={box.title} box={box} />
-        ))}
-        <Arrow x1={160} y1={110} x2={183} y2={110} />
-        <Arrow x1={310} y1={110} x2={333} y2={110} />
-        <Arrow x1={460} y1={110} x2={483} y2={110} />
-        <Arrow x1={610} y1={110} x2={633} y2={110} />
-        <Arrow x1={760} y1={110} x2={783} y2={110} />
+        <text x="20" y="42" fill="#9ad4b3" fontSize="11">
+          SATR = Session-Aware Tool Retrieval. Closed loop SATR → APRR → MNCD → FCNP → SATR. Live Indian OGD at MNCD.
+        </text>
+        <Node
+          box={{
+            x: 20,
+            y: 48,
+            w: 900,
+            h: 48,
+            title: "SATR — Session-Aware Tool Retrieval (O1)",
+            sub: "q + H + M → ranked ToolBench-schema shortlist. Not a new LLM. Not live prices.",
+            tone: "new",
+          }}
+        />
+        <Node box={{ x: 20, y: 148, w: 150, h: 64, title: "q_t + M_{t-1}", sub: "session memory", tone: "io" }} />
+        <Node box={{ x: 190, y: 148, w: 155, h: 64, title: "SATR", sub: "fused rank", tone: "new" }} />
+        <Node box={{ x: 365, y: 148, w: 155, h: 64, title: "APRR", sub: "O2 specialist hops", tone: "new" }} />
+        <Node box={{ x: 540, y: 148, w: 165, h: 64, title: "MNCD", sub: "O3 live data.gov.in", tone: "new" }} />
+        <Node box={{ x: 725, y: 148, w: 155, h: 64, title: "FCNP", sub: "O4 prune + pin", tone: "new" }} />
+        <Arrow x1={170} y1={180} x2={188} y2={180} />
+        <Arrow x1={345} y1={180} x2={363} y2={180} />
+        <Arrow x1={520} y1={180} x2={538} y2={180} />
+        <Arrow x1={705} y1={180} x2={723} y2={180} />
         <path
-          d="M835 80 C 835 28, 90 28, 90 80"
+          d="M802 148 C 802 124, 108 124, 108 148"
           fill="none"
           stroke="#7dcea0"
           strokeDasharray="5 4"
-          strokeWidth={1.5}
+          strokeWidth={1.6}
         />
-        <text x="360" y="22" fill="#9ad4b3" fontSize="11">
+        <text x="292" y="122" fill="#9ad4b3" fontSize="11">
           M_t writes back into SATR at t+1
+        </text>
+        <Arrow x1={622} y1={212} x2={622} y2={228} />
+        <Node
+          box={{
+            x: 20,
+            y: 236,
+            w: 280,
+            h: 54,
+            title: "Live data.gov.in",
+            sub: "AGMARKNET UUID — MNCD only",
+            tone: "io",
+          }}
+        />
+        <Arrow x1={300} y1={263} x2={538} y2={212} />
+        <Node
+          box={{
+            x: 320,
+            y: 236,
+            w: 280,
+            h: 54,
+            title: "Score-sum consensus",
+            sub: "vote object = toolId",
+            tone: "new",
+          }}
+        />
+        <Node
+          box={{
+            x: 620,
+            y: 236,
+            w: 300,
+            h: 54,
+            title: "a_t + M_t",
+            sub: "answer + pinned citations",
+            tone: "io",
+          }}
+        />
+        <text x="20" y="318" fill="#9ad4b3" fontSize="11">
+          What SATR is. Session-Aware Tool Retrieval fuses semantic rank with a co-activation cache, then hands a shortlist to APRR.
+        </text>
+        <text x="20" y="338" fill="#9aa8b8" fontSize="11">
+          What SATR is not. A foundation model, a crop-yield predictor, or a live price cache. Mandi rows enter at MNCD.
+        </text>
+        <text x="20" y="366" fill="#7f93ab" fontSize="11">
+          Figure 2 is drawn for this proposal. Contrast with Figure 1 (Wang et al., FCS 2024). No NDCG is drawn.
         </text>
       </svg>
     );

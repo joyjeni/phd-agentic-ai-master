@@ -14,7 +14,7 @@ export const OVERALL_OBJECTIVE = {
   id: "overall",
   title: "Overall objective",
   statement:
-    "Design, implement, and critically evaluate ACRS — a structural orchestration layer in which session-aware tool retrieval (SATR), training-free specialist routing (APRR), mesh consensus over tool identifiers (MNCD), and flow-coupled context pruning with write-back (FCNP) form a closed loop on live Indian Open Government Data. The proposal-stage claim is architectural completeness and live-pipeline integrity, not a leaderboard number.",
+    "Design, implement, and critically evaluate ACRS — a structural orchestration layer in which SATR (Session-Aware Tool Retrieval), training-free specialist routing (APRR), mesh consensus over tool identifiers (MNCD), and flow-coupled context pruning with write-back (FCNP) form a closed loop on live Indian Open Government Data. The proposal-stage claim is architectural completeness and live-pipeline integrity, not a leaderboard number.",
   questions: [
     "Can tool retrieval be conditioned on a co-activation cache and session memory rather than a single query embedding (Qin et al., ToolLLM, ICLR 2024; Zheng et al., ToolRerank, LREC-COLING 2024)?",
     "Can routing sample a training-free posterior over tool-specialist agents instead of a trained neural controller or an authored SOP (Yue et al., MasRouter, ACL 2025; Hong et al., MetaGPT, ICLR 2024; Ong et al., RouteLLM, ICLR 2025)?",
@@ -23,14 +23,24 @@ export const OVERALL_OBJECTIVE = {
   ],
 };
 
+export const SATR = {
+  acronym: "SATR",
+  expansion: "Session-Aware Tool Retrieval",
+  title: "SATR (Session-Aware Tool Retrieval)",
+  formerly: "SessionRerank+",
+  repo: "session-aware-toolbench-rerank",
+  what:
+    "SATR is Session-Aware Tool Retrieval — Objective 1 of ACRS. Given the current query q and the session history H (dialogue turns, last tool traces, and a co-activation cache of tools that succeeded together), SATR returns a ranked shortlist of ToolBench-schema tools. Semantic rank is fused with session scores; λ may grow with session length. SATR is not a new language model. Live mandi and weather rows are not SATR’s job; they enter at MNCD. The shortlist is the input to APRR. FCNP writes surviving live citations back into the next SATR prior, so retrieval is closed-loop.",
+} as const;
+
 export const OBJECTIVES = [
   {
     id: "satr",
     code: "O1",
-    repo: "session-aware-toolbench-rerank",
-    title: "SessionRerank+ (SATR)",
+    repo: SATR.repo,
+    title: SATR.title,
     journalDefinition:
-      "The retrieval chapter of the thesis: given query q and session history H, return a ranked list of ToolBench-schema tools fused with a co-activation cache. The unit of publication is the fusion rule, not an NDCG target.",
+      "The retrieval chapter of the thesis: given query q and session history H, SATR (Session-Aware Tool Retrieval) returns a ranked list of ToolBench-schema tools fused with a co-activation cache. The unit of publication is the fusion rule, not an NDCG target.",
     objective:
       "Rank ToolBench-schema and data.gov.in Agriculture APIs with a session-aware score that mixes semantic similarity, category/schema/endpoint affinity, recency, and a co-activation cache w_{u,v}←(1-ρ)w_{u,v}+δ·1[success]. Live ministry rows are never invented at this stage.",
     sota: {

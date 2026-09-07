@@ -50,6 +50,8 @@ Nine required sections plus the FET mapping To Solve the Research Gap. Literatur
 02  Literature Review
 03  Summary of Literature Review
 03a  To Solve the Research Gap
+03b  SOTA architecture (cited)
+03c  Proposed ACRS architecture
 04  Identified Research Problem
 05  Research Title & Aim
 06  Research Objectives
@@ -382,7 +384,37 @@ To solve the research gaps identified in Evidence 1–18, the following work is 
 
 _Integration order: SATR → APRR → MNCD → FCNP on one user turn. No NDCG, latency, or accuracy target is attached to any row._
 
-## 16 Identified Research Problem
+## 16 SOTA architecture (Wang et al., 2024)
+
+*SOTA architecture*
+
+Figure 1 after Wang et al., Frontiers of Computer Science 18:186345 (2024), doi:10.1007/s11704-024-40231-1. Four modules: Profiling, Memory, Planning, Action. Tool instantiation: Qin ToolLLM + Zheng ToolRerank (query only).
+
+- Journal source of Figure 1. Wang et al., Front. Comput. Sci. 18:186345 (2024). Four modules: Profiling, Memory, Planning, Action.
+- Related surveys. He, Treude and Lo, ACM TOSEM 34(5) (2025); Guo et al., IJCAI-24, 8048–8057.
+- Tool instantiation. Qin/Zheng: turn-amnesic API retrieval. That is the grey path under Figure 1.
+- What SOTA does not draw. A co-activation cache, a specialist posterior, a live data.gov.in GET, or write-back into retrieval.
+
+Diagram: sota (see /architecture in the laboratory).
+
+_Wang L. et al. Front. Comput. Sci. 18:186345 (2024). Figure 1 is redrawn for this proposal; it is not a scanned publisher PDF._
+
+## 17 Proposed ACRS architecture
+
+*Proposed architecture*
+
+Figure 2 is drawn for this proposal. SATR means Session-Aware Tool Retrieval — not a new LLM and not a live price cache.
+
+- SATR (Session-Aware Tool Retrieval) ranks tools from q + session memory H + FCNP residue M, then hands a shortlist to APRR.
+- APRR samples a specialist hop path from that shortlist (training-free Dirichlet–Thompson).
+- MNCD score-sums tool IDs and GETs a live data.gov.in UUID. Fail loud. No dummy prices.
+- FCNP prunes the mesh by conductance and writes M_t back into SATR — that is the closed loop drawn in Figure 2.
+
+Diagram: proposed (see /architecture in the laboratory).
+
+_Figure 2 is drawn for this proposal. Contrast with Figure 1 (Wang et al., FCS 2024). No NDCG is drawn._
+
+## 18 Identified Research Problem
 
 *Identified Research Problem*
 
@@ -396,19 +428,19 @@ Five architectural gaps. Four named objectives. One integration contract. The pr
 
 _Gaps are architectural. This deck does not convert them into NDCG, latency, or accuracy targets._
 
-## 17 Research Title & Aim
+## 19 Research Title & Aim
 
 *Research Title & Aim*
 
 Adaptive Context Reasoning System (ACRS): A Structural Orchestration Layer for Multi-Agent LLM Ecosystems
 
-- Aim. Design, implement, and critically evaluate ACRS — a structural orchestration layer in which session-aware tool retrieval (SATR), training-free specialist routing (APRR), mesh consensus over tool identifiers (MNCD), and flow-coupled context pruning with write-back (FCNP) form a closed loop on live Indian Open Government Data. The proposal-stage claim is architectural completeness and live-pipeline integrity, not a leaderboard number.
-- Scope of the title. Adaptive = session-conditioned ranking and routing. Context = fused session memory plus mesh residue. Reasoning = specialist posterior plus score-sum consensus. System = four named modules on one contract.
+- Aim. Design, implement, and critically evaluate ACRS — a structural orchestration layer in which SATR (Session-Aware Tool Retrieval), training-free specialist routing (APRR), mesh consensus over tool identifiers (MNCD), and flow-coupled context pruning with write-back (FCNP) form a closed loop on live Indian Open Government Data. The proposal-stage claim is architectural completeness and live-pipeline integrity, not a leaderboard number.
+- Scope of the title. Adaptive = SATR (Session-Aware Tool Retrieval) and APRR. Context = fused session memory plus mesh residue. Reasoning = specialist posterior plus score-sum consensus. System = four named modules on one contract.
 - What the title is not. It is not a new LLM, not a crop-yield model, and not a claim that ACRS already outperforms ToolLLM, MasRouter, or LLMLingua on a published leaderboard.
 - Domain lock for the live loop. Agriculture on data.gov.in (AGMARKNET and related verified UUIDs). Other sectors stay out of the inference path in this proposal.
 - Integration order that the aim implies. SATR (memory) → APRR (who acts) → MNCD (live evidence) → FCNP (prune and write back).
 
-## 18 Research Objectives
+## 20 Research Objectives
 
 *Research Objectives*
 
@@ -416,16 +448,16 @@ To solve the research gap, four named modules are proposed. Each row is a thesis
 
 | ID | Objective | What will be designed |
 | --- | --- | --- |
-| O1 | SessionRerank+ (SATR) | The retrieval chapter of the thesis: given query q and session history H, return a ranked list of ToolBench-schema tools fused with a co-activation cache. The unit of publication is the fusion rule, not an NDCG target. |
+| O1 | SATR (Session-Aware Tool Retrieval) | The retrieval chapter of the thesis: given query q and session history H, SATR (Session-Aware Tool Retrieval) returns a ranked list of ToolBench-schema tools fused with a co-activation cache. The unit of publication is the fusion rule, not an NDCG target. |
 | O2 | Adaptive Probabilistic Routing Reinforcement (APRR) | The routing chapter: a training-free posterior over tool-specialist agents, updated from SATR scores and from live MNCD observations. The unit of publication is the Bayesian controller, not a Pareto chart. |
 | O3 | Mesh Network Context Diffusion (MNCD) | The consensus-and-execution chapter: gossip (toolId, score), score-sum consensus, live data.gov.in GET on verified UUIDs. The unit of publication is the protocol plus the citation contract. |
 | O4 | Flow-Coupled Network Pruning (FCNP) | The memory chapter: Kirchhoff/Physarum conductances prune the mesh trace and write surviving live citations back into SATR. The unit of publication is the coupling, not a token-percentage. |
 
-## 19 Objective 1 — SATR
+## 21 Objective 1 — SATR
 
 *Research Objectives*
 
-The retrieval chapter of the thesis: given query q and session history H, return a ranked list of ToolBench-schema tools fused with a co-activation cache. The unit of publication is the fusion rule, not an NDCG target.
+SATR is Session-Aware Tool Retrieval — Objective 1 of ACRS. Given the current query q and the session history H (dialogue turns, last tool traces, and a co-activation cache of tools that succeeded together), SATR returns a ranked shortlist of ToolBench-schema tools. Semantic rank is fused with session scores; λ may grow with session length. SATR is not a new language model. Live mandi and weather rows are not SATR’s job; they enter at MNCD. The shortlist is the input to APRR. FCNP writes surviving live citations back into the next SATR prior, so retrieval is closed-loop.
 
 SOTA. Qin et al., ToolLLM / ToolBench (ICLR 2024): Sentence-BERT API retriever over 16,464 RapidAPI tools, then ToolLLaMA + DFSDT. Zheng et al., ToolRerank (LREC-COLING 2024): adaptive truncation of seen vs unseen APIs and hierarchy-aware concentration/diversity. Pipeline: instruction → SBERT retrieve top-k APIs → (optional ToolRerank truncate/rerank) → LLM DFSDT/ReAct planner
 
@@ -437,7 +469,7 @@ Diagram: compare-satr (see /architecture in the laboratory).
 
 _Repository: github.com/joyjeni/session-aware-toolbench-rerank_
 
-## 20 Objective 2 — APRR
+## 22 Objective 2 — APRR
 
 *Research Objectives*
 
@@ -453,7 +485,7 @@ Diagram: compare-aprr (see /architecture in the laboratory).
 
 _Repository: github.com/joyjeni/aprr-multi-agent-routing_
 
-## 21 Objective 3 — MNCD
+## 23 Objective 3 — MNCD
 
 *Research Objectives*
 
@@ -469,7 +501,7 @@ Diagram: compare-mncd (see /architecture in the laboratory).
 
 _Repository: github.com/joyjeni/mncd-mesh-agents_
 
-## 22 Objective 4 — FCNP
+## 24 Objective 4 — FCNP
 
 *Research Objectives*
 
@@ -485,18 +517,18 @@ Diagram: compare-fcnp (see /architecture in the laboratory).
 
 _Repository: github.com/joyjeni/fcnp-context-pruning_
 
-## 23 Research Questions
+## 25 Research Questions
 
 *Research Questions*
 
 Each question is paired with one objective. Answers will be empirical after a protocol is frozen; this slide does not pre-commit scores.
 
-- RQ1. Can tool retrieval be conditioned on a co-activation cache and session memory rather than a single query embedding (Qin et al., ToolLLM, ICLR 2024; Zheng et al., ToolRerank, LREC-COLING 2024)?  →  addressed by O1 (SessionRerank+ (SATR)).
+- RQ1. Can tool retrieval be conditioned on a co-activation cache and session memory rather than a single query embedding (Qin et al., ToolLLM, ICLR 2024; Zheng et al., ToolRerank, LREC-COLING 2024)?  →  addressed by O1 (SATR (Session-Aware Tool Retrieval)).
 - RQ2. Can routing sample a training-free posterior over tool-specialist agents instead of a trained neural controller or an authored SOP (Yue et al., MasRouter, ACL 2025; Hong et al., MetaGPT, ICLR 2024; Ong et al., RouteLLM, ICLR 2025)?  →  addressed by O2 (Adaptive Probabilistic Routing Reinforcement (APRR)).
 - RQ3. Can execution proceed as gossiped (toolId, score) plus score-sum consensus, then a live data.gov.in GET, instead of a central chat orchestrator (Wu et al., AutoGen, COLM 2024)?  →  addressed by O3 (Mesh Network Context Diffusion (MNCD)).
 - RQ4. Can Kirchhoff/Physarum pruning pin live citations back into retrieval rather than only shortening the prompt (Jiang et al., LLMLingua, EMNLP 2023; Tero et al., Science 2010)?  →  addressed by O4 (Flow-Coupled Network Pruning (FCNP)).
 
-## 24 Research Methodology
+## 26 Research Methodology
 
 *Research Methodology*
 
@@ -512,7 +544,7 @@ One methodology per objective, then one integrated protocol. Proposal-stage: des
 
 Diagram: e2e (see /architecture in the laboratory).
 
-## 25 Research Methodology — O1 SATR
+## 27 Research Methodology — O1 SATR
 
 *Research Methodology*
 
@@ -525,7 +557,7 @@ How session-aware ranking will be designed and later evaluated.
 - Future evaluation protocol (not a result). When the protocol is frozen, compare session-fused ranking against query-only ranking on the same ToolBench-style split. Report the protocol, not a pre-committed score.
 - Deliverable for the thesis chapter. Algorithm, schema, and ablation plan (with vs without tool-trace fusion).
 
-## 26 Research Methodology — O2 APRR
+## 28 Research Methodology — O2 APRR
 
 *Research Methodology*
 
@@ -538,7 +570,7 @@ How the specialist posterior will be designed. No win-rate or millisecond target
 - Update rule. After MNCD returns verified or failed evidence, update η (and optionally W) so the next turn’s posterior is not identical to a cold start.
 - Future evaluation protocol (not a result). Log specialist choice vs task type on held-out session traces; compare against a static role graph. No pre-committed accuracy.
 
-## 27 Research Methodology — O3 MNCD
+## 29 Research Methodology — O3 MNCD
 
 *Research Methodology*
 
@@ -551,7 +583,7 @@ How live Indian OGD and score-sum consensus will be executed. PECAD is a domain 
 - Related work used correctly. Guo, Woodruff & Yadav, PECAD (AAAI 2020) shows AGMARKNET as a real DSS input. MNCD does not re-implement crop-yield prediction.
 - Future evaluation protocol (not a result). Measure citation completeness, fail-loud rate on injected faults, and qualitative agreement of score-sum vs majority vote.
 
-## 28 Research Methodology — O4 FCNP
+## 30 Research Methodology — O4 FCNP
 
 *Research Methodology*
 
@@ -564,7 +596,7 @@ How mesh pruning will be designed. No token-reduction ratio is claimed at propos
 - Safety. Pruning must not delete the last live-data specialist if MNCD still has an open verified query. Fail loud rather than silently drop evidence.
 - Future evaluation protocol (not a result). Compare mesh size and downstream SATR rank stability with vs without pruning on the same session traces.
 
-## 29 Research Methodology — integrated loop
+## 31 Research Methodology — integrated loop
 
 *Research Methodology*
 
@@ -581,7 +613,7 @@ Diagram: integrated (see /architecture in the laboratory).
 
 _Master repository: github.com/joyjeni/phd-agentic-ai-master_
 
-## 30 Research Methodology — implementation formulas
+## 32 Research Methodology — implementation formulas
 
 *Research Methodology*
 
@@ -596,7 +628,7 @@ How the proposal will be implemented: the equations copied from the laboratory, 
 
 _Source: lib/research/satr.ts, aprr.ts, mncd.ts, fcnp.ts. Full walkthrough: /walkthrough._
 
-## 31 Research Methodology — ToolBench walkthrough
+## 33 Research Methodology — ToolBench walkthrough
 
 *Research Methodology*
 
@@ -610,7 +642,7 @@ One ToolBench-schema datum, processed by all four objectives. RapidAPI is never 
 
 _ToolBench = ranking library. Live evidence is always a verified data.gov.in Agriculture UUID._
 
-## 32 Research Methodology — data.gov.in walkthrough
+## 34 Research Methodology — data.gov.in walkthrough
 
 *Research Methodology*
 
@@ -624,7 +656,7 @@ The same four objectives on live AGMARKNET. Query: “What is the current mandi 
 
 _Lab trace 07 September 2026. Re-run on /walkthrough; rows change daily. No dummy prices._
 
-## 33 Conclusion
+## 35 Conclusion
 
 *Conclusion*
 
@@ -636,7 +668,7 @@ ACRS is proposed as a structural orchestration layer. The contribution is the cl
 - Methodology is specified per objective: ToolBench as ranking library; Dirichlet–Thompson routing; verified data.gov.in UUIDs with score-sum; Physarum-inspired prune with SATR write-back. Metric numbers are deferred.
 - Next step after approval. Freeze evaluation protocols, implement the closed loop, and report whatever the measurements show — including negative results.
 
-## 34 References (1/3) — multi-agent orchestration (journals and flagship proceedings)
+## 36 References (1/3) — multi-agent orchestration (journals and flagship proceedings)
 
 *References 1/3*
 
@@ -649,7 +681,7 @@ ACRS is proposed as a structural orchestration layer. The contribution is the cl
 - Li, G., Hammoud, H. A. A. K., Itani, H., Khizbullin, D., and Ghanem, B. CAMEL: Communicative Agents for “Mind” Exploration of Large Language Model Society. Advances in Neural Information Processing Systems 36 (NeurIPS 2023).
 - Qian, C., Liu, W., Liu, H., Chen, N., Dang, Y., Li, J., Yang, C., Chen, W., Su, Y., Cong, X., Xu, J., Li, D., Liu, Z., and Sun, M. ChatDev: Communicative Agents for Software Development. Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), pages 15174–15186. doi:10.18653/v1/2024.acl-long.810.
 
-## 35 References (2/3) — tools, routing, compression, reasoning
+## 37 References (2/3) — tools, routing, compression, reasoning
 
 *References 2/3*
 
@@ -662,7 +694,7 @@ ACRS is proposed as a structural orchestration layer. The contribution is the cl
 - Wei, J., Wang, X., Schuurmans, D., Bosma, M., Ichter, B., Xia, F., Chi, E., Le, Q., and Zhou, D. Chain-of-Thought Prompting Elicits Reasoning in Large Language Models. Advances in Neural Information Processing Systems 35 (NeurIPS 2022).
 - Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K., and Cao, Y. ReAct: Synergizing Reasoning and Acting in Language Models. Proceedings of the Eleventh International Conference on Learning Representations (ICLR 2023).
 
-## 36 References (3/3) — memory, biology, Indian agricultural data
+## 38 References (3/3) — memory, biology, Indian agricultural data
 
 *References 3/3*
 
@@ -677,7 +709,7 @@ ACRS is proposed as a structural orchestration layer. The contribution is the cl
 
 _CrewAI is an engineering framework without a flagship peer-reviewed paper in this list; AutoGen and MetaGPT are the MAS citations._
 
-## 37 Thank you
+## 39 Thank you
 
 *Thank you*
 

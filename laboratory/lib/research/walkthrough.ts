@@ -70,7 +70,7 @@ export const SOIL_STAGES: StageStep[] = [
     ],
   },
   {
-    title: "O1 SATR — SessionRerank+",
+    title: "O1 SATR — Session-Aware Tool Retrieval",
     equation:
       "s(a|q,H)=1·s_base + 0.45 cat + 0.25 sch + 0.3 ept + 0.35 Σ γ^{n-i} log(1+w_{h_i,a}) + 0.25 rec − 0.35 fails",
     algo: [
@@ -152,7 +152,7 @@ export const MANDI_STAGES: StageStep[] = [
     ],
   },
   {
-    title: "O1 SATR — SessionRerank+",
+    title: "O1 SATR — Session-Aware Tool Retrieval",
     equation: "s(a)=z(0.7 BM25 + 0.3 TFIDF-cosine)  on a cold start",
     algo: [
       "Score the Agriculture catalog. Single-tool query (no “and”/multi-tool cue) → category concentration after truncation.",

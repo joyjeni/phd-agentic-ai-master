@@ -53,7 +53,8 @@ CAMPUS = ROOT / "public/college/campus-about.jpg"
 CAMPUS_ENG = ROOT / "public/college/campus-coe-slide.jpg"
 
 DIAGRAMS = {
-    "sota": (["Query only", "SBERT", "ToolRerank", "One LLM", "Answer"], None),
+    "sota": (["Profiling", "Memory", "Planning", "Action (tools)"], None),
+    "proposed": (["q + M", "SATR", "APRR", "MNCD", "FCNP", "a + M"], None),
     "e2e": (["q + M", "SATR", "APRR", "MNCD", "FCNP", "a + M"], None),
     "integrated": (["q + M", "SATR", "APRR", "MNCD", "FCNP", "a + M"], None),
     "satr": (
@@ -283,9 +284,9 @@ def add_diagram(slide, kind: str | None, top) -> None:
         add_flow(slide, top_row, top + Inches(0.28), RGBColor(0x4A, 0x2A, 0x32))
         add_flow(slide, bottom_row, top + Inches(0.86), MAROON)
     else:
-        caption = "ACRS loop (navy). Green path is the increment, not a metric." if kind in {"e2e", "integrated"} else "SOTA (grey): turn-amnesic planner — no write-back."
+        caption = "Figure 2 proposed ACRS: SATR (Session-Aware Tool Retrieval) → APRR → MNCD → FCNP. Green path is the increment, not a metric." if kind in {"e2e", "integrated", "proposed"} else "Figure 1 SOTA after Wang et al., Front. Comput. Sci. 2024: Profiling–Memory–Planning–Action; ToolLLM+ToolRerank instantiation."
         add_textbox(slide, Inches(0.4), top, Inches(12.5), Inches(0.24), caption, size=11, color=MUTED)
-        fill = MAROON if kind in {"e2e", "integrated"} else RGBColor(0x4A, 0x2A, 0x32)
+        fill = MAROON if kind in {"e2e", "integrated", "proposed"} else RGBColor(0x4A, 0x2A, 0x32)
         add_flow(slide, top_row, top + Inches(0.28), fill)
 
 

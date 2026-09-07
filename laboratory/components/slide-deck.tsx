@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { CONTENTS, SLIDES, type Slide } from "@/lib/research/slides";
 import { ArchitectureSvg, type DiagramKind } from "@/components/architecture-svg";
 import { Button } from "@/components/ui/button";
@@ -12,6 +13,15 @@ function diagramFor(slide: Slide): DiagramKind | null {
   if (!slide.diagram || slide.diagram === "none") return null;
   if (slide.diagram === "e2e") return "proposed";
   return slide.diagram;
+}
+
+function initialSlideIndex(raw: string | null): number {
+  if (!raw) return 0;
+  const byId = SLIDES.findIndex((slide) => slide.id === raw);
+  if (byId >= 0) return byId;
+  const n = Number.parseInt(raw, 10);
+  if (Number.isFinite(n) && n >= 1 && n <= SLIDES.length) return n - 1;
+  return 0;
 }
 
 function slidePlainText(slide: Slide): string {
@@ -49,7 +59,16 @@ function slidePlainText(slide: Slide): string {
 }
 
 export function SlideDeck() {
-  const [index, setIndex] = useState(0);
+  return (
+    <Suspense fallback={<p className="text-sm text-[var(--muted)]">Loading slides…</p>}>
+      <SlideDeckInner />
+    </Suspense>
+  );
+}
+
+function SlideDeckInner() {
+  const searchParams = useSearchParams();
+  const [index, setIndex] = useState(() => initialSlideIndex(searchParams.get("slide")));
   const [copied, setCopied] = useState(false);
   const slide = SLIDES[index];
   const diagram = diagramFor(slide);
@@ -111,7 +130,7 @@ export function SlideDeck() {
         total={SLIDES.length}
       >
         {slide.body && slide.id !== "title" ? (
-          <p className="mt-1 max-w-3xl text-sm leading-relaxed text-[#5a5a5a]">{slide.body}</p>
+          <p className="mt-1 max-w-4xl text-sm leading-relaxed text-[#5a5a5a]">{slide.body}</p>
         ) : null}
         {(slide.paragraphs ?? []).map((paragraph) => (
           <p
@@ -174,7 +193,7 @@ export function SlideDeck() {
           </div>
         ) : null}
         {diagram ? (
-          <div className="mt-5 rounded-md border border-[#5B9BD5] bg-[#f7f9fc] p-3">
+          <div className="mt-3 overflow-visible rounded-md border border-[#5B9BD5] bg-[#0f1c2a] p-2">
             <ArchitectureSvg variant={diagram} />
           </div>
         ) : null}
@@ -235,7 +254,7 @@ export function SlideDeck() {
             <p className="text-sm text-[#5a5a5a]">{COLLEGE.facultyLine}</p>
           </div>
         ) : slide.bullets?.length ? (
-          <ul className="mt-5 space-y-2">
+          <ul className={`mt-4 ${diagram ? "grid gap-2 sm:grid-cols-2" : "space-y-2"}`}>
             {slide.bullets.map((bullet) => (
               <li
                 key={bullet}

@@ -9,7 +9,7 @@ import type {
   Tool,
 } from "./types";
 
-/** SessionRerank weights from joyjeni/session-aware-toolbench-rerank. */
+/** SATR (Session-Aware Tool Retrieval) weights from joyjeni/session-aware-toolbench-rerank. */
 export const SATR_WEIGHTS = {
   w_base: 1.0,
   w_cat: 0.45,
@@ -286,7 +286,7 @@ export function satrRerank(
   }
 
   const notes = [
-    "Faithful SessionRerank from session-aware-toolbench-rerank: z-scored BM25 base plus log1p category / schema / endpoint / recency priors.",
+    "Faithful SATR (Session-Aware Tool Retrieval) from session-aware-toolbench-rerank: z-scored BM25 base plus log1p category / schema / endpoint / recency priors.",
     "Co-activation cache: w_{u,v}←(1-ρ)w_{u,v}+δ·1[success]; score Σ γ^{n-i} log(1+w_{h_i,v}).",
     "Catalog is locked to Agriculture: data.gov.in resources plus agri ranking-only schemas. Off-sector distractors are not loaded.",
     multi

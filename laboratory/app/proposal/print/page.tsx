@@ -53,7 +53,7 @@ export default function PrintSlidesPage() {
                 </p>
               ))}
               {diagram ? (
-                <div className="mt-4 rounded-md border border-[#5B9BD5] bg-[#f7f9fc] p-3">
+                <div className="mt-4 rounded-md border border-[#5B9BD5] bg-[#0f1c2a] p-2">
                   <ArchitectureSvg variant={diagram} />
                 </div>
               ) : null}

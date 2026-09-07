@@ -73,7 +73,7 @@ export function PipelineLab({ compact = false }: { compact?: boolean }) {
               SATR → APRR → MNCD → FCNP
             </h2>
             <p className="mt-1 max-w-2xl text-sm text-[var(--muted)]">
-              Four GitHub microservices on request: SessionRerank+ → APRR hops → MNCD
+              Four GitHub microservices on request: SATR → APRR hops → MNCD
               score-sum mesh → FCNP Kirchhoff prune. Mandi prices are read live from
               data.gov.in AGMARKNET for {email}, Agriculture sector. No dummy rows.
             </p>

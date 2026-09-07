@@ -124,7 +124,7 @@ function flowRow(
 function addDiagram(pptx: PptxGenJS, slide: PptxGenJS.Slide, kind: Slide["diagram"], y: number) {
   if (!kind || kind === "none") return;
   if (kind === "sota") {
-    slide.addText("SOTA (grey): ToolLLM + ToolRerank + one planner — turn-amnesic, no write-back.", {
+    slide.addText("Figure 1 SOTA (Wang et al., Front. Comput. Sci. 2024): Profiling–Memory–Planning–Action; ToolLLM+ToolRerank instantiation. Turn-amnesic, no write-back.", {
       x: 0.4,
       y,
       w: 12.5,
@@ -133,11 +133,11 @@ function addDiagram(pptx: PptxGenJS, slide: PptxGenJS.Slide, kind: Slide["diagra
       fontFace: "Calibri",
       color: COLLEGE.muted,
     });
-    flowRow(pptx, slide, ["Query only", "SBERT", "ToolRerank", "One LLM", "Answer"], y + 0.32, "4A2A32");
+    flowRow(pptx, slide, ["Profiling", "Memory", "Planning", "Action / tools"], y + 0.32, "4A2A32");
     return;
   }
-  if (kind === "e2e" || kind === "integrated") {
-    slide.addText("ACRS loop (navy): typed artefacts. Green path is the increment, not a metric.", {
+  if (kind === "e2e" || kind === "integrated" || kind === "proposed") {
+    slide.addText("Figure 2 proposed ACRS: SATR (Session-Aware Tool Retrieval) → APRR → MNCD → FCNP. Green path is the increment, not a metric.", {
       x: 0.4,
       y,
       w: 12.5,

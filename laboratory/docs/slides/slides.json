@@ -113,6 +113,16 @@
       "slideId": "solve-gap"
     },
     {
+      "n": "03b",
+      "title": "SOTA architecture (cited)",
+      "slideId": "arch-sota"
+    },
+    {
+      "n": "03c",
+      "title": "Proposed ACRS architecture",
+      "slideId": "arch-proposed"
+    },
+    {
       "n": "04",
       "title": "Identified Research Problem",
       "slideId": "problem"
@@ -845,6 +855,34 @@
       "footnote": "Integration order: SATR → APRR → MNCD → FCNP on one user turn. No NDCG, latency, or accuracy target is attached to any row."
     },
     {
+      "id": "arch-sota",
+      "section": "SOTA architecture",
+      "title": "SOTA architecture (Wang et al., 2024)",
+      "body": "Figure 1 after Wang et al., Frontiers of Computer Science 18:186345 (2024), doi:10.1007/s11704-024-40231-1. Four modules: Profiling, Memory, Planning, Action. Tool instantiation: Qin ToolLLM + Zheng ToolRerank (query only).",
+      "bullets": [
+        "Journal source of Figure 1. Wang et al., Front. Comput. Sci. 18:186345 (2024). Four modules: Profiling, Memory, Planning, Action.",
+        "Related surveys. He, Treude and Lo, ACM TOSEM 34(5) (2025); Guo et al., IJCAI-24, 8048–8057.",
+        "Tool instantiation. Qin/Zheng: turn-amnesic API retrieval. That is the grey path under Figure 1.",
+        "What SOTA does not draw. A co-activation cache, a specialist posterior, a live data.gov.in GET, or write-back into retrieval."
+      ],
+      "diagram": "sota",
+      "footnote": "Wang L. et al. Front. Comput. Sci. 18:186345 (2024). Figure 1 is redrawn for this proposal; it is not a scanned publisher PDF."
+    },
+    {
+      "id": "arch-proposed",
+      "section": "Proposed architecture",
+      "title": "Proposed ACRS architecture",
+      "body": "Figure 2 is drawn for this proposal. SATR means Session-Aware Tool Retrieval — not a new LLM and not a live price cache.",
+      "bullets": [
+        "SATR (Session-Aware Tool Retrieval) ranks tools from q + session memory H + FCNP residue M, then hands a shortlist to APRR.",
+        "APRR samples a specialist hop path from that shortlist (training-free Dirichlet–Thompson).",
+        "MNCD score-sums tool IDs and GETs a live data.gov.in UUID. Fail loud. No dummy prices.",
+        "FCNP prunes the mesh by conductance and writes M_t back into SATR — that is the closed loop drawn in Figure 2."
+      ],
+      "diagram": "proposed",
+      "footnote": "Figure 2 is drawn for this proposal. Contrast with Figure 1 (Wang et al., FCS 2024). No NDCG is drawn."
+    },
+    {
       "id": "problem",
       "section": "Identified Research Problem",
       "title": "Identified Research Problem",
@@ -864,8 +902,8 @@
       "title": "Research Title & Aim",
       "body": "Adaptive Context Reasoning System (ACRS): A Structural Orchestration Layer for Multi-Agent LLM Ecosystems",
       "bullets": [
-        "Aim. Design, implement, and critically evaluate ACRS — a structural orchestration layer in which session-aware tool retrieval (SATR), training-free specialist routing (APRR), mesh consensus over tool identifiers (MNCD), and flow-coupled context pruning with write-back (FCNP) form a closed loop on live Indian Open Government Data. The proposal-stage claim is architectural completeness and live-pipeline integrity, not a leaderboard number.",
-        "Scope of the title. Adaptive = session-conditioned ranking and routing. Context = fused session memory plus mesh residue. Reasoning = specialist posterior plus score-sum consensus. System = four named modules on one contract.",
+        "Aim. Design, implement, and critically evaluate ACRS — a structural orchestration layer in which SATR (Session-Aware Tool Retrieval), training-free specialist routing (APRR), mesh consensus over tool identifiers (MNCD), and flow-coupled context pruning with write-back (FCNP) form a closed loop on live Indian Open Government Data. The proposal-stage claim is architectural completeness and live-pipeline integrity, not a leaderboard number.",
+        "Scope of the title. Adaptive = SATR (Session-Aware Tool Retrieval) and APRR. Context = fused session memory plus mesh residue. Reasoning = specialist posterior plus score-sum consensus. System = four named modules on one contract.",
         "What the title is not. It is not a new LLM, not a crop-yield model, and not a claim that ACRS already outperforms ToolLLM, MasRouter, or LLMLingua on a published leaderboard.",
         "Domain lock for the live loop. Agriculture on data.gov.in (AGMARKNET and related verified UUIDs). Other sectors stay out of the inference path in this proposal.",
         "Integration order that the aim implies. SATR (memory) → APRR (who acts) → MNCD (live evidence) → FCNP (prune and write back)."
@@ -885,8 +923,8 @@
         "rows": [
           [
             "O1",
-            "SessionRerank+ (SATR)",
-            "The retrieval chapter of the thesis: given query q and session history H, return a ranked list of ToolBench-schema tools fused with a co-activation cache. The unit of publication is the fusion rule, not an NDCG target."
+            "SATR (Session-Aware Tool Retrieval)",
+            "The retrieval chapter of the thesis: given query q and session history H, SATR (Session-Aware Tool Retrieval) returns a ranked list of ToolBench-schema tools fused with a co-activation cache. The unit of publication is the fusion rule, not an NDCG target."
           ],
           [
             "O2",
@@ -910,7 +948,7 @@
       "id": "o1-satr",
       "section": "Research Objectives",
       "title": "Objective 1 — SATR",
-      "body": "The retrieval chapter of the thesis: given query q and session history H, return a ranked list of ToolBench-schema tools fused with a co-activation cache. The unit of publication is the fusion rule, not an NDCG target.",
+      "body": "SATR is Session-Aware Tool Retrieval — Objective 1 of ACRS. Given the current query q and the session history H (dialogue turns, last tool traces, and a co-activation cache of tools that succeeded together), SATR returns a ranked shortlist of ToolBench-schema tools. Semantic rank is fused with session scores; λ may grow with session length. SATR is not a new language model. Live mandi and weather rows are not SATR’s job; they enter at MNCD. The shortlist is the input to APRR. FCNP writes surviving live citations back into the next SATR prior, so retrieval is closed-loop.",
       "paragraphs": [
         "SOTA. Qin et al., ToolLLM / ToolBench (ICLR 2024): Sentence-BERT API retriever over 16,464 RapidAPI tools, then ToolLLaMA + DFSDT. Zheng et al., ToolRerank (LREC-COLING 2024): adaptive truncation of seen vs unseen APIs and hierarchy-aware concentration/diversity. Pipeline: instruction → SBERT retrieve top-k APIs → (optional ToolRerank truncate/rerank) → LLM DFSDT/ReAct planner",
         "Gap. SOTA retrievers are turn-amnesic. They do not maintain a success-conditioned co-activation graph or ingest pruned memory from later stages.",
@@ -964,7 +1002,7 @@
       "title": "Research Questions",
       "body": "Each question is paired with one objective. Answers will be empirical after a protocol is frozen; this slide does not pre-commit scores.",
       "bullets": [
-        "RQ1. Can tool retrieval be conditioned on a co-activation cache and session memory rather than a single query embedding (Qin et al., ToolLLM, ICLR 2024; Zheng et al., ToolRerank, LREC-COLING 2024)?  →  addressed by O1 (SessionRerank+ (SATR)).",
+        "RQ1. Can tool retrieval be conditioned on a co-activation cache and session memory rather than a single query embedding (Qin et al., ToolLLM, ICLR 2024; Zheng et al., ToolRerank, LREC-COLING 2024)?  →  addressed by O1 (SATR (Session-Aware Tool Retrieval)).",
         "RQ2. Can routing sample a training-free posterior over tool-specialist agents instead of a trained neural controller or an authored SOP (Yue et al., MasRouter, ACL 2025; Hong et al., MetaGPT, ICLR 2024; Ong et al., RouteLLM, ICLR 2025)?  →  addressed by O2 (Adaptive Probabilistic Routing Reinforcement (APRR)).",
         "RQ3. Can execution proceed as gossiped (toolId, score) plus score-sum consensus, then a live data.gov.in GET, instead of a central chat orchestrator (Wu et al., AutoGen, COLM 2024)?  →  addressed by O3 (Mesh Network Context Diffusion (MNCD)).",
         "RQ4. Can Kirchhoff/Physarum pruning pin live citations back into retrieval rather than only shortening the prompt (Jiang et al., LLMLingua, EMNLP 2023; Tero et al., Science 2010)?  →  addressed by O4 (Flow-Coupled Network Pruning (FCNP))."

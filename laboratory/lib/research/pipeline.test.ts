@@ -107,7 +107,7 @@ describe("Agriculture routing", () => {
   });
 });
 
-describe("SATR SessionRerank", () => {
+describe("SATR", () => {
   it("ranks agriculture / mandi APIs above distractors for a mandi query", () => {
     const result = satrRerank("What is the current mandi price of wheat in Punjab?");
     expect(result.truncated.length).toBeGreaterThan(0);
@@ -424,6 +424,20 @@ describe("slides", () => {
     expect(CONTENTS.some((item) => item.slideId === "solve-gap" && item.title === "To Solve the Research Gap")).toBe(
       true,
     );
+    const { SATR } = await import("@/lib/research/objectives");
+    expect(SATR.expansion).toBe("Session-Aware Tool Retrieval");
+    expect(SATR.what).toMatch(/Session-Aware Tool Retrieval/);
+    expect(SATR.what).toMatch(/is not a new language model/);
+    expect(JSON.stringify(SLIDES)).not.toMatch(/SessionRerank\+/);
+    expect(SATR.title).toBe("SATR (Session-Aware Tool Retrieval)");
+    const sotaSlide = SLIDES.find((slide) => slide.id === "arch-sota");
+    expect(sotaSlide?.diagram).toBe("sota");
+    expect(sotaSlide?.body).toMatch(/Wang et al/);
+    expect(sotaSlide?.body).toMatch(/186345/);
+    expect(SLIDES.find((slide) => slide.id === "arch-proposed")?.diagram).toBe("proposed");
+    expect(SLIDES.find((slide) => slide.id === "arch-proposed")?.body).toMatch(/Session-Aware Tool Retrieval/);
+    expect(CONTENTS.some((item) => item.slideId === "arch-sota")).toBe(true);
+    expect(CONTENTS.some((item) => item.slideId === "arch-proposed")).toBe(true);
     const objectives = SLIDES.find((slide) => slide.id === "objectives");
     expect(objectives?.body).toMatch(/To solve the research gap/);
     const md = literatureSurveyMarkdown();

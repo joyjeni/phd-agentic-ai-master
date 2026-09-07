@@ -215,7 +215,7 @@ export async function runPipeline(
     stages: [
       {
         id: "satr",
-        title: "O1 SessionRerank+ · session-aware ToolBench rerank",
+        title: "O1 SATR · Session-Aware Tool Retrieval",
         status: stageStatus(satr.truncated.length > 0, !satr.truncated.length),
         summary: satr.truncated.length
           ? `Shortlisted ${satr.truncated.length} tools. Top: ${satr.truncated[0].tool.name}.`
@@ -254,7 +254,7 @@ export function pipelineContract() {
     catalog: CATALOG_STATS,
     loop: [
       "User query + co-activation cache + FCNP memory",
-      "SATR SessionRerank: s_base + cat/sch/ept/cooc/rec",
+      "SATR fused rank: s_base + cat/sch/ept/cooc/rec",
       "APRR samples P∝W^α η^β ψ^γ over specialist agents",
       "MNCD gossip + score-sum consensus; live AGMARKNET only",
       "FCNP Kirchhoff/Physarum prune writes memory back to SATR",
