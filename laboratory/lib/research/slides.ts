@@ -2,6 +2,7 @@ import { COLLEGE, STUDENT_DETAILS } from "./college";
 import {
   chunkEvidence,
   evidenceTemplateLines,
+  RESEARCH_GAP_SOLUTIONS,
   type LiteratureEvidence,
 } from "./literature";
 import {
@@ -53,7 +54,7 @@ function literatureReviewSlides(): Slide[] {
       title: index === 0 ? "Literature Review" : `Literature Review — ${range}`,
       body:
         index === 0
-          ? "FET template. Each paper is one Evidence block: Author(s), Year, Title, Publication, Objective, Methodology, Findings, Limitations."
+          ? "FET template. Each paper is one Evidence block: Author(s), Year, Title, Publication, Objective, Methodology, Findings, Limitations, To solve the research gap."
           : `Continuation. ${range} in the same Evidence template.`,
       evidence: pair,
       bullets: pair.flatMap(evidenceTemplateLines),
@@ -67,6 +68,7 @@ const REQUIRED_SECTIONS = [
   "Introduction",
   "Literature Review",
   "Summary of Literature Review",
+  "To Solve the Research Gap",
   "Identified Research Problem",
   "Research Title & Aim",
   "Research Objectives",
@@ -78,9 +80,9 @@ const REQUIRED_SECTIONS = [
 /**
  * MSRUAS / FET research-proposal deck for Jenisha T.
  * Required academic outline: Introduction → Literature Review → Summary of
- * Literature Review → Identified Research Problem → Research Title & Aim →
- * Research Objectives → Research Questions → Research Methodology (per
- * objective) → Conclusion.
+ * Literature Review → To Solve the Research Gap → Identified Research Problem →
+ * Research Title & Aim → Research Objectives → Research Questions → Research
+ * Methodology (per objective) → Conclusion.
  *
  * Proposal-stage discipline: no NDCG, latency, token, or accuracy targets.
  */
@@ -115,7 +117,7 @@ export const SLIDES: Slide[] = [
     section: "Contents",
     title: "Contents",
     kind: "contents",
-    body: "Nine required sections. Literature Review follows the FET Evidence 1, Evidence 2, … template. Research Methodology is expanded for each objective (O1 SATR, O2 APRR, O3 MNCD, O4 FCNP), the integrated loop, the exact repository formulas, and two worked traces (ToolBench-schema ranking; live data.gov.in). Objective order is SATR → APRR → MNCD → FCNP (not SMART).",
+    body: "Nine required sections plus the FET mapping To Solve the Research Gap. Literature Review follows the Evidence 1, Evidence 2, … template. After the literature summary, each limitation is closed by a named ACRS module. Research Methodology is expanded for each objective (O1 SATR, O2 APRR, O3 MNCD, O4 FCNP), the integrated loop, the exact repository formulas, and two worked traces (ToolBench-schema ranking; live data.gov.in). Objective order is SATR → APRR → MNCD → FCNP (not SMART).",
   },
   {
     id: "introduction",
@@ -134,7 +136,7 @@ export const SLIDES: Slide[] = [
     id: "literature-summary",
     section: "Summary of Literature Review",
     title: "Summary of Literature Review",
-    body: "Qualitative map only. This table names the gap each family leaves for ACRS; it does not claim a percentage improvement over any baseline.",
+    body: "Qualitative map only. This table names the gap each family leaves for ACRS; it does not claim a percentage improvement over any baseline. The next slide is the FET section To Solve the Research Gap.",
     table: {
       headers: ["Literature family", "What it already does", "What ACRS still has to add"],
       rows: [
@@ -167,10 +169,22 @@ export const SLIDES: Slide[] = [
     },
   },
   {
+    id: "solve-gap",
+    section: "To Solve the Research Gap",
+    title: "To Solve the Research Gap",
+    body: "To solve the research gaps identified in Evidence 1–14, the following work is proposed. Closing a gap is a named module on a closed loop, not a promised leaderboard number.",
+    table: {
+      headers: ["Research gap", "Left open by", "To solve the research gap"],
+      rows: RESEARCH_GAP_SOLUTIONS.map((row) => [row.gap, row.evidence, row.solves]),
+    },
+    footnote:
+      "Integration order: SATR → APRR → MNCD → FCNP on one user turn. No NDCG, latency, or accuracy target is attached to any row.",
+  },
+  {
     id: "problem",
     section: "Identified Research Problem",
     title: "Identified Research Problem",
-    body: "Five architectural gaps. Four named objectives. One integration contract. Closing a gap is evidenced by a runnable loop and citable equations, not by a promised leaderboard number.",
+    body: "Five architectural gaps. Four named objectives. One integration contract. The previous slide maps each gap onto the module that closes it. Closing a gap is evidenced by a runnable loop and citable equations, not by a promised leaderboard number.",
     bullets: [
       "G1 — Turn-amnesic retrieval. ToolLLM SBERT (Qin et al., ICLR 2024) and ToolRerank (Zheng et al., LREC-COLING 2024) score each query independently. Session co-activation is unused. → Objective 1 SATR.",
       "G2 — Routers pick models or authored SOPs, not tool-specialist agents with a training-free posterior. RouteLLM / PILOT / MasRouter / MetaGPT. → Objective 2 APRR.",
@@ -198,7 +212,7 @@ export const SLIDES: Slide[] = [
     id: "objectives",
     section: "Research Objectives",
     title: "Research Objectives",
-    body: "Four named modules. Each row is a thesis-sized design claim. Metric targets are deferred until a protocol is frozen.",
+    body: "To solve the research gap, four named modules are proposed. Each row is a thesis-sized design claim. Metric targets are deferred until a protocol is frozen.",
     table: {
       headers: ["ID", "Objective", "What will be designed"],
       rows: OBJECTIVES.map((o) => [o.code, o.title, o.journalDefinition]),
@@ -451,11 +465,12 @@ export const SLIDES: Slide[] = [
   },
 ];
 
-/** High-level academic outline shown on the Contents slide (the nine required headings, with methodology expanded). */
+/** High-level academic outline shown on the Contents slide (required headings, with methodology expanded and the FET gap-mapping slide). */
 export const OUTLINE: ContentsItem[] = [
   { n: "01", title: "Introduction", slideId: "introduction" },
   { n: "02", title: "Literature Review", slideId: "literature-e01" },
   { n: "03", title: "Summary of Literature Review", slideId: "literature-summary" },
+  { n: "03a", title: "To Solve the Research Gap", slideId: "solve-gap" },
   { n: "04", title: "Identified Research Problem", slideId: "problem" },
   { n: "05", title: "Research Title & Aim", slideId: "title-aim" },
   { n: "06", title: "Research Objectives", slideId: "objectives" },
@@ -499,7 +514,8 @@ function slideToMarkdown(slide: Slide, index: number): string {
       lines.push(`- Objective: ${item.objective}`);
       lines.push(`- Methodology: ${item.methodology}`);
       lines.push(`- Findings: ${item.findings}`);
-      lines.push(`- Limitations: ${item.limitations}`, "");
+      lines.push(`- Limitations: ${item.limitations}`);
+      lines.push(`- To solve the research gap: ${item.toSolve}`, "");
     }
   }
   for (const paragraph of slide.paragraphs ?? []) {
@@ -536,7 +552,7 @@ export function allSlidesMarkdown(): string {
     "Research proposal slides for Jenisha T (24ETRP720001), Ph.D. CSE, MSRUAS / FET.",
     "Supervisor: Dr. Jyothi A P. Date of registration: 04 September 2024.",
     "",
-    "Required outline: Introduction, Literature Review, Summary of Literature Review, Identified Research Problem, Research Title & Aim, Research Objectives, Research Questions, Research Methodology (per objective, formulas, two worked traces), Conclusion.",
+    "Required outline: Introduction, Literature Review, Summary of Literature Review, To Solve the Research Gap, Identified Research Problem, Research Title & Aim, Research Objectives, Research Questions, Research Methodology (per objective, formulas, two worked traces), Conclusion.",
     "Paste into the university Google Slides template in Contents order.",
     "Do not treat older `.pptx` binaries as the source of truth.",
     "Proposal-stage: no NDCG, latency, token, or accuracy commitments.",

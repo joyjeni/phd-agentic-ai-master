@@ -14,6 +14,7 @@ Continuation. Evidence 13 & Evidence 14 in the same Evidence template.
 - Methodology: Convolutional networks over scraped agricultural produce prices.
 - Findings: AGMARKNET is a real Indian decision-support corpus, not a toy table.
 - Limitations: A crop-price CNN is not a multi-agent live-OGD loop. Cited as domain precedent, not as a baseline to beat.
+- To solve the research gap: O3 MNCD — live AGMARKNET UUID as a citation. PECAD is domain precedent, not a baseline to beat.
 
 **Evidence 14**
 
@@ -25,5 +26,6 @@ Continuation. Evidence 13 & Evidence 14 in the same Evidence template.
 - Methodology: Thought–action–observation cycles on the already-chosen tool set.
 - Findings: Reasoning-and-acting beats reason-only or act-only prompting on several agent tasks.
 - Limitations: Assumes the tool set is already determined. It does not fuse session co-activation into the next rank, nor cite a live data.gov.in UUID.
+- To solve the research gap: O1 SATR — choose the tool set from session memory before any ReAct-style acting. O3 MNCD cites the UUID.
 
 Source of truth: `lib/research/literature.ts` (Evidence 1…N) and `lib/research/slides.ts`. Paste into the MSRUAS Google Slides template in Contents order.

@@ -362,6 +362,8 @@ describe("slides", () => {
       expect(item.methodology.length).toBeGreaterThan(12);
       expect(item.findings.length).toBeGreaterThan(12);
       expect(item.limitations.length).toBeGreaterThan(12);
+      expect(item.toSolve.length).toBeGreaterThan(12);
+      expect(item.toSolve).not.toMatch(/NDCG/i);
     }
     const first = SLIDES.find((slide) => slide.id === "literature-e01");
     expect(first?.evidence?.map((item) => item.n)).toEqual([1, 2]);
@@ -371,6 +373,37 @@ describe("slides", () => {
       "Adaptive LLM Routing under Budget Constraints",
     );
     expect(LITERATURE_EVIDENCE.find((item) => item.n === 11)?.venue).toMatch(/UIST 2023/);
+  });
+
+  it("maps Evidence 1–14 onto named ACRS modules to solve the research gap", async () => {
+    const { RESEARCH_GAP_SOLUTIONS, literatureSurveyMarkdown } = await import(
+      "@/lib/research/literature"
+    );
+    expect(RESEARCH_GAP_SOLUTIONS).toHaveLength(5);
+    expect(RESEARCH_GAP_SOLUTIONS.map((row) => row.gap)).toEqual([
+      "G1 — Turn-amnesic retrieval",
+      "G2 — Model / SOP routers",
+      "G3 — Chat / star coordination",
+      "G4 — Token compression, no write-back",
+      "G5 — No live Indian OGD loop",
+    ]);
+    const solve = SLIDES.find((slide) => slide.id === "solve-gap");
+    expect(solve?.title).toBe("To Solve the Research Gap");
+    expect(solve?.table?.headers).toEqual([
+      "Research gap",
+      "Left open by",
+      "To solve the research gap",
+    ]);
+    expect(solve?.table?.rows).toHaveLength(5);
+    expect(CONTENTS.some((item) => item.slideId === "solve-gap" && item.title === "To Solve the Research Gap")).toBe(
+      true,
+    );
+    const objectives = SLIDES.find((slide) => slide.id === "objectives");
+    expect(objectives?.body).toMatch(/To solve the research gap/);
+    const md = literatureSurveyMarkdown();
+    expect(md).toMatch(/## To solve the research gap/);
+    expect(md).toMatch(/O1 SATR/);
+    expect(md).not.toMatch(/NDCG@/);
   });
 
   it("names Jenisha T and the MSRUAS register number on the title slide", async () => {

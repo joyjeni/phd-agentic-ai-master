@@ -281,11 +281,13 @@ export async function buildProposalPptx(): Promise<Buffer> {
           y,
           w: 12.5,
           colW:
-            entry.table.headers.length === 2
-              ? [3.8, 8.7]
-              : entry.table.headers.length === 3
-                ? [1.8, 4.2, 6.5]
-                : [2.4, 3.3, 2.6, 4.2],
+            entry.id === "solve-gap"
+              ? [3.3, 2.5, 6.7]
+              : entry.table.headers.length === 2
+                ? [3.8, 8.7]
+                : entry.table.headers.length === 3
+                  ? [1.8, 4.2, 6.5]
+                  : [2.4, 3.3, 2.6, 4.2],
           fontSize: entry.id === "student" ? 13 : 11,
           border: [
             { pt: 0.5, color: COLLEGE.gold },

@@ -2,13 +2,14 @@
 
 *Contents*
 
-Nine required sections. Literature Review follows the FET Evidence 1, Evidence 2, … template. Research Methodology is expanded for each objective (O1 SATR, O2 APRR, O3 MNCD, O4 FCNP), the integrated loop, the exact repository formulas, and two worked traces (ToolBench-schema ranking; live data.gov.in). Objective order is SATR → APRR → MNCD → FCNP (not SMART).
+Nine required sections plus the FET mapping To Solve the Research Gap. Literature Review follows the Evidence 1, Evidence 2, … template. After the literature summary, each limitation is closed by a named ACRS module. Research Methodology is expanded for each objective (O1 SATR, O2 APRR, O3 MNCD, O4 FCNP), the integrated loop, the exact repository formulas, and two worked traces (ToolBench-schema ranking; live data.gov.in). Objective order is SATR → APRR → MNCD → FCNP (not SMART).
 
 Paste into the university Google Slides template in this order.
 
 01  Introduction
 02  Literature Review
 03  Summary of Literature Review
+03a  To Solve the Research Gap
 04  Identified Research Problem
 05  Research Title & Aim
 06  Research Objectives

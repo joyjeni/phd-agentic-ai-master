@@ -33,7 +33,8 @@ function slidePlainText(slide: Slide): string {
     lines.push(`Objective: ${item.objective}`);
     lines.push(`Methodology: ${item.methodology}`);
     lines.push(`Findings: ${item.findings}`);
-    lines.push(`Limitations: ${item.limitations}`, "");
+    lines.push(`Limitations: ${item.limitations}`);
+    lines.push(`To solve the research gap: ${item.toSolve}`, "");
   }
   for (const paragraph of slide.paragraphs ?? []) lines.push(paragraph, "");
   if (slide.kind === "contents") {
@@ -158,6 +159,10 @@ export function SlideDeck() {
                   <div>
                     <dt className="font-semibold text-[#7C1D2E]">Limitations</dt>
                     <dd>{item.limitations}</dd>
+                  </div>
+                  <div>
+                    <dt className="font-semibold text-[#7C1D2E]">To solve the research gap</dt>
+                    <dd>{item.toSolve}</dd>
                   </div>
                 </dl>
               </article>

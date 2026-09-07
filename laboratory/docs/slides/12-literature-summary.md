@@ -2,7 +2,7 @@
 
 *Summary of Literature Review*
 
-Qualitative map only. This table names the gap each family leaves for ACRS; it does not claim a percentage improvement over any baseline.
+Qualitative map only. This table names the gap each family leaves for ACRS; it does not claim a percentage improvement over any baseline. The next slide is the FET section To Solve the Research Gap.
 
 | Literature family | What it already does | What ACRS still has to add |
 | --- | --- | --- |

@@ -2,7 +2,7 @@
 
 *Literature Review*
 
-FET template. Each paper is one Evidence block: Author(s), Year, Title, Publication, Objective, Methodology, Findings, Limitations.
+FET template. Each paper is one Evidence block: Author(s), Year, Title, Publication, Objective, Methodology, Findings, Limitations, To solve the research gap.
 
 **Evidence 1**
 
@@ -14,6 +14,7 @@ FET template. Each paper is one Evidence block: Author(s), Year, Title, Publicat
 - Methodology: Agents exchange natural-language messages until a stopping condition; modes mix LLMs, humans, and tools.
 - Findings: Conversation is a working programming model for multi-agent LLM applications.
 - Limitations: The unit of coordination is a chat message, not a live (toolId, score, citation) on Indian Open Government Data.
+- To solve the research gap: O3 MNCD — gossip (toolId, score), score-sum consensus, then a fail-loud live data.gov.in GET.
 
 **Evidence 2**
 
@@ -25,5 +26,6 @@ FET template. Each paper is one Evidence block: Author(s), Year, Title, Publicat
 - Methodology: Standard Operating Procedures are written into prompt sequences; an assembly-line assigns roles.
 - Findings: Authored SOPs produce more coherent software artefacts than unconstrained chat agents.
 - Limitations: Who speaks next is designed in advance. The graph is not updated from session-local affinity after a live tool call.
+- To solve the research gap: O2 APRR — training-free specialist posterior updated after live outcomes, not an authored SOP graph.
 
 Source of truth: `lib/research/literature.ts` (Evidence 1…N) and `lib/research/slides.ts`. Paste into the MSRUAS Google Slides template in Contents order.

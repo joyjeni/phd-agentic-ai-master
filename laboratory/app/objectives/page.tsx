@@ -9,6 +9,7 @@ export default function ObjectivesPage() {
         </p>
         <h1 className="mt-2 font-serif text-4xl">{OVERALL_OBJECTIVE.title}</h1>
         <p className="mt-4 text-sm leading-relaxed text-[var(--muted)]">
+          To solve the research gap, four named modules are proposed.{" "}
           {OVERALL_OBJECTIVE.statement}
         </p>
       </header>

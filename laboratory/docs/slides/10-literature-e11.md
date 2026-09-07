@@ -14,6 +14,7 @@ Continuation. Evidence 11 & Evidence 12 in the same Evidence template.
 - Methodology: Natural-language memory, reflection, and retrieval (recency, relevance, importance) inside a Sims-like town.
 - Findings: A memory stream supports individual plans and emergent social coordination among agents.
 - Limitations: Memory lives in a sandbox simulation. It is not written back into a tool retriever over ministry APIs.
+- To solve the research gap: O4 FCNP — pin live ministry citations into the next SATR prior, not a sandbox memory stream.
 
 **Evidence 12**
 
@@ -25,5 +26,6 @@ Continuation. Evidence 11 & Evidence 12 in the same Evidence template.
 - Methodology: Feedback between tube conductance and protoplasmic flux; compared with the Tokyo rail system.
 - Findings: A local conductance update can yield globally efficient adaptive networks without a central planner.
 - Limitations: A biological transport model, not an LLM context pruner. ACRS uses it as a design heuristic, not as a claim that the mesh is an organism.
+- To solve the research gap: O4 FCNP — Physarum-inspired conductance as a design heuristic, with write-back into SATR.
 
 Source of truth: `lib/research/literature.ts` (Evidence 1…N) and `lib/research/slides.ts`. Paste into the MSRUAS Google Slides template in Contents order.

@@ -21,6 +21,8 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **Limitations:** The unit of coordination is a chat message, not a live (toolId, score, citation) on Indian Open Government Data.
 
+**To solve the research gap:** O3 MNCD — gossip (toolId, score), score-sum consensus, then a fail-loud live data.gov.in GET.
+
 ## Evidence 2
 
 **Author(s):** Hong, S., Zhuge, M., Chen, J., Zheng, X., Cheng, Y., Wang, J., Zhang, C., Wang, Z., Yau, S. K. S., Lin, Z., Zhou, L., Ran, C., Xiao, L., Wu, C., and Schmidhuber, J.
@@ -38,6 +40,8 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 **Findings:** Authored SOPs produce more coherent software artefacts than unconstrained chat agents.
 
 **Limitations:** Who speaks next is designed in advance. The graph is not updated from session-local affinity after a live tool call.
+
+**To solve the research gap:** O2 APRR — training-free specialist posterior updated after live outcomes, not an authored SOP graph.
 
 ## Evidence 3
 
@@ -57,6 +61,8 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **Limitations:** The environment is a codebase, not a ministry API with a fail-loud live GET.
 
+**To solve the research gap:** O3 MNCD — the environment is a verified ministry UUID; empty filters fail loud instead of inventing rows.
+
 ## Evidence 4
 
 **Author(s):** Li, G., Hammoud, H. A. A. K., Itani, H., Khizbullin, D., and Ghanem, B.
@@ -74,6 +80,8 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 **Findings:** Inception prompting yields scalable multi-agent conversational data and cooperative behaviour.
 
 **Limitations:** No first-class vote over tool identifiers backed by Open Government Data.
+
+**To solve the research gap:** O3 MNCD — the vote object is a tool identifier backed by Open Government Data, not a role-play utterance.
 
 ## Evidence 5
 
@@ -93,6 +101,8 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **Limitations:** Retrieval is turn-amnesic. RapidAPI keys are not redistributable, so this lab cannot execute ToolBench endpoints live.
 
+**To solve the research gap:** O1 SATR uses ToolBench as a ranking library only. O3 MNCD executes live Indian OGD, never RapidAPI replay.
+
 ## Evidence 6
 
 **Author(s):** Zheng, Y., Li, P., Liu, W., Liu, Y., Luan, J., and Wang, B.
@@ -110,6 +120,8 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 **Findings:** Reranking the SBERT shortlist improves downstream tool execution quality.
 
 **Limitations:** Still query-only. Session co-activation and later write-back from a pruned mesh are unused.
+
+**To solve the research gap:** O1 SATR — fuse co-activation after ToolRerank-style truncation. O4 FCNP writes the residue back.
 
 ## Evidence 7
 
@@ -129,6 +141,8 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **Limitations:** The object of routing is an LLM SKU, not a named Indian-OGD specialist with a training-free posterior.
 
+**To solve the research gap:** O2 APRR — route named mandi / crop / rainfall specialists, not foundation-model SKUs.
+
 ## Evidence 8
 
 **Author(s):** Yue, Y., Zhang, G., Liu, B., Wan, G., Wang, K., Cheng, D., and Qi, Y.
@@ -146,6 +160,8 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 **Findings:** A learned controller can assemble a cheaper MAS than a static multi-agent template.
 
 **Limitations:** Requires training. It does not maintain a Dirichlet–Thompson matrix over mandi / crop / rainfall specialists.
+
+**To solve the research gap:** O2 APRR — Dirichlet–Thompson posterior over named specialists; learned routers stay a future bake-off.
 
 ## Evidence 9
 
@@ -165,6 +181,8 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **Limitations:** Routes foundation-model SKUs under a dollar budget, not tool-specialist agents after a live data.gov.in GET.
 
+**To solve the research gap:** O2 APRR — specialist hops after SATR, updated from live MNCD outcomes, not SKU bandits under a dollar budget.
+
 ## Evidence 10
 
 **Author(s):** Jiang, H., Wu, Q., Lin, C.-Y., Yang, Y., and Qiu, L.
@@ -182,6 +200,8 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 **Findings:** Token-importance compression can reduce prompt length with limited quality loss.
 
 **Limitations:** Deletes tokens before the LLM. It does not prune a mesh by conductance or write live citations back into retrieval.
+
+**To solve the research gap:** O4 FCNP — prune the mesh by conductance and pin live citations into SATR, not token deletion.
 
 ## Evidence 11
 
@@ -201,6 +221,8 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **Limitations:** Memory lives in a sandbox simulation. It is not written back into a tool retriever over ministry APIs.
 
+**To solve the research gap:** O4 FCNP — pin live ministry citations into the next SATR prior, not a sandbox memory stream.
+
 ## Evidence 12
 
 **Author(s):** Tero, A., Takagi, S., Saigusa, T., Ito, K., Bebber, D. P., Fricker, M. D., Yumiki, K., Kobayashi, R., and Nakagaki, T.
@@ -218,6 +240,8 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 **Findings:** A local conductance update can yield globally efficient adaptive networks without a central planner.
 
 **Limitations:** A biological transport model, not an LLM context pruner. ACRS uses it as a design heuristic, not as a claim that the mesh is an organism.
+
+**To solve the research gap:** O4 FCNP — Physarum-inspired conductance as a design heuristic, with write-back into SATR.
 
 ## Evidence 13
 
@@ -237,6 +261,8 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **Limitations:** A crop-price CNN is not a multi-agent live-OGD loop. Cited as domain precedent, not as a baseline to beat.
 
+**To solve the research gap:** O3 MNCD — live AGMARKNET UUID as a citation. PECAD is domain precedent, not a baseline to beat.
+
 ## Evidence 14
 
 **Author(s):** Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K., and Cao, Y.
@@ -254,3 +280,19 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 **Findings:** Reasoning-and-acting beats reason-only or act-only prompting on several agent tasks.
 
 **Limitations:** Assumes the tool set is already determined. It does not fuse session co-activation into the next rank, nor cite a live data.gov.in UUID.
+
+**To solve the research gap:** O1 SATR — choose the tool set from session memory before any ReAct-style acting. O3 MNCD cites the UUID.
+
+## To solve the research gap
+
+The limitations in Evidence 1–14 collapse into five architectural gaps. This proposal solves them as follows. Closing a gap is a named module on a closed loop, not a promised leaderboard number.
+
+| Research gap | Left open by | To solve the research gap |
+|---|---|---|
+| G1 — Turn-amnesic retrieval | Evidence 5, 6, 14 | O1 SATR. Fuse session co-activation with semantic rank; write FCNP residue into the next prior. |
+| G2 — Model / SOP routers | Evidence 2, 7, 8, 9 | O2 APRR. Training-free Dirichlet–Thompson posterior over named specialists, not LLM SKUs. |
+| G3 — Chat / star coordination | Evidence 1, 2, 3, 4 | O3 MNCD. Score-sum over live tool identifiers, then a fail-loud data.gov.in GET. |
+| G4 — Token compression, no write-back | Evidence 10, 11, 12 | O4 FCNP. Conductance prune of the mesh; pin live citations back into SATR. |
+| G5 — No live Indian OGD loop | Evidence 5, 13 | Integrated ACRS on verified Agriculture UUIDs. ToolBench is ranking-only; prices are never invented. |
+
+Integration order: SATR → APRR → MNCD → FCNP on one user turn.

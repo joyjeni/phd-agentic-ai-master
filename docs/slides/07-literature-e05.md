@@ -14,6 +14,7 @@ Continuation. Evidence 5 & Evidence 6 in the same Evidence template.
 - Methodology: ToolBench: 16,464 RapidAPI REST endpoints; SBERT retriever; DFSDT planner; ToolEval protocol.
 - Findings: A public ranking library and planner exist for large-scale tool use.
 - Limitations: Retrieval is turn-amnesic. RapidAPI keys are not redistributable, so this lab cannot execute ToolBench endpoints live.
+- To solve the research gap: O1 SATR uses ToolBench as a ranking library only. O3 MNCD executes live Indian OGD, never RapidAPI replay.
 
 **Evidence 6**
 
@@ -25,5 +26,6 @@ Continuation. Evidence 5 & Evidence 6 in the same Evidence template.
 - Methodology: Adaptive truncation of seen/unseen APIs plus hierarchy-aware concentration or diversity.
 - Findings: Reranking the SBERT shortlist improves downstream tool execution quality.
 - Limitations: Still query-only. Session co-activation and later write-back from a pruned mesh are unused.
+- To solve the research gap: O1 SATR — fuse co-activation after ToolRerank-style truncation. O4 FCNP writes the residue back.
 
 Source of truth: `lib/research/literature.ts` (Evidence 1…N) and `lib/research/slides.ts`. Paste into the MSRUAS Google Slides template in Contents order.

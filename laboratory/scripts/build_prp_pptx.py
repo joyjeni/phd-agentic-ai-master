@@ -143,7 +143,10 @@ def add_table(slide, left, top, width, height, headers, rows) -> None:
     if n_cols == 2:
         widths = [Inches(usable * 0.32), Inches(usable * 0.68)]
     elif n_cols == 3:
-        widths = [Inches(usable * 0.16), Inches(usable * 0.34), Inches(usable * 0.50)]
+        if headers and str(headers[0]).startswith("Research gap"):
+            widths = [Inches(usable * 0.26), Inches(usable * 0.20), Inches(usable * 0.54)]
+        else:
+            widths = [Inches(usable * 0.16), Inches(usable * 0.34), Inches(usable * 0.50)]
     else:
         widths = [Inches(usable / n_cols)] * n_cols
     for i, w in enumerate(widths):

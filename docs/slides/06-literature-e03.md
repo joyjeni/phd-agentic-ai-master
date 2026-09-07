@@ -14,6 +14,7 @@ Continuation. Evidence 3 & Evidence 4 in the same Evidence template.
 - Methodology: Chat chain (what to communicate) plus communicative dehallucination (how to communicate).
 - Findings: Natural-language design talk and code-level debug talk can be unified in one multi-agent loop.
 - Limitations: The environment is a codebase, not a ministry API with a fail-loud live GET.
+- To solve the research gap: O3 MNCD — the environment is a verified ministry UUID; empty filters fail loud instead of inventing rows.
 
 **Evidence 4**
 
@@ -25,5 +26,6 @@ Continuation. Evidence 3 & Evidence 4 in the same Evidence template.
 - Methodology: Role-playing with inception prompting to keep agents on a human-specified task.
 - Findings: Inception prompting yields scalable multi-agent conversational data and cooperative behaviour.
 - Limitations: No first-class vote over tool identifiers backed by Open Government Data.
+- To solve the research gap: O3 MNCD — the vote object is a tool identifier backed by Open Government Data, not a role-play utterance.
 
 Source of truth: `lib/research/literature.ts` (Evidence 1…N) and `lib/research/slides.ts`. Paste into the MSRUAS Google Slides template in Contents order.

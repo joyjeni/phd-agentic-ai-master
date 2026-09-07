@@ -63,7 +63,8 @@ q_t + co-activation cache + FCNP memory
 
 The deck follows the MSRUAS / FET template and the required proposal outline:
 Introduction, Literature Review (Evidence 1, Evidence 2, …), Summary of Literature
-Review, Identified Research Problem, Research Title & Aim, Research Objectives,
+Review, To Solve the Research Gap (G1–G5 mapped onto SATR / APRR / MNCD / FCNP),
+Identified Research Problem, Research Title & Aim, Research Objectives,
 Research Questions, Research Methodology (one method slide per objective plus the
 integrated loop), Conclusion. Canonical sources: `lib/research/literature.ts` and
 `lib/research/slides.ts`. Preview: `/proposal` and `/literature`.

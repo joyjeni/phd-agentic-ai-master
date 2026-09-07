@@ -91,6 +91,11 @@
       "slideId": "literature-summary"
     },
     {
+      "n": "03a",
+      "title": "To Solve the Research Gap",
+      "slideId": "solve-gap"
+    },
+    {
       "n": "04",
       "title": "Identified Research Problem",
       "slideId": "problem"
@@ -235,7 +240,7 @@
       "section": "Contents",
       "title": "Contents",
       "kind": "contents",
-      "body": "Nine required sections. Literature Review follows the FET Evidence 1, Evidence 2, … template. Research Methodology is expanded for each objective (O1 SATR, O2 APRR, O3 MNCD, O4 FCNP), the integrated loop, the exact repository formulas, and two worked traces (ToolBench-schema ranking; live data.gov.in). Objective order is SATR → APRR → MNCD → FCNP (not SMART)."
+      "body": "Nine required sections plus the FET mapping To Solve the Research Gap. Literature Review follows the Evidence 1, Evidence 2, … template. After the literature summary, each limitation is closed by a named ACRS module. Research Methodology is expanded for each objective (O1 SATR, O2 APRR, O3 MNCD, O4 FCNP), the integrated loop, the exact repository formulas, and two worked traces (ToolBench-schema ranking; live data.gov.in). Objective order is SATR → APRR → MNCD → FCNP (not SMART)."
     },
     {
       "id": "introduction",
@@ -253,7 +258,7 @@
       "id": "literature-e01",
       "section": "Literature Review",
       "title": "Literature Review",
-      "body": "FET template. Each paper is one Evidence block: Author(s), Year, Title, Publication, Objective, Methodology, Findings, Limitations.",
+      "body": "FET template. Each paper is one Evidence block: Author(s), Year, Title, Publication, Objective, Methodology, Findings, Limitations, To solve the research gap.",
       "evidence": [
         {
           "n": 1,
@@ -264,7 +269,8 @@
           "objective": "Program LLM applications by composing multiple conversable agents.",
           "methodology": "Agents exchange natural-language messages until a stopping condition; modes mix LLMs, humans, and tools.",
           "findings": "Conversation is a working programming model for multi-agent LLM applications.",
-          "limitations": "The unit of coordination is a chat message, not a live (toolId, score, citation) on Indian Open Government Data."
+          "limitations": "The unit of coordination is a chat message, not a live (toolId, score, citation) on Indian Open Government Data.",
+          "toSolve": "O3 MNCD — gossip (toolId, score), score-sum consensus, then a fail-loud live data.gov.in GET."
         },
         {
           "n": 2,
@@ -275,7 +281,8 @@
           "objective": "Reduce role drift in multi-agent software workflows by encoding human SOPs.",
           "methodology": "Standard Operating Procedures are written into prompt sequences; an assembly-line assigns roles.",
           "findings": "Authored SOPs produce more coherent software artefacts than unconstrained chat agents.",
-          "limitations": "Who speaks next is designed in advance. The graph is not updated from session-local affinity after a live tool call."
+          "limitations": "Who speaks next is designed in advance. The graph is not updated from session-local affinity after a live tool call.",
+          "toSolve": "O2 APRR — training-free specialist posterior updated after live outcomes, not an authored SOP graph."
         }
       ],
       "bullets": [
@@ -288,6 +295,7 @@
         "Methodology: Agents exchange natural-language messages until a stopping condition; modes mix LLMs, humans, and tools.",
         "Findings: Conversation is a working programming model for multi-agent LLM applications.",
         "Limitations: The unit of coordination is a chat message, not a live (toolId, score, citation) on Indian Open Government Data.",
+        "To solve the research gap: O3 MNCD — gossip (toolId, score), score-sum consensus, then a fail-loud live data.gov.in GET.",
         "Evidence 2",
         "Author(s): Hong, S., Zhuge, M., Chen, J., Zheng, X., Cheng, Y., Wang, J., Zhang, C., Wang, Z., Yau, S. K. S., Lin, Z., Zhou, L., Ran, C., Xiao, L., Wu, C., and Schmidhuber, J.",
         "Year: 2024",
@@ -296,7 +304,8 @@
         "Objective: Reduce role drift in multi-agent software workflows by encoding human SOPs.",
         "Methodology: Standard Operating Procedures are written into prompt sequences; an assembly-line assigns roles.",
         "Findings: Authored SOPs produce more coherent software artefacts than unconstrained chat agents.",
-        "Limitations: Who speaks next is designed in advance. The graph is not updated from session-local affinity after a live tool call."
+        "Limitations: Who speaks next is designed in advance. The graph is not updated from session-local affinity after a live tool call.",
+        "To solve the research gap: O2 APRR — training-free specialist posterior updated after live outcomes, not an authored SOP graph."
       ]
     },
     {
@@ -314,7 +323,8 @@
           "objective": "Organise specialised LLM agents as a chat-chain for software design, coding, and testing.",
           "methodology": "Chat chain (what to communicate) plus communicative dehallucination (how to communicate).",
           "findings": "Natural-language design talk and code-level debug talk can be unified in one multi-agent loop.",
-          "limitations": "The environment is a codebase, not a ministry API with a fail-loud live GET."
+          "limitations": "The environment is a codebase, not a ministry API with a fail-loud live GET.",
+          "toSolve": "O3 MNCD — the environment is a verified ministry UUID; empty filters fail loud instead of inventing rows."
         },
         {
           "n": 4,
@@ -325,7 +335,8 @@
           "objective": "Enable autonomous cooperation among communicative agents with minimal human steering.",
           "methodology": "Role-playing with inception prompting to keep agents on a human-specified task.",
           "findings": "Inception prompting yields scalable multi-agent conversational data and cooperative behaviour.",
-          "limitations": "No first-class vote over tool identifiers backed by Open Government Data."
+          "limitations": "No first-class vote over tool identifiers backed by Open Government Data.",
+          "toSolve": "O3 MNCD — the vote object is a tool identifier backed by Open Government Data, not a role-play utterance."
         }
       ],
       "bullets": [
@@ -338,6 +349,7 @@
         "Methodology: Chat chain (what to communicate) plus communicative dehallucination (how to communicate).",
         "Findings: Natural-language design talk and code-level debug talk can be unified in one multi-agent loop.",
         "Limitations: The environment is a codebase, not a ministry API with a fail-loud live GET.",
+        "To solve the research gap: O3 MNCD — the environment is a verified ministry UUID; empty filters fail loud instead of inventing rows.",
         "Evidence 4",
         "Author(s): Li, G., Hammoud, H. A. A. K., Itani, H., Khizbullin, D., and Ghanem, B.",
         "Year: 2023",
@@ -346,7 +358,8 @@
         "Objective: Enable autonomous cooperation among communicative agents with minimal human steering.",
         "Methodology: Role-playing with inception prompting to keep agents on a human-specified task.",
         "Findings: Inception prompting yields scalable multi-agent conversational data and cooperative behaviour.",
-        "Limitations: No first-class vote over tool identifiers backed by Open Government Data."
+        "Limitations: No first-class vote over tool identifiers backed by Open Government Data.",
+        "To solve the research gap: O3 MNCD — the vote object is a tool identifier backed by Open Government Data, not a role-play utterance."
       ]
     },
     {
@@ -364,7 +377,8 @@
           "objective": "Give open LLMs general tool-use over a large real-world API catalogue.",
           "methodology": "ToolBench: 16,464 RapidAPI REST endpoints; SBERT retriever; DFSDT planner; ToolEval protocol.",
           "findings": "A public ranking library and planner exist for large-scale tool use.",
-          "limitations": "Retrieval is turn-amnesic. RapidAPI keys are not redistributable, so this lab cannot execute ToolBench endpoints live."
+          "limitations": "Retrieval is turn-amnesic. RapidAPI keys are not redistributable, so this lab cannot execute ToolBench endpoints live.",
+          "toSolve": "O1 SATR uses ToolBench as a ranking library only. O3 MNCD executes live Indian OGD, never RapidAPI replay."
         },
         {
           "n": 6,
@@ -375,7 +389,8 @@
           "objective": "Refine ToolLLM-style retrieval for seen versus unseen APIs and for tool-library hierarchy.",
           "methodology": "Adaptive truncation of seen/unseen APIs plus hierarchy-aware concentration or diversity.",
           "findings": "Reranking the SBERT shortlist improves downstream tool execution quality.",
-          "limitations": "Still query-only. Session co-activation and later write-back from a pruned mesh are unused."
+          "limitations": "Still query-only. Session co-activation and later write-back from a pruned mesh are unused.",
+          "toSolve": "O1 SATR — fuse co-activation after ToolRerank-style truncation. O4 FCNP writes the residue back."
         }
       ],
       "bullets": [
@@ -388,6 +403,7 @@
         "Methodology: ToolBench: 16,464 RapidAPI REST endpoints; SBERT retriever; DFSDT planner; ToolEval protocol.",
         "Findings: A public ranking library and planner exist for large-scale tool use.",
         "Limitations: Retrieval is turn-amnesic. RapidAPI keys are not redistributable, so this lab cannot execute ToolBench endpoints live.",
+        "To solve the research gap: O1 SATR uses ToolBench as a ranking library only. O3 MNCD executes live Indian OGD, never RapidAPI replay.",
         "Evidence 6",
         "Author(s): Zheng, Y., Li, P., Liu, W., Liu, Y., Luan, J., and Wang, B.",
         "Year: 2024",
@@ -396,7 +412,8 @@
         "Objective: Refine ToolLLM-style retrieval for seen versus unseen APIs and for tool-library hierarchy.",
         "Methodology: Adaptive truncation of seen/unseen APIs plus hierarchy-aware concentration or diversity.",
         "Findings: Reranking the SBERT shortlist improves downstream tool execution quality.",
-        "Limitations: Still query-only. Session co-activation and later write-back from a pruned mesh are unused."
+        "Limitations: Still query-only. Session co-activation and later write-back from a pruned mesh are unused.",
+        "To solve the research gap: O1 SATR — fuse co-activation after ToolRerank-style truncation. O4 FCNP writes the residue back."
       ]
     },
     {
@@ -414,7 +431,8 @@
           "objective": "Route each query between a stronger and a weaker LLM from human preference data.",
           "methodology": "Trained router plus data augmentation; deployed as a frozen policy at inference.",
           "findings": "Preference-trained routers can cut cost while holding response quality on public benchmarks.",
-          "limitations": "The object of routing is an LLM SKU, not a named Indian-OGD specialist with a training-free posterior."
+          "limitations": "The object of routing is an LLM SKU, not a named Indian-OGD specialist with a training-free posterior.",
+          "toSolve": "O2 APRR — route named mandi / crop / rainfall specialists, not foundation-model SKUs."
         },
         {
           "n": 8,
@@ -425,7 +443,8 @@
           "objective": "Unify collaboration mode, role allocation, and LLM choice as one MAS routing problem.",
           "methodology": "Cascaded neural controller trained over multi-agent topologies.",
           "findings": "A learned controller can assemble a cheaper MAS than a static multi-agent template.",
-          "limitations": "Requires training. It does not maintain a Dirichlet–Thompson matrix over mandi / crop / rainfall specialists."
+          "limitations": "Requires training. It does not maintain a Dirichlet–Thompson matrix over mandi / crop / rainfall specialists.",
+          "toSolve": "O2 APRR — Dirichlet–Thompson posterior over named specialists; learned routers stay a future bake-off."
         }
       ],
       "bullets": [
@@ -438,6 +457,7 @@
         "Methodology: Trained router plus data augmentation; deployed as a frozen policy at inference.",
         "Findings: Preference-trained routers can cut cost while holding response quality on public benchmarks.",
         "Limitations: The object of routing is an LLM SKU, not a named Indian-OGD specialist with a training-free posterior.",
+        "To solve the research gap: O2 APRR — route named mandi / crop / rainfall specialists, not foundation-model SKUs.",
         "Evidence 8",
         "Author(s): Yue, Y., Zhang, G., Liu, B., Wan, G., Wang, K., Cheng, D., and Qi, Y.",
         "Year: 2025",
@@ -446,7 +466,8 @@
         "Objective: Unify collaboration mode, role allocation, and LLM choice as one MAS routing problem.",
         "Methodology: Cascaded neural controller trained over multi-agent topologies.",
         "Findings: A learned controller can assemble a cheaper MAS than a static multi-agent template.",
-        "Limitations: Requires training. It does not maintain a Dirichlet–Thompson matrix over mandi / crop / rainfall specialists."
+        "Limitations: Requires training. It does not maintain a Dirichlet–Thompson matrix over mandi / crop / rainfall specialists.",
+        "To solve the research gap: O2 APRR — Dirichlet–Thompson posterior over named specialists; learned routers stay a future bake-off."
       ]
     },
     {
@@ -464,7 +485,8 @@
           "objective": "Treat LLM routing as a contextual bandit under a user budget.",
           "methodology": "Preference-prior LinUCB in a shared query–LLM embedding space, plus an online cost policy.",
           "findings": "Bandit routing can adapt without exhaustive inference of every LLM on every query.",
-          "limitations": "Routes foundation-model SKUs under a dollar budget, not tool-specialist agents after a live data.gov.in GET."
+          "limitations": "Routes foundation-model SKUs under a dollar budget, not tool-specialist agents after a live data.gov.in GET.",
+          "toSolve": "O2 APRR — specialist hops after SATR, updated from live MNCD outcomes, not SKU bandits under a dollar budget."
         },
         {
           "n": 10,
@@ -475,7 +497,8 @@
           "objective": "Shorten long prompts while keeping task performance.",
           "methodology": "Budget controller plus token-level iterative compression aligned to the target LLM.",
           "findings": "Token-importance compression can reduce prompt length with limited quality loss.",
-          "limitations": "Deletes tokens before the LLM. It does not prune a mesh by conductance or write live citations back into retrieval."
+          "limitations": "Deletes tokens before the LLM. It does not prune a mesh by conductance or write live citations back into retrieval.",
+          "toSolve": "O4 FCNP — prune the mesh by conductance and pin live citations into SATR, not token deletion."
         }
       ],
       "bullets": [
@@ -488,6 +511,7 @@
         "Methodology: Preference-prior LinUCB in a shared query–LLM embedding space, plus an online cost policy.",
         "Findings: Bandit routing can adapt without exhaustive inference of every LLM on every query.",
         "Limitations: Routes foundation-model SKUs under a dollar budget, not tool-specialist agents after a live data.gov.in GET.",
+        "To solve the research gap: O2 APRR — specialist hops after SATR, updated from live MNCD outcomes, not SKU bandits under a dollar budget.",
         "Evidence 10",
         "Author(s): Jiang, H., Wu, Q., Lin, C.-Y., Yang, Y., and Qiu, L.",
         "Year: 2023",
@@ -496,7 +520,8 @@
         "Objective: Shorten long prompts while keeping task performance.",
         "Methodology: Budget controller plus token-level iterative compression aligned to the target LLM.",
         "Findings: Token-importance compression can reduce prompt length with limited quality loss.",
-        "Limitations: Deletes tokens before the LLM. It does not prune a mesh by conductance or write live citations back into retrieval."
+        "Limitations: Deletes tokens before the LLM. It does not prune a mesh by conductance or write live citations back into retrieval.",
+        "To solve the research gap: O4 FCNP — prune the mesh by conductance and pin live citations into SATR, not token deletion."
       ]
     },
     {
@@ -514,7 +539,8 @@
           "objective": "Give LLM agents a long-term memory stream for believable behaviour in a sandbox.",
           "methodology": "Natural-language memory, reflection, and retrieval (recency, relevance, importance) inside a Sims-like town.",
           "findings": "A memory stream supports individual plans and emergent social coordination among agents.",
-          "limitations": "Memory lives in a sandbox simulation. It is not written back into a tool retriever over ministry APIs."
+          "limitations": "Memory lives in a sandbox simulation. It is not written back into a tool retriever over ministry APIs.",
+          "toSolve": "O4 FCNP — pin live ministry citations into the next SATR prior, not a sandbox memory stream."
         },
         {
           "n": 12,
@@ -525,7 +551,8 @@
           "objective": "Capture how Physarum polycephalum grows efficient, fault-tolerant transport networks.",
           "methodology": "Feedback between tube conductance and protoplasmic flux; compared with the Tokyo rail system.",
           "findings": "A local conductance update can yield globally efficient adaptive networks without a central planner.",
-          "limitations": "A biological transport model, not an LLM context pruner. ACRS uses it as a design heuristic, not as a claim that the mesh is an organism."
+          "limitations": "A biological transport model, not an LLM context pruner. ACRS uses it as a design heuristic, not as a claim that the mesh is an organism.",
+          "toSolve": "O4 FCNP — Physarum-inspired conductance as a design heuristic, with write-back into SATR."
         }
       ],
       "bullets": [
@@ -538,6 +565,7 @@
         "Methodology: Natural-language memory, reflection, and retrieval (recency, relevance, importance) inside a Sims-like town.",
         "Findings: A memory stream supports individual plans and emergent social coordination among agents.",
         "Limitations: Memory lives in a sandbox simulation. It is not written back into a tool retriever over ministry APIs.",
+        "To solve the research gap: O4 FCNP — pin live ministry citations into the next SATR prior, not a sandbox memory stream.",
         "Evidence 12",
         "Author(s): Tero, A., Takagi, S., Saigusa, T., Ito, K., Bebber, D. P., Fricker, M. D., Yumiki, K., Kobayashi, R., and Nakagaki, T.",
         "Year: 2010",
@@ -546,7 +574,8 @@
         "Objective: Capture how Physarum polycephalum grows efficient, fault-tolerant transport networks.",
         "Methodology: Feedback between tube conductance and protoplasmic flux; compared with the Tokyo rail system.",
         "Findings: A local conductance update can yield globally efficient adaptive networks without a central planner.",
-        "Limitations: A biological transport model, not an LLM context pruner. ACRS uses it as a design heuristic, not as a claim that the mesh is an organism."
+        "Limitations: A biological transport model, not an LLM context pruner. ACRS uses it as a design heuristic, not as a claim that the mesh is an organism.",
+        "To solve the research gap: O4 FCNP — Physarum-inspired conductance as a design heuristic, with write-back into SATR."
       ]
     },
     {
@@ -564,7 +593,8 @@
           "objective": "Use AGMARKNET price series as decision-support input for indebted farmers.",
           "methodology": "Convolutional networks over scraped agricultural produce prices.",
           "findings": "AGMARKNET is a real Indian decision-support corpus, not a toy table.",
-          "limitations": "A crop-price CNN is not a multi-agent live-OGD loop. Cited as domain precedent, not as a baseline to beat."
+          "limitations": "A crop-price CNN is not a multi-agent live-OGD loop. Cited as domain precedent, not as a baseline to beat.",
+          "toSolve": "O3 MNCD — live AGMARKNET UUID as a citation. PECAD is domain precedent, not a baseline to beat."
         },
         {
           "n": 14,
@@ -575,7 +605,8 @@
           "objective": "Interleave reasoning traces with actions so a language model can use tools.",
           "methodology": "Thought–action–observation cycles on the already-chosen tool set.",
           "findings": "Reasoning-and-acting beats reason-only or act-only prompting on several agent tasks.",
-          "limitations": "Assumes the tool set is already determined. It does not fuse session co-activation into the next rank, nor cite a live data.gov.in UUID."
+          "limitations": "Assumes the tool set is already determined. It does not fuse session co-activation into the next rank, nor cite a live data.gov.in UUID.",
+          "toSolve": "O1 SATR — choose the tool set from session memory before any ReAct-style acting. O3 MNCD cites the UUID."
         }
       ],
       "bullets": [
@@ -588,6 +619,7 @@
         "Methodology: Convolutional networks over scraped agricultural produce prices.",
         "Findings: AGMARKNET is a real Indian decision-support corpus, not a toy table.",
         "Limitations: A crop-price CNN is not a multi-agent live-OGD loop. Cited as domain precedent, not as a baseline to beat.",
+        "To solve the research gap: O3 MNCD — live AGMARKNET UUID as a citation. PECAD is domain precedent, not a baseline to beat.",
         "Evidence 14",
         "Author(s): Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K., and Cao, Y.",
         "Year: 2023",
@@ -596,14 +628,15 @@
         "Objective: Interleave reasoning traces with actions so a language model can use tools.",
         "Methodology: Thought–action–observation cycles on the already-chosen tool set.",
         "Findings: Reasoning-and-acting beats reason-only or act-only prompting on several agent tasks.",
-        "Limitations: Assumes the tool set is already determined. It does not fuse session co-activation into the next rank, nor cite a live data.gov.in UUID."
+        "Limitations: Assumes the tool set is already determined. It does not fuse session co-activation into the next rank, nor cite a live data.gov.in UUID.",
+        "To solve the research gap: O1 SATR — choose the tool set from session memory before any ReAct-style acting. O3 MNCD cites the UUID."
       ]
     },
     {
       "id": "literature-summary",
       "section": "Summary of Literature Review",
       "title": "Summary of Literature Review",
-      "body": "Qualitative map only. This table names the gap each family leaves for ACRS; it does not claim a percentage improvement over any baseline.",
+      "body": "Qualitative map only. This table names the gap each family leaves for ACRS; it does not claim a percentage improvement over any baseline. The next slide is the FET section To Solve the Research Gap.",
       "table": {
         "headers": [
           "Literature family",
@@ -640,10 +673,51 @@
       }
     },
     {
+      "id": "solve-gap",
+      "section": "To Solve the Research Gap",
+      "title": "To Solve the Research Gap",
+      "body": "To solve the research gaps identified in Evidence 1–14, the following work is proposed. Closing a gap is a named module on a closed loop, not a promised leaderboard number.",
+      "table": {
+        "headers": [
+          "Research gap",
+          "Left open by",
+          "To solve the research gap"
+        ],
+        "rows": [
+          [
+            "G1 — Turn-amnesic retrieval",
+            "Evidence 5, 6, 14",
+            "O1 SATR. Fuse session co-activation with semantic rank; write FCNP residue into the next prior."
+          ],
+          [
+            "G2 — Model / SOP routers",
+            "Evidence 2, 7, 8, 9",
+            "O2 APRR. Training-free Dirichlet–Thompson posterior over named specialists, not LLM SKUs."
+          ],
+          [
+            "G3 — Chat / star coordination",
+            "Evidence 1, 2, 3, 4",
+            "O3 MNCD. Score-sum over live tool identifiers, then a fail-loud data.gov.in GET."
+          ],
+          [
+            "G4 — Token compression, no write-back",
+            "Evidence 10, 11, 12",
+            "O4 FCNP. Conductance prune of the mesh; pin live citations back into SATR."
+          ],
+          [
+            "G5 — No live Indian OGD loop",
+            "Evidence 5, 13",
+            "Integrated ACRS on verified Agriculture UUIDs. ToolBench is ranking-only; prices are never invented."
+          ]
+        ]
+      },
+      "footnote": "Integration order: SATR → APRR → MNCD → FCNP on one user turn. No NDCG, latency, or accuracy target is attached to any row."
+    },
+    {
       "id": "problem",
       "section": "Identified Research Problem",
       "title": "Identified Research Problem",
-      "body": "Five architectural gaps. Four named objectives. One integration contract. Closing a gap is evidenced by a runnable loop and citable equations, not by a promised leaderboard number.",
+      "body": "Five architectural gaps. Four named objectives. One integration contract. The previous slide maps each gap onto the module that closes it. Closing a gap is evidenced by a runnable loop and citable equations, not by a promised leaderboard number.",
       "bullets": [
         "G1 — Turn-amnesic retrieval. ToolLLM SBERT (Qin et al., ICLR 2024) and ToolRerank (Zheng et al., LREC-COLING 2024) score each query independently. Session co-activation is unused. → Objective 1 SATR.",
         "G2 — Routers pick models or authored SOPs, not tool-specialist agents with a training-free posterior. RouteLLM / PILOT / MasRouter / MetaGPT. → Objective 2 APRR.",
@@ -670,7 +744,7 @@
       "id": "objectives",
       "section": "Research Objectives",
       "title": "Research Objectives",
-      "body": "Four named modules. Each row is a thesis-sized design claim. Metric targets are deferred until a protocol is frozen.",
+      "body": "To solve the research gap, four named modules are proposed. Each row is a thesis-sized design claim. Metric targets are deferred until a protocol is frozen.",
       "table": {
         "headers": [
           "ID",

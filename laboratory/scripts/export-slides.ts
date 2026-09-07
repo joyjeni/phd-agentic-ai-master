@@ -35,7 +35,8 @@ function render(slide: (typeof SLIDES)[number], index: number): string {
       lines.push(`- Objective: ${item.objective}`);
       lines.push(`- Methodology: ${item.methodology}`);
       lines.push(`- Findings: ${item.findings}`);
-      lines.push(`- Limitations: ${item.limitations}`, "");
+      lines.push(`- Limitations: ${item.limitations}`);
+      lines.push(`- To solve the research gap: ${item.toSolve}`, "");
     }
   }
   for (const paragraph of slide.paragraphs ?? []) lines.push(paragraph, "");
@@ -85,7 +86,7 @@ writeFileSync(
     "College-template PowerPoint for **Jenisha T** (Register No. **24ETRP720001**). Same deck is also saved as `Gowrishankar_PPT_PRP2_ACRS_JenishaT.pptx` (PRP copy with automatic date + slide numbers).",
     "In the lab: **Download PPTX** in the nav, `/download`, `/ACRS_PhD_Proposal_JenishaT_24ETRP720001.pptx`, or the `.zip`.",
     "",
-    "MSRUAS / FET research-proposal template. Required outline: Introduction, Literature Review, Summary of Literature Review, Identified Research Problem, Research Title & Aim, Research Objectives, Research Questions, Research Methodology (per objective), Conclusion.",
+    "MSRUAS / FET research-proposal template. Required outline: Introduction, Literature Review, Summary of Literature Review, To Solve the Research Gap, Identified Research Problem, Research Title & Aim, Research Objectives, Research Questions, Research Methodology (per objective), Conclusion.",
     "Do not open a `.pptx` in Cursor — it is binary. Edit `lib/research/slides.ts` (canonical) or these `.md` files, preview at `/proposal`, then paste into Google Slides.",
     "",
     "Proposal-stage: no NDCG, latency, token, or accuracy commitments.",

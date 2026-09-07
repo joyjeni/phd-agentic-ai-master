@@ -3,7 +3,7 @@
  *
  * Each paper is one numbered Evidence block with the fields the college
  * template uses: Author(s), Year, Title, Publication, Objective,
- * Methodology, Findings, Limitations.
+ * Methodology, Findings, Limitations, To solve the research gap.
  *
  * Citations match the verified bibliography in slides.ts. No NDCG,
  * latency, or accuracy targets.
@@ -19,6 +19,8 @@ export type LiteratureEvidence = {
   methodology: string;
   findings: string;
   limitations: string;
+  /** FET line: how ACRS closes this paper's limitation. */
+  toSolve: string;
 };
 
 export const LITERATURE_EVIDENCE: LiteratureEvidence[] = [
@@ -33,6 +35,8 @@ export const LITERATURE_EVIDENCE: LiteratureEvidence[] = [
     findings: "Conversation is a working programming model for multi-agent LLM applications.",
     limitations:
       "The unit of coordination is a chat message, not a live (toolId, score, citation) on Indian Open Government Data.",
+    toSolve:
+      "O3 MNCD — gossip (toolId, score), score-sum consensus, then a fail-loud live data.gov.in GET.",
   },
   {
     n: 2,
@@ -45,6 +49,8 @@ export const LITERATURE_EVIDENCE: LiteratureEvidence[] = [
     findings: "Authored SOPs produce more coherent software artefacts than unconstrained chat agents.",
     limitations:
       "Who speaks next is designed in advance. The graph is not updated from session-local affinity after a live tool call.",
+    toSolve:
+      "O2 APRR — training-free specialist posterior updated after live outcomes, not an authored SOP graph.",
   },
   {
     n: 3,
@@ -56,6 +62,8 @@ export const LITERATURE_EVIDENCE: LiteratureEvidence[] = [
     methodology: "Chat chain (what to communicate) plus communicative dehallucination (how to communicate).",
     findings: "Natural-language design talk and code-level debug talk can be unified in one multi-agent loop.",
     limitations: "The environment is a codebase, not a ministry API with a fail-loud live GET.",
+    toSolve:
+      "O3 MNCD — the environment is a verified ministry UUID; empty filters fail loud instead of inventing rows.",
   },
   {
     n: 4,
@@ -67,6 +75,8 @@ export const LITERATURE_EVIDENCE: LiteratureEvidence[] = [
     methodology: "Role-playing with inception prompting to keep agents on a human-specified task.",
     findings: "Inception prompting yields scalable multi-agent conversational data and cooperative behaviour.",
     limitations: "No first-class vote over tool identifiers backed by Open Government Data.",
+    toSolve:
+      "O3 MNCD — the vote object is a tool identifier backed by Open Government Data, not a role-play utterance.",
   },
   {
     n: 5,
@@ -80,6 +90,8 @@ export const LITERATURE_EVIDENCE: LiteratureEvidence[] = [
     findings: "A public ranking library and planner exist for large-scale tool use.",
     limitations:
       "Retrieval is turn-amnesic. RapidAPI keys are not redistributable, so this lab cannot execute ToolBench endpoints live.",
+    toSolve:
+      "O1 SATR uses ToolBench as a ranking library only. O3 MNCD executes live Indian OGD, never RapidAPI replay.",
   },
   {
     n: 6,
@@ -92,6 +104,8 @@ export const LITERATURE_EVIDENCE: LiteratureEvidence[] = [
     findings: "Reranking the SBERT shortlist improves downstream tool execution quality.",
     limitations:
       "Still query-only. Session co-activation and later write-back from a pruned mesh are unused.",
+    toSolve:
+      "O1 SATR — fuse co-activation after ToolRerank-style truncation. O4 FCNP writes the residue back.",
   },
   {
     n: 7,
@@ -104,6 +118,8 @@ export const LITERATURE_EVIDENCE: LiteratureEvidence[] = [
     findings: "Preference-trained routers can cut cost while holding response quality on public benchmarks.",
     limitations:
       "The object of routing is an LLM SKU, not a named Indian-OGD specialist with a training-free posterior.",
+    toSolve:
+      "O2 APRR — route named mandi / crop / rainfall specialists, not foundation-model SKUs.",
   },
   {
     n: 8,
@@ -116,6 +132,8 @@ export const LITERATURE_EVIDENCE: LiteratureEvidence[] = [
     findings: "A learned controller can assemble a cheaper MAS than a static multi-agent template.",
     limitations:
       "Requires training. It does not maintain a Dirichlet–Thompson matrix over mandi / crop / rainfall specialists.",
+    toSolve:
+      "O2 APRR — Dirichlet–Thompson posterior over named specialists; learned routers stay a future bake-off.",
   },
   {
     n: 9,
@@ -129,6 +147,8 @@ export const LITERATURE_EVIDENCE: LiteratureEvidence[] = [
     findings: "Bandit routing can adapt without exhaustive inference of every LLM on every query.",
     limitations:
       "Routes foundation-model SKUs under a dollar budget, not tool-specialist agents after a live data.gov.in GET.",
+    toSolve:
+      "O2 APRR — specialist hops after SATR, updated from live MNCD outcomes, not SKU bandits under a dollar budget.",
   },
   {
     n: 10,
@@ -141,6 +161,8 @@ export const LITERATURE_EVIDENCE: LiteratureEvidence[] = [
     findings: "Token-importance compression can reduce prompt length with limited quality loss.",
     limitations:
       "Deletes tokens before the LLM. It does not prune a mesh by conductance or write live citations back into retrieval.",
+    toSolve:
+      "O4 FCNP — prune the mesh by conductance and pin live citations into SATR, not token deletion.",
   },
   {
     n: 11,
@@ -153,6 +175,8 @@ export const LITERATURE_EVIDENCE: LiteratureEvidence[] = [
     findings: "A memory stream supports individual plans and emergent social coordination among agents.",
     limitations:
       "Memory lives in a sandbox simulation. It is not written back into a tool retriever over ministry APIs.",
+    toSolve:
+      "O4 FCNP — pin live ministry citations into the next SATR prior, not a sandbox memory stream.",
   },
   {
     n: 12,
@@ -165,6 +189,8 @@ export const LITERATURE_EVIDENCE: LiteratureEvidence[] = [
     findings: "A local conductance update can yield globally efficient adaptive networks without a central planner.",
     limitations:
       "A biological transport model, not an LLM context pruner. ACRS uses it as a design heuristic, not as a claim that the mesh is an organism.",
+    toSolve:
+      "O4 FCNP — Physarum-inspired conductance as a design heuristic, with write-back into SATR.",
   },
   {
     n: 13,
@@ -178,6 +204,8 @@ export const LITERATURE_EVIDENCE: LiteratureEvidence[] = [
     findings: "AGMARKNET is a real Indian decision-support corpus, not a toy table.",
     limitations:
       "A crop-price CNN is not a multi-agent live-OGD loop. Cited as domain precedent, not as a baseline to beat.",
+    toSolve:
+      "O3 MNCD — live AGMARKNET UUID as a citation. PECAD is domain precedent, not a baseline to beat.",
   },
   {
     n: 14,
@@ -190,6 +218,8 @@ export const LITERATURE_EVIDENCE: LiteratureEvidence[] = [
     findings: "Reasoning-and-acting beats reason-only or act-only prompting on several agent tasks.",
     limitations:
       "Assumes the tool set is already determined. It does not fuse session co-activation into the next rank, nor cite a live data.gov.in UUID.",
+    toSolve:
+      "O1 SATR — choose the tool set from session memory before any ReAct-style acting. O3 MNCD cites the UUID.",
   },
 ];
 
@@ -204,8 +234,46 @@ export function evidenceTemplateLines(item: LiteratureEvidence): string[] {
     `Methodology: ${item.methodology}`,
     `Findings: ${item.findings}`,
     `Limitations: ${item.limitations}`,
+    `To solve the research gap: ${item.toSolve}`,
   ];
 }
+
+export const RESEARCH_GAP_SOLUTIONS: {
+  gap: string;
+  evidence: string;
+  solves: string;
+}[] = [
+  {
+    gap: "G1 — Turn-amnesic retrieval",
+    evidence: "Evidence 5, 6, 14",
+    solves:
+      "O1 SATR. Fuse session co-activation with semantic rank; write FCNP residue into the next prior.",
+  },
+  {
+    gap: "G2 — Model / SOP routers",
+    evidence: "Evidence 2, 7, 8, 9",
+    solves:
+      "O2 APRR. Training-free Dirichlet–Thompson posterior over named specialists, not LLM SKUs.",
+  },
+  {
+    gap: "G3 — Chat / star coordination",
+    evidence: "Evidence 1, 2, 3, 4",
+    solves:
+      "O3 MNCD. Score-sum over live tool identifiers, then a fail-loud data.gov.in GET.",
+  },
+  {
+    gap: "G4 — Token compression, no write-back",
+    evidence: "Evidence 10, 11, 12",
+    solves:
+      "O4 FCNP. Conductance prune of the mesh; pin live citations back into SATR.",
+  },
+  {
+    gap: "G5 — No live Indian OGD loop",
+    evidence: "Evidence 5, 13",
+    solves:
+      "Integrated ACRS on verified Agriculture UUIDs. ToolBench is ranking-only; prices are never invented.",
+  },
+];
 
 export function chunkEvidence(size = 2): LiteratureEvidence[][] {
   const chunks: LiteratureEvidence[][] = [];
@@ -236,6 +304,8 @@ export function literatureSurveyMarkdown(): string {
       "",
       `**Limitations:** ${item.limitations}`,
       "",
+      `**To solve the research gap:** ${item.toSolve}`,
+      "",
     ].join("\n"),
   );
   return [
@@ -245,5 +315,17 @@ export function literatureSurveyMarkdown(): string {
     "Proposal-stage: no NDCG, latency, token, or accuracy commitments.",
     "",
     ...blocks,
+    "## To solve the research gap",
+    "",
+    "The limitations in Evidence 1–14 collapse into five architectural gaps. This proposal solves them as follows. Closing a gap is a named module on a closed loop, not a promised leaderboard number.",
+    "",
+    "| Research gap | Left open by | To solve the research gap |",
+    "|---|---|---|",
+    ...RESEARCH_GAP_SOLUTIONS.map(
+      (row) => `| ${row.gap} | ${row.evidence} | ${row.solves} |`,
+    ),
+    "",
+    "Integration order: SATR → APRR → MNCD → FCNP on one user turn.",
+    "",
   ].join("\n");
 }

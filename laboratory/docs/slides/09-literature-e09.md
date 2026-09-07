@@ -14,6 +14,7 @@ Continuation. Evidence 9 & Evidence 10 in the same Evidence template.
 - Methodology: Preference-prior LinUCB in a shared query–LLM embedding space, plus an online cost policy.
 - Findings: Bandit routing can adapt without exhaustive inference of every LLM on every query.
 - Limitations: Routes foundation-model SKUs under a dollar budget, not tool-specialist agents after a live data.gov.in GET.
+- To solve the research gap: O2 APRR — specialist hops after SATR, updated from live MNCD outcomes, not SKU bandits under a dollar budget.
 
 **Evidence 10**
 
@@ -25,5 +26,6 @@ Continuation. Evidence 9 & Evidence 10 in the same Evidence template.
 - Methodology: Budget controller plus token-level iterative compression aligned to the target LLM.
 - Findings: Token-importance compression can reduce prompt length with limited quality loss.
 - Limitations: Deletes tokens before the LLM. It does not prune a mesh by conductance or write live citations back into retrieval.
+- To solve the research gap: O4 FCNP — prune the mesh by conductance and pin live citations into SATR, not token deletion.
 
 Source of truth: `lib/research/literature.ts` (Evidence 1…N) and `lib/research/slides.ts`. Paste into the MSRUAS Google Slides template in Contents order.
