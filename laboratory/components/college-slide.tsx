@@ -84,14 +84,6 @@ export function CollegeSlideFrame({
             {COLLEGE.website}
           </p>
         </div>
-        <div className="relative px-6 pb-3">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={COLLEGE.campusEngineeringSrc}
-            alt="Ramaiah College of Engineering"
-            className="h-16 w-full rounded-md object-cover object-left sm:h-20"
-          />
-        </div>
         <SlideFooter index={index} />
         <span className="sr-only">
           Slide {index} of {total}

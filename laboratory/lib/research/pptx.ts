@@ -285,7 +285,7 @@ function paintTitleSlide(pptx: PptxGenJS, slide: PptxGenJS.Slide, entry: Slide, 
   });
   slide.addText(COLLEGE.website, {
     x: 4.55,
-    y: 5.78,
+    y: 5.85,
     w: 4.2,
     h: 0.32,
     fontFace: "Calibri",
@@ -296,10 +296,6 @@ function paintTitleSlide(pptx: PptxGenJS, slide: PptxGenJS.Slide, entry: Slide, 
     valign: "middle",
     margin: 0,
   });
-  const engineering = asset(COLLEGE.campusEngineeringSrc);
-  if (engineering) {
-    slide.addImage({ path: engineering, x: 0.4, y: 6.22, w: 12.5, h: 0.82 });
-  }
 }
 
 export async function buildProposalPptx(): Promise<Buffer> {

@@ -357,7 +357,6 @@ def paint_title(slide, entry, index: int) -> None:
         slide, Inches(4.55), Inches(5.78), Inches(4.2), Inches(0.32),
         COLLEGE["website"], size=11, bold=True, color=PURPLE, align=PP_ALIGN.CENTER,
     )
-    add_picture(slide, CAMPUS_ENG, Inches(0.4), Inches(6.22), Inches(12.5), Inches(0.82))
 
 
 def restyle_placeholder(shape, *, color: RGBColor, align) -> None:
