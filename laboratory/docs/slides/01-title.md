@@ -4,7 +4,7 @@
 
 A Structural Orchestration Layer for Multi-Agent LLM Ecosystems
 
-- Presented By: Jenisha T
+- By : Jenisha T
 - (Reg. No. 24ETRP720001)
 - Supervisor: Dr. Jyothi A P
 - Department of Computer Science and Engineering

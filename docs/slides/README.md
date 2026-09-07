@@ -4,7 +4,7 @@
 
 [`docs/slides/ACRS_PhD_Proposal_JenishaT_24ETRP720001.pptx`](./ACRS_PhD_Proposal_JenishaT_24ETRP720001.pptx)
 
-College-template PowerPoint for **Jenisha T** (Register No. **24ETRP720001**). Same deck is also saved as `Gowrishankar_PPT_PRP2_ACRS_JenishaT.pptx` (PRP copy with automatic date + slide numbers).
+College-template PowerPoint for **Jenisha T** (Register No. **24ETRP720001**). White-background Gowrishankar PRP2 chrome with the official Ramaiah logo on every slide. Same deck is also saved as `Gowrishankar_PPT_PRP2_ACRS_JenishaT.pptx` (PRP copy with automatic date + slide numbers).
 In the lab: **Download PPTX** in the nav, `/download`, `/ACRS_PhD_Proposal_JenishaT_24ETRP720001.pptx`, or the `.zip`.
 
 MSRUAS / FET research-proposal template. Required outline: Introduction, Literature Review, Summary of Literature Review, To Solve the Research Gap, Identified Research Problem, Research Title & Aim, Research Objectives, Research Questions, Research Methodology (per objective), Conclusion.
@@ -16,7 +16,7 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 |---|---|---|
 | 01 | [`01-title.md`](./01-title.md) | Adaptive Context Reasoning System (ACRS) |
 | 02 | [`02-student.md`](./02-student.md) | Research student details |
-| 03 | [`03-contents.md`](./03-contents.md) | Contents |
+| 03 | [`03-contents.md`](./03-contents.md) | Contents of Slides |
 | 04 | [`04-introduction.md`](./04-introduction.md) | Introduction |
 | 05 | [`05-literature-e01.md`](./05-literature-e01.md) | Literature Review |
 | 06 | [`06-literature-e03.md`](./06-literature-e03.md) | Literature Review — Evidence 3 & Evidence 4 |

@@ -8,6 +8,7 @@
     "department": "Computer Science and Engineering",
     "departmentLine": "Department of Computer Science and Engineering",
     "campus": "Bangalore",
+    "campusAddress": "Gnanagangothri Campus, New BEL Road, MSR Nagar, Bangalore – 560054",
     "programme": "Ph.D. in Computer Science and Engineering",
     "mode": "Part Time",
     "scholar": "Jenisha T",
@@ -17,16 +18,30 @@
     "email": "jenisha.t@msruas.ac.in",
     "address": "#123, MSR Nagar, Bangalore. Phone: +91-XXXXXXXXXX",
     "researchTopic": "Adaptive Context Reasoning System (ACRS)",
-    "kicker": "RESEARCH PROPOSAL",
+    "kicker": "PHD Research Problem Formulation Presentation",
+    "presentationType": "PHD Research Problem Formulation Presentation",
+    "website": "WWW.MSRUAS.AC.IN",
+    "office": "Office of Research and Innovations",
+    "legalEstablished": "[Established as a Private University under an Act of Government of Karnataka vide Notification No. ED103UNE 2013 Dated 30 December 2013]",
+    "legalUgc": "Recognized by UGC U/S 2(f)of the UGC Act, 1956",
+    "logoSrc": "/college/ruas-logo.png",
+    "campusPhotoSrc": "/college/campus-about.jpg",
+    "campusEngineeringSrc": "/college/campus-coe-slide.jpg",
     "title": "Adaptive Context Reasoning System (ACRS): A Structural Orchestration Layer for Multi-Agent LLM Ecosystems",
     "shortTitle": "Adaptive Context Reasoning System (ACRS)",
     "subtitle": "A Structural Orchestration Layer for Multi-Agent LLM Ecosystems",
-    "maroon": "7C1D2E",
+    "navy": "1B1464",
+    "purple": "3A1C64",
+    "sideBar": "5B9BD5",
+    "rowTint": "E9EFF7",
+    "dateGray": "9AA3AE",
+    "white": "FFFFFF",
+    "maroon": "3A1C64",
     "gold": "C4A35A",
-    "cream": "FFFAF3",
-    "ink": "1A1214",
-    "muted": "5C4A4E",
-    "accent": "6B4C9A"
+    "cream": "FFFFFF",
+    "ink": "1A1A1A",
+    "muted": "5A5A5A",
+    "accent": "3A1C64"
   },
   "studentDetails": [
     {
@@ -42,11 +57,11 @@
       "record": "04-Sept-2024"
     },
     {
-      "field": "Department",
+      "field": "Department of",
       "record": "Computer Science and Engineering"
     },
     {
-      "field": "Faculty/School",
+      "field": "Faculty/School of",
       "record": "FET (Faculty of Engineering and Technology)"
     },
     {
@@ -54,7 +69,7 @@
       "record": "Part Time"
     },
     {
-      "field": "Contact Address",
+      "field": "Contact Address and Phone Numbers",
       "record": "#123, MSR Nagar, Bangalore. Phone: +91-XXXXXXXXXX"
     },
     {
@@ -66,7 +81,7 @@
       "record": "Adaptive Context Reasoning System (ACRS)"
     },
     {
-      "field": "Supervisor",
+      "field": "Supervisors & Advisors",
       "record": "Dr. Jyothi A P"
     }
   ],
@@ -173,7 +188,7 @@
       "title": "Adaptive Context Reasoning System (ACRS)",
       "body": "A Structural Orchestration Layer for Multi-Agent LLM Ecosystems",
       "bullets": [
-        "Presented By: Jenisha T",
+        "By : Jenisha T",
         "(Reg. No. 24ETRP720001)",
         "Supervisor: Dr. Jyothi A P",
         "Department of Computer Science and Engineering",
@@ -185,7 +200,7 @@
       "id": "student",
       "section": "Research student details",
       "title": "Research student details",
-      "body": "Attribute and Details as recorded for the FET research-proposal template.",
+      "body": "Attribute and Details as recorded for the FET research-proposal template (Gowrishankar PRP2 field names).",
       "table": {
         "headers": [
           "Attribute",
@@ -205,11 +220,11 @@
             "04-Sept-2024"
           ],
           [
-            "Department",
+            "Department of",
             "Computer Science and Engineering"
           ],
           [
-            "Faculty/School",
+            "Faculty/School of",
             "FET (Faculty of Engineering and Technology)"
           ],
           [
@@ -217,7 +232,7 @@
             "Part Time"
           ],
           [
-            "Contact Address",
+            "Contact Address and Phone Numbers",
             "#123, MSR Nagar, Bangalore. Phone: +91-XXXXXXXXXX"
           ],
           [
@@ -229,7 +244,7 @@
             "Adaptive Context Reasoning System (ACRS)"
           ],
           [
-            "Supervisor",
+            "Supervisors & Advisors",
             "Dr. Jyothi A P"
           ]
         ]
@@ -238,7 +253,7 @@
     {
       "id": "contents",
       "section": "Contents",
-      "title": "Contents",
+      "title": "Contents of Slides",
       "kind": "contents",
       "body": "Nine required sections plus the FET mapping To Solve the Research Gap. Literature Review follows the Evidence 1, Evidence 2, … template. After the literature summary, each limitation is closed by a named ACRS module. Research Methodology is expanded for each objective (O1 SATR, O2 APRR, O3 MNCD, O4 FCNP), the integrated loop, the exact repository formulas, and two worked traces (ToolBench-schema ranking; live data.gov.in). Objective order is SATR → APRR → MNCD → FCNP (not SMART)."
     },
@@ -1170,7 +1185,7 @@
       "title": "Thank you",
       "body": "Adaptive Context Reasoning System — a research programme, not a performance number.",
       "bullets": [
-        "Presented By: Jenisha T",
+        "By : Jenisha T",
         "(Reg. No. 24ETRP720001)",
         "Supervisor: Dr. Jyothi A P",
         "Department of Computer Science and Engineering",

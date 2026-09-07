@@ -4,7 +4,7 @@
 
 Adaptive Context Reasoning System — a research programme, not a performance number.
 
-- Presented By: Jenisha T
+- By : Jenisha T
 - (Reg. No. 24ETRP720001)
 - Supervisor: Dr. Jyothi A P
 - Department of Computer Science and Engineering

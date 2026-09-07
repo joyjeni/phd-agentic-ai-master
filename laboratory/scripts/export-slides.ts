@@ -83,7 +83,7 @@ writeFileSync(
     "",
     "[`docs/slides/ACRS_PhD_Proposal_JenishaT_24ETRP720001.pptx`](./ACRS_PhD_Proposal_JenishaT_24ETRP720001.pptx)",
     "",
-    "College-template PowerPoint for **Jenisha T** (Register No. **24ETRP720001**). Same deck is also saved as `Gowrishankar_PPT_PRP2_ACRS_JenishaT.pptx` (PRP copy with automatic date + slide numbers).",
+    "College-template PowerPoint for **Jenisha T** (Register No. **24ETRP720001**). White-background Gowrishankar PRP2 chrome with the official Ramaiah logo on every slide. Same deck is also saved as `Gowrishankar_PPT_PRP2_ACRS_JenishaT.pptx` (PRP copy with automatic date + slide numbers).",
     "In the lab: **Download PPTX** in the nav, `/download`, `/ACRS_PhD_Proposal_JenishaT_24ETRP720001.pptx`, or the `.zip`.",
     "",
     "MSRUAS / FET research-proposal template. Required outline: Introduction, Literature Review, Summary of Literature Review, To Solve the Research Gap, Identified Research Problem, Research Title & Aim, Research Objectives, Research Questions, Research Methodology (per objective), Conclusion.",

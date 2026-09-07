@@ -61,7 +61,7 @@ q_t + co-activation cache + FCNP memory
 
 ## Research proposal deck
 
-The deck follows the MSRUAS / FET template and the required proposal outline:
+The deck follows the MSRUAS Gowrishankar PRP2 college template: **white slides**, official Ramaiah logo on every slide, light-blue edge bars, date + numbered footer, and campus photographs from [msruas.ac.in](https://www.msruas.ac.in/). Required academic outline:
 Introduction, Literature Review (Evidence 1, Evidence 2, … — journals and top
 conference proceedings only; preprints are not cited), Summary of Literature
 Review, To Solve the Research Gap (G1–G5 mapped onto SATR / APRR / MNCD / FCNP),

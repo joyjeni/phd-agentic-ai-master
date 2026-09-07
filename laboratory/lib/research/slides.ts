@@ -93,7 +93,7 @@ export const SLIDES: Slide[] = [
     title: "Adaptive Context Reasoning System (ACRS)",
     body: COLLEGE.subtitle,
     bullets: [
-      `Presented By: ${COLLEGE.scholar}`,
+      `By : ${COLLEGE.scholar}`,
       `(Reg. No. ${COLLEGE.registerNo})`,
       `Supervisor: ${COLLEGE.supervisor}`,
       COLLEGE.departmentLine,
@@ -106,7 +106,7 @@ export const SLIDES: Slide[] = [
     id: "student",
     section: "Research student details",
     title: "Research student details",
-    body: "Attribute and Details as recorded for the FET research-proposal template.",
+    body: "Attribute and Details as recorded for the FET research-proposal template (Gowrishankar PRP2 field names).",
     table: {
       headers: ["Attribute", "Details"],
       rows: STUDENT_DETAILS.map((row) => [row.field, row.record]),
@@ -115,7 +115,7 @@ export const SLIDES: Slide[] = [
   {
     id: "contents",
     section: "Contents",
-    title: "Contents",
+    title: "Contents of Slides",
     kind: "contents",
     body: "Nine required sections plus the FET mapping To Solve the Research Gap. Literature Review follows the Evidence 1, Evidence 2, … template. After the literature summary, each limitation is closed by a named ACRS module. Research Methodology is expanded for each objective (O1 SATR, O2 APRR, O3 MNCD, O4 FCNP), the integrated loop, the exact repository formulas, and two worked traces (ToolBench-schema ranking; live data.gov.in). Objective order is SATR → APRR → MNCD → FCNP (not SMART).",
   },
@@ -465,7 +465,7 @@ export const SLIDES: Slide[] = [
     title: "Thank you",
     body: "Adaptive Context Reasoning System — a research programme, not a performance number.",
     bullets: [
-      `Presented By: ${COLLEGE.scholar}`,
+      `By : ${COLLEGE.scholar}`,
       `(Reg. No. ${COLLEGE.registerNo})`,
       `Supervisor: ${COLLEGE.supervisor}`,
       COLLEGE.departmentLine,

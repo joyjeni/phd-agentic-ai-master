@@ -1,82 +1,76 @@
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import PptxGenJS from "pptxgenjs";
-import { COLLEGE, PPTX_FILENAME } from "./college";
+import { COLLEGE, PPTX_FILENAME, slideDate } from "./college";
 import { CONTENTS, SLIDES, type Slide } from "./slides";
 
 const W = 13.33;
 const H = 7.5;
 
-function chrome(pptx: PptxGenJS, slide: PptxGenJS.Slide, index: number) {
+function asset(relative: string): string | null {
+  const absolute = join(process.cwd(), "public", relative.replace(/^\//, ""));
+  return existsSync(absolute) ? absolute : null;
+}
+
+function addLogo(slide: PptxGenJS.Slide, x = 10.35, y = 0.12, w = 2.65, h = 0.84) {
+  const path = asset(COLLEGE.logoSrc);
+  if (!path) return;
+  slide.addImage({ path, x, y, w, h });
+}
+
+function addFooter(pptx: PptxGenJS, slide: PptxGenJS.Slide, index: number) {
+  slide.addText(slideDate(), {
+    x: 0.32,
+    y: 7.18,
+    w: 3.2,
+    h: 0.24,
+    fontFace: "Calibri",
+    fontSize: 11,
+    color: COLLEGE.dateGray,
+    margin: 0,
+  });
+  slide.addShape(pptx.ShapeType.rect, {
+    x: 12.55,
+    y: 7.12,
+    w: 0.52,
+    h: 0.28,
+    fill: { color: COLLEGE.purple },
+    line: { color: COLLEGE.purple },
+  });
+  slide.addText(String(index), {
+    x: 12.55,
+    y: 7.12,
+    w: 0.52,
+    h: 0.28,
+    fontFace: "Calibri",
+    fontSize: 12,
+    bold: true,
+    color: "FFFFFF",
+    align: "center",
+    valign: "middle",
+    margin: 0,
+  });
+}
+
+function chrome(pptx: PptxGenJS, slide: PptxGenJS.Slide, index: number, opts?: { logo?: boolean }) {
   slide.addShape(pptx.ShapeType.rect, {
     x: 0,
     y: 0,
-    w: W,
-    h: 0.78,
-    fill: { color: COLLEGE.maroon },
-    line: { color: COLLEGE.maroon },
-  });
-  slide.addText(COLLEGE.university.toUpperCase(), {
-    x: 0.35,
-    y: 0.1,
-    w: 10.4,
-    h: 0.32,
-    fontFace: "Calibri",
-    fontSize: 13,
-    bold: true,
-    color: "FFFFFF",
-    margin: 0,
-  });
-  slide.addText(`${COLLEGE.facultyHeader}  ·  ${COLLEGE.kicker}`, {
-    x: 0.35,
-    y: 0.4,
-    w: 10.4,
-    h: 0.28,
-    fontFace: "Calibri",
-    fontSize: 11,
-    color: COLLEGE.gold,
-    margin: 0,
+    w: 0.08,
+    h: H,
+    fill: { color: COLLEGE.sideBar },
+    line: { color: COLLEGE.sideBar },
   });
   slide.addShape(pptx.ShapeType.rect, {
-    x: 0,
-    y: 0.78,
-    w: W,
-    h: 0.06,
-    fill: { color: COLLEGE.gold },
-    line: { color: COLLEGE.gold },
+    x: 13.25,
+    y: 0,
+    w: 0.08,
+    h: H,
+    fill: { color: COLLEGE.sideBar },
+    line: { color: COLLEGE.sideBar },
   });
-  slide.addShape(pptx.ShapeType.rect, {
-    x: 0,
-    y: 7.18,
-    w: W,
-    h: 0.32,
-    fill: { color: COLLEGE.maroon },
-    line: { color: COLLEGE.maroon },
-  });
-  slide.addText(
-    `${COLLEGE.scholar}  |  ${COLLEGE.registerNo}  |  ${COLLEGE.mode}  |  Supervisor: ${COLLEGE.supervisor}`,
-    {
-      x: 0.3,
-      y: 7.2,
-      w: 10.6,
-      h: 0.26,
-      fontFace: "Calibri",
-      fontSize: 10,
-      color: "FFFFFF",
-      margin: 0,
-    },
-  );
-  slide.addText(`${index} / ${SLIDES.length}`, {
-    x: 11.1,
-    y: 7.2,
-    w: 1.9,
-    h: 0.26,
-    fontFace: "Calibri",
-    fontSize: 10,
-    color: COLLEGE.gold,
-    align: "right",
-    margin: 0,
-  });
+  if (opts?.logo !== false) addLogo(slide);
+  addFooter(pptx, slide, index);
 }
 
 function addBody(slide: PptxGenJS.Slide, text: string, y: number, h = 0.7) {
@@ -109,7 +103,7 @@ function flowRow(
       w,
       h: 0.55,
       fill: { color: fill },
-      line: { color: COLLEGE.gold },
+      line: { color: COLLEGE.navy },
       rectRadius: 0.06,
     });
     slide.addText(label, {
@@ -143,7 +137,7 @@ function addDiagram(pptx: PptxGenJS, slide: PptxGenJS.Slide, kind: Slide["diagra
     return;
   }
   if (kind === "e2e" || kind === "integrated") {
-    slide.addText("ACRS loop (maroon): typed artefacts. Green path is the increment, not a metric.", {
+    slide.addText("ACRS loop (navy): typed artefacts. Green path is the increment, not a metric.", {
       x: 0.4,
       y,
       w: 12.5,
@@ -210,6 +204,104 @@ function addDiagram(pptx: PptxGenJS, slide: PptxGenJS.Slide, kind: Slide["diagra
   flowRow(pptx, slide, pair[1], y + 0.95, COLLEGE.maroon);
 }
 
+function paintTitleSlide(pptx: PptxGenJS, slide: PptxGenJS.Slide, entry: Slide, index: number) {
+  chrome(pptx, slide, index, { logo: false });
+  addLogo(slide, 0.4, 0.22, 3.15, 1.0);
+  const campus = asset(COLLEGE.campusPhotoSrc);
+  if (campus) {
+    slide.addImage({ path: campus, x: 8.55, y: 0.22, w: 4.4, h: 2.15 });
+  }
+  slide.addText(COLLEGE.legalEstablished, {
+    x: 0.4,
+    y: 1.28,
+    w: 7.9,
+    h: 0.55,
+    fontFace: "Calibri",
+    fontSize: 10,
+    italic: true,
+    color: COLLEGE.purple,
+    valign: "top",
+  });
+  slide.addText(`${COLLEGE.legalUgc}\n${COLLEGE.campusAddress}\n${COLLEGE.office}`, {
+    x: 0.4,
+    y: 1.82,
+    w: 7.9,
+    h: 0.72,
+    fontFace: "Calibri",
+    fontSize: 12,
+    bold: true,
+    color: COLLEGE.navy,
+  });
+  slide.addText(COLLEGE.presentationType, {
+    x: 0.4,
+    y: 2.7,
+    w: 12.5,
+    h: 0.38,
+    fontFace: "Calibri",
+    fontSize: 16,
+    bold: true,
+    color: COLLEGE.purple,
+    align: "center",
+  });
+  slide.addText(entry.title, {
+    x: 0.5,
+    y: 3.12,
+    w: 12.3,
+    h: 0.95,
+    fontFace: "Calibri",
+    fontSize: 26,
+    bold: true,
+    color: COLLEGE.navy,
+    align: "center",
+    valign: "middle",
+  });
+  slide.addText(entry.body ?? COLLEGE.subtitle, {
+    x: 0.8,
+    y: 4.08,
+    w: 11.7,
+    h: 0.4,
+    fontFace: "Calibri",
+    fontSize: 14,
+    color: COLLEGE.muted,
+    align: "center",
+  });
+  slide.addText((entry.bullets ?? []).join("\n"), {
+    x: 0.8,
+    y: 4.52,
+    w: 11.7,
+    h: 1.15,
+    fontFace: "Calibri",
+    fontSize: 14,
+    color: COLLEGE.ink,
+    align: "center",
+  });
+  slide.addShape(pptx.ShapeType.rect, {
+    x: 4.55,
+    y: 5.78,
+    w: 4.2,
+    h: 0.32,
+    fill: { color: COLLEGE.white },
+    line: { color: COLLEGE.purple, pt: 1 },
+  });
+  slide.addText(COLLEGE.website, {
+    x: 4.55,
+    y: 5.78,
+    w: 4.2,
+    h: 0.32,
+    fontFace: "Calibri",
+    fontSize: 11,
+    bold: true,
+    color: COLLEGE.purple,
+    align: "center",
+    valign: "middle",
+    margin: 0,
+  });
+  const engineering = asset(COLLEGE.campusEngineeringSrc);
+  if (engineering) {
+    slide.addImage({ path: engineering, x: 0.4, y: 6.22, w: 12.5, h: 0.82 });
+  }
+}
+
 export async function buildProposalPptx(): Promise<Buffer> {
   const pptx = new PptxGenJS();
   pptx.defineLayout({ name: "LAYOUT_WIDE", width: W, height: H });
@@ -221,36 +313,70 @@ export async function buildProposalPptx(): Promise<Buffer> {
 
   SLIDES.forEach((entry, index) => {
     const slide = pptx.addSlide();
-    slide.background = { color: COLLEGE.cream };
+    slide.background = { color: COLLEGE.white };
+    if (entry.id === "title") {
+      paintTitleSlide(pptx, slide, entry, index + 1);
+      return;
+    }
+
     chrome(pptx, slide, index + 1);
 
-    slide.addText(COLLEGE.kicker, {
-      x: 0.4,
-      y: 0.95,
-      w: 12.5,
-      h: 0.28,
-      fontFace: "Calibri",
-      fontSize: 11,
-      bold: true,
-      color: COLLEGE.maroon,
-      charSpacing: 3,
-    });
-    slide.addText(entry.title, {
-      x: 0.4,
-      y: 1.2,
-      w: 12.5,
-      h: 0.55,
-      fontFace: "Calibri",
-      fontSize: 22,
-      bold: true,
-      color: COLLEGE.ink,
-      valign: "top",
-    });
+    if (entry.id === "student") {
+      slide.addShape(pptx.ShapeType.rect, {
+        x: 0.35,
+        y: 1.02,
+        w: 9.8,
+        h: 0.04,
+        fill: { color: COLLEGE.purple },
+        line: { color: COLLEGE.purple },
+      });
+      slide.addText(COLLEGE.legalEstablished, {
+        x: 0.35,
+        y: 1.12,
+        w: 9.9,
+        h: 0.42,
+        fontFace: "Calibri",
+        fontSize: 10,
+        italic: true,
+        color: COLLEGE.purple,
+      });
+      slide.addText(`${COLLEGE.legalUgc}\n${COLLEGE.office}`, {
+        x: 0.35,
+        y: 1.52,
+        w: 9.9,
+        h: 0.48,
+        fontFace: "Calibri",
+        fontSize: 13,
+        bold: true,
+        color: COLLEGE.navy,
+        align: "center",
+      });
+    } else {
+      slide.addText(entry.title, {
+        x: 0.4,
+        y: 0.22,
+        w: 9.7,
+        h: 0.7,
+        fontFace: "Calibri",
+        fontSize: 26,
+        bold: true,
+        color: "000000",
+        valign: "top",
+      });
+      slide.addShape(pptx.ShapeType.rect, {
+        x: 0.4,
+        y: 0.94,
+        w: 2.15,
+        h: 0.035,
+        fill: { color: COLLEGE.purple },
+        line: { color: COLLEGE.purple },
+      });
+    }
 
-    let y = 1.8;
-    if (entry.body) {
-      addBody(slide, entry.body, y, 0.7);
-      y += 0.72;
+    let y = entry.id === "student" ? 2.1 : 1.15;
+    if (entry.body && entry.id !== "student") {
+      addBody(slide, entry.body, y, 0.55);
+      y += 0.58;
     }
 
     if (entry.kind === "contents") {
@@ -290,10 +416,10 @@ export async function buildProposalPptx(): Promise<Buffer> {
                   : [2.4, 3.3, 2.6, 4.2],
           fontSize: entry.id === "student" ? 13 : 11,
           border: [
-            { pt: 0.5, color: COLLEGE.gold },
-            { pt: 0.5, color: COLLEGE.gold },
-            { pt: 0.5, color: COLLEGE.gold },
-            { pt: 0.5, color: COLLEGE.gold },
+            { pt: 0.5, color: COLLEGE.sideBar },
+            { pt: 0.5, color: COLLEGE.sideBar },
+            { pt: 0.5, color: COLLEGE.sideBar },
+            { pt: 0.5, color: COLLEGE.sideBar },
           ],
           fontFace: "Calibri",
           valign: "top",
@@ -381,7 +507,7 @@ export async function buildProposalPptx(): Promise<Buffer> {
     if (entry.footnote) {
       slide.addText(entry.footnote, {
         x: 0.4,
-        y: 6.85,
+        y: 6.78,
         w: 12.5,
         h: 0.28,
         fontFace: "Calibri",

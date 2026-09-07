@@ -13,7 +13,7 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 A Structural Orchestration Layer for Multi-Agent LLM Ecosystems
 
-- Presented By: Jenisha T
+- By : Jenisha T
 - (Reg. No. 24ETRP720001)
 - Supervisor: Dr. Jyothi A P
 - Department of Computer Science and Engineering
@@ -25,22 +25,22 @@ _Proposal stage. No empirical performance claims. Live Indian Open Government Da
 
 *Research student details*
 
-Attribute and Details as recorded for the FET research-proposal template.
+Attribute and Details as recorded for the FET research-proposal template (Gowrishankar PRP2 field names).
 
 | Attribute | Details |
 | --- | --- |
 | Full Name | Jenisha T |
 | Registration Number | 24ETRP720001 |
 | Date of Registration | 04-Sept-2024 |
-| Department | Computer Science and Engineering |
-| Faculty/School | FET (Faculty of Engineering and Technology) |
+| Department of | Computer Science and Engineering |
+| Faculty/School of | FET (Faculty of Engineering and Technology) |
 | Course Type | Part Time |
-| Contact Address | #123, MSR Nagar, Bangalore. Phone: +91-XXXXXXXXXX |
+| Contact Address and Phone Numbers | #123, MSR Nagar, Bangalore. Phone: +91-XXXXXXXXXX |
 | Email Address | jenisha.t@msruas.ac.in |
 | Research Topic | Adaptive Context Reasoning System (ACRS) |
-| Supervisor | Dr. Jyothi A P |
+| Supervisors & Advisors | Dr. Jyothi A P |
 
-## 03 Contents
+## 03 Contents of Slides
 
 *Contents*
 
@@ -683,7 +683,7 @@ _CrewAI is an engineering framework without a flagship peer-reviewed paper in th
 
 Adaptive Context Reasoning System — a research programme, not a performance number.
 
-- Presented By: Jenisha T
+- By : Jenisha T
 - (Reg. No. 24ETRP720001)
 - Supervisor: Dr. Jyothi A P
 - Department of Computer Science and Engineering

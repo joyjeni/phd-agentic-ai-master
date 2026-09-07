@@ -33,16 +33,24 @@ FILENAMES = DATA["filenames"]
 
 W = Inches(13.333)
 H = Inches(7.5)
-MAROON = RGBColor(0x7C, 0x1D, 0x2E)
+MAROON = RGBColor(0x3A, 0x1C, 0x64)
+PURPLE = MAROON
+NAVY = RGBColor(0x1B, 0x14, 0x64)
+SIDE = RGBColor(0x5B, 0x9B, 0xD5)
+ROW = RGBColor(0xE9, 0xEF, 0xF7)
+DATE_GRAY = RGBColor(0x9A, 0xA3, 0xAE)
 GOLD = RGBColor(0xC4, 0xA3, 0x5A)
-CREAM = RGBColor(0xFF, 0xFA, 0xF3)
-INK = RGBColor(0x1A, 0x12, 0x14)
-MUTED = RGBColor(0x5C, 0x4A, 0x4E)
+CREAM = RGBColor(0xFF, 0xFF, 0xFF)
+INK = RGBColor(0x1A, 0x1A, 0x1A)
+MUTED = RGBColor(0x5A, 0x5A, 0x5A)
 WHITE = RGBColor(0xFF, 0xFF, 0xFF)
 NSMAP_P = "http://schemas.openxmlformats.org/presentationml/2006/main"
 
 TODAY = date.today()
-TODAY_TEXT = f"{TODAY.day} {TODAY.strftime('%B %Y')}"  # e.g. 7 September 2026
+TODAY_TEXT = TODAY.strftime("%m/%d/%Y")  # Gowrishankar PRP date, e.g. 09/07/2026
+LOGO = ROOT / "public/college/ruas-logo.png"
+CAMPUS = ROOT / "public/college/campus-about.jpg"
+CAMPUS_ENG = ROOT / "public/college/campus-coe-slide.jpg"
 
 DIAGRAMS = {
     "sota": (["Query only", "SBERT", "ToolRerank", "One LLM", "Answer"], None),
@@ -167,7 +175,7 @@ def add_table(slide, left, top, width, height, headers, rows) -> None:
             cell = table.cell(r, c)
             cell.text = value
             cell.fill.solid()
-            cell.fill.fore_color.rgb = CREAM
+            cell.fill.fore_color.rgb = ROW
             for p in cell.text_frame.paragraphs:
                 for run in p.runs:
                     run.font.size = Pt(10)
@@ -275,7 +283,7 @@ def add_diagram(slide, kind: str | None, top) -> None:
         add_flow(slide, top_row, top + Inches(0.28), RGBColor(0x4A, 0x2A, 0x32))
         add_flow(slide, bottom_row, top + Inches(0.86), MAROON)
     else:
-        caption = "ACRS loop (maroon). Green path is the increment, not a metric." if kind in {"e2e", "integrated"} else "SOTA (grey): turn-amnesic planner — no write-back."
+        caption = "ACRS loop (navy). Green path is the increment, not a metric." if kind in {"e2e", "integrated"} else "SOTA (grey): turn-amnesic planner — no write-back."
         add_textbox(slide, Inches(0.4), top, Inches(12.5), Inches(0.24), caption, size=11, color=MUTED)
         fill = MAROON if kind in {"e2e", "integrated"} else RGBColor(0x4A, 0x2A, 0x32)
         add_flow(slide, top_row, top + Inches(0.28), fill)
@@ -297,6 +305,61 @@ def ensure_hf(element) -> None:
     element.append(hf)
 
 
+def add_picture(slide, path: Path, left, top, width, height) -> None:
+    if path.exists():
+        slide.shapes.add_picture(str(path), left, top, width, height)
+
+
+def add_chrome(slide, index: int, *, logo=True) -> None:
+    left = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0), Inches(0), Inches(0.08), H)
+    set_fill(left, SIDE)
+    right = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(13.25), Inches(0), Inches(0.08), H)
+    set_fill(right, SIDE)
+    if logo:
+        add_picture(slide, LOGO, Inches(10.35), Inches(0.12), Inches(2.65), Inches(0.84))
+    box = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(12.55), Inches(7.12), Inches(0.52), Inches(0.28))
+    set_fill(box, PURPLE)
+
+
+def paint_title(slide, entry, index: int) -> None:
+    add_chrome(slide, index, logo=False)
+    add_picture(slide, LOGO, Inches(0.4), Inches(0.22), Inches(3.15), Inches(1.0))
+    add_picture(slide, CAMPUS, Inches(8.55), Inches(0.22), Inches(4.4), Inches(2.15))
+    add_textbox(
+        slide, Inches(0.4), Inches(1.28), Inches(7.9), Inches(0.55),
+        COLLEGE["legalEstablished"], size=10, color=PURPLE,
+    )
+    add_textbox(
+        slide, Inches(0.4), Inches(1.82), Inches(7.9), Inches(0.72),
+        f"{COLLEGE['legalUgc']}\n{COLLEGE['campusAddress']}\n{COLLEGE['office']}",
+        size=12, bold=True, color=NAVY,
+    )
+    add_textbox(
+        slide, Inches(0.4), Inches(2.7), Inches(12.5), Inches(0.38),
+        COLLEGE["presentationType"], size=16, bold=True, color=PURPLE, align=PP_ALIGN.CENTER,
+    )
+    add_textbox(
+        slide, Inches(0.5), Inches(3.12), Inches(12.3), Inches(0.95),
+        entry["title"], size=26, bold=True, color=NAVY, align=PP_ALIGN.CENTER,
+    )
+    add_textbox(
+        slide, Inches(0.8), Inches(4.08), Inches(11.7), Inches(0.4),
+        entry.get("body") or COLLEGE["subtitle"], size=14, color=MUTED, align=PP_ALIGN.CENTER,
+    )
+    add_textbox(
+        slide, Inches(0.8), Inches(4.52), Inches(11.7), Inches(1.15),
+        "\n".join(entry.get("bullets") or []), size=14, color=INK, align=PP_ALIGN.CENTER,
+    )
+    frame = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(4.55), Inches(5.78), Inches(4.2), Inches(0.32))
+    frame.fill.background()
+    frame.line.color.rgb = PURPLE
+    add_textbox(
+        slide, Inches(4.55), Inches(5.78), Inches(4.2), Inches(0.32),
+        COLLEGE["website"], size=11, bold=True, color=PURPLE, align=PP_ALIGN.CENTER,
+    )
+    add_picture(slide, CAMPUS_ENG, Inches(0.4), Inches(6.22), Inches(12.5), Inches(0.82))
+
+
 def restyle_placeholder(shape, *, color: RGBColor, align) -> None:
     try:
         shape.top = Inches(7.18)
@@ -306,52 +369,11 @@ def restyle_placeholder(shape, *, color: RGBColor, align) -> None:
         for p in tf.paragraphs:
             p.alignment = align
             for run in p.runs:
-                run.font.size = Pt(10)
+                run.font.size = Pt(11)
                 run.font.color.rgb = color
                 run.font.name = "Calibri"
     except Exception:
         return
-
-
-def add_chrome(slide) -> None:
-    header = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0), Inches(0), W, Inches(0.72))
-    set_fill(header, MAROON)
-    gold = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0), Inches(0.72), W, Inches(0.06))
-    set_fill(gold, GOLD)
-    footer = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0), Inches(7.12), W, Inches(0.38))
-    set_fill(footer, MAROON)
-    add_textbox(
-        slide,
-        Inches(0.32),
-        Inches(0.08),
-        Inches(12.6),
-        Inches(0.32),
-        COLLEGE["university"].upper(),
-        size=13,
-        bold=True,
-        color=WHITE,
-    )
-    add_textbox(
-        slide,
-        Inches(0.32),
-        Inches(0.38),
-        Inches(12.6),
-        Inches(0.28),
-        f"{COLLEGE['facultyHeader']}  ·  {COLLEGE['kicker']}",
-        size=11,
-        color=GOLD,
-    )
-    add_textbox(
-        slide,
-        Inches(3.7),
-        Inches(7.18),
-        Inches(6.3),
-        Inches(0.26),
-        f"{COLLEGE['scholar']}  |  {COLLEGE['registerNo']}  |  {COLLEGE['mode']}",
-        size=10,
-        color=WHITE,
-        align=PP_ALIGN.CENTER,
-    )
 
 
 def style_master(prs: Presentation) -> None:
@@ -359,14 +381,14 @@ def style_master(prs: Presentation) -> None:
         for ph in list(layout.placeholders):
             kind = ph.placeholder_format.type
             if kind == PP_PLACEHOLDER.DATE:
-                ph.left, ph.width = Inches(0.28), Inches(3.4)
-                restyle_placeholder(ph, color=GOLD, align=PP_ALIGN.LEFT)
+                ph.left, ph.width = Inches(0.32), Inches(3.2)
+                restyle_placeholder(ph, color=DATE_GRAY, align=PP_ALIGN.LEFT)
             elif kind == PP_PLACEHOLDER.FOOTER:
                 ph.left, ph.width = Inches(3.7), Inches(6.3)
-                restyle_placeholder(ph, color=WHITE, align=PP_ALIGN.CENTER)
+                restyle_placeholder(ph, color=MUTED, align=PP_ALIGN.CENTER)
             elif kind == PP_PLACEHOLDER.SLIDE_NUMBER:
-                ph.left, ph.width = Inches(10.5), Inches(2.5)
-                restyle_placeholder(ph, color=GOLD, align=PP_ALIGN.RIGHT)
+                ph.left, ph.width = Inches(12.55), Inches(0.52)
+                restyle_placeholder(ph, color=WHITE, align=PP_ALIGN.CENTER)
 
 
 def inject_slide_fields(slide, index: int) -> None:
@@ -396,7 +418,7 @@ def inject_slide_fields(slide, index: int) -> None:
             <a:pPr algn="l"/>
             <a:fld id="{date_id}" type="datetime3">
               <a:rPr lang="en-GB" sz="1000" dirty="0">
-                <a:solidFill><a:srgbClr val="C4A35A"/></a:solidFill>
+                <a:solidFill><a:srgbClr val="9AA3AE"/></a:solidFill>
                 <a:latin typeface="Calibri"/>
               </a:rPr>
               <a:t>{TODAY_TEXT}</a:t>
@@ -416,8 +438,8 @@ def inject_slide_fields(slide, index: int) -> None:
         </p:nvSpPr>
         <p:spPr>
           <a:xfrm>
-            <a:off x="9601200" y="6565900"/>
-            <a:ext cx="2286000" cy="255016"/>
+            <a:off x="11475720" y="6510528"/>
+            <a:ext cx="475488" cy="256032"/>
           </a:xfrm>
           <a:prstGeom prst="rect"><a:avLst/></a:prstGeom>
           <a:noFill/>
@@ -426,22 +448,15 @@ def inject_slide_fields(slide, index: int) -> None:
           <a:bodyPr wrap="none" lIns="0" tIns="0" rIns="0" bIns="0" anchor="ctr"/>
           <a:lstStyle/>
           <a:p>
-            <a:pPr algn="r"/>
+            <a:pPr algn="ctr"/>
             <a:fld id="{num_id}" type="slidenum">
-              <a:rPr lang="en-GB" sz="1000" dirty="0">
-                <a:solidFill><a:srgbClr val="C4A35A"/></a:solidFill>
+              <a:rPr lang="en-GB" sz="1200" b="1" dirty="0">
+                <a:solidFill><a:srgbClr val="FFFFFF"/></a:solidFill>
                 <a:latin typeface="Calibri"/>
               </a:rPr>
               <a:t>{index}</a:t>
             </a:fld>
-            <a:r>
-              <a:rPr lang="en-GB" sz="1000">
-                <a:solidFill><a:srgbClr val="C4A35A"/></a:solidFill>
-                <a:latin typeface="Calibri"/>
-              </a:rPr>
-              <a:t> / {len(SLIDES)}</a:t>
-            </a:r>
-            <a:endParaRPr lang="en-GB" sz="1000"/>
+            <a:endParaRPr lang="en-GB" sz="1200"/>
           </a:p>
         </p:txBody>
       </p:sp>
@@ -496,61 +511,64 @@ def build() -> Path:
 
     for index, entry in enumerate(SLIDES, start=1):
         slide = prs.slides.add_slide(blank)
-        add_chrome(slide)
-        background = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0), Inches(0.78), W, Inches(6.34))
-        set_fill(background, CREAM)
+        if entry.get("id") == "title":
+            paint_title(slide, entry, index)
+            ensure_hf(slide._element)
+            inject_slide_fields(slide, index)
+            continue
 
-        add_textbox(
-            slide,
-            Inches(0.4),
-            Inches(0.88),
-            Inches(12.5),
-            Inches(0.26),
-            f"{COLLEGE['kicker']}  ·  {entry.get('section') or ''}",
-            size=11,
-            bold=True,
-            color=MAROON,
-        )
-        add_textbox(
-            slide,
-            Inches(0.4),
-            Inches(1.12),
-            Inches(12.5),
-            Inches(0.55),
-            entry["title"],
-            size=22,
-            bold=True,
-            color=INK,
-        )
+        add_chrome(slide, index)
 
-        y = Inches(1.72)
-        if entry.get("body"):
-            add_textbox(slide, Inches(0.4), y, Inches(12.5), Inches(0.42), entry["body"], size=13, color=MUTED)
-            y = Inches(2.18)
+        if entry.get("id") == "student":
+            bar = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.35), Inches(1.02), Inches(9.8), Inches(0.04))
+            set_fill(bar, PURPLE)
+            add_textbox(
+                slide, Inches(0.35), Inches(1.12), Inches(9.9), Inches(0.42),
+                COLLEGE["legalEstablished"], size=10, color=PURPLE,
+            )
+            add_textbox(
+                slide, Inches(0.35), Inches(1.52), Inches(9.9), Inches(0.48),
+                f"{COLLEGE['legalUgc']}\n{COLLEGE['office']}",
+                size=13, bold=True, color=NAVY, align=PP_ALIGN.CENTER,
+            )
+            y = Inches(2.1)
+        else:
+            add_textbox(
+                slide, Inches(0.4), Inches(0.22), Inches(9.7), Inches(0.7),
+                entry["title"], size=26, bold=True, color=INK,
+            )
+            underline = slide.shapes.add_shape(
+                MSO_SHAPE.RECTANGLE, Inches(0.4), Inches(0.94), Inches(2.15), Inches(0.035)
+            )
+            set_fill(underline, PURPLE)
+            y = Inches(1.15)
+            if entry.get("body"):
+                add_textbox(slide, Inches(0.4), y, Inches(12.5), Inches(0.42), entry["body"], size=13, color=MUTED)
+                y = Inches(1.72)
 
         if entry.get("kind") == "contents":
             lines = [f"{item['n']}   {item['title']}" for item in CONTENTS]
-            add_bullets(slide, Inches(0.45), y, Inches(12.4), Inches(4.4), lines, size=14)
+            add_bullets(slide, Inches(0.45), y, Inches(12.4), Inches(4.8), lines, size=14)
         elif entry.get("table"):
             table = entry["table"]
-            add_table(slide, Inches(0.35), y, Inches(12.6), Inches(4.4), table["headers"], table["rows"])
+            add_table(slide, Inches(0.35), y, Inches(12.6), Inches(4.6), table["headers"], table["rows"])
         elif entry.get("evidence"):
             add_evidence_cards(slide, entry["evidence"], y)
         else:
             paras = entry.get("paragraphs") or []
             bullets = entry.get("bullets") or []
             diagram = entry.get("diagram")
-            leftover_h = 2.05 if diagram and diagram != "none" else 4.35
+            leftover_h = 2.05 if diagram and diagram != "none" else 4.55
             texts = paras + bullets
             if texts:
                 add_bullets(slide, Inches(0.4), y, Inches(12.5), Inches(leftover_h), texts, size=13)
             if diagram and diagram != "none":
-                add_diagram(slide, diagram, Inches(4.85))
+                add_diagram(slide, diagram, Inches(4.95))
             if entry.get("footnote"):
                 add_textbox(
                     slide,
                     Inches(0.4),
-                    Inches(6.78),
+                    Inches(6.72),
                     Inches(12.5),
                     Inches(0.28),
                     entry["footnote"],

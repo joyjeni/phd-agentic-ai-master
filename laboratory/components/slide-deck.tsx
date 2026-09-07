@@ -104,10 +104,14 @@ export function SlideDeck() {
       </div>
       <DownloadSlides />
 
-      <CollegeSlideFrame section={slide.section} index={index + 1} total={SLIDES.length}>
-        <h2 className="font-serif text-3xl leading-tight text-[#1a1214]">{slide.title}</h2>
-        {slide.body ? (
-          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[#5c4a4e]">{slide.body}</p>
+      <CollegeSlideFrame
+        heading={slide.title}
+        variant={slide.id === "title" ? "title" : slide.id === "student" ? "student" : "content"}
+        index={index + 1}
+        total={SLIDES.length}
+      >
+        {slide.body && slide.id !== "title" ? (
+          <p className="mt-1 max-w-3xl text-sm leading-relaxed text-[#5a5a5a]">{slide.body}</p>
         ) : null}
         {(slide.paragraphs ?? []).map((paragraph) => (
           <p
@@ -122,46 +126,46 @@ export function SlideDeck() {
             {slide.evidence.map((item) => (
               <article
                 key={item.n}
-                className="rounded-md border border-[#7C1D2E]/35 bg-white/70 p-3"
+                className="rounded-md border border-[#3A1C64]/25 bg-white p-3"
               >
-                <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#7C1D2E]">
+                <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#3A1C64]">
                   Evidence {item.n}
                 </p>
                 <dl className="mt-2 space-y-1.5 text-[12px] leading-snug text-[#1a1214]">
                   <div>
-                    <dt className="font-semibold text-[#7C1D2E]">Author(s)</dt>
+                    <dt className="font-semibold text-[#3A1C64]">Author(s)</dt>
                     <dd>{item.authors}</dd>
                   </div>
                   <div>
-                    <dt className="font-semibold text-[#7C1D2E]">Year</dt>
+                    <dt className="font-semibold text-[#3A1C64]">Year</dt>
                     <dd>{item.year}</dd>
                   </div>
                   <div>
-                    <dt className="font-semibold text-[#7C1D2E]">Title</dt>
+                    <dt className="font-semibold text-[#3A1C64]">Title</dt>
                     <dd>{item.title}</dd>
                   </div>
                   <div>
-                    <dt className="font-semibold text-[#7C1D2E]">Publication</dt>
+                    <dt className="font-semibold text-[#3A1C64]">Publication</dt>
                     <dd>{item.venue}</dd>
                   </div>
                   <div>
-                    <dt className="font-semibold text-[#7C1D2E]">Objective</dt>
+                    <dt className="font-semibold text-[#3A1C64]">Objective</dt>
                     <dd>{item.objective}</dd>
                   </div>
                   <div>
-                    <dt className="font-semibold text-[#7C1D2E]">Methodology</dt>
+                    <dt className="font-semibold text-[#3A1C64]">Methodology</dt>
                     <dd>{item.methodology}</dd>
                   </div>
                   <div>
-                    <dt className="font-semibold text-[#7C1D2E]">Findings</dt>
+                    <dt className="font-semibold text-[#3A1C64]">Findings</dt>
                     <dd>{item.findings}</dd>
                   </div>
                   <div>
-                    <dt className="font-semibold text-[#7C1D2E]">Limitations</dt>
+                    <dt className="font-semibold text-[#3A1C64]">Limitations</dt>
                     <dd>{item.limitations}</dd>
                   </div>
                   <div>
-                    <dt className="font-semibold text-[#7C1D2E]">To solve the research gap</dt>
+                    <dt className="font-semibold text-[#3A1C64]">To solve the research gap</dt>
                     <dd>{item.toSolve}</dd>
                   </div>
                 </dl>
@@ -170,7 +174,7 @@ export function SlideDeck() {
           </div>
         ) : null}
         {diagram ? (
-          <div className="mt-5 rounded-md border border-[#c4a35a] bg-[#1a1214] p-3">
+          <div className="mt-5 rounded-md border border-[#5B9BD5] bg-[#f7f9fc] p-3">
             <ArchitectureSvg variant={diagram} />
           </div>
         ) : null}
@@ -179,12 +183,12 @@ export function SlideDeck() {
             {CONTENTS.map((item) => (
               <li key={item.slideId}>
                 <button
-                  className="w-full rounded-md px-2 py-1 text-left text-sm text-[#5c4a4e] hover:bg-[#7C1D2E]/10 hover:text-[#7C1D2E]"
+                  className="w-full rounded-md px-2 py-1 text-left text-sm text-[#5a5a5a] hover:bg-[#3A1C64]/10 hover:text-[#3A1C64]"
                   onClick={() =>
                     setIndex(SLIDES.findIndex((entry) => entry.id === item.slideId))
                   }
                 >
-                  <span className="mr-2 text-[#7C1D2E]">{item.n}</span>
+                  <span className="mr-2 text-[#3A1C64]">{item.n}</span>
                   {item.title}
                 </button>
               </li>
@@ -194,7 +198,7 @@ export function SlideDeck() {
           <div className="mt-5 overflow-x-auto">
             <table className="w-full min-w-[36rem] text-left text-sm">
               <thead>
-                <tr className="border-b-2 border-[#7C1D2E] text-[#7C1D2E]">
+                <tr className="border-b-2 border-[#3A1C64] text-[#3A1C64]">
                   {slide.table.headers.map((header) => (
                     <th key={header} className="px-2 py-2 font-semibold">
                       {header}
@@ -204,13 +208,13 @@ export function SlideDeck() {
               </thead>
               <tbody>
                 {slide.table.rows.map((row) => (
-                  <tr key={row[0]} className="border-b border-[#c4a35a]/50">
+                  <tr key={row[0]} className="border-b border-[#5B9BD5]/40 bg-[#E9EFF7]/40">
                     {row.map((cell, cellIndex) => (
                       <td
                         key={`${row[0]}-${cellIndex}`}
                         className={
                           cellIndex === 0
-                            ? "w-[34%] px-2 py-2 align-top font-medium text-[#7C1D2E]"
+                            ? "w-[34%] px-2 py-2 align-top font-medium text-[#3A1C64]"
                             : "px-2 py-2 align-top text-[#1a1214]"
                         }
                       >
@@ -223,24 +227,19 @@ export function SlideDeck() {
             </table>
           </div>
         ) : slide.evidence?.length ? null : slide.id === "title" ? (
-          <div className="mt-8 space-y-1 text-center">
-            <p className="text-lg text-[#5c4a4e]">
-              Presented By:{" "}
-              <span className="font-semibold text-[#6B4C9A]">{COLLEGE.scholar}</span>
-            </p>
-            <p className="text-sm text-[#5c4a4e]">(Reg. No. {COLLEGE.registerNo})</p>
-            <p className="mt-4 text-lg font-semibold text-[#6B4C9A]">
-              Supervisor: {COLLEGE.supervisor}
-            </p>
-            <p className="text-sm text-[#5c4a4e]">{COLLEGE.departmentLine}</p>
-            <p className="text-sm text-[#5c4a4e]">{COLLEGE.facultyLine}</p>
+          <div className="mt-4 space-y-1 text-center">
+            <p className="text-lg font-semibold text-[#1B1464]">{slide.bullets?.[0]}</p>
+            <p className="text-sm text-[#5a5a5a]">{slide.bullets?.[1]}</p>
+            <p className="mt-3 text-lg font-semibold text-[#3A1C64]">{slide.bullets?.[2]}</p>
+            <p className="text-sm text-[#5a5a5a]">{COLLEGE.departmentLine}</p>
+            <p className="text-sm text-[#5a5a5a]">{COLLEGE.facultyLine}</p>
           </div>
         ) : slide.bullets?.length ? (
           <ul className="mt-5 space-y-2">
             {slide.bullets.map((bullet) => (
               <li
                 key={bullet}
-                className="border-l-2 border-[#7C1D2E] pl-3 text-sm leading-relaxed text-[#1a1214]"
+                className="border-l-2 border-[#3A1C64] pl-3 text-sm leading-relaxed text-[#1a1a1a]"
               >
                 {bullet}
               </li>

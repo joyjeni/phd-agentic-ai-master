@@ -35,10 +35,14 @@ export default function PrintSlidesPage() {
         const diagram = diagramFor(slide.diagram);
         return (
           <div key={slide.id} className="college-print-page">
-            <CollegeSlideFrame section={slide.section} index={index + 1} total={SLIDES.length}>
-              <h2 className="font-serif text-2xl text-[#1a1214]">{slide.title}</h2>
-              {slide.body ? (
-                <p className="mt-3 text-sm leading-relaxed text-[#5c4a4e]">{slide.body}</p>
+            <CollegeSlideFrame
+              heading={slide.title}
+              variant={slide.id === "title" ? "title" : slide.id === "student" ? "student" : "content"}
+              index={index + 1}
+              total={SLIDES.length}
+            >
+              {slide.body && slide.id !== "title" ? (
+                <p className="mt-3 text-sm leading-relaxed text-[#5a5a5a]">{slide.body}</p>
               ) : null}
               {(slide.paragraphs ?? []).map((paragraph) => (
                 <p
@@ -49,7 +53,7 @@ export default function PrintSlidesPage() {
                 </p>
               ))}
               {diagram ? (
-                <div className="mt-4 rounded-md border border-[#c4a35a] bg-[#1a1214] p-3">
+                <div className="mt-4 rounded-md border border-[#5B9BD5] bg-[#f7f9fc] p-3">
                   <ArchitectureSvg variant={diagram} />
                 </div>
               ) : null}
@@ -61,7 +65,7 @@ export default function PrintSlidesPage() {
                         {slide.table.headers.map((header) => (
                           <th
                             key={header}
-                            className="border-b border-[#7C1D2E] px-2 py-1 text-[#7C1D2E]"
+                            className="border-b border-[#3A1C64] px-2 py-1 text-[#3A1C64]"
                           >
                             {header}
                           </th>
@@ -90,7 +94,7 @@ export default function PrintSlidesPage() {
                   ? CONTENTS.map((item) => `${item.n}  ${item.title}`)
                   : slide.bullets ?? []
                 ).map((bullet) => (
-                  <li key={bullet} className="border-l-2 border-[#7C1D2E] pl-3">
+                  <li key={bullet} className="border-l-2 border-[#3A1C64] pl-3">
                     {bullet}
                   </li>
                 ))}

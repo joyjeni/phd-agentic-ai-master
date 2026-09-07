@@ -38,14 +38,14 @@ export default function DownloadPage() {
           </a>
         </div>
       </div>
-      <div className="overflow-hidden rounded-xl border border-[var(--gold)] bg-[#fffaf3]">
-        <p className="bg-[#7C1D2E] px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#e8c97a]">
+      <div className="overflow-hidden rounded-xl border border-[var(--gold)] bg-white">
+        <p className="bg-[#3A1C64] px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-white">
           All {SLIDES.length} slides as PDF
         </p>
         <iframe
           title="ACRS proposal PDF"
           src="/api/slides/pdf"
-          className="h-[min(80vh,54rem)] w-full bg-[#fffaf3]"
+          className="h-[min(80vh,54rem)] w-full bg-white"
         />
       </div>
     </div>

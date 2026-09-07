@@ -434,7 +434,7 @@ describe("slides", () => {
 
   it("names Jenisha T and the MSRUAS register number on the title slide", async () => {
     const { COLLEGE } = await import("@/lib/research/college");
-    expect(SLIDES[0]?.bullets?.join(" ")).toMatch(/Presented By/);
+    expect(SLIDES[0]?.bullets?.join(" ")).toMatch(/By :/);
     expect(SLIDES[0]?.bullets?.join(" ")).toMatch(COLLEGE.scholar);
     expect(SLIDES[0]?.bullets?.join(" ")).toMatch(COLLEGE.registerNo);
     expect(SLIDES[1]?.table?.headers).toEqual(["Attribute", "Details"]);
@@ -444,10 +444,15 @@ describe("slides", () => {
         ["Registration Number", COLLEGE.registerNo],
         ["Email Address", COLLEGE.email],
         ["Research Topic", COLLEGE.researchTopic],
-        ["Supervisor", COLLEGE.supervisor],
+        ["Supervisors & Advisors", COLLEGE.supervisor],
         ["Course Type", "Part Time"],
+        ["Department of", COLLEGE.department],
+        ["Faculty/School of", COLLEGE.faculty],
       ]),
     );
+    expect(COLLEGE.cream).toBe("FFFFFF");
+    expect(COLLEGE.logoSrc).toBe("/college/ruas-logo.png");
+    expect(COLLEGE.kicker).toMatch(/PHD Research Problem Formulation/);
   });
 });
 
@@ -459,6 +464,27 @@ describe("college pptx", () => {
     expect(PPTX_FILENAME).toMatch(/JenishaT_24ETRP720001\.pptx$/);
     expect(buffer.subarray(0, 2).toString()).toBe("PK");
     expect(buffer.length).toBeGreaterThan(8000);
+  });
+
+  it("uses the Gowrishankar white chrome with the Ramaiah logo", async () => {
+    const { buildProposalPptx } = await import("@/lib/research/pptx");
+    const buffer = await buildProposalPptx();
+    const JSZip = await import("node:child_process");
+    const { writeFileSync, mkdtempSync } = await import("node:fs");
+    const { tmpdir } = await import("node:os");
+    const { join } = await import("node:path");
+    const dir = mkdtempSync(join(tmpdir(), "acrs-pptx-"));
+    const file = join(dir, "deck.pptx");
+    writeFileSync(file, buffer);
+    const listing = JSZip.execFileSync("unzip", ["-l", file], { encoding: "utf8" });
+    expect(listing).toMatch(/ppt\/media\/image/);
+    const slide1 = JSZip.execFileSync("unzip", ["-p", file, "ppt/slides/slide1.xml"], {
+      encoding: "utf8",
+    });
+    expect(slide1).toMatch(/FFFFFF/i);
+    expect(slide1).toMatch(/5B9BD5/);
+    expect(slide1).not.toMatch(/FFFAF3/);
+    expect(slide1).not.toMatch(/7C1D2E/);
   });
 
   it("embeds PowerPoint auto date and slide-number fields in the PRP copy", async () => {
