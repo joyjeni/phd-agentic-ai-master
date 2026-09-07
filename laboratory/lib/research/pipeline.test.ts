@@ -359,6 +359,32 @@ describe("slides", () => {
     expect(SURVEYED_DATASETS.find((d) => d.id === "agmarknet")?.usedBy).toMatch(/Guo, Woodruff/);
   });
 
+  it("numbers references, lists them in Contents, and links Crossref DOIs", async () => {
+    const { BIBLIOGRAPHY, doiHref, parseDoi, literatureSurveyMarkdown, splitDois } = await import(
+      "@/lib/research/literature"
+    );
+    expect(CONTENTS.some((item) => item.title === "References" && item.slideId === "refs-1")).toBe(
+      true,
+    );
+    expect(SLIDES.find((slide) => slide.id === "refs-1")?.title).toBe("References");
+    expect(SLIDES.find((slide) => slide.id === "refs-1")?.bullets?.[0]).toMatch(/^\[1\] /);
+    expect(BIBLIOGRAPHY.map((entry) => entry.n)).toEqual(
+      BIBLIOGRAPHY.map((_, index) => index + 1),
+    );
+    expect(BIBLIOGRAPHY[0]?.doi).toBe("10.1007/s11704-024-40231-1");
+    expect(doiHref("10.1007/s11704-024-40231-1")).toBe(
+      "https://doi.org/10.1007/s11704-024-40231-1",
+    );
+    expect(parseDoi("Best Paper. doi:10.1145/3586183.3606763.")).toBe("10.1145/3586183.3606763");
+    expect(splitDois("see doi:10.1007/s11704-024-40231-1.")[1]?.href).toBe(
+      "https://doi.org/10.1007/s11704-024-40231-1",
+    );
+    expect(literatureSurveyMarkdown()).toMatch(
+      /https:\/\/doi\.org\/10\.1007\/s11704-024-40231-1/,
+    );
+    expect(JSON.stringify(SLIDES)).toMatch(/\[1\] Wang/);
+  });
+
   it("writes the literature survey as Evidence 1, Evidence 2, … with template fields", async () => {
     const { LITERATURE_EVIDENCE } = await import("@/lib/research/literature");
     expect(LITERATURE_EVIDENCE).toHaveLength(18);

@@ -2,7 +2,7 @@
 
 *SOTA architecture*
 
-Figure 1 after Wang et al., Frontiers of Computer Science 18:186345 (2024), doi:10.1007/s11704-024-40231-1. Four modules: Profiling, Memory, Planning, Action. Tool instantiation: Qin ToolLLM + Zheng ToolRerank (query only).
+Figure 1 after Wang et al., Frontiers of Computer Science 18:186345 (2024), [doi:10.1007/s11704-024-40231-1](https://doi.org/10.1007/s11704-024-40231-1). Four modules: Profiling, Memory, Planning, Action. Tool instantiation: Qin ToolLLM + Zheng ToolRerank (query only).
 
 - Journal source of Figure 1. Wang et al., Front. Comput. Sci. 18:186345 (2024). Four modules: Profiling, Memory, Planning, Action.
 - Related surveys. He, Treude and Lo, ACM TOSEM 34(5) (2025); Guo et al., IJCAI-24, 8048–8057.

@@ -53,7 +53,7 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 | 37 | [`37-method-walk-tb.md`](./37-method-walk-tb.md) | Research Methodology — ToolBench walkthrough |
 | 38 | [`38-method-walk-ogd.md`](./38-method-walk-ogd.md) | Research Methodology — data.gov.in walkthrough |
 | 39 | [`39-conclusion.md`](./39-conclusion.md) | Conclusion |
-| 40 | [`40-refs-1.md`](./40-refs-1.md) | References (1/3) — multi-agent orchestration (journals and flagship proceedings) |
-| 41 | [`41-refs-2.md`](./41-refs-2.md) | References (2/3) — tools, routing, compression, reasoning |
-| 42 | [`42-refs-3.md`](./42-refs-3.md) | References (3/3) — memory, biology, Indian agricultural data |
+| 40 | [`40-refs-1.md`](./40-refs-1.md) | References |
+| 41 | [`41-refs-2.md`](./41-refs-2.md) | References — [9]–[16] |
+| 42 | [`42-refs-3.md`](./42-refs-3.md) | References — [17]–[24] |
 | 43 | [`43-thanks.md`](./43-thanks.md) | Thank you |

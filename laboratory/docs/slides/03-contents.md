@@ -2,7 +2,7 @@
 
 *Contents*
 
-Main FET sections only. Motivation, architecture figures, O1–O4, and methodology detail remain in the deck under these headings; they are not listed as sub-sections here.
+Main FET sections, then numbered References. Motivation, architecture figures, O1–O4, and methodology detail stay in the deck under these headings. Click 11 References for citations [1]–[24] with DOI links.
 
 Paste into the university Google Slides template in this order.
 
@@ -16,5 +16,6 @@ Paste into the university Google Slides template in this order.
 08  Research Questions
 09  Research Methodology
 10  Conclusion
+11  References
 
 Source of truth: `lib/research/literature.ts` (Evidence 1…N) and `lib/research/slides.ts`. Paste into the MSRUAS Google Slides template in Contents order.

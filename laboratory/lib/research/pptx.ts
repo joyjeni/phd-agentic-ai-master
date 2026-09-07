@@ -3,6 +3,7 @@ import { join } from "node:path";
 import PptxGenJS from "pptxgenjs";
 import { COLLEGE, PPTX_FILENAME, slideDate } from "./college";
 import { CONTENTS, SLIDES, type Slide } from "./slides";
+import { splitDois, parseDoi, doiHref } from "./literature";
 
 const W = 13.33;
 const H = 7.5;
@@ -449,7 +450,7 @@ export async function buildProposalPptx(): Promise<Buffer> {
         slide.addText(
           [
             {
-              text: `Evidence ${ev.n}`,
+              text: `Evidence ${ev.n}  [${ev.n}]`,
               options: { bold: true, color: COLLEGE.maroon, fontSize: 13, breakLine: true },
             },
             { text: "Author(s): ", options: { bold: true, color: COLLEGE.maroon, fontSize: 10 } },
@@ -460,6 +461,21 @@ export async function buildProposalPptx(): Promise<Buffer> {
             { text: ev.title, options: { color: COLLEGE.ink, fontSize: 10, breakLine: true } },
             { text: "Publication: ", options: { bold: true, color: COLLEGE.maroon, fontSize: 10 } },
             { text: ev.venue, options: { color: COLLEGE.ink, fontSize: 10, breakLine: true } },
+            ...(parseDoi(ev.venue)
+              ? [
+                  { text: "DOI: ", options: { bold: true, color: COLLEGE.maroon, fontSize: 10 } },
+                  {
+                    text: doiHref(parseDoi(ev.venue)!),
+                    options: {
+                      color: "0563C1",
+                      fontSize: 10,
+                      underline: true,
+                      hyperlink: { url: doiHref(parseDoi(ev.venue)!) },
+                      breakLine: true as const,
+                    },
+                  },
+                ]
+              : []),
             { text: "Objective: ", options: { bold: true, color: COLLEGE.maroon, fontSize: 10 } },
             { text: ev.objective, options: { color: COLLEGE.ink, fontSize: 10, breakLine: true } },
             { text: "Methodology: ", options: { bold: true, color: COLLEGE.maroon, fontSize: 10 } },
@@ -490,13 +506,30 @@ export async function buildProposalPptx(): Promise<Buffer> {
 
     const bullets = entry.bullets ?? [];
     if (bullets.length) {
-      slide.addText(
-        bullets.map((b) => ({
-          text: b,
-          options: { bullet: true, breakLine: true, fontSize: 14, fontFace: "Calibri", color: COLLEGE.ink },
-        })),
-        { x: 0.45, y, w: 12.4, h: entry.diagram ? 2.0 : 4.6, valign: "top" },
-      );
+      const refs = entry.id.startsWith("refs-");
+      const runs = bullets.flatMap((bullet) => {
+        const parts = splitDois(bullet);
+        return parts.map((part, partIndex) => ({
+          text: part.text,
+          options: {
+            bullet: !refs && partIndex === 0,
+            breakLine: partIndex === parts.length - 1,
+            fontSize: refs ? 11 : 14,
+            fontFace: "Calibri",
+            color: part.href ? "0563C1" : COLLEGE.ink,
+            underline: Boolean(part.href),
+            hyperlink: part.href ? { url: part.href } : undefined,
+            paraSpaceAfter: partIndex === parts.length - 1 && refs ? 6 : 0,
+          },
+        }));
+      });
+      slide.addText(runs, {
+        x: 0.45,
+        y,
+        w: 12.4,
+        h: entry.diagram ? 2.0 : refs ? 5.0 : 4.6,
+        valign: "top",
+      });
       y += entry.diagram ? 2.05 : 0;
     }
 

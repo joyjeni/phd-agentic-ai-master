@@ -1,7 +1,7 @@
 import { mkdirSync, writeFileSync, readdirSync, unlinkSync } from "node:fs";
 import { join } from "node:path";
 import { COLLEGE, PDF_FILENAME, PPTX_FILENAME, PPTX_TEMPLATE_COPY, STUDENT_DETAILS, ZIP_FILENAME } from "../lib/research/college.ts";
-import { literatureSurveyMarkdown } from "../lib/research/literature.ts";
+import { literatureSurveyMarkdown, linkDoisMarkdown, parseDoi, doiHref } from "../lib/research/literature.ts";
 import { allSlidesMarkdown, CONTENTS, SLIDES } from "../lib/research/slides.ts";
 
 const dir = join(import.meta.dirname, "../docs/slides");
@@ -24,14 +24,16 @@ function render(slide: (typeof SLIDES)[number], index: number): string {
     `*${slide.section}*`,
     "",
   ];
-  if (slide.body) lines.push(slide.body, "");
+  if (slide.body) lines.push(linkDoisMarkdown(slide.body), "");
   if (slide.evidence?.length) {
     for (const item of slide.evidence) {
       lines.push(`**Evidence ${item.n}**`, "");
       lines.push(`- Author(s): ${item.authors}`);
       lines.push(`- Year: ${item.year}`);
       lines.push(`- Title: ${item.title}`);
-      lines.push(`- Publication: ${item.venue}`);
+      lines.push(`- Publication: ${linkDoisMarkdown(item.venue)}`);
+      const doi = parseDoi(item.venue);
+      if (doi) lines.push(`- DOI: ${doiHref(doi)}`);
       lines.push(`- Objective: ${item.objective}`);
       lines.push(`- Methodology: ${item.methodology}`);
       lines.push(`- Findings: ${item.findings}`);
@@ -54,7 +56,7 @@ function render(slide: (typeof SLIDES)[number], index: number): string {
     lines.push("");
   }
   if (!slide.evidence?.length) {
-    for (const bullet of slide.bullets ?? []) lines.push(`- ${bullet}`);
+    for (const bullet of slide.bullets ?? []) lines.push(`- ${linkDoisMarkdown(bullet)}`);
     if (slide.bullets?.length) lines.push("");
   }
   if (slide.diagram && slide.diagram !== "none") {

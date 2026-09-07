@@ -21,7 +21,8 @@ Continuation. Evidence 11 & Evidence 12 in the same Evidence template.
 - Author(s): Yue, Y., Zhang, G., Liu, B., Wan, G., Wang, K., Cheng, D., and Qi, Y.
 - Year: 2025
 - Title: MasRouter: Learning to Route LLMs for Multi-Agent Systems
-- Publication: Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), pages 15549–15572. doi:10.18653/v1/2025.acl-long.757
+- Publication: Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), pages 15549–15572. [doi:10.18653/v1/2025.acl-long.757](https://doi.org/10.18653/v1/2025.acl-long.757)
+- DOI: https://doi.org/10.18653/v1/2025.acl-long.757
 - Objective: Unify collaboration mode, role allocation, and LLM choice as one MAS routing problem.
 - Methodology: Cascaded neural controller trained over multi-agent topologies.
 - Findings: A learned controller can assemble a cheaper MAS than a static multi-agent template.

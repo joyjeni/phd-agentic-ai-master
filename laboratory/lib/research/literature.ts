@@ -301,19 +301,136 @@ export const LITERATURE_EVIDENCE: LiteratureEvidence[] = [
   },
 ];
 
+export type BibliographyEntry = {
+  n: number;
+  authors: string;
+  year: string;
+  title: string;
+  venue: string;
+  doi?: string;
+  note?: string;
+};
+
+export type TextRun = { text: string; href?: string };
+
+export function parseDoi(text: string): string | undefined {
+  const match = text.match(/doi:\s*(10\.\d{4,9}\/\S+)/i);
+  if (!match?.[1]) return undefined;
+  return match[1].replace(/[).,;]+$/g, "");
+}
+
+export function doiHref(doi: string): string {
+  const id = doi.replace(/^https?:\/\/(dx\.)?doi\.org\//i, "").replace(/^doi:/i, "");
+  return `https://doi.org/${id}`;
+}
+
+export function splitDois(text: string): TextRun[] {
+  const re = /doi:\s*(10\.\d{4,9}\/\S+)/gi;
+  const runs: TextRun[] = [];
+  let last = 0;
+  let match: RegExpExecArray | null;
+  while ((match = re.exec(text))) {
+    if (match.index > last) runs.push({ text: text.slice(last, match.index) });
+    const doi = match[1].replace(/[).,;]+$/g, "");
+    const consumed = match[0].length - (match[1].length - doi.length);
+    runs.push({ text: `doi:${doi}`, href: doiHref(doi) });
+    last = match.index + consumed;
+  }
+  if (last < text.length) runs.push({ text: text.slice(last) });
+  return runs.length ? runs : [{ text }];
+}
+
+export function linkDoisMarkdown(text: string): string {
+  return splitDois(text)
+    .map((part) => (part.href ? `[${part.text}](${part.href})` : part.text))
+    .join("");
+}
+
+const EXTRA_REFERENCES: Omit<BibliographyEntry, "n">[] = [
+  {
+    authors:
+      "Wei, J., Wang, X., Schuurmans, D., Bosma, M., Ichter, B., Xia, F., Chi, E., Le, Q., and Zhou, D.",
+    year: "2022",
+    title: "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models",
+    venue: "Advances in Neural Information Processing Systems 35 (NeurIPS 2022)",
+  },
+  {
+    authors:
+      "Yao, S., Yu, D., Zhao, J., Shafran, I., Griffiths, T. L., Cao, Y., and Narasimhan, K.",
+    year: "2023",
+    title: "Tree of Thoughts: Deliberate Problem Solving with Large Language Models",
+    venue: "Advances in Neural Information Processing Systems 36 (NeurIPS 2023)",
+  },
+  {
+    authors: "Shinn, N., Cassano, F., Gopinath, A., Narasimhan, K., and Yao, S.",
+    year: "2023",
+    title: "Reflexion: Language Agents with Verbal Reinforcement Learning",
+    venue: "Advances in Neural Information Processing Systems 36 (NeurIPS 2023)",
+  },
+  {
+    authors:
+      "Shen, Y., Song, K., Tan, X., Li, D., Lu, W., and Zhuang, Y.",
+    year: "2023",
+    title: "HuggingGPT: Solving AI Tasks with ChatGPT and its Friends in Hugging Face",
+    venue: "Advances in Neural Information Processing Systems 36 (NeurIPS 2023)",
+  },
+  {
+    authors:
+      "Schick, T., Dwivedi-Yu, J., Dessì, R., Raileanu, R., Lomeli, M., Hambro, E., Zettlemoyer, L., Cancedda, N., and Scialom, T.",
+    year: "2023",
+    title: "Toolformer: Language Models Can Teach Themselves to Use Tools",
+    venue: "Advances in Neural Information Processing Systems 36 (NeurIPS 2023)",
+  },
+  {
+    authors: "Government of India",
+    year: "2026",
+    title: "Open Government Data Platform India",
+    venue:
+      "data.gov.in; AGMARKNET resource 9ef84268-d588-465a-a308-a864a43d0070; Directorate of Economics and Statistics crop production; IMD rainfall series; Government Open Data License — India (GODL-India)",
+    note: "Live execution corpus, not a journal article.",
+  },
+];
+
+export const BIBLIOGRAPHY: BibliographyEntry[] = [
+  ...LITERATURE_EVIDENCE.map((item) => ({
+    n: item.n,
+    authors: item.authors,
+    year: item.year,
+    title: item.title,
+    venue: item.venue,
+    doi: parseDoi(item.venue),
+  })),
+  ...EXTRA_REFERENCES.map((item, index) => ({
+    ...item,
+    n: LITERATURE_EVIDENCE.length + 1 + index,
+    doi: item.doi ?? parseDoi(item.venue),
+  })),
+];
+
+export function bibliographyLine(entry: BibliographyEntry): string {
+  const venue = entry.venue.endsWith(".") ? entry.venue : `${entry.venue}.`;
+  const line = `[${entry.n}] ${entry.authors} ${entry.title}. ${venue}`;
+  return entry.note ? `${line} ${entry.note}` : line;
+}
+
 export function evidenceTemplateLines(item: LiteratureEvidence): string[] {
-  return [
-    `Evidence ${item.n}`,
+  const doi = parseDoi(item.venue);
+  const lines = [
+    `Evidence ${item.n}  ·  Citation [${item.n}]`,
     `Author(s): ${item.authors}`,
     `Year: ${item.year}`,
     `Title: ${item.title}`,
     `Publication: ${item.venue}`,
+  ];
+  if (doi) lines.push(`DOI: ${doiHref(doi)}`);
+  lines.push(
     `Objective: ${item.objective}`,
     `Methodology: ${item.methodology}`,
     `Findings: ${item.findings}`,
     `Limitations: ${item.limitations}`,
     `To solve the research gap: ${item.toSolve}`,
-  ];
+  );
+  return lines;
 }
 
 export const RESEARCH_GAP_SOLUTIONS: {
@@ -362,8 +479,9 @@ export function chunkEvidence(size = 2): LiteratureEvidence[][] {
 }
 
 export function literatureSurveyMarkdown(): string {
-  const blocks = LITERATURE_EVIDENCE.map((item) =>
-    [
+  const blocks = LITERATURE_EVIDENCE.map((item) => {
+    const doi = parseDoi(item.venue);
+    return [
       `## Evidence ${item.n}`,
       "",
       `**Author(s):** ${item.authors}`,
@@ -372,8 +490,9 @@ export function literatureSurveyMarkdown(): string {
       "",
       `**Title:** ${item.title}`,
       "",
-      `**Publication:** ${item.venue}`,
+      `**Publication:** ${linkDoisMarkdown(item.venue)}`,
       "",
+      ...(doi ? [`**DOI:** [${doiHref(doi)}](${doiHref(doi)})`, ""] : []),
       `**Objective:** ${item.objective}`,
       "",
       `**Methodology:** ${item.methodology}`,
@@ -384,8 +503,8 @@ export function literatureSurveyMarkdown(): string {
       "",
       `**To solve the research gap:** ${item.toSolve}`,
       "",
-    ].join("\n"),
-  );
+    ].join("\n");
+  });
   return [
     "# Literature Survey",
     "",

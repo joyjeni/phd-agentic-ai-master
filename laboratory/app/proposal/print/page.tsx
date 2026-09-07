@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { CONTENTS, SLIDES } from "@/lib/research/slides";
 import { ArchitectureSvg, type DiagramKind } from "@/components/architecture-svg";
 import { CollegeSlideFrame } from "@/components/college-slide";
+import { DoiText } from "@/components/doi-text";
 import { PrintActions } from "@/components/print-actions";
 import { COLLEGE } from "@/lib/research/college";
 
@@ -42,14 +43,16 @@ export default function PrintSlidesPage() {
               total={SLIDES.length}
             >
               {slide.body && slide.id !== "title" ? (
-                <p className="mt-3 text-sm leading-relaxed text-[#5a5a5a]">{slide.body}</p>
+                <p className="mt-3 text-sm leading-relaxed text-[#5a5a5a]">
+                  <DoiText text={slide.body} />
+                </p>
               ) : null}
               {(slide.paragraphs ?? []).map((paragraph) => (
                 <p
                   key={paragraph.slice(0, 40)}
                   className="mt-2 text-sm leading-relaxed text-[#1a1214]"
                 >
-                  {paragraph}
+                  <DoiText text={paragraph} />
                 </p>
               ))}
               {diagram ? (
@@ -95,7 +98,7 @@ export default function PrintSlidesPage() {
                   : slide.bullets ?? []
                 ).map((bullet) => (
                   <li key={bullet} className="border-l-2 border-[#3A1C64] pl-3">
-                    {bullet}
+                    <DoiText text={bullet} />
                   </li>
                 ))}
               </ul>

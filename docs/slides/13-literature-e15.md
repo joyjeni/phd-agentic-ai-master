@@ -9,7 +9,8 @@ Continuation. Evidence 15 & Evidence 16 in the same Evidence template.
 - Author(s): Park, J. S., O’Brien, J. C., Cai, C. J., Morris, M. R., Liang, P., and Bernstein, M. S.
 - Year: 2023
 - Title: Generative Agents: Interactive Simulacra of Human Behavior
-- Publication: Proceedings of the 36th Annual ACM Symposium on User Interface Software and Technology (UIST 2023), Best Paper. doi:10.1145/3586183.3606763
+- Publication: Proceedings of the 36th Annual ACM Symposium on User Interface Software and Technology (UIST 2023), Best Paper. [doi:10.1145/3586183.3606763](https://doi.org/10.1145/3586183.3606763)
+- DOI: https://doi.org/10.1145/3586183.3606763
 - Objective: Give LLM agents a long-term memory stream for believable behaviour in a sandbox.
 - Methodology: Natural-language memory, reflection, and retrieval (recency, relevance, importance) inside a Sims-like town.
 - Findings: A memory stream supports individual plans and emergent social coordination among agents.
@@ -21,7 +22,8 @@ Continuation. Evidence 15 & Evidence 16 in the same Evidence template.
 - Author(s): Tero, A., Takagi, S., Saigusa, T., Ito, K., Bebber, D. P., Fricker, M. D., Yumiki, K., Kobayashi, R., and Nakagaki, T.
 - Year: 2010
 - Title: Rules for Biologically Inspired Adaptive Network Design
-- Publication: Science 327(5964):439–442. doi:10.1126/science.1177894
+- Publication: Science 327(5964):439–442. [doi:10.1126/science.1177894](https://doi.org/10.1126/science.1177894)
+- DOI: https://doi.org/10.1126/science.1177894
 - Objective: Capture how Physarum polycephalum grows efficient, fault-tolerant transport networks.
 - Methodology: Feedback between tube conductance and protoplasmic flux; compared with the Tokyo rail system.
 - Findings: A local conductance update can yield globally efficient adaptive networks without a central planner.

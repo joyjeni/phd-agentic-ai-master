@@ -11,7 +11,9 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **Title:** A survey on large language model based autonomous agents
 
-**Publication:** Frontiers of Computer Science, 18, article 186345 (2024). doi:10.1007/s11704-024-40231-1
+**Publication:** Frontiers of Computer Science, 18, article 186345 (2024). [doi:10.1007/s11704-024-40231-1](https://doi.org/10.1007/s11704-024-40231-1)
+
+**DOI:** [https://doi.org/10.1007/s11704-024-40231-1](https://doi.org/10.1007/s11704-024-40231-1)
 
 **Objective:** Unify how LLM-based autonomous agents are constructed, applied, and evaluated.
 
@@ -31,7 +33,9 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **Title:** LLM-Based Multi-Agent Systems for Software Engineering: Literature Review, Vision, and the Road Ahead
 
-**Publication:** ACM Transactions on Software Engineering and Methodology, 34(5), May 2025. doi:10.1145/3712003
+**Publication:** ACM Transactions on Software Engineering and Methodology, 34(5), May 2025. [doi:10.1145/3712003](https://doi.org/10.1145/3712003)
+
+**DOI:** [https://doi.org/10.1145/3712003](https://doi.org/10.1145/3712003)
 
 **Objective:** Map LLM-based multi-agent (LMA) systems across the software development lifecycle.
 
@@ -51,7 +55,9 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **Title:** Large Language Model based Multi-Agents: A Survey of Progress and Challenges
 
-**Publication:** Proceedings of the Thirty-Third International Joint Conference on Artificial Intelligence (IJCAI-24), Survey Track, pages 8048–8057. doi:10.24963/ijcai.2024/890
+**Publication:** Proceedings of the Thirty-Third International Joint Conference on Artificial Intelligence (IJCAI-24), Survey Track, pages 8048–8057. [doi:10.24963/ijcai.2024/890](https://doi.org/10.24963/ijcai.2024/890)
+
+**DOI:** [https://doi.org/10.24963/ijcai.2024/890](https://doi.org/10.24963/ijcai.2024/890)
 
 **Objective:** Survey how LLM-based multi-agent systems are profiled, how they communicate, and how their capacities grow.
 
@@ -71,7 +77,9 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **Title:** SagaLLM: Context Management, Validation, and Transaction Guarantees for Multi-Agent LLM Planning
 
-**Publication:** Proceedings of the VLDB Endowment (PVLDB), 18(12):4874–4886, 2025. doi:10.14778/3750601.3750611
+**Publication:** Proceedings of the VLDB Endowment (PVLDB), 18(12):4874–4886, 2025. [doi:10.14778/3750601.3750611](https://doi.org/10.14778/3750601.3750611)
+
+**DOI:** [https://doi.org/10.14778/3750601.3750611](https://doi.org/10.14778/3750601.3750611)
 
 **Objective:** Give multi-agent LLM planners persistent context, validation, and compensable transactions.
 
@@ -131,7 +139,9 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **Title:** ChatDev: Communicative Agents for Software Development
 
-**Publication:** Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), pages 15174–15186. doi:10.18653/v1/2024.acl-long.810
+**Publication:** Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), pages 15174–15186. [doi:10.18653/v1/2024.acl-long.810](https://doi.org/10.18653/v1/2024.acl-long.810)
+
+**DOI:** [https://doi.org/10.18653/v1/2024.acl-long.810](https://doi.org/10.18653/v1/2024.acl-long.810)
 
 **Objective:** Organise specialised LLM agents as a chat-chain for software design, coding, and testing.
 
@@ -231,7 +241,9 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **Title:** MasRouter: Learning to Route LLMs for Multi-Agent Systems
 
-**Publication:** Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), pages 15549–15572. doi:10.18653/v1/2025.acl-long.757
+**Publication:** Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), pages 15549–15572. [doi:10.18653/v1/2025.acl-long.757](https://doi.org/10.18653/v1/2025.acl-long.757)
+
+**DOI:** [https://doi.org/10.18653/v1/2025.acl-long.757](https://doi.org/10.18653/v1/2025.acl-long.757)
 
 **Objective:** Unify collaboration mode, role allocation, and LLM choice as one MAS routing problem.
 
@@ -251,7 +263,9 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **Title:** Adaptive LLM Routing under Budget Constraints
 
-**Publication:** Findings of the Association for Computational Linguistics: EMNLP 2025, pages 23934–23949. doi:10.18653/v1/2025.findings-emnlp.1301. Method name: PILOT (Preference-prior Informed LinUCB).
+**Publication:** Findings of the Association for Computational Linguistics: EMNLP 2025, pages 23934–23949. [doi:10.18653/v1/2025.findings-emnlp.1301](https://doi.org/10.18653/v1/2025.findings-emnlp.1301). Method name: PILOT (Preference-prior Informed LinUCB).
+
+**DOI:** [https://doi.org/10.18653/v1/2025.findings-emnlp.1301](https://doi.org/10.18653/v1/2025.findings-emnlp.1301)
 
 **Objective:** Treat LLM routing as a contextual bandit under a user budget.
 
@@ -271,7 +285,9 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **Title:** LLMLingua: Compressing Prompts for Accelerated Inference of Large Language Models
 
-**Publication:** Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing, pages 13358–13376. doi:10.18653/v1/2023.emnlp-main.825
+**Publication:** Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing, pages 13358–13376. [doi:10.18653/v1/2023.emnlp-main.825](https://doi.org/10.18653/v1/2023.emnlp-main.825)
+
+**DOI:** [https://doi.org/10.18653/v1/2023.emnlp-main.825](https://doi.org/10.18653/v1/2023.emnlp-main.825)
 
 **Objective:** Shorten long prompts while keeping task performance.
 
@@ -291,7 +307,9 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **Title:** Generative Agents: Interactive Simulacra of Human Behavior
 
-**Publication:** Proceedings of the 36th Annual ACM Symposium on User Interface Software and Technology (UIST 2023), Best Paper. doi:10.1145/3586183.3606763
+**Publication:** Proceedings of the 36th Annual ACM Symposium on User Interface Software and Technology (UIST 2023), Best Paper. [doi:10.1145/3586183.3606763](https://doi.org/10.1145/3586183.3606763)
+
+**DOI:** [https://doi.org/10.1145/3586183.3606763](https://doi.org/10.1145/3586183.3606763)
 
 **Objective:** Give LLM agents a long-term memory stream for believable behaviour in a sandbox.
 
@@ -311,7 +329,9 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **Title:** Rules for Biologically Inspired Adaptive Network Design
 
-**Publication:** Science 327(5964):439–442. doi:10.1126/science.1177894
+**Publication:** Science 327(5964):439–442. [doi:10.1126/science.1177894](https://doi.org/10.1126/science.1177894)
+
+**DOI:** [https://doi.org/10.1126/science.1177894](https://doi.org/10.1126/science.1177894)
 
 **Objective:** Capture how Physarum polycephalum grows efficient, fault-tolerant transport networks.
 
@@ -331,7 +351,9 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **Title:** Improving Lives of Indebted Farmers Using Deep Learning: Predicting Agricultural Produce Prices Using Convolutional Neural Networks (PECAD)
 
-**Publication:** Proceedings of the AAAI Conference on Artificial Intelligence, 34(08):13294–13299. doi:10.1609/aaai.v34i08.7039
+**Publication:** Proceedings of the AAAI Conference on Artificial Intelligence, 34(08):13294–13299. [doi:10.1609/aaai.v34i08.7039](https://doi.org/10.1609/aaai.v34i08.7039)
+
+**DOI:** [https://doi.org/10.1609/aaai.v34i08.7039](https://doi.org/10.1609/aaai.v34i08.7039)
 
 **Objective:** Use AGMARKNET price series as decision-support input for indebted farmers.
 

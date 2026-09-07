@@ -3,7 +3,12 @@
 import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { CONTENTS, SLIDES, type Slide } from "@/lib/research/slides";
+import { doiHref, parseDoi } from "@/lib/research/literature";
 import { ArchitectureSvg, type DiagramKind } from "@/components/architecture-svg";
+import { Button } from "@/components/ui/button";
+import { CollegeSlideFrame } from "@/components/college-slide";
+import { DoiText } from "@/components/doi-text";
+import { DownloadSlides } from "@/components/download-slides";
 import { Button } from "@/components/ui/button";
 import { CollegeSlideFrame } from "@/components/college-slide";
 import { DownloadSlides } from "@/components/download-slides";
@@ -35,11 +40,13 @@ function slidePlainText(slide: Slide): string {
   ];
   if (slide.body) lines.push(slide.body, "");
   for (const item of slide.evidence ?? []) {
-    lines.push(`Evidence ${item.n}`);
+    lines.push(`Evidence ${item.n}  [${item.n}]`);
     lines.push(`Author(s): ${item.authors}`);
     lines.push(`Year: ${item.year}`);
     lines.push(`Title: ${item.title}`);
     lines.push(`Publication: ${item.venue}`);
+    const doi = parseDoi(item.venue);
+    if (doi) lines.push(`DOI: ${doiHref(doi)}`);
     lines.push(`Objective: ${item.objective}`);
     lines.push(`Methodology: ${item.methodology}`);
     lines.push(`Findings: ${item.findings}`);
@@ -130,25 +137,29 @@ function SlideDeckInner() {
         total={SLIDES.length}
       >
         {slide.body && slide.id !== "title" ? (
-          <p className="mt-1 max-w-4xl text-sm leading-relaxed text-[#5a5a5a]">{slide.body}</p>
+          <p className="mt-1 max-w-4xl text-sm leading-relaxed text-[#5a5a5a]">
+            <DoiText text={slide.body} />
+          </p>
         ) : null}
         {(slide.paragraphs ?? []).map((paragraph) => (
           <p
             key={paragraph.slice(0, 48)}
             className="mt-3 max-w-3xl text-sm leading-relaxed text-[#1a1214]/90"
           >
-            {paragraph}
+            <DoiText text={paragraph} />
           </p>
         ))}
         {slide.evidence?.length ? (
           <div className="mt-4 grid gap-3 md:grid-cols-2">
-            {slide.evidence.map((item) => (
+            {slide.evidence.map((item) => {
+              const doi = parseDoi(item.venue);
+              return (
               <article
                 key={item.n}
                 className="rounded-md border border-[#3A1C64]/25 bg-white p-3"
               >
                 <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#3A1C64]">
-                  Evidence {item.n}
+                  Evidence {item.n} · Citation [{item.n}]
                 </p>
                 <dl className="mt-2 space-y-1.5 text-[12px] leading-snug text-[#1a1214]">
                   <div>
@@ -165,8 +176,25 @@ function SlideDeckInner() {
                   </div>
                   <div>
                     <dt className="font-semibold text-[#3A1C64]">Publication</dt>
-                    <dd>{item.venue}</dd>
+                    <dd>
+                      <DoiText text={item.venue} />
+                    </dd>
                   </div>
+                  {doi ? (
+                    <div>
+                      <dt className="font-semibold text-[#3A1C64]">DOI</dt>
+                      <dd>
+                        <a
+                          href={doiHref(doi)}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="break-all font-medium text-[#1B1464] underline decoration-[#1B1464]/40 underline-offset-2"
+                        >
+                          {doiHref(doi)}
+                        </a>
+                      </dd>
+                    </div>
+                  ) : null}
                   <div>
                     <dt className="font-semibold text-[#3A1C64]">Objective</dt>
                     <dd>{item.objective}</dd>
@@ -189,7 +217,8 @@ function SlideDeckInner() {
                   </div>
                 </dl>
               </article>
-            ))}
+              );
+            })}
           </div>
         ) : null}
         {diagram ? (
@@ -260,7 +289,7 @@ function SlideDeckInner() {
                 key={bullet}
                 className="border-l-2 border-[#3A1C64] pl-3 text-sm leading-relaxed text-[#1a1a1a]"
               >
-                {bullet}
+                <DoiText text={bullet} />
               </li>
             ))}
           </ul>

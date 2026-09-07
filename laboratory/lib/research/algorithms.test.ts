@@ -76,6 +76,7 @@ describe("implemented algorithms and motivation", () => {
       "Research Questions",
       "Research Methodology",
       "Conclusion",
+      "References",
     ]);
     expect(CONTENTS.every((item) => /^\d{2}$/.test(item.n))).toBe(true);
     expect(JSON.stringify(SLIDES)).not.toMatch(/SessionRerank\+/);
@@ -103,5 +104,6 @@ describe("implemented algorithms and motivation", () => {
     expect(CONTENTS.find((item) => item.title === "Research Objectives")?.slideId).toBe(
       "overall-objective",
     );
+    expect(CONTENTS.find((item) => item.title === "References")?.slideId).toBe("refs-1");
   });
 });
