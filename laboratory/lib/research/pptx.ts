@@ -3,7 +3,7 @@ import { join } from "node:path";
 import PptxGenJS from "pptxgenjs";
 import { COLLEGE, PPTX_FILENAME, slideDate } from "./college";
 import { CONTENTS, SLIDES, type Slide } from "./slides";
-import { splitDois, parseDoi, doiHref } from "./literature";
+import { splitDois, parseDoi, doiHref, evidenceHref } from "./literature";
 
 const W = 13.33;
 const H = 7.5;
@@ -476,6 +476,17 @@ export async function buildProposalPptx(): Promise<Buffer> {
                   },
                 ]
               : []),
+            { text: "URL: ", options: { bold: true, color: COLLEGE.maroon, fontSize: 10 } },
+            {
+              text: evidenceHref(ev),
+              options: {
+                color: "0563C1",
+                fontSize: 10,
+                underline: true,
+                hyperlink: { url: evidenceHref(ev) },
+                breakLine: true as const,
+              },
+            },
             { text: "Objective: ", options: { bold: true, color: COLLEGE.maroon, fontSize: 10 } },
             { text: ev.objective, options: { color: COLLEGE.ink, fontSize: 10, breakLine: true } },
             { text: "Methodology: ", options: { bold: true, color: COLLEGE.maroon, fontSize: 10 } },

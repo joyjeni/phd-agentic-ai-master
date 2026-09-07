@@ -11,6 +11,7 @@ Continuation. Evidence 17 & Evidence 18 in the same Evidence template.
 - Title: Improving Lives of Indebted Farmers Using Deep Learning: Predicting Agricultural Produce Prices Using Convolutional Neural Networks (PECAD)
 - Publication: Proceedings of the AAAI Conference on Artificial Intelligence, 34(08):13294–13299. [doi:10.1609/aaai.v34i08.7039](https://doi.org/10.1609/aaai.v34i08.7039)
 - DOI: https://doi.org/10.1609/aaai.v34i08.7039
+- URL: https://doi.org/10.1609/aaai.v34i08.7039
 - Objective: Use AGMARKNET price series as decision-support input for indebted farmers.
 - Methodology: Convolutional networks over scraped agricultural produce prices.
 - Findings: AGMARKNET is a real Indian decision-support corpus, not a toy table.
@@ -23,6 +24,7 @@ Continuation. Evidence 17 & Evidence 18 in the same Evidence template.
 - Year: 2023
 - Title: ReAct: Synergizing Reasoning and Acting in Language Models
 - Publication: Proceedings of the Eleventh International Conference on Learning Representations (ICLR 2023)
+- URL: https://openreview.net/forum?id=WE_vluYUL-X
 - Objective: Interleave reasoning traces with actions so a language model can use tools.
 - Methodology: Thought–action–observation cycles on the already-chosen tool set.
 - Findings: Reasoning-and-acting beats reason-only or act-only prompting on several agent tasks.

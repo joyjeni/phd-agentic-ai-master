@@ -1,7 +1,7 @@
 import { mkdirSync, writeFileSync, readdirSync, unlinkSync } from "node:fs";
 import { join } from "node:path";
 import { COLLEGE, PDF_FILENAME, PPTX_FILENAME, PPTX_TEMPLATE_COPY, STUDENT_DETAILS, ZIP_FILENAME } from "../lib/research/college.ts";
-import { literatureSurveyMarkdown, linkDoisMarkdown, parseDoi, doiHref } from "../lib/research/literature.ts";
+import { literatureSurveyMarkdown, linkDoisMarkdown, parseDoi, doiHref, evidenceHref } from "../lib/research/literature.ts";
 import { allSlidesMarkdown, CONTENTS, SLIDES } from "../lib/research/slides.ts";
 
 const dir = join(import.meta.dirname, "../docs/slides");
@@ -34,6 +34,7 @@ function render(slide: (typeof SLIDES)[number], index: number): string {
       lines.push(`- Publication: ${linkDoisMarkdown(item.venue)}`);
       const doi = parseDoi(item.venue);
       if (doi) lines.push(`- DOI: ${doiHref(doi)}`);
+      lines.push(`- URL: ${evidenceHref(item)}`);
       lines.push(`- Objective: ${item.objective}`);
       lines.push(`- Methodology: ${item.methodology}`);
       lines.push(`- Findings: ${item.findings}`);

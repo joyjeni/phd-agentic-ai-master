@@ -8,6 +8,7 @@ import {
   linkDoisMarkdown,
   parseDoi,
   doiHref,
+  evidenceHref,
   type LiteratureEvidence,
 } from "./literature";
 import {
@@ -63,7 +64,7 @@ function literatureReviewSlides(): Slide[] {
       title: index === 0 ? "Literature Review" : `Literature Review — ${range}`,
       body:
         index === 0
-          ? "FET template. Each paper is Evidence n and citation [n]. Fields: Author(s), Year, Title, Publication, DOI (linked at https://doi.org/…), Objective, Methodology, Findings, Limitations, To solve the research gap."
+          ? "FET template. Each paper is Evidence n and citation [n]. Fields: Author(s), Year, Title, Publication, DOI or URL (publisher / proceedings / data.gov.in), Objective, Methodology, Findings, Limitations, To solve the research gap."
           : `Continuation. ${range} in the same Evidence template.`,
       evidence: pair,
       bullets: pair.flatMap(evidenceTemplateLines),
@@ -85,8 +86,8 @@ function referenceSlides(): Slide[] {
       title: page === 1 ? "References" : `References — [${first}]–[${last}]`,
       body:
         page === 1
-          ? "Numbered bibliography. Evidence 1–18 use the same numbers as citations [1]–[18]. A DOI is a link to https://doi.org/…. Papers without a Crossref DOI stay numbered and unlinked."
-          : `Continuation. Citations [${first}]–[${last}]. Click a DOI to open the publisher record.`,
+          ? "Numbered bibliography. Evidence 1–18 use the same numbers as citations [1]–[18]. Every entry ends with a clickable URL: a Crossref DOI where one exists, otherwise the official proceedings, OpenReview, ACL Anthology, or data.gov.in record."
+          : `Continuation. Citations [${first}]–[${last}]. Click the URL to open the publisher or portal record.`,
       bullets: chunk.map(bibliographyLine),
       footnote:
         page === 1
@@ -153,7 +154,7 @@ export const SLIDES: Slide[] = [
     section: "Contents",
     title: "Contents of Slides",
     kind: "contents",
-    body: `Main FET sections, then numbered References. Motivation, architecture figures, O1–O4, and methodology detail stay in the deck under these headings. Click 11 References for citations [1]–[${BIBLIOGRAPHY[BIBLIOGRAPHY.length - 1]!.n}] with DOI links.`,
+    body: `Main FET sections, then numbered References. Motivation, architecture figures, O1–O4, and methodology detail stay in the deck under these headings. Click 11 References for citations [1]–[${BIBLIOGRAPHY[BIBLIOGRAPHY.length - 1]!.n}]; every citation has a URL.`,
   },
   {
     id: "introduction",
@@ -584,6 +585,7 @@ function slideToMarkdown(slide: Slide, index: number): string {
       lines.push(`- Publication: ${linkDoisMarkdown(item.venue)}`);
       const doi = parseDoi(item.venue);
       if (doi) lines.push(`- DOI: ${doiHref(doi)}`);
+      lines.push(`- URL: ${evidenceHref(item)}`);
       lines.push(`- Objective: ${item.objective}`);
       lines.push(`- Methodology: ${item.methodology}`);
       lines.push(`- Findings: ${item.findings}`);

@@ -11,6 +11,7 @@ Continuation. Evidence 13 & Evidence 14 in the same Evidence template.
 - Title: Adaptive LLM Routing under Budget Constraints
 - Publication: Findings of the Association for Computational Linguistics: EMNLP 2025, pages 23934–23949. [doi:10.18653/v1/2025.findings-emnlp.1301](https://doi.org/10.18653/v1/2025.findings-emnlp.1301). Method name: PILOT (Preference-prior Informed LinUCB).
 - DOI: https://doi.org/10.18653/v1/2025.findings-emnlp.1301
+- URL: https://doi.org/10.18653/v1/2025.findings-emnlp.1301
 - Objective: Treat LLM routing as a contextual bandit under a user budget.
 - Methodology: Preference-prior LinUCB in a shared query–LLM embedding space, plus an online cost policy.
 - Findings: Bandit routing can adapt without exhaustive inference of every LLM on every query.
@@ -24,6 +25,7 @@ Continuation. Evidence 13 & Evidence 14 in the same Evidence template.
 - Title: LLMLingua: Compressing Prompts for Accelerated Inference of Large Language Models
 - Publication: Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing, pages 13358–13376. [doi:10.18653/v1/2023.emnlp-main.825](https://doi.org/10.18653/v1/2023.emnlp-main.825)
 - DOI: https://doi.org/10.18653/v1/2023.emnlp-main.825
+- URL: https://doi.org/10.18653/v1/2023.emnlp-main.825
 - Objective: Shorten long prompts while keeping task performance.
 - Methodology: Budget controller plus token-level iterative compression aligned to the target LLM.
 - Findings: Token-importance compression can reduce prompt length with limited quality loss.

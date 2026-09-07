@@ -10,6 +10,7 @@ Continuation. Evidence 5 & Evidence 6 in the same Evidence template.
 - Year: 2024
 - Title: AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversations
 - Publication: Proceedings of the First Conference on Language Modeling (COLM 2024)
+- URL: https://www.microsoft.com/en-us/research/publication/autogen-enabling-next-gen-llm-applications-via-multi-agent-conversation-framework/
 - Objective: Program LLM applications by composing multiple conversable agents.
 - Methodology: Agents exchange natural-language messages until a stopping condition; modes mix LLMs, humans, and tools.
 - Findings: Conversation is a working programming model for multi-agent LLM applications.
@@ -22,6 +23,7 @@ Continuation. Evidence 5 & Evidence 6 in the same Evidence template.
 - Year: 2024
 - Title: MetaGPT: Meta Programming for A Multi-Agent Collaborative Framework
 - Publication: Proceedings of the Twelfth International Conference on Learning Representations (ICLR 2024)
+- URL: https://proceedings.iclr.cc/paper_files/paper/2024/hash/6507b115562bb0a305f1958ccc87355a-Abstract-Conference.html
 - Objective: Reduce role drift in multi-agent software workflows by encoding human SOPs.
 - Methodology: Standard Operating Procedures are written into prompt sequences; an assembly-line assigns roles.
 - Findings: Authored SOPs produce more coherent software artefacts than unconstrained chat agents.

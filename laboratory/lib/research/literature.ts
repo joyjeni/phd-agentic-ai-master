@@ -16,6 +16,12 @@ export type LiteratureEvidence = {
   year: string;
   title: string;
   venue: string;
+  /**
+   * Official HTML landing page when the venue string has no Crossref DOI.
+   * Prefer proceedings / OpenReview / ACL Anthology / the ministry portal.
+   * Never arXiv.
+   */
+  url?: string;
   objective: string;
   methodology: string;
   findings: string;
@@ -102,6 +108,7 @@ export const LITERATURE_EVIDENCE: LiteratureEvidence[] = [
     year: "2024",
     title: "AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversations",
     venue: "Proceedings of the First Conference on Language Modeling (COLM 2024)",
+    url: "https://www.microsoft.com/en-us/research/publication/autogen-enabling-next-gen-llm-applications-via-multi-agent-conversation-framework/",
     objective: "Program LLM applications by composing multiple conversable agents.",
     methodology: "Agents exchange natural-language messages until a stopping condition; modes mix LLMs, humans, and tools.",
     findings: "Conversation is a working programming model for multi-agent LLM applications.",
@@ -116,6 +123,7 @@ export const LITERATURE_EVIDENCE: LiteratureEvidence[] = [
     year: "2024",
     title: "MetaGPT: Meta Programming for A Multi-Agent Collaborative Framework",
     venue: "Proceedings of the Twelfth International Conference on Learning Representations (ICLR 2024)",
+    url: "https://proceedings.iclr.cc/paper_files/paper/2024/hash/6507b115562bb0a305f1958ccc87355a-Abstract-Conference.html",
     objective: "Reduce role drift in multi-agent software workflows by encoding human SOPs.",
     methodology: "Standard Operating Procedures are written into prompt sequences; an assembly-line assigns roles.",
     findings: "Authored SOPs produce more coherent software artefacts than unconstrained chat agents.",
@@ -144,6 +152,7 @@ export const LITERATURE_EVIDENCE: LiteratureEvidence[] = [
     year: "2023",
     title: "CAMEL: Communicative Agents for “Mind” Exploration of Large Language Model Society",
     venue: "Advances in Neural Information Processing Systems 36 (NeurIPS 2023)",
+    url: "https://proceedings.neurips.cc/paper_files/paper/2023/hash/a3621ee907def47c1b952ade25c67698-Abstract-Conference.html",
     objective: "Enable autonomous cooperation among communicative agents with minimal human steering.",
     methodology: "Role-playing with inception prompting to keep agents on a human-specified task.",
     findings: "Inception prompting yields scalable multi-agent conversational data and cooperative behaviour.",
@@ -157,6 +166,7 @@ export const LITERATURE_EVIDENCE: LiteratureEvidence[] = [
     year: "2024",
     title: "ToolLLM: Facilitating Large Language Models to Master 16000+ Real-world APIs",
     venue: "Proceedings of the Twelfth International Conference on Learning Representations (ICLR 2024)",
+    url: "https://proceedings.iclr.cc/paper_files/paper/2024/hash/28e50ee5b72e90b50e7196fde8ea260e-Abstract-Conference.html",
     objective: "Give open LLMs general tool-use over a large real-world API catalogue.",
     methodology:
       "ToolBench: 16,464 RapidAPI REST endpoints; SBERT retriever; DFSDT planner; ToolEval protocol.",
@@ -173,6 +183,7 @@ export const LITERATURE_EVIDENCE: LiteratureEvidence[] = [
     title: "ToolRerank: Adaptive and Hierarchy-Aware Reranking for Tool Retrieval",
     venue:
       "Proceedings of the 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024), pages 16263–16273. ACL Anthology 2024.lrec-main.1413",
+    url: "https://aclanthology.org/2024.lrec-main.1413/",
     objective: "Refine ToolLLM-style retrieval for seen versus unseen APIs and for tool-library hierarchy.",
     methodology: "Adaptive truncation of seen/unseen APIs plus hierarchy-aware concentration or diversity.",
     findings: "Reranking the SBERT shortlist improves downstream tool execution quality.",
@@ -187,6 +198,7 @@ export const LITERATURE_EVIDENCE: LiteratureEvidence[] = [
     year: "2025",
     title: "RouteLLM: Learning to Route LLMs from Preference Data",
     venue: "Proceedings of the Thirteenth International Conference on Learning Representations (ICLR 2025)",
+    url: "https://proceedings.iclr.cc/paper_files/paper/2025/hash/5503a7c69d48a2f86fc00b3dc09de686-Abstract-Conference.html",
     objective: "Route each query between a stronger and a weaker LLM from human preference data.",
     methodology: "Trained router plus data augmentation; deployed as a frozen policy at inference.",
     findings: "Preference-trained routers can cut cost while holding response quality on public benchmarks.",
@@ -291,6 +303,7 @@ export const LITERATURE_EVIDENCE: LiteratureEvidence[] = [
     year: "2023",
     title: "ReAct: Synergizing Reasoning and Acting in Language Models",
     venue: "Proceedings of the Eleventh International Conference on Learning Representations (ICLR 2023)",
+    url: "https://openreview.net/forum?id=WE_vluYUL-X",
     objective: "Interleave reasoning traces with actions so a language model can use tools.",
     methodology: "Thought–action–observation cycles on the already-chosen tool set.",
     findings: "Reasoning-and-acting beats reason-only or act-only prompting on several agent tasks.",
@@ -307,6 +320,8 @@ export type BibliographyEntry = {
   year: string;
   title: string;
   venue: string;
+  /** Canonical https:// landing page. DOI papers use https://doi.org/…. */
+  url: string;
   doi?: string;
   note?: string;
 };
@@ -324,17 +339,39 @@ export function doiHref(doi: string): string {
   return `https://doi.org/${id}`;
 }
 
+function stripTrailingPunct(token: string): string {
+  return token.replace(/[).,;]+$/g, "");
+}
+
+/** Crossref DOI URL if the venue has one; otherwise the official proceedings / portal URL. */
+export function evidenceHref(item: Pick<LiteratureEvidence, "n" | "venue" | "url">): string {
+  const doi = parseDoi(item.venue);
+  if (doi) return doiHref(doi);
+  if (item.url?.startsWith("https://")) return item.url;
+  throw new Error(`Evidence ${item.n} is missing a publisher URL`);
+}
+
+export function citationHref(entry: Pick<BibliographyEntry, "doi" | "url">): string {
+  return entry.doi ? doiHref(entry.doi) : entry.url;
+}
+
 export function splitDois(text: string): TextRun[] {
-  const re = /doi:\s*(10\.\d{4,9}\/\S+)/gi;
+  const re = /doi:\s*(10\.\d{4,9}\/\S+)|https:\/\/[^\s<>"')\]]+/gi;
   const runs: TextRun[] = [];
   let last = 0;
   let match: RegExpExecArray | null;
   while ((match = re.exec(text))) {
     if (match.index > last) runs.push({ text: text.slice(last, match.index) });
-    const doi = match[1].replace(/[).,;]+$/g, "");
-    const consumed = match[0].length - (match[1].length - doi.length);
-    runs.push({ text: `doi:${doi}`, href: doiHref(doi) });
-    last = match.index + consumed;
+    if (match[1]) {
+      const doi = stripTrailingPunct(match[1]);
+      const consumed = match[0].length - (match[1].length - doi.length);
+      runs.push({ text: `doi:${doi}`, href: doiHref(doi) });
+      last = match.index + consumed;
+    } else {
+      const url = stripTrailingPunct(match[0]);
+      runs.push({ text: url, href: url });
+      last = match.index + url.length;
+    }
   }
   if (last < text.length) runs.push({ text: text.slice(last) });
   return runs.length ? runs : [{ text }];
@@ -353,6 +390,7 @@ const EXTRA_REFERENCES: Omit<BibliographyEntry, "n">[] = [
     year: "2022",
     title: "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models",
     venue: "Advances in Neural Information Processing Systems 35 (NeurIPS 2022)",
+    url: "https://proceedings.neurips.cc/paper/2022/hash/9d5609613524ecf4f15af0f7b31abca4-Abstract-Conference.html",
   },
   {
     authors:
@@ -360,12 +398,14 @@ const EXTRA_REFERENCES: Omit<BibliographyEntry, "n">[] = [
     year: "2023",
     title: "Tree of Thoughts: Deliberate Problem Solving with Large Language Models",
     venue: "Advances in Neural Information Processing Systems 36 (NeurIPS 2023)",
+    url: "https://proceedings.neurips.cc/paper_files/paper/2023/hash/271db9922b8d1f4dd7aaef84ed5ac703-Abstract-Conference.html",
   },
   {
     authors: "Shinn, N., Cassano, F., Gopinath, A., Narasimhan, K., and Yao, S.",
     year: "2023",
     title: "Reflexion: Language Agents with Verbal Reinforcement Learning",
     venue: "Advances in Neural Information Processing Systems 36 (NeurIPS 2023)",
+    url: "https://proceedings.neurips.cc/paper_files/paper/2023/hash/1b44b878bb782e6954cd888628510e90-Abstract-Conference.html",
   },
   {
     authors:
@@ -373,6 +413,7 @@ const EXTRA_REFERENCES: Omit<BibliographyEntry, "n">[] = [
     year: "2023",
     title: "HuggingGPT: Solving AI Tasks with ChatGPT and its Friends in Hugging Face",
     venue: "Advances in Neural Information Processing Systems 36 (NeurIPS 2023)",
+    url: "https://proceedings.neurips.cc/paper_files/paper/2023/hash/77c33e6a367922d003ff102ffb92b658-Abstract-Conference.html",
   },
   {
     authors:
@@ -380,6 +421,7 @@ const EXTRA_REFERENCES: Omit<BibliographyEntry, "n">[] = [
     year: "2023",
     title: "Toolformer: Language Models Can Teach Themselves to Use Tools",
     venue: "Advances in Neural Information Processing Systems 36 (NeurIPS 2023)",
+    url: "https://proceedings.neurips.cc/paper_files/paper/2023/hash/d842425e4bf79ba039352da0f658a906-Abstract-Conference.html",
   },
   {
     authors: "Government of India",
@@ -387,6 +429,7 @@ const EXTRA_REFERENCES: Omit<BibliographyEntry, "n">[] = [
     title: "Open Government Data Platform India",
     venue:
       "data.gov.in; AGMARKNET resource 9ef84268-d588-465a-a308-a864a43d0070; Directorate of Economics and Statistics crop production; IMD rainfall series; Government Open Data License — India (GODL-India)",
+    url: "https://data.gov.in/",
     note: "Live execution corpus, not a journal article.",
   },
 ];
@@ -399,22 +442,26 @@ export const BIBLIOGRAPHY: BibliographyEntry[] = [
     title: item.title,
     venue: item.venue,
     doi: parseDoi(item.venue),
+    url: evidenceHref(item),
   })),
   ...EXTRA_REFERENCES.map((item, index) => ({
     ...item,
     n: LITERATURE_EVIDENCE.length + 1 + index,
     doi: item.doi ?? parseDoi(item.venue),
+    url: item.doi ? doiHref(item.doi) : item.url,
   })),
 ];
 
 export function bibliographyLine(entry: BibliographyEntry): string {
   const venue = entry.venue.endsWith(".") ? entry.venue : `${entry.venue}.`;
-  const line = `[${entry.n}] ${entry.authors} ${entry.title}. ${venue}`;
+  const href = citationHref(entry);
+  const line = `[${entry.n}] ${entry.authors} ${entry.title}. ${venue} ${href}`;
   return entry.note ? `${line} ${entry.note}` : line;
 }
 
 export function evidenceTemplateLines(item: LiteratureEvidence): string[] {
   const doi = parseDoi(item.venue);
+  const href = evidenceHref(item);
   const lines = [
     `Evidence ${item.n}  ·  Citation [${item.n}]`,
     `Author(s): ${item.authors}`,
@@ -423,6 +470,7 @@ export function evidenceTemplateLines(item: LiteratureEvidence): string[] {
     `Publication: ${item.venue}`,
   ];
   if (doi) lines.push(`DOI: ${doiHref(doi)}`);
+  lines.push(`URL: ${href}`);
   lines.push(
     `Objective: ${item.objective}`,
     `Methodology: ${item.methodology}`,
@@ -481,6 +529,7 @@ export function chunkEvidence(size = 2): LiteratureEvidence[][] {
 export function literatureSurveyMarkdown(): string {
   const blocks = LITERATURE_EVIDENCE.map((item) => {
     const doi = parseDoi(item.venue);
+    const href = evidenceHref(item);
     return [
       `## Evidence ${item.n}`,
       "",
@@ -493,6 +542,8 @@ export function literatureSurveyMarkdown(): string {
       `**Publication:** ${linkDoisMarkdown(item.venue)}`,
       "",
       ...(doi ? [`**DOI:** [${doiHref(doi)}](${doiHref(doi)})`, ""] : []),
+      `**URL:** [${href}](${href})`,
+      "",
       `**Objective:** ${item.objective}`,
       "",
       `**Methodology:** ${item.methodology}`,

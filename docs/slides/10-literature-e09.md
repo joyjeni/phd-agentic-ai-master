@@ -10,6 +10,7 @@ Continuation. Evidence 9 & Evidence 10 in the same Evidence template.
 - Year: 2024
 - Title: ToolLLM: Facilitating Large Language Models to Master 16000+ Real-world APIs
 - Publication: Proceedings of the Twelfth International Conference on Learning Representations (ICLR 2024)
+- URL: https://proceedings.iclr.cc/paper_files/paper/2024/hash/28e50ee5b72e90b50e7196fde8ea260e-Abstract-Conference.html
 - Objective: Give open LLMs general tool-use over a large real-world API catalogue.
 - Methodology: ToolBench: 16,464 RapidAPI REST endpoints; SBERT retriever; DFSDT planner; ToolEval protocol.
 - Findings: A public ranking library and planner exist for large-scale tool use.
@@ -22,6 +23,7 @@ Continuation. Evidence 9 & Evidence 10 in the same Evidence template.
 - Year: 2024
 - Title: ToolRerank: Adaptive and Hierarchy-Aware Reranking for Tool Retrieval
 - Publication: Proceedings of the 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024), pages 16263–16273. ACL Anthology 2024.lrec-main.1413
+- URL: https://aclanthology.org/2024.lrec-main.1413/
 - Objective: Refine ToolLLM-style retrieval for seen versus unseen APIs and for tool-library hierarchy.
 - Methodology: Adaptive truncation of seen/unseen APIs plus hierarchy-aware concentration or diversity.
 - Findings: Reranking the SBERT shortlist improves downstream tool execution quality.

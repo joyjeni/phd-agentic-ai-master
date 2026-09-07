@@ -15,6 +15,8 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **DOI:** [https://doi.org/10.1007/s11704-024-40231-1](https://doi.org/10.1007/s11704-024-40231-1)
 
+**URL:** [https://doi.org/10.1007/s11704-024-40231-1](https://doi.org/10.1007/s11704-024-40231-1)
+
 **Objective:** Unify how LLM-based autonomous agents are constructed, applied, and evaluated.
 
 **Methodology:** Journal survey of agent construction: a profile–memory–planning–action framework covering social science, natural science, and engineering applications.
@@ -36,6 +38,8 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 **Publication:** ACM Transactions on Software Engineering and Methodology, 34(5), May 2025. [doi:10.1145/3712003](https://doi.org/10.1145/3712003)
 
 **DOI:** [https://doi.org/10.1145/3712003](https://doi.org/10.1145/3712003)
+
+**URL:** [https://doi.org/10.1145/3712003](https://doi.org/10.1145/3712003)
 
 **Objective:** Map LLM-based multi-agent (LMA) systems across the software development lifecycle.
 
@@ -59,6 +63,8 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **DOI:** [https://doi.org/10.24963/ijcai.2024/890](https://doi.org/10.24963/ijcai.2024/890)
 
+**URL:** [https://doi.org/10.24963/ijcai.2024/890](https://doi.org/10.24963/ijcai.2024/890)
+
 **Objective:** Survey how LLM-based multi-agent systems are profiled, how they communicate, and how their capacities grow.
 
 **Methodology:** IJCAI survey track: domains and environments, agent profiling, communication mechanisms, and capacity-growth methods.
@@ -81,6 +87,8 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **DOI:** [https://doi.org/10.14778/3750601.3750611](https://doi.org/10.14778/3750601.3750611)
 
+**URL:** [https://doi.org/10.14778/3750601.3750611](https://doi.org/10.14778/3750601.3750611)
+
 **Objective:** Give multi-agent LLM planners persistent context, validation, and compensable transactions.
 
 **Methodology:** Saga-style checkpointing and compensation around multi-LLM planning, with independent validators and state tracking.
@@ -101,6 +109,8 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **Publication:** Proceedings of the First Conference on Language Modeling (COLM 2024)
 
+**URL:** [https://www.microsoft.com/en-us/research/publication/autogen-enabling-next-gen-llm-applications-via-multi-agent-conversation-framework/](https://www.microsoft.com/en-us/research/publication/autogen-enabling-next-gen-llm-applications-via-multi-agent-conversation-framework/)
+
 **Objective:** Program LLM applications by composing multiple conversable agents.
 
 **Methodology:** Agents exchange natural-language messages until a stopping condition; modes mix LLMs, humans, and tools.
@@ -120,6 +130,8 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 **Title:** MetaGPT: Meta Programming for A Multi-Agent Collaborative Framework
 
 **Publication:** Proceedings of the Twelfth International Conference on Learning Representations (ICLR 2024)
+
+**URL:** [https://proceedings.iclr.cc/paper_files/paper/2024/hash/6507b115562bb0a305f1958ccc87355a-Abstract-Conference.html](https://proceedings.iclr.cc/paper_files/paper/2024/hash/6507b115562bb0a305f1958ccc87355a-Abstract-Conference.html)
 
 **Objective:** Reduce role drift in multi-agent software workflows by encoding human SOPs.
 
@@ -143,6 +155,8 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **DOI:** [https://doi.org/10.18653/v1/2024.acl-long.810](https://doi.org/10.18653/v1/2024.acl-long.810)
 
+**URL:** [https://doi.org/10.18653/v1/2024.acl-long.810](https://doi.org/10.18653/v1/2024.acl-long.810)
+
 **Objective:** Organise specialised LLM agents as a chat-chain for software design, coding, and testing.
 
 **Methodology:** Chat chain (what to communicate) plus communicative dehallucination (how to communicate).
@@ -162,6 +176,8 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 **Title:** CAMEL: Communicative Agents for “Mind” Exploration of Large Language Model Society
 
 **Publication:** Advances in Neural Information Processing Systems 36 (NeurIPS 2023)
+
+**URL:** [https://proceedings.neurips.cc/paper_files/paper/2023/hash/a3621ee907def47c1b952ade25c67698-Abstract-Conference.html](https://proceedings.neurips.cc/paper_files/paper/2023/hash/a3621ee907def47c1b952ade25c67698-Abstract-Conference.html)
 
 **Objective:** Enable autonomous cooperation among communicative agents with minimal human steering.
 
@@ -183,6 +199,8 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **Publication:** Proceedings of the Twelfth International Conference on Learning Representations (ICLR 2024)
 
+**URL:** [https://proceedings.iclr.cc/paper_files/paper/2024/hash/28e50ee5b72e90b50e7196fde8ea260e-Abstract-Conference.html](https://proceedings.iclr.cc/paper_files/paper/2024/hash/28e50ee5b72e90b50e7196fde8ea260e-Abstract-Conference.html)
+
 **Objective:** Give open LLMs general tool-use over a large real-world API catalogue.
 
 **Methodology:** ToolBench: 16,464 RapidAPI REST endpoints; SBERT retriever; DFSDT planner; ToolEval protocol.
@@ -203,6 +221,8 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **Publication:** Proceedings of the 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024), pages 16263–16273. ACL Anthology 2024.lrec-main.1413
 
+**URL:** [https://aclanthology.org/2024.lrec-main.1413/](https://aclanthology.org/2024.lrec-main.1413/)
+
 **Objective:** Refine ToolLLM-style retrieval for seen versus unseen APIs and for tool-library hierarchy.
 
 **Methodology:** Adaptive truncation of seen/unseen APIs plus hierarchy-aware concentration or diversity.
@@ -222,6 +242,8 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 **Title:** RouteLLM: Learning to Route LLMs from Preference Data
 
 **Publication:** Proceedings of the Thirteenth International Conference on Learning Representations (ICLR 2025)
+
+**URL:** [https://proceedings.iclr.cc/paper_files/paper/2025/hash/5503a7c69d48a2f86fc00b3dc09de686-Abstract-Conference.html](https://proceedings.iclr.cc/paper_files/paper/2025/hash/5503a7c69d48a2f86fc00b3dc09de686-Abstract-Conference.html)
 
 **Objective:** Route each query between a stronger and a weaker LLM from human preference data.
 
@@ -245,6 +267,8 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **DOI:** [https://doi.org/10.18653/v1/2025.acl-long.757](https://doi.org/10.18653/v1/2025.acl-long.757)
 
+**URL:** [https://doi.org/10.18653/v1/2025.acl-long.757](https://doi.org/10.18653/v1/2025.acl-long.757)
+
 **Objective:** Unify collaboration mode, role allocation, and LLM choice as one MAS routing problem.
 
 **Methodology:** Cascaded neural controller trained over multi-agent topologies.
@@ -266,6 +290,8 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 **Publication:** Findings of the Association for Computational Linguistics: EMNLP 2025, pages 23934–23949. [doi:10.18653/v1/2025.findings-emnlp.1301](https://doi.org/10.18653/v1/2025.findings-emnlp.1301). Method name: PILOT (Preference-prior Informed LinUCB).
 
 **DOI:** [https://doi.org/10.18653/v1/2025.findings-emnlp.1301](https://doi.org/10.18653/v1/2025.findings-emnlp.1301)
+
+**URL:** [https://doi.org/10.18653/v1/2025.findings-emnlp.1301](https://doi.org/10.18653/v1/2025.findings-emnlp.1301)
 
 **Objective:** Treat LLM routing as a contextual bandit under a user budget.
 
@@ -289,6 +315,8 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **DOI:** [https://doi.org/10.18653/v1/2023.emnlp-main.825](https://doi.org/10.18653/v1/2023.emnlp-main.825)
 
+**URL:** [https://doi.org/10.18653/v1/2023.emnlp-main.825](https://doi.org/10.18653/v1/2023.emnlp-main.825)
+
 **Objective:** Shorten long prompts while keeping task performance.
 
 **Methodology:** Budget controller plus token-level iterative compression aligned to the target LLM.
@@ -310,6 +338,8 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 **Publication:** Proceedings of the 36th Annual ACM Symposium on User Interface Software and Technology (UIST 2023), Best Paper. [doi:10.1145/3586183.3606763](https://doi.org/10.1145/3586183.3606763)
 
 **DOI:** [https://doi.org/10.1145/3586183.3606763](https://doi.org/10.1145/3586183.3606763)
+
+**URL:** [https://doi.org/10.1145/3586183.3606763](https://doi.org/10.1145/3586183.3606763)
 
 **Objective:** Give LLM agents a long-term memory stream for believable behaviour in a sandbox.
 
@@ -333,6 +363,8 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **DOI:** [https://doi.org/10.1126/science.1177894](https://doi.org/10.1126/science.1177894)
 
+**URL:** [https://doi.org/10.1126/science.1177894](https://doi.org/10.1126/science.1177894)
+
 **Objective:** Capture how Physarum polycephalum grows efficient, fault-tolerant transport networks.
 
 **Methodology:** Feedback between tube conductance and protoplasmic flux; compared with the Tokyo rail system.
@@ -355,6 +387,8 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 
 **DOI:** [https://doi.org/10.1609/aaai.v34i08.7039](https://doi.org/10.1609/aaai.v34i08.7039)
 
+**URL:** [https://doi.org/10.1609/aaai.v34i08.7039](https://doi.org/10.1609/aaai.v34i08.7039)
+
 **Objective:** Use AGMARKNET price series as decision-support input for indebted farmers.
 
 **Methodology:** Convolutional networks over scraped agricultural produce prices.
@@ -374,6 +408,8 @@ Proposal-stage: no NDCG, latency, token, or accuracy commitments.
 **Title:** ReAct: Synergizing Reasoning and Acting in Language Models
 
 **Publication:** Proceedings of the Eleventh International Conference on Learning Representations (ICLR 2023)
+
+**URL:** [https://openreview.net/forum?id=WE_vluYUL-X](https://openreview.net/forum?id=WE_vluYUL-X)
 
 **Objective:** Interleave reasoning traces with actions so a language model can use tools.
 

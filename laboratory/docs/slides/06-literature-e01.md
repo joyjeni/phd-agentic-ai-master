@@ -2,7 +2,7 @@
 
 *Literature Review*
 
-FET template. Each paper is Evidence n and citation [n]. Fields: Author(s), Year, Title, Publication, DOI (linked at https://doi.org/…), Objective, Methodology, Findings, Limitations, To solve the research gap.
+FET template. Each paper is Evidence n and citation [n]. Fields: Author(s), Year, Title, Publication, DOI or URL (publisher / proceedings / data.gov.in), Objective, Methodology, Findings, Limitations, To solve the research gap.
 
 **Evidence 1**
 
@@ -11,6 +11,7 @@ FET template. Each paper is Evidence n and citation [n]. Fields: Author(s), Year
 - Title: A survey on large language model based autonomous agents
 - Publication: Frontiers of Computer Science, 18, article 186345 (2024). [doi:10.1007/s11704-024-40231-1](https://doi.org/10.1007/s11704-024-40231-1)
 - DOI: https://doi.org/10.1007/s11704-024-40231-1
+- URL: https://doi.org/10.1007/s11704-024-40231-1
 - Objective: Unify how LLM-based autonomous agents are constructed, applied, and evaluated.
 - Methodology: Journal survey of agent construction: a profile–memory–planning–action framework covering social science, natural science, and engineering applications.
 - Findings: Most published agents share a construction template, but coordination remains an open systems problem rather than a solved runtime.
@@ -24,6 +25,7 @@ FET template. Each paper is Evidence n and citation [n]. Fields: Author(s), Year
 - Title: LLM-Based Multi-Agent Systems for Software Engineering: Literature Review, Vision, and the Road Ahead
 - Publication: ACM Transactions on Software Engineering and Methodology, 34(5), May 2025. [doi:10.1145/3712003](https://doi.org/10.1145/3712003)
 - DOI: https://doi.org/10.1145/3712003
+- URL: https://doi.org/10.1145/3712003
 - Objective: Map LLM-based multi-agent (LMA) systems across the software development lifecycle.
 - Methodology: Systematic review of primary LMA studies in software engineering, plus case studies of current frameworks and a two-phase research agenda.
 - Findings: Role-specialised LMA systems can divide software work, but agent synergy and trustworthiness remain research gaps.

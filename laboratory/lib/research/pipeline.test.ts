@@ -359,10 +359,16 @@ describe("slides", () => {
     expect(SURVEYED_DATASETS.find((d) => d.id === "agmarknet")?.usedBy).toMatch(/Guo, Woodruff/);
   });
 
-  it("numbers references, lists them in Contents, and links Crossref DOIs", async () => {
-    const { BIBLIOGRAPHY, doiHref, parseDoi, literatureSurveyMarkdown, splitDois } = await import(
-      "@/lib/research/literature"
-    );
+  it("numbers references, lists them in Contents, and links every citation URL", async () => {
+    const {
+      BIBLIOGRAPHY,
+      doiHref,
+      parseDoi,
+      literatureSurveyMarkdown,
+      splitDois,
+      bibliographyLine,
+      evidenceHref,
+    } = await import("@/lib/research/literature");
     expect(CONTENTS.some((item) => item.title === "References" && item.slideId === "refs-1")).toBe(
       true,
     );
@@ -379,10 +385,37 @@ describe("slides", () => {
     expect(splitDois("see doi:10.1007/s11704-024-40231-1.")[1]?.href).toBe(
       "https://doi.org/10.1007/s11704-024-40231-1",
     );
+    expect(splitDois("see https://data.gov.in/.")[1]?.href).toBe("https://data.gov.in/");
     expect(literatureSurveyMarkdown()).toMatch(
       /https:\/\/doi\.org\/10\.1007\/s11704-024-40231-1/,
     );
     expect(JSON.stringify(SLIDES)).toMatch(/\[1\] Wang/);
+    expect(BIBLIOGRAPHY).toHaveLength(24);
+    for (const entry of BIBLIOGRAPHY) {
+      expect(entry.url).toMatch(/^https:\/\//);
+      expect(entry.url).not.toMatch(/arxiv/i);
+      expect(bibliographyLine(entry)).toContain(entry.url);
+    }
+    const refBullets = SLIDES.filter((slide) => slide.id.startsWith("refs-")).flatMap(
+      (slide) => slide.bullets ?? [],
+    );
+    expect(refBullets).toHaveLength(24);
+    for (const bullet of refBullets) {
+      expect(bullet).toMatch(/https:\/\//);
+      const linked = splitDois(bullet).filter((part) => part.href);
+      expect(linked.length).toBeGreaterThan(0);
+      expect(linked.every((part) => part.href?.startsWith("https://"))).toBe(true);
+    }
+    const autogen = BIBLIOGRAPHY.find((entry) => entry.n === 5);
+    expect(autogen?.url).toMatch(/^https:\/\/www\.microsoft\.com\//);
+    expect(BIBLIOGRAPHY.find((entry) => entry.n === 6)?.url).toMatch(/proceedings\.iclr\.cc/);
+    expect(BIBLIOGRAPHY.find((entry) => entry.n === 10)?.url).toBe(
+      "https://aclanthology.org/2024.lrec-main.1413/",
+    );
+    expect(BIBLIOGRAPHY.find((entry) => entry.n === 24)?.url).toBe("https://data.gov.in/");
+    expect(evidenceHref({ n: 18, venue: "ICLR 2023", url: "https://openreview.net/forum?id=WE_vluYUL-X" })).toBe(
+      "https://openreview.net/forum?id=WE_vluYUL-X",
+    );
   });
 
   it("writes the literature survey as Evidence 1, Evidence 2, … with template fields", async () => {

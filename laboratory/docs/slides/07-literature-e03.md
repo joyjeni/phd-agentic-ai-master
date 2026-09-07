@@ -11,6 +11,7 @@ Continuation. Evidence 3 & Evidence 4 in the same Evidence template.
 - Title: Large Language Model based Multi-Agents: A Survey of Progress and Challenges
 - Publication: Proceedings of the Thirty-Third International Joint Conference on Artificial Intelligence (IJCAI-24), Survey Track, pages 8048–8057. [doi:10.24963/ijcai.2024/890](https://doi.org/10.24963/ijcai.2024/890)
 - DOI: https://doi.org/10.24963/ijcai.2024/890
+- URL: https://doi.org/10.24963/ijcai.2024/890
 - Objective: Survey how LLM-based multi-agent systems are profiled, how they communicate, and how their capacities grow.
 - Methodology: IJCAI survey track: domains and environments, agent profiling, communication mechanisms, and capacity-growth methods.
 - Findings: Published MAS work clusters on conversation, role profiles, and simulated worlds; live tool-identifier consensus is not the unit of analysis.
@@ -24,6 +25,7 @@ Continuation. Evidence 3 & Evidence 4 in the same Evidence template.
 - Title: SagaLLM: Context Management, Validation, and Transaction Guarantees for Multi-Agent LLM Planning
 - Publication: Proceedings of the VLDB Endowment (PVLDB), 18(12):4874–4886, 2025. [doi:10.14778/3750601.3750611](https://doi.org/10.14778/3750601.3750611)
 - DOI: https://doi.org/10.14778/3750601.3750611
+- URL: https://doi.org/10.14778/3750601.3750611
 - Objective: Give multi-agent LLM planners persistent context, validation, and compensable transactions.
 - Methodology: Saga-style checkpointing and compensation around multi-LLM planning, with independent validators and state tracking.
 - Findings: Transactional context management can recover multi-agent plans from disruption better than unconstrained chat loops.

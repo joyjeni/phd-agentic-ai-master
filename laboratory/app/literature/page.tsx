@@ -1,6 +1,7 @@
-import { LITERATURE_EVIDENCE, RESEARCH_GAP_SOLUTIONS } from "@/lib/research/literature";
+import { LITERATURE_EVIDENCE, RESEARCH_GAP_SOLUTIONS, evidenceHref, parseDoi, doiHref } from "@/lib/research/literature";
 import { COLLEGE } from "@/lib/research/college";
 import Link from "next/link";
+import { DoiText } from "@/components/doi-text";
 
 export default function LiteraturePage() {
   return (
@@ -15,7 +16,8 @@ export default function LiteraturePage() {
           international conference proceedings paper in the college Evidence form:
           Author(s), Year, Title, Publication, Objective, Methodology, Findings,
           Limitations, To solve the research gap. Publication is the journal or
-          the full proceedings title. Preprints are not cited. Same
+          the full proceedings title. Every Evidence block includes a URL to the
+          publisher, proceedings, or DOI record. Preprints are not cited. Same
           text is on the proposal slides (two evidences per slide) and in{" "}
           <code className="text-[var(--paper)]">docs/LITERATURE_SURVEY.md</code>.
           No NDCG, latency, or accuracy targets.
@@ -47,7 +49,35 @@ export default function LiteraturePage() {
               <dt className="text-[var(--gold)]">Title</dt>
               <dd className="font-medium text-[var(--paper)]">{item.title}</dd>
               <dt className="text-[var(--gold)]">Publication</dt>
-              <dd className="text-[var(--paper)]">{item.venue}</dd>
+              <dd className="text-[var(--paper)]">
+                <DoiText text={item.venue} />
+              </dd>
+              {parseDoi(item.venue) ? (
+                <>
+                  <dt className="text-[var(--gold)]">DOI</dt>
+                  <dd className="text-[var(--paper)]">
+                    <a
+                      href={doiHref(parseDoi(item.venue)!)}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="break-all text-[var(--gold)] underline"
+                    >
+                      {doiHref(parseDoi(item.venue)!)}
+                    </a>
+                  </dd>
+                </>
+              ) : null}
+              <dt className="text-[var(--gold)]">URL</dt>
+              <dd className="text-[var(--paper)]">
+                <a
+                  href={evidenceHref(item)}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="break-all text-[var(--gold)] underline"
+                >
+                  {evidenceHref(item)}
+                </a>
+              </dd>
               <dt className="text-[var(--gold)]">Objective</dt>
               <dd className="text-[var(--muted)]">{item.objective}</dd>
               <dt className="text-[var(--gold)]">Methodology</dt>

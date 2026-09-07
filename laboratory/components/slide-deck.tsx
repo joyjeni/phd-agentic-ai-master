@@ -3,7 +3,7 @@
 import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { CONTENTS, SLIDES, type Slide } from "@/lib/research/slides";
-import { doiHref, parseDoi } from "@/lib/research/literature";
+import { doiHref, evidenceHref, parseDoi } from "@/lib/research/literature";
 import { ArchitectureSvg, type DiagramKind } from "@/components/architecture-svg";
 import { Button } from "@/components/ui/button";
 import { CollegeSlideFrame } from "@/components/college-slide";
@@ -193,6 +193,19 @@ function SlideDeckInner() {
                     </div>
                   ) : null}
                   <div>
+                    <dt className="font-semibold text-[#3A1C64]">URL</dt>
+                    <dd>
+                      <a
+                        href={evidenceHref(item)}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="break-all font-medium text-[#1B1464] underline decoration-[#1B1464]/40 underline-offset-2"
+                      >
+                        {evidenceHref(item)}
+                      </a>
+                    </dd>
+                  </div>
+                  <div>
                     <dt className="font-semibold text-[#3A1C64]">Objective</dt>
                     <dd>{item.objective}</dd>
                   </div>
@@ -284,7 +297,7 @@ function SlideDeckInner() {
             {slide.bullets.map((bullet) => (
               <li
                 key={bullet}
-                className="border-l-2 border-[#3A1C64] pl-3 text-sm leading-relaxed text-[#1a1a1a]"
+                className={`border-l-2 border-[#3A1C64] pl-3 text-sm leading-relaxed text-[#1a1a1a] ${slide.id.startsWith("refs-") ? "break-all" : ""}`}
               >
                 <DoiText text={bullet} />
               </li>

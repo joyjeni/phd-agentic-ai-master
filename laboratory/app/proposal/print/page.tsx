@@ -98,7 +98,10 @@ export default function PrintSlidesPage() {
                   : slide.bullets ?? []
                 ).map((bullet) => (
                   <li key={bullet} className="border-l-2 border-[#3A1C64] pl-3">
-                    <DoiText text={bullet} />
+                    <DoiText
+                      className={slide.id.startsWith("refs-") ? "break-all" : undefined}
+                      text={bullet}
+                    />
                   </li>
                 ))}
               </ul>

@@ -10,6 +10,7 @@ Continuation. Evidence 11 & Evidence 12 in the same Evidence template.
 - Year: 2025
 - Title: RouteLLM: Learning to Route LLMs from Preference Data
 - Publication: Proceedings of the Thirteenth International Conference on Learning Representations (ICLR 2025)
+- URL: https://proceedings.iclr.cc/paper_files/paper/2025/hash/5503a7c69d48a2f86fc00b3dc09de686-Abstract-Conference.html
 - Objective: Route each query between a stronger and a weaker LLM from human preference data.
 - Methodology: Trained router plus data augmentation; deployed as a frozen policy at inference.
 - Findings: Preference-trained routers can cut cost while holding response quality on public benchmarks.
@@ -23,6 +24,7 @@ Continuation. Evidence 11 & Evidence 12 in the same Evidence template.
 - Title: MasRouter: Learning to Route LLMs for Multi-Agent Systems
 - Publication: Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), pages 15549–15572. [doi:10.18653/v1/2025.acl-long.757](https://doi.org/10.18653/v1/2025.acl-long.757)
 - DOI: https://doi.org/10.18653/v1/2025.acl-long.757
+- URL: https://doi.org/10.18653/v1/2025.acl-long.757
 - Objective: Unify collaboration mode, role allocation, and LLM choice as one MAS routing problem.
 - Methodology: Cascaded neural controller trained over multi-agent topologies.
 - Findings: A learned controller can assemble a cheaper MAS than a static multi-agent template.
