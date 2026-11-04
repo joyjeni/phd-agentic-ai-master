@@ -3,16 +3,16 @@
 > **Ph.D. research proposal (Computer Science and Engineering)**  
 > M S Ramaiah University of Applied Sciences · Faculty of Engineering and Technology  
 > Scholar: **Jenisha T** · Register No. **24ETRP720001** · Part-Time  
-> Supervisor: **Dr. Jyothi A P** · Date of registration: **04 September 2024**
+> Supervisor: **Dr. Padma Priya Darshini P** · Date of registration: **04 September 2024**
 
 This repository is the **integration contract** for four named subsystems:
 
 | Order | Code | Repository | Role in the thesis |
 |------:|------|------------|--------------------|
 | 1 | SATR | `session-aware-toolbench-rerank` | Session-aware tool retrieval |
-| 2 | APRR | `aprr-multi-agent-routing` | Training-free specialist routing |
-| 3 | MNCD | `mncd-mesh-agents` | Mesh consensus + live Indian OGD |
-| 4 | FCNP | `fcnp-context-pruning` | Kirchhoff/Physarum prune + write-back |
+| 2 | APRR | `aprr-multi-agent-routing` | Risk-signed contextual-bandit routing (LinUCB family) |
+| 3 | MNCD | `mncd-mesh-agents` | Evidence-weighted quorum consensus + live Indian OGD |
+| 4 | FCNP | `fcnp-context-pruning` | Typed-block pruning with PI fidelity controller + write-back |
 
 Integration is **not** a fifth algorithm. It is the typed loop
 
@@ -59,9 +59,17 @@ npm run dev -- --port 43127 --hostname 0.0.0.0
 
 Then open `/walkthrough` for the formula-and-data pass, or `/proposal` for the FET deck.
 
-Proposal-stage: **no NDCG, latency, token, or accuracy commitments.**
+## Executable results (v1, 3 Nov 2026)
 
-## Proposal-stage stance
+All four objectives run end to end; see [`experiments/RESULTS.md`](experiments/RESULTS.md) and the free-Colab
+notebook [`experiments/ACRS_benchmark.ipynb`](experiments/ACRS_benchmark.ipynb). Headline (simulated agents, 3 seeds,
+leak-filtered): SATR v2 lifts held-out NDCG@5 by 12.4 % over BM25 (5-fold CV, 95 % CI excludes 0).
+Versus a SOTA-analogue baseline, full ACRS cuts accepted errors 24.0 % → 2.0 %, cost −54 %,
+and meets the Φ* = 0.78 fidelity floor on 99.7 % of turns while removing 47 % of tokens, at 21 % abstention.
+
+Panel-review responses: [`docs/PANEL_REVIEW.md`](docs/PANEL_REVIEW.md) · formal claims: [`docs/THEORY.md`](docs/THEORY.md) · thesis plan: [`docs/THESIS_PLAN.md`](docs/THESIS_PLAN.md) · reproduce: `make all`.
+
+## Earlier proposal-stage stance (superseded by the results above)
 
 This programme **does not commit** NDCG, latency, hop-count, token-ratio, or
 accuracy numbers. Published empirical figures belong to the cited SOTA papers
@@ -81,8 +89,8 @@ LREC-COLING 2024).
 | Gap | SOTA limitation | Objective that addresses it |
 |-----|-----------------|-----------------------------|
 | G1 | Turn-amnesic retrieval | SATR session fusion |
-| G2 | Model routers / authored SOPs | APRR Dirichlet–Thompson over **tool agents** |
-| G3 | Star / SOP / chat; vote ≠ tool ID | MNCD gossip + score-sum |
+| G2 | Model routers / authored SOPs | APRR risk-signed contextual bandit over **tool agents** |
+| G3 | Star / SOP / chat; vote ≠ tool ID | MNCD evidence-weighted quorum with abstention |
 | G4 | Compressors without retrieval write-back | FCNP + SATR prior |
 | G5 | No closed four-stage contract on Indian OGD | This master loop |
 
@@ -110,10 +118,12 @@ python orchestrator/pipeline.py "What is the current mandi price of tomato in Pu
 | MNCD `POST /mesh` | `:43133` | mncd-mesh-agents |
 | FCNP `POST /prune` | `:43134` | fcnp-context-pruning |
 
-MNCD consensus is **score-sum** by default. Live rows require a data.gov.in key
+The lab service uses score-sum consensus; the research package (`paim`) uses the evidence-weighted quorum evaluated in `experiments/`. Live rows require a data.gov.in key
 or the public visualization key; missing live data **fails loudly**.
 
 ## Related objective READMEs
 
 Each objective repository states: thesis definition, SOTA papers with venues,
+now
+
 novelty for the research community, and the Indian OGD constraint.
