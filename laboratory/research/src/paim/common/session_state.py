@@ -12,6 +12,7 @@ State components
 ``tool_usage``       how often each tool was invoked in this session
 ``tool_failures``    per-tool failure counts (drives the failure penalty)
 ``risk``             running estimate of how error-prone this session has become
+``families``         decayed counts of the tool families (API providers) committed so far (SATR v2)
 """
 
 from __future__ import annotations
@@ -45,6 +46,8 @@ class SessionState:
     tool_failures: dict[str, int] = field(default_factory=dict)
     categories: dict[str, float] = field(default_factory=dict)
     selected_doc_ids: list[str] = field(default_factory=list)
+    families: dict[str, float] = field(default_factory=dict)
+    family_decay: float = 0.8
     turn: int = 0
     risk: float = 0.0
     tokens_spent: int = 0
@@ -67,6 +70,9 @@ class SessionState:
         self.tool_usage[tool_key] = self.tool_usage.get(tool_key, 0) + 1
         if category:
             self.categories[category] = self.categories.get(category, 0.0) + 1.0
+        family = tool_key.split("::", 1)[0]
+        if family:
+            self.families[family] = self.families.get(family, 0.0) + 1.0
 
     def observe_failure(self, tool_key: str) -> None:
         self.tool_failures[tool_key] = self.tool_failures.get(tool_key, 0) + 1
@@ -77,6 +83,8 @@ class SessionState:
 
     def advance_turn(self) -> None:
         self.turn += 1
+        for f in list(self.families):
+            self.families[f] *= self.family_decay
 
     # -- reads -------------------------------------------------------------
     def intent_affinity(self, text: str) -> float:
@@ -95,6 +103,16 @@ class SessionState:
         """Diminishing returns on calling the same endpoint repeatedly."""
         n = self.tool_usage.get(tool_key, 0)
         return 0.0 if n == 0 else min(1.0, 0.35 * n)
+
+    def family_affinity(self, family: str) -> float:
+        """Share of the session's (decayed) committed tool families that is ``family``, in [0, 1]."""
+        if not self.families or not family:
+            return 0.0
+        top = max(self.families.values())
+        return self.families.get(family, 0.0) / top if top else 0.0
+
+    def top_families(self, n: int = 3) -> list[str]:
+        return [f for f, _ in sorted(self.families.items(), key=lambda kv: -kv[1])[:n]]
 
     def category_prior(self, category: str) -> float:
         if not self.categories:

@@ -40,13 +40,29 @@ given the session state**, decomposed into six inspectable terms:
 * ``served``  overlap with intents the session already satisfied :math:`S_t` - **novel**
 * ``fail``    per-endpoint failure and saturation penalty from this session - **novel**
 
-Selection is **greedy over marginal gain**: after each pick, ``cooc`` and
-``red`` are recomputed against the enlarged committed set. Because ``red``
-enters with a negative sign and is monotone in the committed set, the induced
-set objective is submodular, so the greedy order is the standard
-:math:`(1-1/e)` approximation to the best set of size *k* - and it also yields a
+Selection is **greedy over marginal gain**: after each pick, ``cooc``, ``family``
+and ``red`` are recomputed against the enlarged committed set, which also yields a
 full permutation of the candidate pool, so the run is directly scorable with
 NDCG/Recall against the official ToolBench qrels.
+
+Approximation guarantee (corrected, see docs/THEORY.md, Proposition 1): the
+set score is a modular term plus a max-similarity redundancy penalty and a
+supermodular coherence bonus, so it is **not** monotone submodular in general and
+the classical (1 - 1/e) greedy bound does **not** apply. With
+``w_c = w_f = 0`` and ``w_x = 0`` the objective is modular and greedy is exact;
+with only the redundancy penalty it is submodular but non-monotone, for which
+greedy gives no constant-factor guarantee. We therefore claim greedy as a
+heuristic and evaluate it empirically.
+
+SATR v2 (November 2026) adds three session signals that use no training data,
+so they cannot leak test labels:
+
+* ``family``         tool-family coherence: share of already-committed endpoints
+  (this turn and earlier turns) that belong to the same API provider
+* ``sessionFamily``  decayed session memory of the providers the user has used
+* sibling expansion  the candidate pool is widened with the sibling endpoints of
+  the top first-stage providers and of the session's providers, so endpoints the
+  lexical stage missed can still be ranked
 
 ``StatelessReranker`` is the ablation with :math:`w_s=w_c=w_p=w_x=w_v=w_f=0`,
 i.e. the SOTA behaviour, kept in the same file so the comparison is honest.
@@ -66,15 +82,34 @@ from paim.o1_sasr.retriever import Candidate
 
 @dataclass(frozen=True)
 class RerankWeights:
-    """Scoring weights. Every ablation in the report is a variant of this."""
+    """Scoring weights. Defaults are SATR v2 (5-fold CV modal values); ``v1()`` is the original."""
 
     relevance: float = 1.0
     session: float = 0.55
-    cooccurrence: float = 0.45
-    profile: float = 0.20
-    redundancy: float = 0.35
-    served: float = 0.40
+    cooccurrence: float = 0.0
+    profile: float = 0.0
+    redundancy: float = 0.15
+    served: float = 0.20
     failure: float = 0.30
+    family: float = 0.6          # SATR v2: within/cross-turn provider coherence
+    session_family: float = 0.3  # SATR v2: decayed session provider memory
+    expand_seed: float = 0.0     # SATR v2: expand siblings of the top-N providers (0 = off)
+
+    @staticmethod
+    def v2() -> "RerankWeights":
+        """SATR v2 defaults, selected by 5-fold cross-validation (experiments/o1_satr_v2.py)."""
+        # Modal values of the five CV folds; sibling expansion was selected in 1/5 folds and is off.
+        return RerankWeights(
+            relevance=1.0, session=0.55, cooccurrence=0.0, profile=0.0, redundancy=0.15,
+            served=0.20, failure=0.30, family=0.6, session_family=0.3, expand_seed=0.0,
+        )
+
+    @staticmethod
+    def v1() -> "RerankWeights":
+        """Original SATR weights (PRP-1, Oct 2026), kept for the ablation."""
+        return RerankWeights(relevance=1.0, session=0.55, cooccurrence=0.45, profile=0.20,
+                             redundancy=0.35, served=0.40, failure=0.30, family=0.0,
+                             session_family=0.0, expand_seed=0.0)
 
     @staticmethod
     def stateless() -> "RerankWeights":
@@ -86,6 +121,9 @@ class RerankWeights:
             redundancy=0.0,
             served=0.0,
             failure=0.0,
+            family=0.0,
+            session_family=0.0,
+            expand_seed=0.0,
         )
 
     def to_dict(self) -> dict[str, float]:
@@ -161,6 +199,41 @@ class SessionAwareReranker:
             lexical = len(profile_terms & doc_terms) / len(profile_terms)
         return 0.6 * lexical + 0.4 * state.category_prior(tool.category_name)
 
+    _family_index: dict[int, dict[str, list[str]]] = {}
+
+    @classmethod
+    def _families(cls, tools: Mapping[str, Tool]) -> dict[str, list[str]]:
+        key = id(tools)
+        if key not in cls._family_index:
+            idx: dict[str, list[str]] = {}
+            for d, t in tools.items():
+                idx.setdefault(t.tool_name, []).append(d)
+            cls._family_index[key] = idx
+        return cls._family_index[key]
+
+    def _expand_siblings(self, candidates, norm_rel, tools, state, seed_n):
+        """Widen the pool with sibling endpoints of the top providers (SATR v2)."""
+        fams = self._families(tools)
+        seeds: list[str] = []
+        for c in candidates:
+            f = tools[c.doc_id].tool_name
+            if f not in seeds:
+                seeds.append(f)
+            if len(seeds) >= seed_n:
+                break
+        for f in state.top_families(seed_n):
+            if f not in seeds:
+                seeds.append(f)
+        present = {c.doc_id for c in candidates}
+        out, rel = list(candidates), list(norm_rel)
+        for f in seeds:
+            for d in fams.get(f, ()):
+                if d not in present:
+                    present.add(d)
+                    out.append(Candidate(d, 0.0, len(out)))
+                    rel.append(0.0)
+        return out, rel
+
     # -- main --------------------------------------------------------------
     def rerank(
         self,
@@ -179,6 +252,8 @@ class SessionAwareReranker:
         w = self.weights
         norm_rel = _min_max([c.score for c in candidates])
         first_stage = [c.doc_id for c in candidates]
+        if w.expand_seed > 0:
+            candidates, norm_rel = self._expand_siblings(candidates, norm_rel, tools, state, int(w.expand_seed))
 
         goal_bag = bag(sub_goal_text)
         doc_bags = {c.doc_id: bag(tools[c.doc_id].document_text()) for c in candidates}
@@ -200,6 +275,8 @@ class SessionAwareReranker:
             # boosted a little; this keeps ``relevance`` from being the only
             # query-conditioned signal when the first stage is poorly calibrated.
             terms["goalMatch"] = 0.25 * w.relevance * cosine(goal_bag, doc_bags[c.doc_id])
+            if w.session_family:
+                terms["sessionFamily"] = w.session_family * state.family_affinity(tool.tool_name)
             static[c.doc_id] = terms
 
         pool = {c.doc_id: c for c in candidates}
@@ -215,6 +292,10 @@ class SessionAwareReranker:
             for doc_id in sorted(remaining):
                 terms = dict(static[doc_id])
                 terms["cooccurrence"] = w.cooccurrence * self.graph.affinity(doc_id, working)
+                if w.family and working:
+                    fam = tools[doc_id].tool_name
+                    same = sum(1 for c in working if c in tools and tools[c].tool_name == fam)
+                    terms["family"] = w.family * same / len(working)
                 terms["redundancy"] = -w.redundancy * max(
                     (cosine(doc_bags[doc_id], doc_bags[c]) for c in working if c in doc_bags),
                     default=0.0,

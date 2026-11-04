@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "ACRS: Adaptive Context Reasoning System for multi-agent tool-augmented LLMs"
+authors:
+  - family-names: "T"
+    given-names: "Jenisha"
+    affiliation: "M S Ramaiah University of Applied Sciences"
+repository-code: "https://github.com/joyjeni/phd-agentic-ai-master"
+license: MIT
+version: "0.2.0"
+date-released: "2026-11-03"
