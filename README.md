@@ -124,6 +124,4 @@ or the public visualization key; missing live data **fails loudly**.
 ## Related objective READMEs
 
 Each objective repository states: thesis definition, SOTA papers with venues,
-now
-
 novelty for the research community, and the Indian OGD constraint.
