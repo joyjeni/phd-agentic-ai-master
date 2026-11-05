@@ -18,6 +18,20 @@ Rendered tables are in `thesis/tables_toolbench.tex`.
 - **Reliability:** pass^1/2/3 = 0.749 / 0.588 / 0.466. The product of stage reliabilities is 0.598, against 0.718 observed.
 - **Release:** gate passed; CI cannot promote; a named approver can.
 
+**KCC-Sessions (Colab T4, real Kisan Call Centre queries: 586 queries, 425 pseudo-sessions, 15 states, 10,450 tools with distractors; median of 3 seeds)**
+
+| Configuration | NDCG@5 | Auto-executed | Executed errors | Φ\* met |
+|---|---|---|---|---|
+| SOTA baseline | 0.412 | 99.7 % | 11.3 % | 4.5 % |
+| + O1 SATR | 0.397 | 99.3 % | 11.7 % | 3.1 % |
+| + O2 APRR | 0.412 | 99.7 % | 26.4 % | 4.5 % |
+| + O3 MNCD | 0.412 | 89.5 % | 0.34 % | 4.5 % |
+| + O4 FCNP | 0.412 | 99.8 % | 6.2 % | 99.9 % |
+| Full ACRS (O1–O4) | 0.399 | 85.9 % | 0.86 % | 100 % |
+| Full ACRS + G1 | 0.399 | 53.3 % | 0.51 % | 100 % |
+
+O1 does not transfer to KCC pseudo-sessions (1.37 turns on average, with topic switches inside a block-day queue). This is reported as a scope limit of O1.
+
 Threats to validity:
 - agents are simulated;
 - the injection harness is in-house (AgentDojo next);

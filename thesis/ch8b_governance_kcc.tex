@@ -305,7 +305,37 @@ The run uses a seeded sample stratified over QueryType, drawn from a 1.0M-row 20
 block-day queues kept. QueryType label noise (for example, weather questions filed under post-harvest
 preservation) is used as recorded and reported, never silently corrected.
 
-% KCC-RESULTS-PLACEHOLDER (filled from experiments/results/integrated_kcc.json)
+\begin{table}[htbp]
+  \centering
+  \caption{All four objectives and G1 on KCC-Sessions: 586 real farmer queries in 425 pseudo-sessions from 15 states, 10{,}450-tool corpus with ToolBench distractors (Colab T4 run, median of three seeds, per sub-goal)}
+  \label{tab:gkcc-ablation}
+  \footnotesize\setlength{\tabcolsep}{4pt}
+  \begin{tabular}{@{}lccccc@{}}
+    \toprule
+    Configuration & NDCG@5 & \makecell{Auto-\\executed} & \makecell{Executed\\errors} & \makecell{Executed\\precision} & \makecell{$\Phi^\ast$\\met} \\
+    \midrule
+    SOTA baseline & 0.411 & 99.7\,\% & 11.3\,\% & 88.7\,\% & 4.5\,\% \\
+    +\,O1 SATR & 0.397 & 99.3\,\% & 11.7\,\% & 88.3\,\% & 3.1\,\% \\
+    +\,O2 APRR & 0.411 & 99.7\,\% & 26.4\,\% & 73.5\,\% & 4.5\,\% \\
+    +\,O3 MNCD & 0.411 & 89.5\,\% & 0.3\,\% & 99.6\,\% & 4.5\,\% \\
+    +\,O4 FCNP & 0.411 & 99.8\,\% & 6.2\,\% & 93.8\,\% & 99.9\,\% \\
+    Full ACRS (O1--O4) & 0.399 & 85.9\,\% & 0.9\,\% & 99.0\,\% & 100.0\,\% \\
+    Full ACRS +\,G1 & 0.399 & 53.3\,\% & 0.5\,\% & 99.1\,\% & 100.0\,\% \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+The sample covers 17 query types. Weather (145 queries) and plant protection (60) are the largest, and 38\,\% of sub-goals are agronomic-dose or entitlement questions, which G1 may only recommend.
+Three findings carry over from ToolBench, and one does not.
+\begin{itemize}
+  \item \textbf{The integrated loop is what makes answers safe to act on.} Executed errors fall from 11.3\,\% (SOTA baseline) to 0.86\,\% with O1--O4 and to 0.51\,\% with G1. O3 is again the largest single contributor (0.34\,\% alone, at 10\,\% abstention), and O2 alone again doubles errors (26.4\,\%) while cutting cost by 73\,\%. The loop needs O3 to make O2's savings safe.
+  \item \textbf{O4 restores context fidelity.} The fidelity floor is met on 4.5\,\% of turns under a fixed 50\,\% keep ratio and on 100\,\% under the PI controller.
+  \item \textbf{G1 enforces who decides.} With G1, 53.3\,\% of sub-goals are auto-executed, against 85.9\,\% without it. The difference is mostly dose and entitlement queries handed to an advisor with their evidence, which is the intended behaviour at a KCC desk rather than a loss of capability.
+  \item \textbf{O1 does not transfer to KCC pseudo-sessions.} SATR lowers NDCG@5 from 0.412 to 0.397. KCC pseudo-sessions average 1.37 turns, and consecutive queries in a block-day queue usually switch topic and service, for example from weather to pest control. SATR's provider-coherence and session-memory terms assume that consecutive sub-goals in a session draw on related providers, so here they act as noise. This bounds the scope of contribution O1 to genuine multi-turn sessions, and it motivates a learned topic-switch gate as future work.
+\end{itemize}
+
+% KCC-ATTACK-LTT-PLACEHOLDER (attack sweep and certified execution on KCC, pending Colab completion)
+
 
 \section{Deployment Path and Release Discipline}
 \label{sec:gov-release}
