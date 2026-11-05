@@ -334,7 +334,9 @@ Three findings carry over from ToolBench, and one does not.
   \item \textbf{O1 does not transfer to KCC pseudo-sessions.} SATR lowers NDCG@5 from 0.412 to 0.397. KCC pseudo-sessions average 1.37 turns, and consecutive queries in a block-day queue usually switch topic and service, for example from weather to pest control. SATR's provider-coherence and session-memory terms assume that consecutive sub-goals in a session draw on related providers, so here they act as noise. This bounds the scope of contribution O1 to genuine multi-turn sessions, and it motivates a learned topic-switch gate as future work.
 \end{itemize}
 
-% KCC-ATTACK-LTT-PLACEHOLDER (attack sweep and certified execution on KCC, pending Colab completion)
+\paragraph{Injection on KCC.} With 15\,\% of KCC endpoints poisoned, the ungoverned O1--O4 loop executes an attacker-steered answer on 27.8\,\% of sub-goals. With G1 the rate falls to 0.86\,\%, a 32-fold reduction, and executed precision recovers from 68.8\,\% to 96.5\,\%. The guard again quarantined no clean observation. The contrast with ToolBench (5.7\,\% residual) has a clear explanation: on KCC, 38\,\% of sub-goals are recommend-only by risk class, so even an injection that survives the guard rarely reaches an auto-executable answer. Authority bounds therefore limit the blast radius of attacks the guard cannot see.
+
+% KCC-LTT-PLACEHOLDER (certified execution on KCC, pending Colab completion)
 
 
 \section{Deployment Path and Release Discipline}

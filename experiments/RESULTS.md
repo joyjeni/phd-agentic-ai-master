@@ -30,6 +30,8 @@ Rendered tables are in `thesis/tables_toolbench.tex`.
 | Full ACRS (O1–O4) | 0.399 | 85.9 % | 0.86 % | 100 % |
 | Full ACRS + G1 | 0.399 | 53.3 % | 0.51 % | 100 % |
 
+**Injection on KCC, 15 % of endpoints poisoned:** attack success is 27.8 % without G1 and 0.86 % with it; executed precision recovers from 68.8 % to 96.5 %; the guard has a 0 false-positive rate. Certified execution on KCC (Learn-then-Test) is pending completion of the Colab run.
+
 O1 does not transfer to KCC pseudo-sessions (1.37 turns on average, with topic switches inside a block-day queue). This is reported as a scope limit of O1.
 
 Threats to validity:
