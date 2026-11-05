@@ -24,6 +24,8 @@ The session-aware part - the actual novelty of O1 - is in ``reranker.py``.
 
 from __future__ import annotations
 
+import os
+
 import math
 from collections import defaultdict
 from dataclasses import dataclass, field
@@ -127,7 +129,12 @@ class DenseRetriever:
     box with no network.
     """
 
-    model_name: str = "sentence-transformers/all-MiniLM-L6-v2"
+    # Override on GPU runs, e.g. ACRS_DENSE_MODEL=BAAI/bge-base-en-v1.5
+    model_name: str = field(
+        default_factory=lambda: os.environ.get(
+            "ACRS_DENSE_MODEL", "sentence-transformers/all-MiniLM-L6-v2"
+        )
+    )
     _model: object | None = None
     _doc_ids: list[str] = field(default_factory=list)
     _matrix: object | None = None

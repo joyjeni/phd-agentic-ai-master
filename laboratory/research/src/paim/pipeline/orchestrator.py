@@ -76,6 +76,8 @@ from paim.o3_mncd.execution import SimulatedToolExecutor
 from paim.o4_fcnp.controller import ControllerConfig, FidelityController, FixedBudgetController
 from paim.o4_fcnp.pruner import FCNPPruner, FixedRatioPruner
 from paim.pipeline import context as ctx
+from paim.governance.authority import ACRS_STAGES, Disposition, end_to_end_reliability
+from paim.governance.layer import GovernanceConfig, GovernanceLayer
 
 
 @dataclass(frozen=True)
@@ -86,18 +88,27 @@ class Ablations:
     risk_aware_routing: bool = True     # O2
     mesh_consensus: bool = True         # O3
     fidelity_control: bool = True       # O4
+    # G1 authority-bounded execution. Off by default so every v1/v2 number in
+    # experiments/RESULTS.md reproduces bit-for-bit; governed runs opt in.
+    governance: bool = False
 
     @staticmethod
     def sota_baseline() -> "Ablations":
         return Ablations(False, False, False, False)
 
+    @staticmethod
+    def governed() -> "Ablations":
+        return Ablations(True, True, True, True, True)
+
     def label(self) -> str:
-        if all(asdict(self).values()):
-            return "proposed (all objectives enabled)"
-        if not any(asdict(self).values()):
-            return "SOTA baseline (all objectives ablated)"
-        on = [k for k, v in asdict(self).items() if v]
-        return "partial: " + ", ".join(on)
+        objectives = {k: v for k, v in asdict(self).items() if k != "governance"}
+        suffix = " + G1 governance" if self.governance else ""
+        if all(objectives.values()):
+            return "proposed (all objectives enabled)" + suffix
+        if not any(objectives.values()):
+            return "SOTA baseline (all objectives ablated)" + suffix
+        on = [k for k, v in objectives.items() if v]
+        return "partial: " + ", ".join(on) + suffix
 
     def to_dict(self) -> dict[str, bool]:
         return asdict(self)
@@ -118,6 +129,7 @@ class PipelineConfig:
     ablations: Ablations = field(default_factory=Ablations)
     tool_failure_rate: float = 0.08
     carry_observations: bool = True
+    governance_config: GovernanceConfig = field(default_factory=GovernanceConfig)
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -133,6 +145,7 @@ class PipelineConfig:
             "controller": self.controller.to_dict(),
             "ablations": self.ablations.to_dict(),
             "toolFailureRate": self.tool_failure_rate,
+            "governance": self.governance_config.to_dict() if self.ablations.governance else None,
             "label": self.ablations.label(),
         }
 
@@ -182,6 +195,14 @@ class IntegratedPipeline:
         self.executor = executor or SimulatedToolExecutor(
             seed=cfg.seed, failure_rate=cfg.tool_failure_rate
         )
+        # --- G1 -----------------------------------------------------------
+        self.governance: GovernanceLayer | None = (
+            GovernanceLayer(cfg.governance_config) if cfg.ablations.governance else None
+        )
+        if self.governance is not None:
+            # Tool output is data: every observation crosses the guard before
+            # any peer reads it.
+            self.executor = self.governance.wrap_executor(self.executor)
         consensus = (
             EvidenceWeightedConsensus(cfg.consensus)
             if cfg.ablations.mesh_consensus
@@ -239,9 +260,20 @@ class IntegratedPipeline:
         per_turn_records: list[dict[str, Any]] = []
 
         for sub_goal in session.sub_goals:
-            turn_trace, carried, record = self._run_turn(
-                session, sub_goal, state, carried, arguments_for
-            )
+            gov = self.governance
+            if gov is not None and gov.kill_switch_engaged():
+                turn_trace, record = self._unexecuted_turn(sub_goal, gov.blocked("kill switch engaged"))
+            else:
+                try:
+                    turn_trace, carried, record = self._run_turn(
+                        session, sub_goal, state, carried, arguments_for
+                    )
+                except Exception as exc:  # noqa: BLE001 - fail closed is the point
+                    if gov is None:
+                        raise
+                    turn_trace, record = self._unexecuted_turn(
+                        sub_goal, gov.failed(f"{type(exc).__name__}: {exc}")
+                    )
             trace.turns.append(turn_trace)
             session.turns.append(
                 SessionTurn(
@@ -254,6 +286,7 @@ class IntegratedPipeline:
             per_turn_records.append(record)
 
         trace.metrics = self._session_metrics(session, per_turn_records, state)
+        self.last_records = per_turn_records
         trace.feedback = self._feedback_summary(per_turn_records)
         trace.answer = self._compose_answer(session, per_turn_records)
         return trace
@@ -455,7 +488,12 @@ class IntegratedPipeline:
         )
         reroutes = 0
         reroute_notes: list[str] = []
-        while delib.certificate.abstained and reroutes < cfg.max_reroutes:
+        turn_cost = delib.total_cost
+        ceiling = (
+            cfg.governance_config.max_cost_per_turn if self.governance is not None else float("inf")
+        )
+        # Bounded loop: step budget (max_reroutes) AND cost ceiling.
+        while delib.certificate.abstained and reroutes < cfg.max_reroutes and turn_cost < ceiling:
             reroutes += 1
             # Feedback edge O3 -> O2: abstention raises risk, which makes the
             # router's escalation policy fire on the retry.
@@ -475,6 +513,7 @@ class IntegratedPipeline:
                 high_stakes=True,
                 arguments=arguments,
             )
+            turn_cost += delib.total_cost
 
         cert = delib.certificate
         turn_trace.stages.append(
@@ -512,6 +551,39 @@ class IntegratedPipeline:
             )
         )
 
+        # ---- G1: authority-bounded execution -----------------------------
+        hijacked_keys = {r.claim_key for r in delib.reports if getattr(r, "hijacked", False)}
+        if self.governance is not None:
+            t0 = time.perf_counter()
+            adj = self.governance.adjudicate(
+                certificate=cert,
+                reports=delib.reports,
+                tools=callable_tools,
+                risk_class=getattr(sub_goal, "risk_class", "informational"),
+                stage_failures=0,
+            )
+            disposition = adj.disposition
+            turn_trace.stages.append(
+                StageTrace(
+                    stage="G1",
+                    objective="governance",
+                    label="Policy-as-code adjudication (check_policy)",
+                    inputs={"riskClass": getattr(sub_goal, "risk_class", "informational")},
+                    outputs=adj.to_dict(),
+                    metrics={
+                        "execute": 1.0 if disposition is Disposition.EXECUTE else 0.0,
+                        "review": 1.0 if disposition is Disposition.REVIEW else 0.0,
+                        "theta": self.governance.theta,
+                    },
+                    explanation=[f"{disposition.value}: {adj.reason}"],
+                    duration_ms=(time.perf_counter() - t0) * 1000,
+                )
+            )
+        else:
+            disposition = Disposition.EXECUTE if cert.certified else Disposition.REVIEW
+        executed = disposition is Disposition.EXECUTE
+        correct = consensus_correct(cert, delib.reports)
+
         # ---- S5: credit assignment / feedback ---------------------------
         t0 = time.perf_counter()
         reward = _reward(cert.certified, delib.total_cost, delib.wall_latency_ms, cert.weighted_share)
@@ -543,11 +615,12 @@ class IntegratedPipeline:
         state.cost_spent += delib.total_cost
 
         surviving = ctx.carry_forward(prune.kept)
+        writable = [inv for r in delib.reports for inv in r.invocations if inv.ok]
+        if self.governance is not None:
+            # R-MEM-01: quarantined observations never reach the next turn.
+            writable = [inv for inv in writable if self.governance.allow_memory(inv)]
         new_observations = [
-            ctx.observation_block(inv, sub_goal.turn, i)
-            for i, inv in enumerate(
-                [inv for r in delib.reports for inv in r.invocations if inv.ok]
-            )
+            ctx.observation_block(inv, sub_goal.turn, i) for i, inv in enumerate(writable)
         ]
         carried = (surviving + new_observations)[-8:] if cfg.carry_observations else []
 
@@ -601,8 +674,47 @@ class IntegratedPipeline:
             "fidelity": prune.fidelity.fidelity,
             "schemaIntegrity": prune.fidelity.schema_integrity,
             "hallucinatingPeers": sum(1 for r in delib.reports if r.hallucinated),
+            "hijackedPeers": sum(1 for r in delib.reports if getattr(r, "hijacked", False)),
+            "quarantinedCalls": sum(
+                1 for r in delib.reports for i in r.invocations if getattr(i, "quarantined", False)
+            ),
+            "weightedShare": cert.weighted_share,
+            "disposition": disposition.value,
+            "executed": executed,
+            "executedCorrect": executed and correct,
+            "executedWrong": executed and not correct,
+            "attackSucceeded": executed and cert.claim_key in hijacked_keys,
+            "riskClass": getattr(sub_goal, "risk_class", "informational"),
+            "failed": False,
         }
         return turn_trace, carried, record
+
+    def _unexecuted_turn(self, sub_goal: SubGoal, adj: Any) -> tuple[TurnTrace, dict[str, Any]]:
+        """A turn that never reached certification (kill switch or a stage failure)."""
+        tt = TurnTrace(turn=sub_goal.turn, sub_goal=sub_goal.text)
+        tt.stages.append(
+            StageTrace(
+                stage="G1", objective="governance", label="Fail-closed disposition",
+                inputs={}, outputs=adj.to_dict(), metrics={"execute": 0.0},
+                explanation=[f"{adj.disposition.value}: {adj.reason}"], duration_ms=0.0,
+            )
+        )
+        tt.success = False
+        tt.answer = f"{adj.disposition.value.lower()}: {adj.reason}"
+        sub_goal.status = "failed"
+        record = {
+            "turn": sub_goal.turn, "subGoalId": sub_goal.sub_goal_id, "selected": [],
+            "rankedIds": [], "firstStageIds": [], "gold": list(sub_goal.gold_doc_ids),
+            "certified": False, "abstained": True, "consensusCorrect": False,
+            "escalated": False, "reroutes": 0, "agent": "", "tier": "", "cost": 0.0,
+            "latencyMs": 0.0, "toolCalls": 0, "toolFailures": 0, "keptTokens": 0,
+            "originalTokens": 0, "fidelity": 0.0, "schemaIntegrity": 0.0,
+            "hallucinatingPeers": 0, "hijackedPeers": 0, "quarantinedCalls": 0,
+            "weightedShare": 0.0, "disposition": adj.disposition.value, "executed": False,
+            "executedCorrect": False, "executedWrong": False, "attackSucceeded": False,
+            "riskClass": getattr(sub_goal, "risk_class", "informational"), "failed": True,
+        }
+        return tt, record
 
     # ------------------------------------------------------------------
     def _session_metrics(
@@ -668,6 +780,20 @@ class IntegratedPipeline:
             out["sessionToolSetF1"] = M.set_f1(session_selected, session_gold)
 
         out.update({f"regret_{k}": v for k, v in self.regret.summary().items()})
+        n = float(len(records))
+        out.update(
+            {
+                "executeRate": sum(1 for r in records if r["disposition"] == "EXECUTE") / n,
+                "reviewRate": sum(1 for r in records if r["disposition"] == "REVIEW") / n,
+                "blockRate": sum(1 for r in records if r["disposition"] == "BLOCK") / n,
+                "executedErrorRate": sum(1 for r in records if r["executedWrong"]) / n,
+                "executedCorrectRate": sum(1 for r in records if r["executedCorrect"]) / n,
+                "attackSuccessRate": sum(1 for r in records if r["attackSucceeded"]) / n,
+                "hijackedPeerEncounters": float(sum(r["hijackedPeers"] for r in records)),
+                "quarantinedCalls": float(sum(r["quarantinedCalls"] for r in records)),
+                "stageFailureRate": sum(1 for r in records if r["failed"]) / n,
+            }
+        )
         return out
 
     def _feedback_summary(self, records: Sequence[dict[str, Any]]) -> list[str]:

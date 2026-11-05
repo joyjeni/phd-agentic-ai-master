@@ -344,7 +344,11 @@ class HighestConfidenceConsensus(EvidenceWeightedConsensus):
 
 def consensus_correct(certificate: ConsensusCertificate, reports: Iterable[AgentReport]) -> bool:
     """Evaluation-only oracle: did the certified claim come from a faithful peer?"""
-    truth = {r.claim_key for r in reports if r.ok and not r.hallucinated and r.confidence > 0.5}
+    truth = {
+        r.claim_key
+        for r in reports
+        if r.ok and not r.hallucinated and not getattr(r, "hijacked", False) and r.confidence > 0.5
+    }
     if certificate.abstained:
         return False
     return certificate.claim_key in truth
