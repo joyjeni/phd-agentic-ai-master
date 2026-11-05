@@ -208,39 +208,45 @@ print(f"[B] guard false-positive rate on clean traffic: {R['guardFalsePositiveRa
 # ----------------------------------------------------------------- C + D
 R["certified"] = []
 ALPHAS = [float(a) for a in args.alphas.split(",")]
-for s, alpha in [(s, a) for a in ALPHAS for s in range(args.seeds)]:
+# One calibration run and one fixed-theta run per (seed, attack); every alpha
+# reuses them, so only the held-out LTT run is repeated per alpha.
+for s in range(args.seeds):
     seed = 20260905 + s
-    args.alpha = alpha
     for rate in (0.0, 0.15):
         sessions = SESSIONS()
         cal, test = split(sessions, seed)
         _, cal_recs, _ = run(Ablations.governed(), seed, rate, sessions=cal)
         pool = [r for r in cal_recs if r["certified"] and r["riskClass"] == "informational"
                 and r["quarantinedCalls"] == 0]
-        ct = learn_then_test([r["weightedShare"] for r in pool],
-                             [not r["consensusCorrect"] for r in pool],
-                             alpha=args.alpha, delta=args.delta)
-        ece = expected_calibration_error([r["weightedShare"] for r in pool],
-                                         [r["consensusCorrect"] for r in pool])
-        theta = ct.threshold if ct.valid else 1.01
-        _, test_recs, test_m = run(Ablations.governed(), seed, rate, theta=theta, sessions=test)
-        _, test_fix, test_fm = run(Ablations.governed(), seed, rate, theta=0.5, sessions=test)
-        ex = [r for r in test_recs if r["executed"]]
-        row = {
-            "seed": seed, "attack": rate, "alpha": alpha, "threshold": ct.to_dict(), "eceWeightedShare": ece,
-            "heldOutExecutedRisk": (sum(r["executedWrong"] for r in ex) / len(ex)) if ex else 0.0,
-            "heldOutExecuted": len(ex),
-            "heldOutCoverage": len(ex) / max(1, len(test_recs)),
-            "riskWithinAlpha": ((sum(r["executedWrong"] for r in ex) / len(ex)) if ex else 0.0) <= args.alpha,
-            "fixedTheta05": summarise(test_fix, test_fm),
-            "ltt": summarise(test_recs, test_m),
-        }
-        R["certified"].append(row)
-        print(f"[C] alpha {alpha:.2f} seed {seed} attack {rate:.2f}: theta*={ct.threshold:.2f} (valid={ct.valid}, "
-              f"UCB={ct.risk_upper:.4f}) held-out executed risk={row['heldOutExecutedRisk']:.4f} "
-              f"vs alpha={args.alpha} coverage={row['heldOutCoverage']:.3f}  ECE={ece:.3f}  "
-              f"[theta=0.5 risk={row['fixedTheta05']['executedErrorRate'] / max(1e-9, row['fixedTheta05']['executeRate']):.4f}]",
-              flush=True)
+        scores = [r["weightedShare"] for r in pool]
+        wrong = [not r["consensusCorrect"] for r in pool]
+        ece = expected_calibration_error(scores, [not w for w in wrong])
+        _, test_fix, test_fm = run(Ablations.governed(), seed, rate, theta=0.5, sessions=split(SESSIONS(), seed)[1])
+        fixed = summarise(test_fix, test_fm)
+        cache = {}
+        for alpha in ALPHAS:
+            ct = learn_then_test(scores, wrong, alpha=alpha, delta=args.delta)
+            theta = ct.threshold if ct.valid else 1.01
+            if theta not in cache:
+                cache[theta] = run(Ablations.governed(), seed, rate, theta=theta,
+                                   sessions=split(SESSIONS(), seed)[1])
+            _, test_recs, test_m = cache[theta]
+            ex = [r for r in test_recs if r["executed"]]
+            risk = (sum(r["executedWrong"] for r in ex) / len(ex)) if ex else 0.0
+            row = {
+                "seed": seed, "attack": rate, "alpha": alpha, "threshold": ct.to_dict(),
+                "calibrationPool": len(pool), "eceWeightedShare": ece,
+                "heldOutExecutedRisk": risk, "heldOutExecuted": len(ex),
+                "heldOutCoverage": len(ex) / max(1, len(test_recs)),
+                "riskWithinAlpha": risk <= alpha,
+                "fixedTheta05": fixed, "ltt": summarise(test_recs, test_m),
+            }
+            R["certified"].append(row)
+            fixed_risk = fixed["executedErrorRate"] / max(1e-9, fixed["executeRate"])
+            print(f"[C] alpha {alpha:.2f} seed {seed} attack {rate:.2f}: pool={len(pool)} "
+                  f"theta*={ct.threshold:.2f} (valid={ct.valid}, UCB={ct.risk_upper:.4f}) "
+                  f"held-out executed risk={risk:.4f} coverage={row['heldOutCoverage']:.3f} "
+                  f"ECE={ece:.3f} [theta=0.5 risk={fixed_risk:.4f}]", flush=True)
 
 # ----------------------------------------------------------------- E
 outcomes: dict[str, list[bool]] = {}
