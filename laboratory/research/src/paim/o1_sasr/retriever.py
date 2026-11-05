@@ -119,6 +119,11 @@ class BM25Retriever:
         return len(self._doc_ids)
 
 
+_MODEL_CACHE: dict = {}
+_EMB_CACHE: dict = {}
+_QUERY_CACHE: dict = {}
+
+
 @dataclass
 class DenseRetriever:
     """Sentence-BERT bi-encoder stage (the ToolRetriever configuration).
@@ -153,16 +158,26 @@ class DenseRetriever:
             import numpy as np
             from sentence_transformers import SentenceTransformer
 
-            self._model = SentenceTransformer(self.model_name)
+            # Process-level cache: experiments build one pipeline per seed and
+            # configuration; re-loading the encoder and re-embedding a 10k-tool
+            # corpus each time dominated GPU runtime. The cache key is the model
+            # and the exact rendered corpus, so a changed corpus re-embeds.
+            if self.model_name not in _MODEL_CACHE:
+                _MODEL_CACHE[self.model_name] = SentenceTransformer(self.model_name)
+            self._model = _MODEL_CACHE[self.model_name]
             self._doc_ids = [t.doc_id for t in tools]
-            emb = self._model.encode(
-                [t.document_text() for t in tools],
-                batch_size=64,
-                convert_to_numpy=True,
-                normalize_embeddings=True,
-                show_progress_bar=False,
-            )
-            self._matrix = np.asarray(emb, dtype="float32")
+            texts = [t.document_text() for t in tools]
+            key = (self.model_name, hash(tuple(zip(self._doc_ids, texts))))
+            if key not in _EMB_CACHE:
+                emb = self._model.encode(
+                    texts,
+                    batch_size=64,
+                    convert_to_numpy=True,
+                    normalize_embeddings=True,
+                    show_progress_bar=False,
+                )
+                _EMB_CACHE[key] = np.asarray(emb, dtype="float32")
+            self._matrix = _EMB_CACHE[key]
         except Exception:
             self._model = None
             self._matrix = None
@@ -173,10 +188,12 @@ class DenseRetriever:
             return []
         import numpy as np  # pragma: no cover
 
-        q = self._model.encode(  # type: ignore[union-attr]
-            [query], convert_to_numpy=True, normalize_embeddings=True, show_progress_bar=False
-        )
-        sims = np.asarray(self._matrix) @ np.asarray(q[0])
+        qkey = (self.model_name, query)
+        if qkey not in _QUERY_CACHE:
+            _QUERY_CACHE[qkey] = self._model.encode(  # type: ignore[union-attr]
+                [query], convert_to_numpy=True, normalize_embeddings=True, show_progress_bar=False
+            )[0]
+        sims = np.asarray(self._matrix) @ np.asarray(_QUERY_CACHE[qkey])
         top = np.argsort(-sims)[:k]
         return [Candidate(self._doc_ids[int(i)], float(sims[int(i)]), r) for r, i in enumerate(top)]
 
