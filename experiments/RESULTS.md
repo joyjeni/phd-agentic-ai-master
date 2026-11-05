@@ -1,3 +1,45 @@
+# ACRS executable results
+
+## v3 (5 November 2026): O1–O4 integrated + G1 governance
+
+Source of truth:
+- `results/integrated_toolbench.json` (local CPU, reproduced on a Colab T4);
+- `results/integrated_kcc.json` (Colab run on the KCC sample).
+
+Rendered tables are in `thesis/tables_toolbench.tex`.
+
+- **Ablation:** the full loop cuts executed errors from 24.1 % to 1.15 %. G1 costs 1.7 points of auto-execution coverage when there is no attack.
+- **Injection:** at 15 % poisoned endpoints, attack success falls from 29.3 % to 5.7 % with G1; at 30 %, from 45.4 % to 6.3 %. The guard has a 0 false-positive rate on clean traffic. The residual comes from the paraphrased payload.
+- **Certified execution (Learn-then-Test, δ = 0.05):**
+  - α = 0.05: certified 3/3 seeds, θ\* 0.30–0.55, held-out risk ≤ 3.0 %, coverage 73.6 %.
+  - α = 0.10: certified 3/3, held-out risk ≤ 7.4 %.
+  - α = 0.02: not certifiable (fewer than 149 executions per calibration half).
+  - Under attack: never certified, so every sub-goal goes to REVIEW.
+- **Reliability:** pass^1/2/3 = 0.749 / 0.588 / 0.466. The product of stage reliabilities is 0.598, against 0.718 observed.
+- **Release:** gate passed; CI cannot promote; a named approver can.
+
+**KCC-Sessions (Colab T4, real Kisan Call Centre queries: 586 queries, 425 pseudo-sessions, 15 states, 10,450 tools with distractors; median of 3 seeds)**
+
+| Configuration | NDCG@5 | Auto-executed | Executed errors | Φ\* met |
+|---|---|---|---|---|
+| SOTA baseline | 0.412 | 99.7 % | 11.3 % | 4.5 % |
+| + O1 SATR | 0.397 | 99.3 % | 11.7 % | 3.1 % |
+| + O2 APRR | 0.412 | 99.7 % | 26.4 % | 4.5 % |
+| + O3 MNCD | 0.412 | 89.5 % | 0.34 % | 4.5 % |
+| + O4 FCNP | 0.412 | 99.8 % | 6.2 % | 99.9 % |
+| Full ACRS (O1–O4) | 0.399 | 85.9 % | 0.86 % | 100 % |
+| Full ACRS + G1 | 0.399 | 53.3 % | 0.51 % | 100 % |
+
+**Injection on KCC, 15 % of endpoints poisoned:** attack success is 27.8 % without G1 and 0.86 % with it; executed precision recovers from 68.8 % to 96.5 %; the guard has a 0 false-positive rate. Certified execution on KCC (Learn-then-Test) is pending completion of the Colab run.
+
+O1 does not transfer to KCC pseudo-sessions (1.37 turns on average, with topic switches inside a block-day queue). This is reported as a scope limit of O1.
+
+Threats to validity:
+- agents are simulated;
+- the injection harness is in-house (AgentDojo next);
+- KCC uses pseudo-sessions and noisy QueryType labels;
+- most KCC services are simulated.
+
 # ACRS executable results (v2, 3 November 2026 — SATR v2)
 
 All four objectives and the integrated loop run end to end on CPU. Reproduce in ~15 min on free Colab/Kaggle with

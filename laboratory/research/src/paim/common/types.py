@@ -155,6 +155,10 @@ class SubGoal:
     gold_doc_ids: tuple[str, ...] = ()
     status: Literal["open", "satisfied", "failed"] = "open"
     satisfied_by: tuple[str, ...] = ()
+    # Consequence class used by the governance layer. "informational" answers
+    # may be auto-executed; anything else (an agronomic dose, an entitlement
+    # decision) is recommend-only and goes to a named human.
+    risk_class: str = "informational"
 
     @property
     def is_open(self) -> bool:
@@ -171,6 +175,13 @@ class ToolInvocation:
     observation: str = ""
     error: str = ""
     agent_id: str = ""
+    # Governance: set by the tool-boundary guard when it neutralised
+    # instruction-shaped text in ``observation``.
+    quarantined: bool = False
+    # Simulator ground truth only (attack harness); never read by the guard,
+    # consensus or policy code.
+    injected: bool = False
+    payload: str = ""
 
 
 @dataclass

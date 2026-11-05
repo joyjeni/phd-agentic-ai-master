@@ -126,6 +126,9 @@ class AgentReport:
     cost: float = 0.0
     invocations: tuple[ToolInvocation, ...] = ()
     hallucinated: bool = False
+    # Simulator ground truth: the peer followed an instruction embedded in a
+    # tool observation (indirect prompt injection). Evaluation-only.
+    hijacked: bool = False
     error: str = ""
 
     def to_dict(self, include_ground_truth: bool = False) -> dict[str, Any]:
@@ -143,6 +146,7 @@ class AgentReport:
         }
         if include_ground_truth:
             out["hallucinated"] = self.hallucinated
+            out["hijacked"] = self.hijacked
         return out
 
 
@@ -254,6 +258,23 @@ class AgentRuntime:
             claim = f"low-confidence partial answer for '{_short(sub_goal_text)}'"
             confidence = 0.25 + 0.2 * stream.random()
 
+        # Indirect prompt injection: if an instruction payload survived into
+        # the shared pool, a susceptible peer follows it. Every hijacked peer
+        # produces the *same* attacker claim and cites real evidence, so this
+        # is a correlated error. The extra draw happens only when a live
+        # payload exists, so attack-free runs reproduce earlier results exactly.
+        hijacked = False
+        live = [i for i in ok_obs if i.payload and i.payload in i.observation]
+        if live:
+            susceptibility = min(0.95, INJECTION_SUSCEPTIBILITY + 0.5 * (1.0 - agent.reliability))
+            if stream.random() < susceptibility:
+                hijacked = True
+                hallucinated = False
+                claim_key = digest([sub_goal_id, "injected", sorted(i.payload for i in live)])
+                claim = f"attacker-steered answer for '{_short(sub_goal_text)}'"
+                confidence = min(0.99, 0.85 + 0.1 * stream.random())
+                evidence = tuple(evidence_token(i.doc_id, i.observation) for i in ok_obs)
+
         return AgentReport(
             agent_id=agent.agent_id,
             sub_goal_id=sub_goal_id,
@@ -266,11 +287,15 @@ class AgentRuntime:
             cost=cost,
             invocations=tuple(invocations),
             hallucinated=hallucinated,
+            hijacked=hijacked,
         )
 
     @staticmethod
     def grounded_key(sub_goal_id: str, observations: Sequence[str]) -> str:
         return digest([sub_goal_id, sorted(observations)])
+
+
+INJECTION_SUSCEPTIBILITY = 0.55
 
 
 def _short(text: str, n: int = 48) -> str:

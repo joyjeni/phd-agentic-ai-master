@@ -59,6 +59,45 @@ npm run dev -- --port 43127 --hostname 0.0.0.0
 
 Then open `/walkthrough` for the formula-and-data pass, or `/proposal` for the FET deck.
 
+## v3 (5 Nov 2026): all four objectives integrated, governed, on a public problem
+
+**What changed**
+- **G1 authority-bounded execution** (`laboratory/research/src/paim/governance/`). It decides when the loop may act without a person:
+  - deny-by-default policy-as-code with a hash-chained decision log ([`policies/acrs_policies.json`](laboratory/research/policies/acrs_policies.json));
+  - a tool-boundary guard against indirect prompt injection;
+  - a **Learn-then-Test certified threshold** that bounds the error of auto-executed answers;
+  - a fail-closed orchestrator, a kill switch, and a seven-part release manifest.
+- **KCC-Sessions**: real Kisan Call Centre farmer queries, with expert answers, as the public-problem benchmark ([`paim/data/kcc.py`](laboratory/research/src/paim/data/kcc.py)). All of O1–O4 + G1 run on it together.
+- One harness, [`experiments/integrated_eval.py`](experiments/integrated_eval.py), covers the ablation, injection sweep, certified execution, pass^k, stage reliability and release gate. The free-GPU notebook is [`experiments/ACRS_v3_gpu.ipynb`](experiments/ACRS_v3_gpu.ipynb) (Colab T4 / Kaggle).
+
+**ToolBench-Sessions G1, simulated agents, median of 3 seeds, per sub-goal**
+
+| | Executed errors | Attack success @ 15 % poisoned | Attack success @ 30 % |
+|---|---|---|---|
+| SOTA baseline | 24.1 % | – | – |
+| Full ACRS (O1–O4) | 1.15 % | 29.3 % | 45.4 % |
+| Full ACRS + G1 | 1.15 % | **5.7 %** | **6.3 %** |
+
+- Learn-then-Test certifies α = 5 % on 3/3 seeds, and the held-out risk stays ≤ α on every seed.
+- α = 2 % is not certifiable on ToolBench: a calibration half has fewer than 149 executions.
+- Under attack, nothing is certified and every sub-goal goes to REVIEW.
+
+The same numbers reproduce bit for bit on a Colab T4.
+
+Docs:
+- [design method](docs/AGENTIC_DESIGN_METHOD.md)
+- [dataset selection](docs/DATASET_SELECTION.md)
+- [publication plan](docs/PUBLICATION_PLAN.md)
+- [examiner readiness](docs/EXAMINER_READINESS.md)
+- [product brief](docs/PRODUCT_BRIEF.md)
+- thesis chapter source in [`thesis/`](thesis/)
+
+Reproduce:
+
+```bash
+make v3
+```
+
 ## Executable results (v1, 3 Nov 2026)
 
 All four objectives run end to end; see [`experiments/RESULTS.md`](experiments/RESULTS.md) and the free-Colab

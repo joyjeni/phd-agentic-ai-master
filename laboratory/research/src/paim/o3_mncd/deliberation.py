@@ -155,10 +155,11 @@ class MeshDeliberation:
         ]
         awards = net.allocate(announcements, state)
         by_agent: dict[str, list[Tool]] = {p.agent_id: [] for p in peers}
-        tool_by_id = {t.doc_id: t for t in tools}
+        # Resolve awards through the announcement table, not by parsing the
+        # task id: sub-goal ids may themselves contain ':' (e.g. KCC "kcc0:3").
+        tool_by_task = {a.task_id: a.tool for a in announcements}
         for aw in awards:
-            doc_id = aw.task_id.split(":", 1)[1]
-            by_agent.setdefault(aw.agent_id, []).append(tool_by_id[doc_id])
+            by_agent.setdefault(aw.agent_id, []).append(tool_by_task[aw.task_id])
 
         # 3a. execute: each awarded endpoint is called exactly once, by its winner
         own_invocations: dict[str, list[Any]] = {}

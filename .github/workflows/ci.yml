@@ -1,5 +1,9 @@
    name: research-tests
-   on: [push, pull_request]
+   on:
+     push:
+     pull_request:
+     schedule:
+       - cron: "17 3 * * 1"
    jobs:
      test:
        runs-on: ubuntu-latest
@@ -10,3 +14,6 @@
          - run: pip install -r requirements.txt
          - run: make test
          - run: python experiments/run_all.py --repo . --seeds 1 --out /tmp/acrs_ci.json
+         - run: make v3-kcc-smoke
+         # scheduled kill-switch / policy self-test: an untested switch is an unverified one
+         - run: cd laboratory/research && python -m pytest -q tests/test_governance.py -k "kill_switch or policy or fail_closed"

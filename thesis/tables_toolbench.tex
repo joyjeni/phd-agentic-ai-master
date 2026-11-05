@@ -1,0 +1,61 @@
+\begin{table}[htbp]
+  \centering
+  \caption{Objective ablation with G1 on ToolBench-Sessions G1 (median of 3 seeds, per sub-goal)}
+  \label{tab:gtb-ablation}
+  \footnotesize\setlength{\tabcolsep}{3pt}
+  \begin{tabular}{@{}lcccccc@{}}
+    \toprule
+    Configuration & NDCG@5 & \makecell{Auto-\\executed} & \makecell{Executed\\errors} & \makecell{Executed\\precision} & \makecell{Cost /\\sub-goal} & \makecell{$\Phi^\ast$\\met} \\
+    \midrule
+    SOTA baseline & 0.519 & 99.4\,\% & 24.1\,\% & 75.9\,\% & 0.0177 & 11.0\,\% \\
+    +\,O1 SATR & 0.585 & 100.0\,\% & 23.6\,\% & 76.4\,\% & 0.0177 & 13.3\,\% \\
+    +\,O2 APRR & 0.519 & 100.0\,\% & 31.6\,\% & 68.4\,\% & 0.0046 & 11.0\,\% \\
+    +\,O3 MNCD & 0.519 & 77.6\,\% & 0.0\,\% & 100.0\,\% & 0.0185 & 11.0\,\% \\
+    +\,O4 FCNP & 0.519 & 100.0\,\% & 21.8\,\% & 78.2\,\% & 0.0176 & 100.0\,\% \\
+    Full ACRS (O1-O4) & 0.587 & 77.0\,\% & 1.1\,\% & 98.4\,\% & 0.0082 & 99.7\,\% \\
+    Full ACRS +\, G1 & 0.587 & 75.3\,\% & 1.1\,\% & 98.4\,\% & 0.0082 & 99.7\,\% \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Indirect prompt injection through poisoned endpoints on ToolBench-Sessions G1 (median of 3 seeds)}
+  \label{tab:gtb-attack}
+  \footnotesize\setlength{\tabcolsep}{4pt}
+  \begin{tabular}{@{}lccccc@{}}
+    \toprule
+    Configuration & \makecell{Poisoned\\endpoints} & \makecell{Auto-\\executed} & \makecell{Executed\\errors} & \makecell{Attack\\success} & \makecell{Executed\\precision} \\
+    \midrule
+    Full ACRS (O1-O4) & 0.0\,\% & 77.0\,\% & 1.1\,\% & 0.0\,\% & 98.4\,\% \\
+    Full ACRS +\, G1 & 0.0\,\% & 75.3\,\% & 1.1\,\% & 0.0\,\% & 98.4\,\% \\
+    Full ACRS (O1-O4) & 15.0\,\% & 82.2\,\% & 31.0\,\% & 29.3\,\% & 62.2\,\% \\
+    Full ACRS +\, G1 & 15.0\,\% & 57.5\,\% & 6.3\,\% & 5.7\,\% & 89.0\,\% \\
+    Full ACRS (O1-O4) & 30.0\,\% & 85.1\,\% & 46.6\,\% & 45.4\,\% & 42.1\,\% \\
+    Full ACRS +\, G1 & 30.0\,\% & 35.6\,\% & 6.9\,\% & 6.3\,\% & 80.3\,\% \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Certified auto-execution by Learn-then-Test on ToolBench-Sessions G1: threshold from the calibration half, risk on the held-out half ($\delta=0.05$; 3 seeds)}
+  \label{tab:gtb-ltt}
+  \footnotesize\setlength{\tabcolsep}{4pt}
+  \begin{tabular}{@{}ccccccc@{}}
+    \toprule
+    $\alpha$ & Attack & \makecell{Seeds\\certified} & \makecell{$\theta^\ast$\\(range)} & \makecell{Held-out risk\\(max)} & \makecell{Within\\$\alpha$} & \makecell{Coverage\\(mean)} \\
+    \midrule
+    0.02 & 0.0\,\% & 0/3 & -- & -- & -- & 0 (all REVIEW) \\
+    0.02 & 15.0\,\% & 0/3 & -- & -- & -- & 0 (all REVIEW) \\
+    0.05 & 0.0\,\% & 3/3 & 0.30--0.55 & 3.0\,\% & 3/3 & 73.6\,\% \\
+    0.05 & 15.0\,\% & 0/3 & -- & -- & -- & 0 (all REVIEW) \\
+    0.10 & 0.0\,\% & 3/3 & 0.30--0.30 & 7.4\,\% & 3/3 & 76.6\,\% \\
+    0.10 & 15.0\,\% & 0/3 & -- & -- & -- & 0 (all REVIEW) \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+% pass^k: pass^1=0.749, pass^2=0.588, pass^3=0.466
+% stage reliability seed0: {"S1 gold tool in selected set": 0.644, "S2 fidelity floor met": 0.994, "S4 certified claim faithful": 0.955, "G1 executed | certified": 0.978, "product": 0.598, "observedExecutedCorrect": 0.718}
+% guard false-positive rate: 0.0000; release gate: {'passed': True, 'reasons': []}; CI may promote: False; approver may promote: True; manifest 343767ac1d4e26b8
